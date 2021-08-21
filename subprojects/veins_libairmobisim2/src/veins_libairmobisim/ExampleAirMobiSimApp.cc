@@ -25,7 +25,7 @@ using namespace veins;
 
 Define_Module(ExampleAirMobiSimApp);
 
-void ExampleAirMobiSimApp::initialize() {
+void ExampleAirMobiSimApp::initialize(int stage) {
     DemoBaseApplLayer::initialize (stage);
     if (stage == 0) {
         // Initializing members and pointers of your application goes here

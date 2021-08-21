@@ -2,7 +2,7 @@
 # OMNeT++/OMNEST Makefile for $(LIB_PREFIX)veins_libairmobisim
 #
 # This file was generated with the command:
-#  opp_makemake -f --deep --no-deep-includes --make-so -I . -o veins_libairmobisim -O out -I../../../src -L../../../src -lveins$(D)
+#  opp_makemake --make-so -f --deep -o veins_libairmobisim -O out -pVEINS_LIBAIRMOBISIM -KVEINS_PROJ=/Users/hardes/Documents/cms_git/airmobisimVeins/veins -DVEINS_IMPORT -I. -I$$\(VEINS_PROJ\)/src -I. -L$$\(VEINS_PROJ\)/src -lveins$$\(D\)
 #
 
 # Name of target to be created (-o option)
@@ -14,13 +14,13 @@ TARGET_IMPDEF = $(TARGET_NAME)$(IMPDEF_SUFFIX)
 TARGET_FILES = $(TARGET_DIR)/$(TARGET)
 
 # C++ include paths (with -I)
-INCLUDE_PATH = -I. -I../../../src
+INCLUDE_PATH = -I. -I$(VEINS_PROJ)/src -I.
 
 # Additional object and library files to link with
 EXTRA_OBJS =
 
 # Additional libraries (-L, -l options)
-LIBS = $(LDFLAG_LIBPATH)../../../src  -lveins$(D)
+LIBS = $(LDFLAG_LIBPATH)$(VEINS_PROJ)/src  -lveins$(D)
 
 # Output directory
 PROJECT_OUTPUT_DIR = ../out
@@ -35,6 +35,9 @@ MSGFILES =
 
 # SM files
 SMFILES =
+
+# Other makefile variables (-K)
+VEINS_PROJ=/Users/hardes/Documents/cms_git/airmobisimVeins/veins
 
 #------------------------------------------------------------------------------
 
@@ -59,11 +62,11 @@ include $(CONFIGFILE)
 # Simulation kernel and user interface libraries
 OMNETPP_LIBS = -loppenvir$D $(KERNEL_LIBS) $(SYS_LIBS)
 ifneq ($(PLATFORM),win32.x86_64)
-LIBS += -Wl,-rpath,$(abspath ../../../src)
+LIBS += -Wl,-rpath,$(abspath $(VEINS_PROJ)/src)
 endif
 
-COPTS = $(CFLAGS) $(IMPORT_DEFINES)  $(INCLUDE_PATH) -I$(OMNETPP_INCL_DIR)
-MSGCOPTS = $(INCLUDE_PATH)
+COPTS = $(CFLAGS) $(IMPORT_DEFINES) -DVEINS_IMPORT -DVEINS_LIBAIRMOBISIM_EXPORT $(INCLUDE_PATH) -I$(OMNETPP_INCL_DIR)
+MSGCOPTS = $(INCLUDE_PATH) -PVEINS_LIBAIRMOBISIM_API
 SMCOPTS =
 
 # we want to recompile everything if COPTS changes,
