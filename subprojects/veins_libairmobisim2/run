@@ -25,8 +25,8 @@
 echo "WARNING: the run script is deprecated in favor of bin/veins_libairmobisim_run. Redirecting." >&2
 echo "WARNING: the run script is deprecated in favor of bin/veins_libairmobisim_run. Redirecting."
 
-test -f $(dirname "$0")/bin/veins_testsims_run || echo "ERROR: bin/veins_libairmobisim_run does not exist; this will likely fail. Did you run 'make bin/veins_libairmobisim_run'?" >&2
-test -f $(dirname "$0")/bin/veins_testsims_run || echo "ERROR: bin/veins_libairmobisim_run does not exist; this will likely fail. Did you run 'make bin/veins_libairmobisim_run'?"
+test -f $(dirname "$0")/bin/veins_libairmobisim_run || echo "ERROR: bin/veins_libairmobisim_run does not exist; this will likely fail. Did you run 'make bin/veins_inet_run'?" >&2
+test -f $(dirname "$0")/bin/veins_libairmobisim_run || echo "ERROR: bin/veins_libairmobisim_run does not exist; this will likely fail. Did you run 'make bin/veins_inet_run'?"
 
 $(dirname "$0")/bin/veins_libairmobisim_run "$@"
 
