@@ -17,3 +17,16 @@ do not include license text shall be assumed to allow the Creative Commons
 (SPDX-License-Identifier: GPL-2.0-or-later OR CC-BY-SA-4.0). Full license texts
 are available with the source distribution.
 
+
+
+# Subproject veins_libairmobisim2 
+Build GRPC:
+```
+export MY_INSTALL_DIR=$HOME/.local
+mkdir -p $MY_INSTALL_DIR
+git clone --recurse-submodules -b v1.38.0 https://github.com/grpc/grpc
+mkdir -p cmake/build
+cd cmake/build
+cmake ../.. -DBUILD_SHARED_LIBS=ON
+make -j$(nproc)
+```
