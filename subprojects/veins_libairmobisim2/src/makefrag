@@ -60,3 +60,11 @@ endif
 #
 MSGC:=$(MSGC) --msg6
 
+
+# pull in fallback values from Makefile.inc.default
+include Makefile.inc.default
+
+# compile/link with grpc
+LIBS += -lgrpc++
+LDFLAGS += -Wl,-rpath,$(abspath $(GRPC_PLUGIN_LIBRARY)) 
+INCLUDE_PATH += -I$(GRPC_PLUGIN_INCLUDE) 
