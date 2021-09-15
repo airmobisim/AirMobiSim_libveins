@@ -1,5 +1,7 @@
+#!/bin/sh
+
 #
-# Copyright (C) 2020 Christoph Sommer <sommer@cms-labs.org>
+# Copyright (C) 2011 Christoph Sommer <sommer@ccs-labs.org>
 #
 # Documentation for these modules is at http://veins.car2x.org/
 #
@@ -20,9 +22,4 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
-#
-# Values to be used in makefrag.
-# It will first source Makefile.inc (if it exists) and then Makefile.inc.default
-#
-GRPC_PLUGIN_LIBRARY ?= ../../../../../../.local/lib
-GRPC_PLUGIN_INCLUDE ?= ../../../../../../.local/include
+exec ../../bin/veins_libairmobisim_run "$@"
