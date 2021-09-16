@@ -24,9 +24,27 @@ Build GRPC:
 ```
 export MY_INSTALL_DIR=$HOME/.local
 mkdir -p $MY_INSTALL_DIR
-git clone --recurse-submodules -b v1.38.0 https://github.com/grpc/grpc
+export PATH="$MY_INSTALL_DIR/bin:$PATH"
+
+cd grpc
 mkdir -p cmake/build
-cd cmake/build
-cmake ../.. -DBUILD_SHARED_LIBS=ON
-make -j$(nproc)
+cmake -DgRPC_INSTALL=ON -DgRPC_BUILD_TESTS=OFF -DgRPC_SSL_PROVIDER=package  -DCMAKE_INSTALL_PREFIX=$MY_INSTALL_DIR -DBUILD_SHARED_LIBS=ON  ../..
+
+make -j
+make install
+
+
+git clone https://github.com/protocolbuffers/protobuf.git
+cd protobuf
+git submodule update --init --recursive
+./autogen.sh
+
+./configure
+make
+make check
+sudo make install
+sudo ldconfig # refresh shared library cache.
+
+
+
 ```
