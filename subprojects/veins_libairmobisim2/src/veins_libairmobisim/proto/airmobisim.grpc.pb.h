@@ -56,6 +56,13 @@ class AirMobiSim final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncFinish(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncFinishRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::UavList* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>> AsyncGetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>>(AsyncGetManagedHostsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>> PrepareAsyncGetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>>(PrepareAsyncGetManagedHostsRaw(context, request, cq));
+    }
     class async_interface {
      public:
       virtual ~async_interface() {}
@@ -65,6 +72,8 @@ class AirMobiSim final {
       virtual void ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, ::grpc::ClientUnaryReactor* reactor) = 0;
       virtual void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
       virtual void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      virtual void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, std::function<void(::grpc::Status)>) = 0;
+      virtual void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::ClientUnaryReactor* reactor) = 0;
     };
     typedef class async_interface experimental_async_interface;
     virtual class async_interface* async() { return nullptr; }
@@ -76,6 +85,8 @@ class AirMobiSim final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::ResponseQuery>* PrepareAsyncExecuteOneTimeStepRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncFinishRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncFinishRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>* AsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>* PrepareAsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -101,6 +112,13 @@ class AirMobiSim final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncFinish(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncFinishRaw(context, request, cq));
     }
+    ::grpc::Status GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::UavList* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>> AsyncGetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>>(AsyncGetManagedHostsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>> PrepareAsyncGetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>>(PrepareAsyncGetManagedHostsRaw(context, request, cq));
+    }
     class async final :
       public StubInterface::async_interface {
      public:
@@ -110,6 +128,8 @@ class AirMobiSim final {
       void ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, ::grpc::ClientUnaryReactor* reactor) override;
       void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
       void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, std::function<void(::grpc::Status)>) override;
+      void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::ClientUnaryReactor* reactor) override;
      private:
       friend class Stub;
       explicit async(Stub* stub): stub_(stub) { }
@@ -127,9 +147,12 @@ class AirMobiSim final {
     ::grpc::ClientAsyncResponseReader< ::airmobisim::ResponseQuery>* PrepareAsyncExecuteOneTimeStepRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncFinishRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncFinishRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>* AsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>* PrepareAsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Start_;
     const ::grpc::internal::RpcMethod rpcmethod_ExecuteOneTimeStep_;
     const ::grpc::internal::RpcMethod rpcmethod_Finish_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetManagedHosts_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -140,6 +163,7 @@ class AirMobiSim final {
     virtual ::grpc::Status Start(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status ExecuteOneTimeStep(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response);
     virtual ::grpc::Status Finish(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status GetManagedHosts(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Start : public BaseClass {
@@ -201,7 +225,27 @@ class AirMobiSim final {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Start<WithAsyncMethod_ExecuteOneTimeStep<WithAsyncMethod_Finish<Service > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_GetManagedHosts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetManagedHosts() {
+      ::grpc::Service::MarkMethodAsync(3);
+    }
+    ~WithAsyncMethod_GetManagedHosts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetManagedHosts(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetManagedHosts(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::airmobisim::UavList>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Start<WithAsyncMethod_ExecuteOneTimeStep<WithAsyncMethod_Finish<WithAsyncMethod_GetManagedHosts<Service > > > > AsyncService;
   template <class BaseClass>
   class WithCallbackMethod_Start : public BaseClass {
    private:
@@ -283,7 +327,34 @@ class AirMobiSim final {
     virtual ::grpc::ServerUnaryReactor* Finish(
       ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
   };
-  typedef WithCallbackMethod_Start<WithCallbackMethod_ExecuteOneTimeStep<WithCallbackMethod_Finish<Service > > > CallbackService;
+  template <class BaseClass>
+  class WithCallbackMethod_GetManagedHosts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithCallbackMethod_GetManagedHosts() {
+      ::grpc::Service::MarkMethodCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::UavList>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response) { return this->GetManagedHosts(context, request, response); }));}
+    void SetMessageAllocatorFor_GetManagedHosts(
+        ::grpc::MessageAllocator< ::google::protobuf::Empty, ::airmobisim::UavList>* allocator) {
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::UavList>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~WithCallbackMethod_GetManagedHosts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetManagedHosts(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetManagedHosts(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/)  { return nullptr; }
+  };
+  typedef WithCallbackMethod_Start<WithCallbackMethod_ExecuteOneTimeStep<WithCallbackMethod_Finish<WithCallbackMethod_GetManagedHosts<Service > > > > CallbackService;
   typedef CallbackService ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Start : public BaseClass {
@@ -332,6 +403,23 @@ class AirMobiSim final {
     }
     // disable synchronous version of this method
     ::grpc::Status Finish(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetManagedHosts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetManagedHosts() {
+      ::grpc::Service::MarkMethodGeneric(3);
+    }
+    ~WithGenericMethod_GetManagedHosts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetManagedHosts(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -394,6 +482,26 @@ class AirMobiSim final {
     }
     void RequestFinish(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(2, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetManagedHosts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetManagedHosts() {
+      ::grpc::Service::MarkMethodRaw(3);
+    }
+    ~WithRawMethod_GetManagedHosts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetManagedHosts(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetManagedHosts(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -460,6 +568,28 @@ class AirMobiSim final {
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
     virtual ::grpc::ServerUnaryReactor* Finish(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+  };
+  template <class BaseClass>
+  class WithRawCallbackMethod_GetManagedHosts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawCallbackMethod_GetManagedHosts() {
+      ::grpc::Service::MarkMethodRawCallback(3,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetManagedHosts(context, request, response); }));
+    }
+    ~WithRawCallbackMethod_GetManagedHosts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetManagedHosts(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    virtual ::grpc::ServerUnaryReactor* GetManagedHosts(
       ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
   };
   template <class BaseClass>
@@ -543,9 +673,36 @@ class AirMobiSim final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedFinish(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<Service > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetManagedHosts : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetManagedHosts() {
+      ::grpc::Service::MarkMethodStreamed(3,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::google::protobuf::Empty, ::airmobisim::UavList>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::google::protobuf::Empty, ::airmobisim::UavList>* streamer) {
+                       return this->StreamedGetManagedHosts(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetManagedHosts() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetManagedHosts(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetManagedHosts(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::airmobisim::UavList>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<Service > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<Service > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<Service > > > > StreamedService;
 };
 
 }  // namespace airmobisim

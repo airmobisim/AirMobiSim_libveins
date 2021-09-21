@@ -25,6 +25,7 @@ static const char* AirMobiSim_method_names[] = {
   "/airmobisim.AirMobiSim/Start",
   "/airmobisim.AirMobiSim/ExecuteOneTimeStep",
   "/airmobisim.AirMobiSim/Finish",
+  "/airmobisim.AirMobiSim/GetManagedHosts",
 };
 
 std::unique_ptr< AirMobiSim::Stub> AirMobiSim::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -37,6 +38,7 @@ AirMobiSim::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   : channel_(channel), rpcmethod_Start_(AirMobiSim_method_names[0], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_ExecuteOneTimeStep_(AirMobiSim_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Finish_(AirMobiSim_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetManagedHosts_(AirMobiSim_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status AirMobiSim::Stub::Start(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::google::protobuf::Empty* response) {
@@ -108,6 +110,29 @@ void AirMobiSim::Stub::async::Finish(::grpc::ClientContext* context, const ::goo
   return result;
 }
 
+::grpc::Status AirMobiSim::Stub::GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::UavList* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::airmobisim::UavList, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetManagedHosts_, context, request, response);
+}
+
+void AirMobiSim::Stub::async::GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::airmobisim::UavList, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetManagedHosts_, context, request, response, std::move(f));
+}
+
+void AirMobiSim::Stub::async::GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetManagedHosts_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>* AirMobiSim::Stub::PrepareAsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::airmobisim::UavList, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetManagedHosts_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>* AirMobiSim::Stub::AsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetManagedHostsRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 AirMobiSim::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       AirMobiSim_method_names[0],
@@ -139,6 +164,16 @@ AirMobiSim::Service::Service() {
              ::google::protobuf::Empty* resp) {
                return service->Finish(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AirMobiSim_method_names[3],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AirMobiSim::Service, ::google::protobuf::Empty, ::airmobisim::UavList, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](AirMobiSim::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::google::protobuf::Empty* req,
+             ::airmobisim::UavList* resp) {
+               return service->GetManagedHosts(ctx, req, resp);
+             }, this)));
 }
 
 AirMobiSim::Service::~Service() {
@@ -159,6 +194,13 @@ AirMobiSim::Service::~Service() {
 }
 
 ::grpc::Status AirMobiSim::Service::Finish(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AirMobiSim::Service::GetManagedHosts(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response) {
   (void) context;
   (void) request;
   (void) response;
