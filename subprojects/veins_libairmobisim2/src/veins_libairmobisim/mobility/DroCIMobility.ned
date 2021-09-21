@@ -15,11 +15,11 @@
 
 package veins_libairmobisim.mobility;
 
-simple DroCIManager {
+import org.car2x.veins.base.modules.BaseMobility;
+
+simple DroCIMobility extends BaseMobility {
     parameters:
-    	@class(airmobisim::DroCIManager);
-        double updateInterval @unit("s") = default(1s);  // time interval of hosts' position updates
-        string moduleType = default("veins_libairmobisim.node.Uav");  // module type to be used in the simulation for each managed vehicle
-        string host = default("localhost");  // server hostname
-        double simTimeLimit @unit("s");
+    	@class(airmobisim::DroCIMobility);
+        double hostPositionOffset @unit("m") = default(0.0m);  // shift OMNeT++ module this far from front of the car
+        bool setHostSpeed = default(false);  // whether to update the speed of the host (along with its position)        
 }
