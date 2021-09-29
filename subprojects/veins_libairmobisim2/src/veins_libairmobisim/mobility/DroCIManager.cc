@@ -87,7 +87,7 @@ void DroCIManager::launchSimulator() {
             position.y = managedHosts.uavs(i).y();
             position.z = managedHosts.uavs(i).z();
             std::cout << "Add module "<< managedHosts.uavs(i).id() <<" at (x,y,z) (" << position.x << ", " << position.y << ", "<< position.z << ")" << std::endl;
-            auto dString = "";
+            auto dString = "i=airmobisim/uav/uav;is=vs";
             auto speed  = 0;
             auto length = 2;
             auto height = 2;

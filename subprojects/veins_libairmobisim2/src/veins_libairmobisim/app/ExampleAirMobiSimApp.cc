@@ -21,6 +21,8 @@
 //
 #include "ExampleAirMobiSimApp.h"
 
+#include "veins/modules/application/traci/TraCIDemo11pMessage_m.h"
+
 #include <functional>
 #include <grpcpp/grpcpp.h>
 
@@ -62,10 +64,10 @@ void ExampleAirMobiSimApp::onWSA(DemoServiceAdvertisment *wsa) {
 
 void ExampleAirMobiSimApp::handleSelfMsg(cMessage *msg) {
     switch (msg->getKind()) {
-    case SEND_BEACON_EVT: {
-        delete msg;
-        return;
-    }
+        case SEND_BEACON_EVT: {
+            delete msg;
+            return;
+        }
     }
     DemoBaseApplLayer::handleSelfMsg(msg);
     // this method is for self messages (mostly timers)
@@ -77,4 +79,10 @@ void ExampleAirMobiSimApp::handlePositionUpdate(cObject *obj) {
     DemoBaseApplLayer::handlePositionUpdate(obj);
     // the vehicle has moved. Code that reacts to new positions goes here.
     // member variables such as currentPosition and currentSpeed are updated in the parent class
+
+    if(simTime() < 0.1) {
+        TraCIDemo11pMessage* wsm = new TraCIDemo11pMessage();
+        populateWSM(wsm);
+        sendDelayedDown(wsm, uniform(0, 0.01));
+    }
 }
