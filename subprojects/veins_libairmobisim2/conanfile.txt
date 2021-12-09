@@ -1,0 +1,5 @@
+[requires]
+grpc/1.41
+
+[generators]
+cmake
