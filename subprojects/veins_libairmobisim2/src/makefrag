@@ -71,3 +71,9 @@ INCLUDE_PATH += $(addprefix -I, $(CONAN_INCLUDE_DIRS))
 LIBS         += $(addprefix -I, $(CONAN_LIB_DIRS))
 LIBS         += $(addprefix -I, $(CONAN_LIBS))
 LIBS         += $(addprefix -I, $(CONAN_SYSTEM_LIBS))
+
+LIBS+= -lprotobuf
+INCLUDE_PATH += -Iprotobuf
+
+LIBS+= -lproj
+
