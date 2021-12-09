@@ -24,5 +24,17 @@
 # Values to be used in makefrag.
 # It will first source Makefile.inc (if it exists) and then Makefile.inc.default
 #
-GRPC_PLUGIN_LIBRARY ?= ../../../../../../.local/lib
-GRPC_PLUGIN_INCLUDE ?= ../../../../../../.local/include
+#GRPC_PLUGIN_LIBRARY ?= ../../../../../../.local/lib
+#GRPC_PLUGIN_INCLUDE ?= ../../../../../../.local/include
+
+GRPC_PLUGIN_LIBRARY ?= /home/cms/hardes/.conan/data/grpc/1.38.1/_/_/package/82394af457da05c38d17b8cc5ec2dab8fe63c1d6/lib
+GRPC_PLUGIN_INCLUDE ?= /home/cms/hardes/.conan/data/grpc/1.38.1/_/_/package/82394af457da05c38d17b8cc5ec2dab8fe63c1d6/include
+
+
+ABSEIL_PLUGIN_LIB ?= /home/cms/hardes/.conan/data/abseil/20210324.2/_/_/package/a2582e1f57e524e15d7e84f4c862d0a472d3216f/
+ABSEIL_PLUGIN_LIBRARY ?= /home/cms/hardes/.conan/data/abseil/20210324.2/_/_/package/a2582e1f57e524e15d7e84f4c862d0a472d3216f/lib
+ABSEIL_PLUGIN_INCLUDE ?= /home/cms/hardes/.conan/data/abseil/20210324.2/_/_/package/a2582e1f57e524e15d7e84f4c862d0a472d3216f/include
+
+PROTOBUF_PLUGIN_LIB ?= /home/cms/hardes/.conan/data/
+PROTOBUF_PLUGIN_LIBRARY ?= /home/cms/hardes/.conan/data/protobuf/3.17.1/_/_/package/5f05f2b126fe3ac7858460ebe832e8cddd4119bd/lib
+PROTOBUF_PLUGIN_INCLUDE ?= /home/cms/hardes/.conan/data/protobuf/3.17.1/_/_/package/5f05f2b126fe3ac7858460ebe832e8cddd4119bd/include
