@@ -60,19 +60,14 @@ endif
 #
 MSGC:=$(MSGC) --msg6
 
+include ../conanbuildinfo.mak
 
-# pull in fallback values from Makefile.inc.default
-include Makefile.inc.default
-
-# compile/link with grpc
-LIBS += -lgrpc++
-LDFLAGS += -Wl,-rpath,$(abspath $(GRPC_PLUGIN_LIBRARY)) 
-INCLUDE_PATH += -I$(GRPC_PLUGIN_INCLUDE) 
-
-# compile/link with grpc
-LDFLAGS += -Wl,-rpath,$(abspath $(ABSEIL_PLUGIN_LIBRARY)) 
-INCLUDE_PATH += -I$(ABSEIL_PLUGIN_INCLUDE) 
-
-# compile/link with protobuf
-LDFLAGS += -Wl,-rpath,$(abspath $(PROTOBUF_PLUGIN_LIBRARY)) 
-INCLUDE_PATH += -I$(PROTOBUF_PLUGIN_INCLUDE) 
+CFLAGS       += $(CONAN_CFLAGS)
+INCLUDE_PATH += $(addprefix -I, $(CONAN_INCLUDE_DIRS)) 
+#LIBS         += -Wl,-rpath,$(abspath, $(CONAN_LIBS)) 
+#LIBS         += -Wl,-rpath,$(abspath, $(CONAN_LIB_DIRS))
+#LIBS         += -Wl,-rpath,$(abspath, $(CONAN_SYSTEM_LIBS))
+ 
+LIBS         += $(addprefix -I, $(CONAN_LIB_DIRS))
+LIBS         += $(addprefix -I, $(CONAN_LIBS))
+LIBS         += $(addprefix -I, $(CONAN_SYSTEM_LIBS))

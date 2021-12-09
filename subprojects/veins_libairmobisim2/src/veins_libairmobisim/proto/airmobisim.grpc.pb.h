@@ -7,6 +7,7 @@
 #include "airmobisim.pb.h"
 
 #include <functional>
+#include <grpc/impl/codegen/port_platform.h>
 #include <grpcpp/impl/codegen/async_generic_service.h>
 #include <grpcpp/impl/codegen/async_stream.h>
 #include <grpcpp/impl/codegen/async_unary_call.h>
@@ -63,21 +64,41 @@ class AirMobiSim final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>> PrepareAsyncGetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>>(PrepareAsyncGetManagedHostsRaw(context, request, cq));
     }
-    class async_interface {
+    class experimental_async_interface {
      public:
-      virtual ~async_interface() {}
+      virtual ~experimental_async_interface() {}
       virtual void Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       virtual void ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       virtual void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
       virtual void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       virtual void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
     };
-    typedef class async_interface experimental_async_interface;
-    virtual class async_interface* async() { return nullptr; }
-    class async_interface* experimental_async() { return async(); }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    typedef class experimental_async_interface async_interface;
+    #endif
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    async_interface* async() { return experimental_async(); }
+    #endif
+    virtual class experimental_async_interface* experimental_async() { return nullptr; }
   private:
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncStartRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncStartRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
@@ -119,28 +140,44 @@ class AirMobiSim final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>> PrepareAsyncGetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>>(PrepareAsyncGetManagedHostsRaw(context, request, cq));
     }
-    class async final :
-      public StubInterface::async_interface {
+    class experimental_async final :
+      public StubInterface::experimental_async_interface {
      public:
       void Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
       void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
-      explicit async(Stub* stub): stub_(stub) { }
+      explicit experimental_async(Stub* stub): stub_(stub) { }
       Stub* stub() { return stub_; }
       Stub* stub_;
     };
-    class async* async() override { return &async_stub_; }
+    class experimental_async_interface* experimental_async() override { return &async_stub_; }
 
    private:
     std::shared_ptr< ::grpc::ChannelInterface> channel_;
-    class async async_stub_{this};
+    class experimental_async async_stub_{this};
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncStartRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncStartRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::airmobisim::ResponseQuery>* AsyncExecuteOneTimeStepRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
@@ -247,22 +284,36 @@ class AirMobiSim final {
   };
   typedef WithAsyncMethod_Start<WithAsyncMethod_ExecuteOneTimeStep<WithAsyncMethod_Finish<WithAsyncMethod_GetManagedHosts<Service > > > > AsyncService;
   template <class BaseClass>
-  class WithCallbackMethod_Start : public BaseClass {
+  class ExperimentalWithCallbackMethod_Start : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_Start() {
-      ::grpc::Service::MarkMethodCallback(0,
+    ExperimentalWithCallbackMethod_Start() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::google::protobuf::Empty>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response) { return this->Start(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response) { return this->Start(context, request, response); }));}
     void SetMessageAllocatorFor_Start(
-        ::grpc::MessageAllocator< ::google::protobuf::Empty, ::google::protobuf::Empty>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::google::protobuf::Empty, ::google::protobuf::Empty>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(0);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(0);
+    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_Start() override {
+    ~ExperimentalWithCallbackMethod_Start() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -270,26 +321,46 @@ class AirMobiSim final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* Start(
-      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Start(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_ExecuteOneTimeStep : public BaseClass {
+  class ExperimentalWithCallbackMethod_ExecuteOneTimeStep : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_ExecuteOneTimeStep() {
-      ::grpc::Service::MarkMethodCallback(1,
+    ExperimentalWithCallbackMethod_ExecuteOneTimeStep() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::ResponseQuery>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response) { return this->ExecuteOneTimeStep(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response) { return this->ExecuteOneTimeStep(context, request, response); }));}
     void SetMessageAllocatorFor_ExecuteOneTimeStep(
-        ::grpc::MessageAllocator< ::google::protobuf::Empty, ::airmobisim::ResponseQuery>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::google::protobuf::Empty, ::airmobisim::ResponseQuery>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(1);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(1);
+    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::ResponseQuery>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_ExecuteOneTimeStep() override {
+    ~ExperimentalWithCallbackMethod_ExecuteOneTimeStep() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -297,26 +368,46 @@ class AirMobiSim final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ExecuteOneTimeStep(
-      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::ResponseQuery* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::ResponseQuery* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* ExecuteOneTimeStep(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::ResponseQuery* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_Finish : public BaseClass {
+  class ExperimentalWithCallbackMethod_Finish : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_Finish() {
-      ::grpc::Service::MarkMethodCallback(2,
+    ExperimentalWithCallbackMethod_Finish() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::google::protobuf::Empty>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response) { return this->Finish(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response) { return this->Finish(context, request, response); }));}
     void SetMessageAllocatorFor_Finish(
-        ::grpc::MessageAllocator< ::google::protobuf::Empty, ::google::protobuf::Empty>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::google::protobuf::Empty, ::google::protobuf::Empty>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(2);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(2);
+    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::google::protobuf::Empty>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_Finish() override {
+    ~ExperimentalWithCallbackMethod_Finish() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -324,26 +415,46 @@ class AirMobiSim final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* Finish(
-      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::google::protobuf::Empty* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Finish(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
-  class WithCallbackMethod_GetManagedHosts : public BaseClass {
+  class ExperimentalWithCallbackMethod_GetManagedHosts : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithCallbackMethod_GetManagedHosts() {
-      ::grpc::Service::MarkMethodCallback(3,
+    ExperimentalWithCallbackMethod_GetManagedHosts() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(3,
           new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::UavList>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response) { return this->GetManagedHosts(context, request, response); }));}
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response) { return this->GetManagedHosts(context, request, response); }));}
     void SetMessageAllocatorFor_GetManagedHosts(
-        ::grpc::MessageAllocator< ::google::protobuf::Empty, ::airmobisim::UavList>* allocator) {
+        ::grpc::experimental::MessageAllocator< ::google::protobuf::Empty, ::airmobisim::UavList>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
       ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(3);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(3);
+    #endif
       static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::UavList>*>(handler)
               ->SetMessageAllocator(allocator);
     }
-    ~WithCallbackMethod_GetManagedHosts() override {
+    ~ExperimentalWithCallbackMethod_GetManagedHosts() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -351,11 +462,20 @@ class AirMobiSim final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* GetManagedHosts(
-      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetManagedHosts(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/)
+    #endif
+      { return nullptr; }
   };
-  typedef WithCallbackMethod_Start<WithCallbackMethod_ExecuteOneTimeStep<WithCallbackMethod_Finish<WithCallbackMethod_GetManagedHosts<Service > > > > CallbackService;
-  typedef CallbackService ExperimentalCallbackService;
+  #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<Service > > > > CallbackService;
+  #endif
+
+  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<Service > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Start : public BaseClass {
    private:
@@ -505,17 +625,27 @@ class AirMobiSim final {
     }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_Start : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_Start : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_Start() {
-      ::grpc::Service::MarkMethodRawCallback(0,
+    ExperimentalWithRawCallbackMethod_Start() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(0,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Start(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Start(context, request, response); }));
     }
-    ~WithRawCallbackMethod_Start() override {
+    ~ExperimentalWithRawCallbackMethod_Start() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -523,21 +653,37 @@ class AirMobiSim final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* Start(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Start(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_ExecuteOneTimeStep : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_ExecuteOneTimeStep : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_ExecuteOneTimeStep() {
-      ::grpc::Service::MarkMethodRawCallback(1,
+    ExperimentalWithRawCallbackMethod_ExecuteOneTimeStep() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(1,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ExecuteOneTimeStep(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->ExecuteOneTimeStep(context, request, response); }));
     }
-    ~WithRawCallbackMethod_ExecuteOneTimeStep() override {
+    ~ExperimentalWithRawCallbackMethod_ExecuteOneTimeStep() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -545,21 +691,37 @@ class AirMobiSim final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* ExecuteOneTimeStep(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* ExecuteOneTimeStep(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_Finish : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_Finish : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_Finish() {
-      ::grpc::Service::MarkMethodRawCallback(2,
+    ExperimentalWithRawCallbackMethod_Finish() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(2,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Finish(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->Finish(context, request, response); }));
     }
-    ~WithRawCallbackMethod_Finish() override {
+    ~ExperimentalWithRawCallbackMethod_Finish() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -567,21 +729,37 @@ class AirMobiSim final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* Finish(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* Finish(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
-  class WithRawCallbackMethod_GetManagedHosts : public BaseClass {
+  class ExperimentalWithRawCallbackMethod_GetManagedHosts : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
    public:
-    WithRawCallbackMethod_GetManagedHosts() {
-      ::grpc::Service::MarkMethodRawCallback(3,
+    ExperimentalWithRawCallbackMethod_GetManagedHosts() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(3,
           new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
             [this](
-                   ::grpc::CallbackServerContext* context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetManagedHosts(context, request, response); }));
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetManagedHosts(context, request, response); }));
     }
-    ~WithRawCallbackMethod_GetManagedHosts() override {
+    ~ExperimentalWithRawCallbackMethod_GetManagedHosts() override {
       BaseClassMustBeDerivedFromService(this);
     }
     // disable synchronous version of this method
@@ -589,8 +767,14 @@ class AirMobiSim final {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     virtual ::grpc::ServerUnaryReactor* GetManagedHosts(
-      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)  { return nullptr; }
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetManagedHosts(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
   };
   template <class BaseClass>
   class WithStreamedUnaryMethod_Start : public BaseClass {

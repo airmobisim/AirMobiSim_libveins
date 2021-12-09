@@ -45,11 +45,11 @@ AirMobiSim::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Start_, context, request, response);
 }
 
-void AirMobiSim::Stub::async::Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+void AirMobiSim::Stub::experimental_async::Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Start_, context, request, response, std::move(f));
 }
 
-void AirMobiSim::Stub::async::Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
+void AirMobiSim::Stub::experimental_async::Start(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Start_, context, request, response, reactor);
 }
 
@@ -68,11 +68,11 @@ void AirMobiSim::Stub::async::Start(::grpc::ClientContext* context, const ::goog
   return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::airmobisim::ResponseQuery, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_ExecuteOneTimeStep_, context, request, response);
 }
 
-void AirMobiSim::Stub::async::ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, std::function<void(::grpc::Status)> f) {
+void AirMobiSim::Stub::experimental_async::ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::airmobisim::ResponseQuery, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ExecuteOneTimeStep_, context, request, response, std::move(f));
 }
 
-void AirMobiSim::Stub::async::ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, ::grpc::ClientUnaryReactor* reactor) {
+void AirMobiSim::Stub::experimental_async::ExecuteOneTimeStep(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_ExecuteOneTimeStep_, context, request, response, reactor);
 }
 
@@ -91,11 +91,11 @@ void AirMobiSim::Stub::async::ExecuteOneTimeStep(::grpc::ClientContext* context,
   return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_Finish_, context, request, response);
 }
 
-void AirMobiSim::Stub::async::Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+void AirMobiSim::Stub::experimental_async::Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Finish_, context, request, response, std::move(f));
 }
 
-void AirMobiSim::Stub::async::Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) {
+void AirMobiSim::Stub::experimental_async::Finish(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_Finish_, context, request, response, reactor);
 }
 
@@ -114,11 +114,11 @@ void AirMobiSim::Stub::async::Finish(::grpc::ClientContext* context, const ::goo
   return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::airmobisim::UavList, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetManagedHosts_, context, request, response);
 }
 
-void AirMobiSim::Stub::async::GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, std::function<void(::grpc::Status)> f) {
+void AirMobiSim::Stub::experimental_async::GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, std::function<void(::grpc::Status)> f) {
   ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::airmobisim::UavList, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetManagedHosts_, context, request, response, std::move(f));
 }
 
-void AirMobiSim::Stub::async::GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::ClientUnaryReactor* reactor) {
+void AirMobiSim::Stub::experimental_async::GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
   ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetManagedHosts_, context, request, response, reactor);
 }
 

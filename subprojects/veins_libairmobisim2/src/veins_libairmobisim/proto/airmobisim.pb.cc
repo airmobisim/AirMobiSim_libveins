@@ -167,14 +167,11 @@ class UavList::_Internal {
  public:
 };
 
-UavList::UavList(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+UavList::UavList(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   uavs_(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:airmobisim.UavList)
 }
 UavList::UavList(const UavList& from)
@@ -184,17 +181,16 @@ UavList::UavList(const UavList& from)
   // @@protoc_insertion_point(copy_constructor:airmobisim.UavList)
 }
 
-inline void UavList::SharedCtor() {
+void UavList::SharedCtor() {
 }
 
 UavList::~UavList() {
   // @@protoc_insertion_point(destructor:airmobisim.UavList)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void UavList::SharedDtor() {
+void UavList::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
@@ -305,27 +301,36 @@ size_t UavList::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData UavList::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    UavList::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*UavList::GetClassData() const { return &_class_data_; }
-
-void UavList::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<UavList *>(to)->MergeFrom(
-      static_cast<const UavList &>(from));
+void UavList::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.UavList)
+  GOOGLE_DCHECK_NE(&from, this);
+  const UavList* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<UavList>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.UavList)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.UavList)
+    MergeFrom(*source);
+  }
 }
-
 
 void UavList::MergeFrom(const UavList& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.UavList)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   uavs_.MergeFrom(from.uavs_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void UavList::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.UavList)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void UavList::CopyFrom(const UavList& from) {
@@ -357,13 +362,10 @@ class Uav::_Internal {
  public:
 };
 
-Uav::Uav(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+Uav::Uav(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:airmobisim.Uav)
 }
 Uav::Uav(const Uav& from)
@@ -375,7 +377,7 @@ Uav::Uav(const Uav& from)
   // @@protoc_insertion_point(copy_constructor:airmobisim.Uav)
 }
 
-inline void Uav::SharedCtor() {
+void Uav::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&id_) -
@@ -384,12 +386,11 @@ inline void Uav::SharedCtor() {
 
 Uav::~Uav() {
   // @@protoc_insertion_point(destructor:airmobisim.Uav)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void Uav::SharedDtor() {
+void Uav::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
@@ -486,31 +487,31 @@ failure:
   (void) cached_has_bits;
 
   // int32 id = 1;
-  if (this->_internal_id() != 0) {
+  if (this->id() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // double x = 2;
-  if (!(this->_internal_x() <= 0 && this->_internal_x() >= 0)) {
+  if (!(this->x() <= 0 && this->x() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_x(), target);
   }
 
   // double y = 3;
-  if (!(this->_internal_y() <= 0 && this->_internal_y() >= 0)) {
+  if (!(this->y() <= 0 && this->y() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_y(), target);
   }
 
   // double z = 4;
-  if (!(this->_internal_z() <= 0 && this->_internal_z() >= 0)) {
+  if (!(this->z() <= 0 && this->z() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(4, this->_internal_z(), target);
   }
 
   // double speed = 5;
-  if (!(this->_internal_speed() <= 0 && this->_internal_speed() >= 0)) {
+  if (!(this->speed() <= 0 && this->speed() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(5, this->_internal_speed(), target);
   }
@@ -532,27 +533,27 @@ size_t Uav::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // double x = 2;
-  if (!(this->_internal_x() <= 0 && this->_internal_x() >= 0)) {
+  if (!(this->x() <= 0 && this->x() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double y = 3;
-  if (!(this->_internal_y() <= 0 && this->_internal_y() >= 0)) {
+  if (!(this->y() <= 0 && this->y() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double z = 4;
-  if (!(this->_internal_z() <= 0 && this->_internal_z() >= 0)) {
+  if (!(this->z() <= 0 && this->z() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double speed = 5;
-  if (!(this->_internal_speed() <= 0 && this->_internal_speed() >= 0)) {
+  if (!(this->speed() <= 0 && this->speed() >= 0)) {
     total_size += 1 + 8;
   }
 
   // int32 id = 1;
-  if (this->_internal_id() != 0) {
+  if (this->id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_id());
@@ -567,41 +568,50 @@ size_t Uav::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Uav::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    Uav::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Uav::GetClassData() const { return &_class_data_; }
-
-void Uav::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<Uav *>(to)->MergeFrom(
-      static_cast<const Uav &>(from));
+void Uav::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.Uav)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Uav* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Uav>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.Uav)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.Uav)
+    MergeFrom(*source);
+  }
 }
-
 
 void Uav::MergeFrom(const Uav& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.Uav)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!(from._internal_x() <= 0 && from._internal_x() >= 0)) {
+  if (!(from.x() <= 0 && from.x() >= 0)) {
     _internal_set_x(from._internal_x());
   }
-  if (!(from._internal_y() <= 0 && from._internal_y() >= 0)) {
+  if (!(from.y() <= 0 && from.y() >= 0)) {
     _internal_set_y(from._internal_y());
   }
-  if (!(from._internal_z() <= 0 && from._internal_z() >= 0)) {
+  if (!(from.z() <= 0 && from.z() >= 0)) {
     _internal_set_z(from._internal_z());
   }
-  if (!(from._internal_speed() <= 0 && from._internal_speed() >= 0)) {
+  if (!(from.speed() <= 0 && from.speed() >= 0)) {
     _internal_set_speed(from._internal_speed());
   }
-  if (from._internal_id() != 0) {
+  if (from.id() != 0) {
     _internal_set_id(from._internal_id());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Uav::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.Uav)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void Uav::CopyFrom(const Uav& from) {
@@ -638,13 +648,10 @@ class Response::_Internal {
  public:
 };
 
-Response::Response(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
+Response::Response(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:airmobisim.Response)
 }
 Response::Response(const Response& from)
@@ -656,7 +663,7 @@ Response::Response(const Response& from)
   // @@protoc_insertion_point(copy_constructor:airmobisim.Response)
 }
 
-inline void Response::SharedCtor() {
+void Response::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
     reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
     0, static_cast<size_t>(reinterpret_cast<char*>(&id_) -
@@ -665,12 +672,11 @@ inline void Response::SharedCtor() {
 
 Response::~Response() {
   // @@protoc_insertion_point(destructor:airmobisim.Response)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void Response::SharedDtor() {
+void Response::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
@@ -767,31 +773,31 @@ failure:
   (void) cached_has_bits;
 
   // int32 id = 1;
-  if (this->_internal_id() != 0) {
+  if (this->id() != 0) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
   }
 
   // double x = 2;
-  if (!(this->_internal_x() <= 0 && this->_internal_x() >= 0)) {
+  if (!(this->x() <= 0 && this->x() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_x(), target);
   }
 
   // double y = 3;
-  if (!(this->_internal_y() <= 0 && this->_internal_y() >= 0)) {
+  if (!(this->y() <= 0 && this->y() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_y(), target);
   }
 
   // double z = 4;
-  if (!(this->_internal_z() <= 0 && this->_internal_z() >= 0)) {
+  if (!(this->z() <= 0 && this->z() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(4, this->_internal_z(), target);
   }
 
   // double speed = 5;
-  if (!(this->_internal_speed() <= 0 && this->_internal_speed() >= 0)) {
+  if (!(this->speed() <= 0 && this->speed() >= 0)) {
     target = stream->EnsureSpace(target);
     target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(5, this->_internal_speed(), target);
   }
@@ -813,27 +819,27 @@ size_t Response::ByteSizeLong() const {
   (void) cached_has_bits;
 
   // double x = 2;
-  if (!(this->_internal_x() <= 0 && this->_internal_x() >= 0)) {
+  if (!(this->x() <= 0 && this->x() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double y = 3;
-  if (!(this->_internal_y() <= 0 && this->_internal_y() >= 0)) {
+  if (!(this->y() <= 0 && this->y() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double z = 4;
-  if (!(this->_internal_z() <= 0 && this->_internal_z() >= 0)) {
+  if (!(this->z() <= 0 && this->z() >= 0)) {
     total_size += 1 + 8;
   }
 
   // double speed = 5;
-  if (!(this->_internal_speed() <= 0 && this->_internal_speed() >= 0)) {
+  if (!(this->speed() <= 0 && this->speed() >= 0)) {
     total_size += 1 + 8;
   }
 
   // int32 id = 1;
-  if (this->_internal_id() != 0) {
+  if (this->id() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_id());
@@ -848,41 +854,50 @@ size_t Response::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData Response::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    Response::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*Response::GetClassData() const { return &_class_data_; }
-
-void Response::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<Response *>(to)->MergeFrom(
-      static_cast<const Response &>(from));
+void Response::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.Response)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Response* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Response>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.Response)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.Response)
+    MergeFrom(*source);
+  }
 }
-
 
 void Response::MergeFrom(const Response& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.Response)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  if (!(from._internal_x() <= 0 && from._internal_x() >= 0)) {
+  if (!(from.x() <= 0 && from.x() >= 0)) {
     _internal_set_x(from._internal_x());
   }
-  if (!(from._internal_y() <= 0 && from._internal_y() >= 0)) {
+  if (!(from.y() <= 0 && from.y() >= 0)) {
     _internal_set_y(from._internal_y());
   }
-  if (!(from._internal_z() <= 0 && from._internal_z() >= 0)) {
+  if (!(from.z() <= 0 && from.z() >= 0)) {
     _internal_set_z(from._internal_z());
   }
-  if (!(from._internal_speed() <= 0 && from._internal_speed() >= 0)) {
+  if (!(from.speed() <= 0 && from.speed() >= 0)) {
     _internal_set_speed(from._internal_speed());
   }
-  if (from._internal_id() != 0) {
+  if (from.id() != 0) {
     _internal_set_id(from._internal_id());
   }
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void Response::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.Response)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void Response::CopyFrom(const Response& from) {
@@ -919,14 +934,11 @@ class ResponseQuery::_Internal {
  public:
 };
 
-ResponseQuery::ResponseQuery(::PROTOBUF_NAMESPACE_ID::Arena* arena,
-                         bool is_message_owned)
-  : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
+ResponseQuery::ResponseQuery(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
   responses_(arena) {
   SharedCtor();
-  if (!is_message_owned) {
-    RegisterArenaDtor(arena);
-  }
+  RegisterArenaDtor(arena);
   // @@protoc_insertion_point(arena_constructor:airmobisim.ResponseQuery)
 }
 ResponseQuery::ResponseQuery(const ResponseQuery& from)
@@ -936,17 +948,16 @@ ResponseQuery::ResponseQuery(const ResponseQuery& from)
   // @@protoc_insertion_point(copy_constructor:airmobisim.ResponseQuery)
 }
 
-inline void ResponseQuery::SharedCtor() {
+void ResponseQuery::SharedCtor() {
 }
 
 ResponseQuery::~ResponseQuery() {
   // @@protoc_insertion_point(destructor:airmobisim.ResponseQuery)
-  if (GetArenaForAllocation() != nullptr) return;
   SharedDtor();
   _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
-inline void ResponseQuery::SharedDtor() {
+void ResponseQuery::SharedDtor() {
   GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
 }
 
@@ -1057,27 +1068,36 @@ size_t ResponseQuery::ByteSizeLong() const {
   return total_size;
 }
 
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData ResponseQuery::_class_data_ = {
-    ::PROTOBUF_NAMESPACE_ID::Message::CopyWithSizeCheck,
-    ResponseQuery::MergeImpl
-};
-const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*ResponseQuery::GetClassData() const { return &_class_data_; }
-
-void ResponseQuery::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message*to,
-                      const ::PROTOBUF_NAMESPACE_ID::Message&from) {
-  static_cast<ResponseQuery *>(to)->MergeFrom(
-      static_cast<const ResponseQuery &>(from));
+void ResponseQuery::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.ResponseQuery)
+  GOOGLE_DCHECK_NE(&from, this);
+  const ResponseQuery* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<ResponseQuery>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.ResponseQuery)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.ResponseQuery)
+    MergeFrom(*source);
+  }
 }
-
 
 void ResponseQuery::MergeFrom(const ResponseQuery& from) {
 // @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.ResponseQuery)
   GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
   responses_.MergeFrom(from.responses_);
-  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+}
+
+void ResponseQuery::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.ResponseQuery)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
 }
 
 void ResponseQuery::CopyFrom(const ResponseQuery& from) {
