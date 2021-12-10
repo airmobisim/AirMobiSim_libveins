@@ -59,6 +59,7 @@ endif
 # Use the new message compiler introduced in OMNeT++ 5.3
 #
 MSGC:=$(MSGC) --msg6
+include ../conanbuildinfo.mak
 
 INCLUDE_PATH += $(addprefix -I, $(CONAN_INCLUDE_DIRS))
 LIBS += $(addprefix -L, $(CONAN_LIB_DIRS))
