@@ -61,19 +61,21 @@ endif
 MSGC:=$(MSGC) --msg6
 
 include ../conanbuildinfo.mak
-
+LDFLAGS += -Wl,-rpath,$(abspath $(GRPC_PLUGIN_LIBRARY)) 
 CFLAGS       += $(CONAN_CFLAGS)
 INCLUDE_PATH += $(addprefix -I, $(CONAN_INCLUDE_DIRS)) 
 #LIBS         += -Wl,-rpath,$(abspath, $(CONAN_LIBS)) 
 #LIBS         += -Wl,-rpath,$(abspath, $(CONAN_LIB_DIRS))
 #LIBS         += -Wl,-rpath,$(abspath, $(CONAN_SYSTEM_LIBS))
  
-LIBS         += $(addprefix -I, $(CONAN_LIB_DIRS))
-LIBS         += $(addprefix -I, $(CONAN_LIBS))
-LIBS         += $(addprefix -I, $(CONAN_SYSTEM_LIBS))
+LIBS    += $(addprefix -I, $(CONAN_LIB_DIRS))
+LIBS    += $(addprefix -I, $(CONAN_LIBS))
+LIBS    += $(addprefix -I, $(CONAN_SYSTEM_LIBS))
+LIBS    += $(addprefix -I, $(CONAN_LIB_DIRS_PROTOBUF))
+LDFLAGS += $(addprefix -I, $(CONAN_INCLUDE_DIRS))
+LIBS+= -lprotobuf 
+#-lpthread -lgrpc++  -lz -lssl -lcrypto -ldl
+#INCLUDE_PATH += -Iprotobuf
 
-LIBS+= -lprotobuf
-INCLUDE_PATH += -Iprotobuf
-
-LIBS+= -lproj
+#LIBS+= -lproj
 
