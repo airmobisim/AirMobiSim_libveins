@@ -69,3 +69,23 @@ OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_C-ARES)/lib/lib, $(addsuffix .a, $(CONA
 OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_ABSEIL)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_ABSEIL)))
 OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_RE2)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_RE2)))
 OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_ZLIB)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_ZLIB)))
+
+
+
+
+#
+# Protobuf
+#
+
+PROTO_IN_PATH=..
+PROTO_OUT_PATH=veins_libairmobisim/proto
+
+all:
+
+veins_libairmobisim/mobility/DroCIManager.cc: veins_libairmobisim/mobility/DroCIManager.h
+
+veins_libairmobisim/mobility/DroCIManager.h: veins_libairmobisim/proto/airmobisim.grpc.pb.h
+
+veins_libairmobisim/proto/airmobisim.grpc.pb.h: ../airmobisim.proto
+	$(CONAN_ROOT_PROTOBUF)/bin/protoc --proto_path $(PROTO_IN_PATH) --cpp_out $(PROTO_OUT_PATH) "$<"
+	$(CONAN_ROOT_PROTOBUF)/bin/protoc --proto_path $(PROTO_IN_PATH) --grpc_out=$(PROTO_OUT_PATH) --plugin=protoc-gen-grpc=$(CONAN_ROOT_GRPC)/bin/grpc_cpp_plugin "$<"
