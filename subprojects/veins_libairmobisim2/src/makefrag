@@ -59,12 +59,13 @@ endif
 # Use the new message compiler introduced in OMNeT++ 5.3
 #
 MSGC:=$(MSGC) --msg6
+
 include ../conanbuildinfo.mak
-
 INCLUDE_PATH += $(addprefix -I, $(CONAN_INCLUDE_DIRS))
-LIBS += $(addprefix -L, $(CONAN_LIB_DIRS))
-LIBS += $(addprefix -l, $(CONAN_LIBS))
-LIBS += $(addprefix -l, $(CONAN_SYSTEM_LIBS))
-LIBS += $(addprefix -framework , $(CONAN_FRAMEWORKS))
-
-
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_GRPC)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_GRPC)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_OPENSSL)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_OPENSSL)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_PROTOBUF)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_PROTOBUF)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_C-ARES)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_C-ARES)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_ABSEIL)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_ABSEIL)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_RE2)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_RE2)))
+OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_ZLIB)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_ZLIB)))
