@@ -40,6 +40,9 @@ private:
     void preInitializeModule(cModule* mod, const std::string& nodeId, const Coord& position, double speed);
     void processUavSubscription(std::string id, Coord p, double speed);
     cModule* getManagedModule(std::string nodeId);
+    void insertUAV(Coord startPosition, Coord endPosition, double startAngle, double speed);
+    void insertWaypoint();
+    int getnumberCurrentUAV();
 private:
     std::shared_ptr<grpc::Channel> channel;
     std::unique_ptr<airmobisim::AirMobiSim::Stub> stub;

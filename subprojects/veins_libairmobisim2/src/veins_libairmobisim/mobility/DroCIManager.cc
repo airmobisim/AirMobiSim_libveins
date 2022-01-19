@@ -74,6 +74,8 @@ void DroCIManager::launchSimulator() {
     channel = CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
     stub = airmobisim::AirMobiSim::NewStub(channel);
 
+    int number = 0;
+
     airmobisim::UavList managedHosts;
     google::protobuf::Empty empty;
     grpc::ClientContext clientContext;
@@ -110,11 +112,19 @@ void DroCIManager::launchSimulator() {
     } else {
         EV << "End" << endl;
     }
+
+   //insertUAV(Coord(1000,1000,3), Coord(0,5,7), 20.0, 10.0);
+
+    //number = getnumberCurrentUAV();
+    //EV << "This is the number of UAVs:" << number << endl;
+
 }
 
 void DroCIManager::executeOneTimestep()
 {
     EV_DEBUG << "Triggering AirMobiSim simulator advance to t=" << simTime() << endl;
+
+    int number = 0;
 
     airmobisim::ResponseQuery response;
     google::protobuf::Empty empty;
@@ -123,9 +133,11 @@ void DroCIManager::executeOneTimestep()
 
     if (status.ok()) {
         for (uint32_t i = 0; i < response.responses_size(); i++) {
+            EV << "Length of response" << response.responses_size() << endl;
             EV << "Getting for " << response.responses(i).id()
                       << " subscription results" << endl;
             EV << "Position" << response.responses(i).y() << endl;
+
 
             std::stringstream ss;
             ss << response.responses(i).id();
@@ -143,6 +155,9 @@ void DroCIManager::executeOneTimestep()
     } else {
         EV << "End" << endl;
     }
+
+    number = getnumberCurrentUAV();
+    EV << "This is the number of UAVs:" << number << endl;
 }
 
 void DroCIManager::processUavSubscription(std::string objectId, Coord p, double speed) {
@@ -211,3 +226,94 @@ void DroCIManager::updateModulePosition(cModule* mod, const Coord& p, double spe
         mm->nextPosition(p, speed);
     }
 }
+
+
+int DroCIManager::getnumberCurrentUAV(){
+
+  //EV <<"getNumberCurrentUAV is getting called"<<endl;
+
+  int currentUAV = 0;
+
+  airmobisim::Number number_uav;
+  google::protobuf::Empty empty;
+  grpc::ClientContext clientcontext;
+
+  grpc::Status status = stub->getNumberCurrentUAV(&clientcontext, empty, &number_uav);
+
+  if (status.ok()){
+      currentUAV = number_uav.num();
+
+      EV << "I am OK" << endl;
+  }
+
+  else {
+
+      EV << " I am not ok" << status.ok() << endl;
+  }
+
+
+  return currentUAV;
+}
+
+
+
+
+void DroCIManager::insertUAV(Coord startPosition, Coord endPosition, double startAngle, double speed){
+
+    airmobisim::StartUav* startuav = new StartUav;
+
+    google::protobuf::Empty empty;
+    grpc::ClientContext clientcontext;
+
+
+    airmobisim::Coordinates* startpos = startuav->add_coordinates();
+    airmobisim::Coordinates* endpos = startuav->add_coordinates();
+
+    //Setting the Coordinates of the Startposition
+    startpos->set_x(startPosition.x);
+    startpos->set_y(startPosition.y);
+    startpos->set_z(startPosition.z);
+
+    //Setting the Coordinates of the Endposition
+    endpos->set_x(endPosition.x);
+    endpos->set_y(endPosition.y);
+    endpos->set_z(endPosition.z);
+
+    startuav->set_angle(startAngle);
+    startuav->set_speed(speed);
+
+
+
+    grpc::Status status = stub->InsertUAV(&clientcontext, *startuav, &empty);
+
+
+
+}
+
+
+
+void DroCIManager::insertWaypoint(){
+
+    airmobisim::WaypointList* waypointlist = new WaypointList;
+
+    grpc::ClientContext clientContext;
+    google::protobuf::Empty empty;
+
+    //TODO:Needs to be change! Add a for loop!
+    airmobisim::Waypoint* waypoint1 =  waypointlist->add_waypoints();
+    airmobisim::Waypoint* waypoint2 =  waypointlist->add_waypoints();
+
+    waypoint1->set_index(2);
+    waypoint1->set_x(4.6);
+    waypoint1->set_y(7.8);
+    waypoint1->set_z(9.7);
+
+    waypoint2->set_index(3);
+    waypoint2->set_x(4.5);
+    waypoint2->set_y(3.0);
+    waypoint2->set_z(10.0);
+
+
+    grpc::Status status = stub->InsertWaypoints(&clientContext, *waypointlist, &empty);
+}
+
