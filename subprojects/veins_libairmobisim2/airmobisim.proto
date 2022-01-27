@@ -19,7 +19,7 @@ service AirMobiSim{
 
     rpc InsertUAV (StartUav) returns (google.protobuf.Empty);
 
-    rpc DeleteUAV (google.protobuf.Empty) returns (google.protobuf.Empty);
+    rpc DeleteUAV (Number) returns (google.protobuf.Empty);
 
     rpc getNumberCurrentUAV (google.protobuf.Empty) returns (Number);
 

@@ -156,8 +156,6 @@ void DroCIManager::executeOneTimestep()
         EV << "End" << endl;
     }
 
-    number = getnumberCurrentUAV();
-    EV << "This is the number of UAVs:" << number << endl;
 }
 
 void DroCIManager::processUavSubscription(std::string objectId, Coord p, double speed) {
