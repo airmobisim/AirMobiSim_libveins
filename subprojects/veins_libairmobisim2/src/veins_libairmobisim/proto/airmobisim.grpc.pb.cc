@@ -26,6 +26,10 @@ static const char* AirMobiSim_method_names[] = {
   "/airmobisim.AirMobiSim/ExecuteOneTimeStep",
   "/airmobisim.AirMobiSim/Finish",
   "/airmobisim.AirMobiSim/GetManagedHosts",
+  "/airmobisim.AirMobiSim/InsertWaypoints",
+  "/airmobisim.AirMobiSim/InsertUAV",
+  "/airmobisim.AirMobiSim/DeleteUAV",
+  "/airmobisim.AirMobiSim/getNumberCurrentUAV",
 };
 
 std::unique_ptr< AirMobiSim::Stub> AirMobiSim::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -39,6 +43,10 @@ AirMobiSim::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   , rpcmethod_ExecuteOneTimeStep_(AirMobiSim_method_names[1], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_Finish_(AirMobiSim_method_names[2], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_GetManagedHosts_(AirMobiSim_method_names[3], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_InsertWaypoints_(AirMobiSim_method_names[4], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_InsertUAV_(AirMobiSim_method_names[5], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_DeleteUAV_(AirMobiSim_method_names[6], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getNumberCurrentUAV_(AirMobiSim_method_names[7], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status AirMobiSim::Stub::Start(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::google::protobuf::Empty* response) {
@@ -133,6 +141,98 @@ void AirMobiSim::Stub::experimental_async::GetManagedHosts(::grpc::ClientContext
   return result;
 }
 
+::grpc::Status AirMobiSim::Stub::InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::airmobisim::WaypointList, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_InsertWaypoints_, context, request, response);
+}
+
+void AirMobiSim::Stub::experimental_async::InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::airmobisim::WaypointList, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_InsertWaypoints_, context, request, response, std::move(f));
+}
+
+void AirMobiSim::Stub::experimental_async::InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_InsertWaypoints_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AirMobiSim::Stub::PrepareAsyncInsertWaypointsRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::airmobisim::WaypointList, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_InsertWaypoints_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AirMobiSim::Stub::AsyncInsertWaypointsRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncInsertWaypointsRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status AirMobiSim::Stub::InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::airmobisim::StartUav, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_InsertUAV_, context, request, response);
+}
+
+void AirMobiSim::Stub::experimental_async::InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::airmobisim::StartUav, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_InsertUAV_, context, request, response, std::move(f));
+}
+
+void AirMobiSim::Stub::experimental_async::InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_InsertUAV_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AirMobiSim::Stub::PrepareAsyncInsertUAVRaw(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::airmobisim::StartUav, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_InsertUAV_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AirMobiSim::Stub::AsyncInsertUAVRaw(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncInsertUAVRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status AirMobiSim::Stub::DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::google::protobuf::Empty* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::airmobisim::Number, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_DeleteUAV_, context, request, response);
+}
+
+void AirMobiSim::Stub::experimental_async::DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::airmobisim::Number, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DeleteUAV_, context, request, response, std::move(f));
+}
+
+void AirMobiSim::Stub::experimental_async::DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_DeleteUAV_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AirMobiSim::Stub::PrepareAsyncDeleteUAVRaw(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::google::protobuf::Empty, ::airmobisim::Number, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_DeleteUAV_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AirMobiSim::Stub::AsyncDeleteUAVRaw(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncDeleteUAVRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status AirMobiSim::Stub::getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::Number* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::airmobisim::Number, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_getNumberCurrentUAV_, context, request, response);
+}
+
+void AirMobiSim::Stub::experimental_async::getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::airmobisim::Number, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_getNumberCurrentUAV_, context, request, response, std::move(f));
+}
+
+void AirMobiSim::Stub::experimental_async::getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_getNumberCurrentUAV_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::airmobisim::Number>* AirMobiSim::Stub::PrepareAsyncgetNumberCurrentUAVRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::airmobisim::Number, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_getNumberCurrentUAV_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::airmobisim::Number>* AirMobiSim::Stub::AsyncgetNumberCurrentUAVRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncgetNumberCurrentUAVRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 AirMobiSim::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       AirMobiSim_method_names[0],
@@ -174,6 +274,46 @@ AirMobiSim::Service::Service() {
              ::airmobisim::UavList* resp) {
                return service->GetManagedHosts(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AirMobiSim_method_names[4],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AirMobiSim::Service, ::airmobisim::WaypointList, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](AirMobiSim::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::airmobisim::WaypointList* req,
+             ::google::protobuf::Empty* resp) {
+               return service->InsertWaypoints(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AirMobiSim_method_names[5],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AirMobiSim::Service, ::airmobisim::StartUav, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](AirMobiSim::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::airmobisim::StartUav* req,
+             ::google::protobuf::Empty* resp) {
+               return service->InsertUAV(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AirMobiSim_method_names[6],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AirMobiSim::Service, ::airmobisim::Number, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](AirMobiSim::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::airmobisim::Number* req,
+             ::google::protobuf::Empty* resp) {
+               return service->DeleteUAV(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AirMobiSim_method_names[7],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AirMobiSim::Service, ::google::protobuf::Empty, ::airmobisim::Number, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](AirMobiSim::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::google::protobuf::Empty* req,
+             ::airmobisim::Number* resp) {
+               return service->getNumberCurrentUAV(ctx, req, resp);
+             }, this)));
 }
 
 AirMobiSim::Service::~Service() {
@@ -201,6 +341,34 @@ AirMobiSim::Service::~Service() {
 }
 
 ::grpc::Status AirMobiSim::Service::GetManagedHosts(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AirMobiSim::Service::InsertWaypoints(::grpc::ServerContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AirMobiSim::Service::InsertUAV(::grpc::ServerContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AirMobiSim::Service::DeleteUAV(::grpc::ServerContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AirMobiSim::Service::getNumberCurrentUAV(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response) {
   (void) context;
   (void) request;
   (void) response;

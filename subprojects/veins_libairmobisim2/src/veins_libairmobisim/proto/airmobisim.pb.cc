@@ -17,6 +17,33 @@
 
 PROTOBUF_PRAGMA_INIT_SEG
 namespace airmobisim {
+constexpr WaypointList::WaypointList(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : waypoints_(){}
+struct WaypointListDefaultTypeInternal {
+  constexpr WaypointListDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~WaypointListDefaultTypeInternal() {}
+  union {
+    WaypointList _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT WaypointListDefaultTypeInternal _WaypointList_default_instance_;
+constexpr Waypoint::Waypoint(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : x_(0)
+  , y_(0)
+  , z_(0)
+  , index_(0){}
+struct WaypointDefaultTypeInternal {
+  constexpr WaypointDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~WaypointDefaultTypeInternal() {}
+  union {
+    Waypoint _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT WaypointDefaultTypeInternal _Waypoint_default_instance_;
 constexpr UavList::UavList(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : uavs_(){}
@@ -73,12 +100,68 @@ struct ResponseQueryDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT ResponseQueryDefaultTypeInternal _ResponseQuery_default_instance_;
+constexpr StartUav::StartUav(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : coordinates_()
+  , speed_(0)
+  , angle_(0)
+  , id_(0){}
+struct StartUavDefaultTypeInternal {
+  constexpr StartUavDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~StartUavDefaultTypeInternal() {}
+  union {
+    StartUav _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT StartUavDefaultTypeInternal _StartUav_default_instance_;
+constexpr Coordinates::Coordinates(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : x_(0)
+  , y_(0)
+  , z_(0){}
+struct CoordinatesDefaultTypeInternal {
+  constexpr CoordinatesDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~CoordinatesDefaultTypeInternal() {}
+  union {
+    Coordinates _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT CoordinatesDefaultTypeInternal _Coordinates_default_instance_;
+constexpr Number::Number(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : num_(0){}
+struct NumberDefaultTypeInternal {
+  constexpr NumberDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~NumberDefaultTypeInternal() {}
+  union {
+    Number _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT NumberDefaultTypeInternal _Number_default_instance_;
 }  // namespace airmobisim
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_airmobisim_2eproto[4];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_airmobisim_2eproto[9];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_airmobisim_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_airmobisim_2eproto = nullptr;
 
 const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_airmobisim_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::WaypointList, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::WaypointList, waypoints_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Waypoint, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Waypoint, index_),
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Waypoint, x_),
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Waypoint, y_),
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Waypoint, z_),
   ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::airmobisim::UavList, _internal_metadata_),
   ~0u,  // no _extensions_
@@ -111,45 +194,91 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_airmobisim_2eproto::offsets[] 
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::airmobisim::ResponseQuery, responses_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::StartUav, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::StartUav, id_),
+  PROTOBUF_FIELD_OFFSET(::airmobisim::StartUav, coordinates_),
+  PROTOBUF_FIELD_OFFSET(::airmobisim::StartUav, speed_),
+  PROTOBUF_FIELD_OFFSET(::airmobisim::StartUav, angle_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Coordinates, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Coordinates, x_),
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Coordinates, y_),
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Coordinates, z_),
+  ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Number, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Number, num_),
 };
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, -1, sizeof(::airmobisim::UavList)},
-  { 6, -1, sizeof(::airmobisim::Uav)},
-  { 16, -1, sizeof(::airmobisim::Response)},
-  { 26, -1, sizeof(::airmobisim::ResponseQuery)},
+  { 0, -1, sizeof(::airmobisim::WaypointList)},
+  { 6, -1, sizeof(::airmobisim::Waypoint)},
+  { 15, -1, sizeof(::airmobisim::UavList)},
+  { 21, -1, sizeof(::airmobisim::Uav)},
+  { 31, -1, sizeof(::airmobisim::Response)},
+  { 41, -1, sizeof(::airmobisim::ResponseQuery)},
+  { 47, -1, sizeof(::airmobisim::StartUav)},
+  { 56, -1, sizeof(::airmobisim::Coordinates)},
+  { 64, -1, sizeof(::airmobisim::Number)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_WaypointList_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_Waypoint_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_UavList_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_Uav_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_Response_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_ResponseQuery_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_StartUav_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_Coordinates_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_Number_default_instance_),
 };
 
 const char descriptor_table_protodef_airmobisim_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
   "\n\020airmobisim.proto\022\nairmobisim\032\033google/p"
-  "rotobuf/empty.proto\"(\n\007UavList\022\035\n\004uavs\030\001"
-  " \003(\0132\017.airmobisim.Uav\"A\n\003Uav\022\n\n\002id\030\001 \001(\005"
-  "\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\r\n\005spe"
-  "ed\030\005 \001(\001\"F\n\010Response\022\n\n\002id\030\001 \001(\005\022\t\n\001x\030\002 "
-  "\001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\r\n\005speed\030\005 \001(\001"
-  "\"8\n\rResponseQuery\022\'\n\tresponses\030\001 \003(\0132\024.a"
-  "irmobisim.Response2\210\002\n\nAirMobiSim\0227\n\005Sta"
-  "rt\022\026.google.protobuf.Empty\032\026.google.prot"
-  "obuf.Empty\022G\n\022ExecuteOneTimeStep\022\026.googl"
-  "e.protobuf.Empty\032\031.airmobisim.ResponseQu"
-  "ery\0228\n\006Finish\022\026.google.protobuf.Empty\032\026."
-  "google.protobuf.Empty\022>\n\017GetManagedHosts"
-  "\022\026.google.protobuf.Empty\032\023.airmobisim.Ua"
-  "vListb\006proto3"
+  "rotobuf/empty.proto\"7\n\014WaypointList\022\'\n\tw"
+  "aypoints\030\001 \003(\0132\024.airmobisim.Waypoint\":\n\010"
+  "Waypoint\022\r\n\005index\030\001 \001(\005\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030"
+  "\003 \001(\001\022\t\n\001z\030\004 \001(\001\"(\n\007UavList\022\035\n\004uavs\030\001 \003("
+  "\0132\017.airmobisim.Uav\"A\n\003Uav\022\n\n\002id\030\001 \001(\005\022\t\n"
+  "\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\r\n\005speed\030"
+  "\005 \001(\001\"F\n\010Response\022\n\n\002id\030\001 \001(\005\022\t\n\001x\030\002 \001(\001"
+  "\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\r\n\005speed\030\005 \001(\001\"8\n"
+  "\rResponseQuery\022\'\n\tresponses\030\001 \003(\0132\024.airm"
+  "obisim.Response\"b\n\010StartUav\022\n\n\002id\030\001 \001(\005\022"
+  ",\n\013coordinates\030\002 \003(\0132\027.airmobisim.Coordi"
+  "nates\022\r\n\005speed\030\003 \001(\001\022\r\n\005angle\030\004 \001(\001\".\n\013C"
+  "oordinates\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003 "
+  "\001(\001\"\025\n\006Number\022\013\n\003num\030\001 \001(\0052\204\004\n\nAirMobiSi"
+  "m\0227\n\005Start\022\026.google.protobuf.Empty\032\026.goo"
+  "gle.protobuf.Empty\022G\n\022ExecuteOneTimeStep"
+  "\022\026.google.protobuf.Empty\032\031.airmobisim.Re"
+  "sponseQuery\0228\n\006Finish\022\026.google.protobuf."
+  "Empty\032\026.google.protobuf.Empty\022>\n\017GetMana"
+  "gedHosts\022\026.google.protobuf.Empty\032\023.airmo"
+  "bisim.UavList\022C\n\017InsertWaypoints\022\030.airmo"
+  "bisim.WaypointList\032\026.google.protobuf.Emp"
+  "ty\0229\n\tInsertUAV\022\024.airmobisim.StartUav\032\026."
+  "google.protobuf.Empty\0227\n\tDeleteUAV\022\022.air"
+  "mobisim.Number\032\026.google.protobuf.Empty\022A"
+  "\n\023getNumberCurrentUAV\022\026.google.protobuf."
+  "Empty\032\022.airmobisim.Numberb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_airmobisim_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_airmobisim_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_airmobisim_2eproto = {
-  false, false, 573, descriptor_table_protodef_airmobisim_2eproto, "airmobisim.proto", 
-  &descriptor_table_airmobisim_2eproto_once, descriptor_table_airmobisim_2eproto_deps, 1, 4,
+  false, false, 1113, descriptor_table_protodef_airmobisim_2eproto, "airmobisim.proto", 
+  &descriptor_table_airmobisim_2eproto_once, descriptor_table_airmobisim_2eproto_deps, 1, 9,
   schemas, file_default_instances, TableStruct_airmobisim_2eproto::offsets,
   file_level_metadata_airmobisim_2eproto, file_level_enum_descriptors_airmobisim_2eproto, file_level_service_descriptors_airmobisim_2eproto,
 };
@@ -160,6 +289,466 @@ PROTOBUF_ATTRIBUTE_WEAK const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY static ::PROTOBUF_NAMESPACE_ID::internal::AddDescriptorsRunner dynamic_init_dummy_airmobisim_2eproto(&descriptor_table_airmobisim_2eproto);
 namespace airmobisim {
+
+// ===================================================================
+
+class WaypointList::_Internal {
+ public:
+};
+
+WaypointList::WaypointList(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  waypoints_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:airmobisim.WaypointList)
+}
+WaypointList::WaypointList(const WaypointList& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      waypoints_(from.waypoints_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  // @@protoc_insertion_point(copy_constructor:airmobisim.WaypointList)
+}
+
+void WaypointList::SharedCtor() {
+}
+
+WaypointList::~WaypointList() {
+  // @@protoc_insertion_point(destructor:airmobisim.WaypointList)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void WaypointList::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void WaypointList::ArenaDtor(void* object) {
+  WaypointList* _this = reinterpret_cast< WaypointList* >(object);
+  (void)_this;
+}
+void WaypointList::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void WaypointList::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void WaypointList::Clear() {
+// @@protoc_insertion_point(message_clear_start:airmobisim.WaypointList)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  waypoints_.Clear();
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* WaypointList::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // repeated .airmobisim.Waypoint waypoints = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 10)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_waypoints(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<10>(ptr));
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* WaypointList::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:airmobisim.WaypointList)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // repeated .airmobisim.Waypoint waypoints = 1;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_waypoints_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(1, this->_internal_waypoints(i), target, stream);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:airmobisim.WaypointList)
+  return target;
+}
+
+size_t WaypointList::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:airmobisim.WaypointList)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .airmobisim.Waypoint waypoints = 1;
+  total_size += 1UL * this->_internal_waypoints_size();
+  for (const auto& msg : this->waypoints_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void WaypointList::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.WaypointList)
+  GOOGLE_DCHECK_NE(&from, this);
+  const WaypointList* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<WaypointList>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.WaypointList)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.WaypointList)
+    MergeFrom(*source);
+  }
+}
+
+void WaypointList::MergeFrom(const WaypointList& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.WaypointList)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  waypoints_.MergeFrom(from.waypoints_);
+}
+
+void WaypointList::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.WaypointList)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void WaypointList::CopyFrom(const WaypointList& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:airmobisim.WaypointList)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool WaypointList::IsInitialized() const {
+  return true;
+}
+
+void WaypointList::InternalSwap(WaypointList* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  waypoints_.InternalSwap(&other->waypoints_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata WaypointList::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
+      file_level_metadata_airmobisim_2eproto[0]);
+}
+
+// ===================================================================
+
+class Waypoint::_Internal {
+ public:
+};
+
+Waypoint::Waypoint(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:airmobisim.Waypoint)
+}
+Waypoint::Waypoint(const Waypoint& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&x_, &from.x_,
+    static_cast<size_t>(reinterpret_cast<char*>(&index_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(index_));
+  // @@protoc_insertion_point(copy_constructor:airmobisim.Waypoint)
+}
+
+void Waypoint::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&index_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(index_));
+}
+
+Waypoint::~Waypoint() {
+  // @@protoc_insertion_point(destructor:airmobisim.Waypoint)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void Waypoint::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void Waypoint::ArenaDtor(void* object) {
+  Waypoint* _this = reinterpret_cast< Waypoint* >(object);
+  (void)_this;
+}
+void Waypoint::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Waypoint::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Waypoint::Clear() {
+// @@protoc_insertion_point(message_clear_start:airmobisim.Waypoint)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&x_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&index_) -
+      reinterpret_cast<char*>(&x_)) + sizeof(index_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Waypoint::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 index = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          index_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // double x = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
+      // double y = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
+      // double z = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 33)) {
+          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Waypoint::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:airmobisim.Waypoint)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 index = 1;
+  if (this->index() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_index(), target);
+  }
+
+  // double x = 2;
+  if (!(this->x() <= 0 && this->x() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_x(), target);
+  }
+
+  // double y = 3;
+  if (!(this->y() <= 0 && this->y() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_y(), target);
+  }
+
+  // double z = 4;
+  if (!(this->z() <= 0 && this->z() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(4, this->_internal_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:airmobisim.Waypoint)
+  return target;
+}
+
+size_t Waypoint::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:airmobisim.Waypoint)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // double x = 2;
+  if (!(this->x() <= 0 && this->x() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  // double y = 3;
+  if (!(this->y() <= 0 && this->y() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  // double z = 4;
+  if (!(this->z() <= 0 && this->z() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  // int32 index = 1;
+  if (this->index() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_index());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Waypoint::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.Waypoint)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Waypoint* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Waypoint>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.Waypoint)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.Waypoint)
+    MergeFrom(*source);
+  }
+}
+
+void Waypoint::MergeFrom(const Waypoint& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.Waypoint)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!(from.x() <= 0 && from.x() >= 0)) {
+    _internal_set_x(from._internal_x());
+  }
+  if (!(from.y() <= 0 && from.y() >= 0)) {
+    _internal_set_y(from._internal_y());
+  }
+  if (!(from.z() <= 0 && from.z() >= 0)) {
+    _internal_set_z(from._internal_z());
+  }
+  if (from.index() != 0) {
+    _internal_set_index(from._internal_index());
+  }
+}
+
+void Waypoint::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.Waypoint)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Waypoint::CopyFrom(const Waypoint& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:airmobisim.Waypoint)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Waypoint::IsInitialized() const {
+  return true;
+}
+
+void Waypoint::InternalSwap(Waypoint* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Waypoint, index_)
+      + sizeof(Waypoint::index_)
+      - PROTOBUF_FIELD_OFFSET(Waypoint, x_)>(
+          reinterpret_cast<char*>(&x_),
+          reinterpret_cast<char*>(&other->x_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Waypoint::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
+      file_level_metadata_airmobisim_2eproto[1]);
+}
 
 // ===================================================================
 
@@ -353,7 +942,7 @@ void UavList::InternalSwap(UavList* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UavList::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
-      file_level_metadata_airmobisim_2eproto[0]);
+      file_level_metadata_airmobisim_2eproto[2]);
 }
 
 // ===================================================================
@@ -639,7 +1228,7 @@ void Uav::InternalSwap(Uav* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Uav::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
-      file_level_metadata_airmobisim_2eproto[1]);
+      file_level_metadata_airmobisim_2eproto[3]);
 }
 
 // ===================================================================
@@ -925,7 +1514,7 @@ void Response::InternalSwap(Response* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata Response::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
-      file_level_metadata_airmobisim_2eproto[2]);
+      file_level_metadata_airmobisim_2eproto[4]);
 }
 
 // ===================================================================
@@ -1120,12 +1709,726 @@ void ResponseQuery::InternalSwap(ResponseQuery* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata ResponseQuery::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
-      file_level_metadata_airmobisim_2eproto[3]);
+      file_level_metadata_airmobisim_2eproto[5]);
+}
+
+// ===================================================================
+
+class StartUav::_Internal {
+ public:
+};
+
+StartUav::StartUav(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena),
+  coordinates_(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:airmobisim.StartUav)
+}
+StartUav::StartUav(const StartUav& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message(),
+      coordinates_(from.coordinates_) {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&speed_, &from.speed_,
+    static_cast<size_t>(reinterpret_cast<char*>(&id_) -
+    reinterpret_cast<char*>(&speed_)) + sizeof(id_));
+  // @@protoc_insertion_point(copy_constructor:airmobisim.StartUav)
+}
+
+void StartUav::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&speed_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&id_) -
+    reinterpret_cast<char*>(&speed_)) + sizeof(id_));
+}
+
+StartUav::~StartUav() {
+  // @@protoc_insertion_point(destructor:airmobisim.StartUav)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void StartUav::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void StartUav::ArenaDtor(void* object) {
+  StartUav* _this = reinterpret_cast< StartUav* >(object);
+  (void)_this;
+}
+void StartUav::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void StartUav::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void StartUav::Clear() {
+// @@protoc_insertion_point(message_clear_start:airmobisim.StartUav)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  coordinates_.Clear();
+  ::memset(&speed_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&id_) -
+      reinterpret_cast<char*>(&speed_)) + sizeof(id_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* StartUav::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 id = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          id_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // repeated .airmobisim.Coordinates coordinates = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 18)) {
+          ptr -= 1;
+          do {
+            ptr += 1;
+            ptr = ctx->ParseMessage(_internal_add_coordinates(), ptr);
+            CHK_(ptr);
+            if (!ctx->DataAvailable(ptr)) break;
+          } while (::PROTOBUF_NAMESPACE_ID::internal::ExpectTag<18>(ptr));
+        } else goto handle_unusual;
+        continue;
+      // double speed = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
+          speed_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
+      // double angle = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 33)) {
+          angle_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* StartUav::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:airmobisim.StartUav)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 id = 1;
+  if (this->id() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_id(), target);
+  }
+
+  // repeated .airmobisim.Coordinates coordinates = 2;
+  for (unsigned int i = 0,
+      n = static_cast<unsigned int>(this->_internal_coordinates_size()); i < n; i++) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::
+      InternalWriteMessage(2, this->_internal_coordinates(i), target, stream);
+  }
+
+  // double speed = 3;
+  if (!(this->speed() <= 0 && this->speed() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_speed(), target);
+  }
+
+  // double angle = 4;
+  if (!(this->angle() <= 0 && this->angle() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(4, this->_internal_angle(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:airmobisim.StartUav)
+  return target;
+}
+
+size_t StartUav::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:airmobisim.StartUav)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // repeated .airmobisim.Coordinates coordinates = 2;
+  total_size += 1UL * this->_internal_coordinates_size();
+  for (const auto& msg : this->coordinates_) {
+    total_size +=
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::MessageSize(msg);
+  }
+
+  // double speed = 3;
+  if (!(this->speed() <= 0 && this->speed() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  // double angle = 4;
+  if (!(this->angle() <= 0 && this->angle() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  // int32 id = 1;
+  if (this->id() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_id());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void StartUav::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.StartUav)
+  GOOGLE_DCHECK_NE(&from, this);
+  const StartUav* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<StartUav>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.StartUav)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.StartUav)
+    MergeFrom(*source);
+  }
+}
+
+void StartUav::MergeFrom(const StartUav& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.StartUav)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  coordinates_.MergeFrom(from.coordinates_);
+  if (!(from.speed() <= 0 && from.speed() >= 0)) {
+    _internal_set_speed(from._internal_speed());
+  }
+  if (!(from.angle() <= 0 && from.angle() >= 0)) {
+    _internal_set_angle(from._internal_angle());
+  }
+  if (from.id() != 0) {
+    _internal_set_id(from._internal_id());
+  }
+}
+
+void StartUav::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.StartUav)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void StartUav::CopyFrom(const StartUav& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:airmobisim.StartUav)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool StartUav::IsInitialized() const {
+  return true;
+}
+
+void StartUav::InternalSwap(StartUav* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  coordinates_.InternalSwap(&other->coordinates_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(StartUav, id_)
+      + sizeof(StartUav::id_)
+      - PROTOBUF_FIELD_OFFSET(StartUav, speed_)>(
+          reinterpret_cast<char*>(&speed_),
+          reinterpret_cast<char*>(&other->speed_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata StartUav::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
+      file_level_metadata_airmobisim_2eproto[6]);
+}
+
+// ===================================================================
+
+class Coordinates::_Internal {
+ public:
+};
+
+Coordinates::Coordinates(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:airmobisim.Coordinates)
+}
+Coordinates::Coordinates(const Coordinates& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::memcpy(&x_, &from.x_,
+    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(z_));
+  // @@protoc_insertion_point(copy_constructor:airmobisim.Coordinates)
+}
+
+void Coordinates::SharedCtor() {
+::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
+    reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&x_)) + sizeof(z_));
+}
+
+Coordinates::~Coordinates() {
+  // @@protoc_insertion_point(destructor:airmobisim.Coordinates)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void Coordinates::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void Coordinates::ArenaDtor(void* object) {
+  Coordinates* _this = reinterpret_cast< Coordinates* >(object);
+  (void)_this;
+}
+void Coordinates::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Coordinates::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Coordinates::Clear() {
+// @@protoc_insertion_point(message_clear_start:airmobisim.Coordinates)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  ::memset(&x_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&z_) -
+      reinterpret_cast<char*>(&x_)) + sizeof(z_));
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Coordinates::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // double x = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+          x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
+      // double y = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+          y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
+      // double z = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
+          z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Coordinates::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:airmobisim.Coordinates)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // double x = 1;
+  if (!(this->x() <= 0 && this->x() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_x(), target);
+  }
+
+  // double y = 2;
+  if (!(this->y() <= 0 && this->y() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_y(), target);
+  }
+
+  // double z = 3;
+  if (!(this->z() <= 0 && this->z() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_z(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:airmobisim.Coordinates)
+  return target;
+}
+
+size_t Coordinates::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:airmobisim.Coordinates)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // double x = 1;
+  if (!(this->x() <= 0 && this->x() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  // double y = 2;
+  if (!(this->y() <= 0 && this->y() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  // double z = 3;
+  if (!(this->z() <= 0 && this->z() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Coordinates::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.Coordinates)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Coordinates* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Coordinates>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.Coordinates)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.Coordinates)
+    MergeFrom(*source);
+  }
+}
+
+void Coordinates::MergeFrom(const Coordinates& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.Coordinates)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!(from.x() <= 0 && from.x() >= 0)) {
+    _internal_set_x(from._internal_x());
+  }
+  if (!(from.y() <= 0 && from.y() >= 0)) {
+    _internal_set_y(from._internal_y());
+  }
+  if (!(from.z() <= 0 && from.z() >= 0)) {
+    _internal_set_z(from._internal_z());
+  }
+}
+
+void Coordinates::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.Coordinates)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Coordinates::CopyFrom(const Coordinates& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:airmobisim.Coordinates)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Coordinates::IsInitialized() const {
+  return true;
+}
+
+void Coordinates::InternalSwap(Coordinates* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::internal::memswap<
+      PROTOBUF_FIELD_OFFSET(Coordinates, z_)
+      + sizeof(Coordinates::z_)
+      - PROTOBUF_FIELD_OFFSET(Coordinates, x_)>(
+          reinterpret_cast<char*>(&x_),
+          reinterpret_cast<char*>(&other->x_));
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Coordinates::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
+      file_level_metadata_airmobisim_2eproto[7]);
+}
+
+// ===================================================================
+
+class Number::_Internal {
+ public:
+};
+
+Number::Number(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:airmobisim.Number)
+}
+Number::Number(const Number& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  num_ = from.num_;
+  // @@protoc_insertion_point(copy_constructor:airmobisim.Number)
+}
+
+void Number::SharedCtor() {
+num_ = 0;
+}
+
+Number::~Number() {
+  // @@protoc_insertion_point(destructor:airmobisim.Number)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void Number::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void Number::ArenaDtor(void* object) {
+  Number* _this = reinterpret_cast< Number* >(object);
+  (void)_this;
+}
+void Number::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void Number::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void Number::Clear() {
+// @@protoc_insertion_point(message_clear_start:airmobisim.Number)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  num_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* Number::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // int32 num = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          num_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* Number::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:airmobisim.Number)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // int32 num = 1;
+  if (this->num() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_num(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:airmobisim.Number)
+  return target;
+}
+
+size_t Number::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:airmobisim.Number)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // int32 num = 1;
+  if (this->num() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_num());
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void Number::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.Number)
+  GOOGLE_DCHECK_NE(&from, this);
+  const Number* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<Number>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.Number)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.Number)
+    MergeFrom(*source);
+  }
+}
+
+void Number::MergeFrom(const Number& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.Number)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (from.num() != 0) {
+    _internal_set_num(from._internal_num());
+  }
+}
+
+void Number::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.Number)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void Number::CopyFrom(const Number& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:airmobisim.Number)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool Number::IsInitialized() const {
+  return true;
+}
+
+void Number::InternalSwap(Number* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(num_, other->num_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata Number::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
+      file_level_metadata_airmobisim_2eproto[8]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
 }  // namespace airmobisim
 PROTOBUF_NAMESPACE_OPEN
+template<> PROTOBUF_NOINLINE ::airmobisim::WaypointList* Arena::CreateMaybeMessage< ::airmobisim::WaypointList >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::airmobisim::WaypointList >(arena);
+}
+template<> PROTOBUF_NOINLINE ::airmobisim::Waypoint* Arena::CreateMaybeMessage< ::airmobisim::Waypoint >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::airmobisim::Waypoint >(arena);
+}
 template<> PROTOBUF_NOINLINE ::airmobisim::UavList* Arena::CreateMaybeMessage< ::airmobisim::UavList >(Arena* arena) {
   return Arena::CreateMessageInternal< ::airmobisim::UavList >(arena);
 }
@@ -1137,6 +2440,15 @@ template<> PROTOBUF_NOINLINE ::airmobisim::Response* Arena::CreateMaybeMessage< 
 }
 template<> PROTOBUF_NOINLINE ::airmobisim::ResponseQuery* Arena::CreateMaybeMessage< ::airmobisim::ResponseQuery >(Arena* arena) {
   return Arena::CreateMessageInternal< ::airmobisim::ResponseQuery >(arena);
+}
+template<> PROTOBUF_NOINLINE ::airmobisim::StartUav* Arena::CreateMaybeMessage< ::airmobisim::StartUav >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::airmobisim::StartUav >(arena);
+}
+template<> PROTOBUF_NOINLINE ::airmobisim::Coordinates* Arena::CreateMaybeMessage< ::airmobisim::Coordinates >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::airmobisim::Coordinates >(arena);
+}
+template<> PROTOBUF_NOINLINE ::airmobisim::Number* Arena::CreateMaybeMessage< ::airmobisim::Number >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::airmobisim::Number >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

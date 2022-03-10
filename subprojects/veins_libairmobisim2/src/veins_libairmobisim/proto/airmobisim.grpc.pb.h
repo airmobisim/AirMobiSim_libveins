@@ -64,6 +64,34 @@ class AirMobiSim final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>> PrepareAsyncGetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>>(PrepareAsyncGetManagedHostsRaw(context, request, cq));
     }
+    virtual ::grpc::Status InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncInsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncInsertWaypointsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncInsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncInsertWaypointsRaw(context, request, cq));
+    }
+    virtual ::grpc::Status InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncInsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncInsertUAVRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncInsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncInsertUAVRaw(context, request, cq));
+    }
+    virtual ::grpc::Status DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::google::protobuf::Empty* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> AsyncDeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(AsyncDeleteUAVRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncDeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncDeleteUAVRaw(context, request, cq));
+    }
+    virtual ::grpc::Status getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::Number* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>> AsyncgetNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>>(AsyncgetNumberCurrentUAVRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>> PrepareAsyncgetNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>>(PrepareAsyncgetNumberCurrentUAVRaw(context, request, cq));
+    }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
@@ -91,6 +119,30 @@ class AirMobiSim final {
       #else
       virtual void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
+      virtual void InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     typedef class experimental_async_interface async_interface;
@@ -108,6 +160,14 @@ class AirMobiSim final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncFinishRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>* AsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::UavList>* PrepareAsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncInsertWaypointsRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncInsertWaypointsRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncInsertUAVRaw(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncInsertUAVRaw(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncDeleteUAVRaw(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncDeleteUAVRaw(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>* AsyncgetNumberCurrentUAVRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>* PrepareAsyncgetNumberCurrentUAVRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -140,6 +200,34 @@ class AirMobiSim final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>> PrepareAsyncGetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>>(PrepareAsyncGetManagedHostsRaw(context, request, cq));
     }
+    ::grpc::Status InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncInsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncInsertWaypointsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncInsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncInsertWaypointsRaw(context, request, cq));
+    }
+    ::grpc::Status InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncInsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncInsertUAVRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncInsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncInsertUAVRaw(context, request, cq));
+    }
+    ::grpc::Status DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::google::protobuf::Empty* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> AsyncDeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(AsyncDeleteUAVRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncDeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncDeleteUAVRaw(context, request, cq));
+    }
+    ::grpc::Status getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::Number* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>> AsyncgetNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>>(AsyncgetNumberCurrentUAVRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>> PrepareAsyncgetNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>>(PrepareAsyncgetNumberCurrentUAVRaw(context, request, cq));
+    }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
@@ -167,6 +255,30 @@ class AirMobiSim final {
       #else
       void GetManagedHosts(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
+      void InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void InsertWaypoints(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void InsertUAV(::grpc::ClientContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void DeleteUAV(::grpc::ClientContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void getNumberCurrentUAV(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -186,10 +298,22 @@ class AirMobiSim final {
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncFinishRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>* AsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::airmobisim::UavList>* PrepareAsyncGetManagedHostsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncInsertWaypointsRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncInsertWaypointsRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncInsertUAVRaw(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncInsertUAVRaw(::grpc::ClientContext* context, const ::airmobisim::StartUav& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncDeleteUAVRaw(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncDeleteUAVRaw(::grpc::ClientContext* context, const ::airmobisim::Number& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>* AsyncgetNumberCurrentUAVRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>* PrepareAsyncgetNumberCurrentUAVRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Start_;
     const ::grpc::internal::RpcMethod rpcmethod_ExecuteOneTimeStep_;
     const ::grpc::internal::RpcMethod rpcmethod_Finish_;
     const ::grpc::internal::RpcMethod rpcmethod_GetManagedHosts_;
+    const ::grpc::internal::RpcMethod rpcmethod_InsertWaypoints_;
+    const ::grpc::internal::RpcMethod rpcmethod_InsertUAV_;
+    const ::grpc::internal::RpcMethod rpcmethod_DeleteUAV_;
+    const ::grpc::internal::RpcMethod rpcmethod_getNumberCurrentUAV_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -201,6 +325,10 @@ class AirMobiSim final {
     virtual ::grpc::Status ExecuteOneTimeStep(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::ResponseQuery* response);
     virtual ::grpc::Status Finish(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status GetManagedHosts(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::UavList* response);
+    virtual ::grpc::Status InsertWaypoints(::grpc::ServerContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status InsertUAV(::grpc::ServerContext* context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status DeleteUAV(::grpc::ServerContext* context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status getNumberCurrentUAV(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Start : public BaseClass {
@@ -282,7 +410,87 @@ class AirMobiSim final {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Start<WithAsyncMethod_ExecuteOneTimeStep<WithAsyncMethod_Finish<WithAsyncMethod_GetManagedHosts<Service > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_InsertWaypoints : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_InsertWaypoints() {
+      ::grpc::Service::MarkMethodAsync(4);
+    }
+    ~WithAsyncMethod_InsertWaypoints() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertWaypoints(::grpc::ServerContext* /*context*/, const ::airmobisim::WaypointList* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestInsertWaypoints(::grpc::ServerContext* context, ::airmobisim::WaypointList* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_InsertUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_InsertUAV() {
+      ::grpc::Service::MarkMethodAsync(5);
+    }
+    ~WithAsyncMethod_InsertUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::StartUav* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestInsertUAV(::grpc::ServerContext* context, ::airmobisim::StartUav* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_DeleteUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_DeleteUAV() {
+      ::grpc::Service::MarkMethodAsync(6);
+    }
+    ~WithAsyncMethod_DeleteUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::Number* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDeleteUAV(::grpc::ServerContext* context, ::airmobisim::Number* request, ::grpc::ServerAsyncResponseWriter< ::google::protobuf::Empty>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_getNumberCurrentUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_getNumberCurrentUAV() {
+      ::grpc::Service::MarkMethodAsync(7);
+    }
+    ~WithAsyncMethod_getNumberCurrentUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNumberCurrentUAV(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetNumberCurrentUAV(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::airmobisim::Number>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Start<WithAsyncMethod_ExecuteOneTimeStep<WithAsyncMethod_Finish<WithAsyncMethod_GetManagedHosts<WithAsyncMethod_InsertWaypoints<WithAsyncMethod_InsertUAV<WithAsyncMethod_DeleteUAV<WithAsyncMethod_getNumberCurrentUAV<Service > > > > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_Start : public BaseClass {
    private:
@@ -471,11 +679,199 @@ class AirMobiSim final {
     #endif
       { return nullptr; }
   };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_InsertWaypoints : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_InsertWaypoints() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::airmobisim::WaypointList, ::google::protobuf::Empty>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response) { return this->InsertWaypoints(context, request, response); }));}
+    void SetMessageAllocatorFor_InsertWaypoints(
+        ::grpc::experimental::MessageAllocator< ::airmobisim::WaypointList, ::google::protobuf::Empty>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(4);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(4);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::airmobisim::WaypointList, ::google::protobuf::Empty>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_InsertWaypoints() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertWaypoints(::grpc::ServerContext* /*context*/, const ::airmobisim::WaypointList* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* InsertWaypoints(
+      ::grpc::CallbackServerContext* /*context*/, const ::airmobisim::WaypointList* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* InsertWaypoints(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::airmobisim::WaypointList* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_InsertUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_InsertUAV() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(5,
+          new ::grpc::internal::CallbackUnaryHandler< ::airmobisim::StartUav, ::google::protobuf::Empty>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::airmobisim::StartUav* request, ::google::protobuf::Empty* response) { return this->InsertUAV(context, request, response); }));}
+    void SetMessageAllocatorFor_InsertUAV(
+        ::grpc::experimental::MessageAllocator< ::airmobisim::StartUav, ::google::protobuf::Empty>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(5);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(5);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::airmobisim::StartUav, ::google::protobuf::Empty>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_InsertUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::StartUav* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* InsertUAV(
+      ::grpc::CallbackServerContext* /*context*/, const ::airmobisim::StartUav* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* InsertUAV(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::airmobisim::StartUav* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_DeleteUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_DeleteUAV() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(6,
+          new ::grpc::internal::CallbackUnaryHandler< ::airmobisim::Number, ::google::protobuf::Empty>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::airmobisim::Number* request, ::google::protobuf::Empty* response) { return this->DeleteUAV(context, request, response); }));}
+    void SetMessageAllocatorFor_DeleteUAV(
+        ::grpc::experimental::MessageAllocator< ::airmobisim::Number, ::google::protobuf::Empty>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(6);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(6);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::airmobisim::Number, ::google::protobuf::Empty>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_DeleteUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::Number* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* DeleteUAV(
+      ::grpc::CallbackServerContext* /*context*/, const ::airmobisim::Number* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* DeleteUAV(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::airmobisim::Number* /*request*/, ::google::protobuf::Empty* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getNumberCurrentUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_getNumberCurrentUAV() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::Number>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response) { return this->getNumberCurrentUAV(context, request, response); }));}
+    void SetMessageAllocatorFor_getNumberCurrentUAV(
+        ::grpc::experimental::MessageAllocator< ::google::protobuf::Empty, ::airmobisim::Number>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(7);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(7);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::Number>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_getNumberCurrentUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNumberCurrentUAV(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* getNumberCurrentUAV(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* getNumberCurrentUAV(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/)
+    #endif
+      { return nullptr; }
+  };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<Service > > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<ExperimentalWithCallbackMethod_InsertWaypoints<ExperimentalWithCallbackMethod_InsertUAV<ExperimentalWithCallbackMethod_DeleteUAV<ExperimentalWithCallbackMethod_getNumberCurrentUAV<Service > > > > > > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<Service > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<ExperimentalWithCallbackMethod_InsertWaypoints<ExperimentalWithCallbackMethod_InsertUAV<ExperimentalWithCallbackMethod_DeleteUAV<ExperimentalWithCallbackMethod_getNumberCurrentUAV<Service > > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Start : public BaseClass {
    private:
@@ -540,6 +936,74 @@ class AirMobiSim final {
     }
     // disable synchronous version of this method
     ::grpc::Status GetManagedHosts(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::UavList* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_InsertWaypoints : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_InsertWaypoints() {
+      ::grpc::Service::MarkMethodGeneric(4);
+    }
+    ~WithGenericMethod_InsertWaypoints() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertWaypoints(::grpc::ServerContext* /*context*/, const ::airmobisim::WaypointList* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_InsertUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_InsertUAV() {
+      ::grpc::Service::MarkMethodGeneric(5);
+    }
+    ~WithGenericMethod_InsertUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::StartUav* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_DeleteUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_DeleteUAV() {
+      ::grpc::Service::MarkMethodGeneric(6);
+    }
+    ~WithGenericMethod_DeleteUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::Number* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_getNumberCurrentUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_getNumberCurrentUAV() {
+      ::grpc::Service::MarkMethodGeneric(7);
+    }
+    ~WithGenericMethod_getNumberCurrentUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNumberCurrentUAV(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -622,6 +1086,86 @@ class AirMobiSim final {
     }
     void RequestGetManagedHosts(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(3, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_InsertWaypoints : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_InsertWaypoints() {
+      ::grpc::Service::MarkMethodRaw(4);
+    }
+    ~WithRawMethod_InsertWaypoints() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertWaypoints(::grpc::ServerContext* /*context*/, const ::airmobisim::WaypointList* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestInsertWaypoints(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(4, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_InsertUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_InsertUAV() {
+      ::grpc::Service::MarkMethodRaw(5);
+    }
+    ~WithRawMethod_InsertUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::StartUav* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestInsertUAV(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(5, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_DeleteUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_DeleteUAV() {
+      ::grpc::Service::MarkMethodRaw(6);
+    }
+    ~WithRawMethod_DeleteUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::Number* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestDeleteUAV(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(6, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getNumberCurrentUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_getNumberCurrentUAV() {
+      ::grpc::Service::MarkMethodRaw(7);
+    }
+    ~WithRawMethod_getNumberCurrentUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNumberCurrentUAV(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetNumberCurrentUAV(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(7, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -777,6 +1321,158 @@ class AirMobiSim final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_InsertWaypoints : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_InsertWaypoints() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(4,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->InsertWaypoints(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_InsertWaypoints() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertWaypoints(::grpc::ServerContext* /*context*/, const ::airmobisim::WaypointList* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* InsertWaypoints(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* InsertWaypoints(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_InsertUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_InsertUAV() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(5,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->InsertUAV(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_InsertUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status InsertUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::StartUav* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* InsertUAV(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* InsertUAV(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_DeleteUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_DeleteUAV() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(6,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->DeleteUAV(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_DeleteUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status DeleteUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::Number* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* DeleteUAV(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* DeleteUAV(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getNumberCurrentUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getNumberCurrentUAV() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(7,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->getNumberCurrentUAV(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_getNumberCurrentUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getNumberCurrentUAV(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* getNumberCurrentUAV(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* getNumberCurrentUAV(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_Start : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -884,9 +1580,117 @@ class AirMobiSim final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedGetManagedHosts(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::airmobisim::UavList>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<Service > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_InsertWaypoints : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_InsertWaypoints() {
+      ::grpc::Service::MarkMethodStreamed(4,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::airmobisim::WaypointList, ::google::protobuf::Empty>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::airmobisim::WaypointList, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedInsertWaypoints(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_InsertWaypoints() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status InsertWaypoints(::grpc::ServerContext* /*context*/, const ::airmobisim::WaypointList* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedInsertWaypoints(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::airmobisim::WaypointList,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_InsertUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_InsertUAV() {
+      ::grpc::Service::MarkMethodStreamed(5,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::airmobisim::StartUav, ::google::protobuf::Empty>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::airmobisim::StartUav, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedInsertUAV(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_InsertUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status InsertUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::StartUav* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedInsertUAV(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::airmobisim::StartUav,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_DeleteUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_DeleteUAV() {
+      ::grpc::Service::MarkMethodStreamed(6,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::airmobisim::Number, ::google::protobuf::Empty>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::airmobisim::Number, ::google::protobuf::Empty>* streamer) {
+                       return this->StreamedDeleteUAV(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_DeleteUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status DeleteUAV(::grpc::ServerContext* /*context*/, const ::airmobisim::Number* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedDeleteUAV(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::airmobisim::Number,::google::protobuf::Empty>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_getNumberCurrentUAV : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_getNumberCurrentUAV() {
+      ::grpc::Service::MarkMethodStreamed(7,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::google::protobuf::Empty, ::airmobisim::Number>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::google::protobuf::Empty, ::airmobisim::Number>* streamer) {
+                       return this->StreamedgetNumberCurrentUAV(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_getNumberCurrentUAV() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status getNumberCurrentUAV(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedgetNumberCurrentUAV(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::airmobisim::Number>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<WithStreamedUnaryMethod_InsertWaypoints<WithStreamedUnaryMethod_InsertUAV<WithStreamedUnaryMethod_DeleteUAV<WithStreamedUnaryMethod_getNumberCurrentUAV<Service > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<Service > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<WithStreamedUnaryMethod_InsertWaypoints<WithStreamedUnaryMethod_InsertUAV<WithStreamedUnaryMethod_DeleteUAV<WithStreamedUnaryMethod_getNumberCurrentUAV<Service > > > > > > > > StreamedService;
 };
 
 }  // namespace airmobisim
