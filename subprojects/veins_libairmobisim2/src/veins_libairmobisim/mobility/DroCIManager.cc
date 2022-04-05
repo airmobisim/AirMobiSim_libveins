@@ -298,8 +298,8 @@ void DroCIManager::insertWaypoint(){
     google::protobuf::Empty empty;
 
     //TODO:Needs to be change! Add a for loop!
-    airmobisim::Waypoint* waypoint1 =  waypointlist->add_waypoints();
-    airmobisim::Waypoint* waypoint2 =  waypointlist->add_waypoints();
+    airmobisim::Waypoint* waypoint1 =  waypointlist->add_waypoint();
+    airmobisim::Waypoint* waypoint2 =  waypointlist->add_waypoint();
 
     waypoint1->set_index(2);
     waypoint1->set_x(4.6);
