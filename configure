@@ -77,4 +77,6 @@ f.close()
 
 subprocess.check_call(['env', 'opp_makemake'] + makemake_flags, cwd='src')
 
+os.system('cd subprojects/veins_libairmobisim2 && ./configure')
+
 info('Configure done. You can now run "make".')

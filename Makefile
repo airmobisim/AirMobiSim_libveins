@@ -32,6 +32,7 @@ endif
 
 # default target
 all: src/Makefile $(ADDL_TARGETS)
+	@cd subprojects/veins_libairmobisim2 && $(MAKE)
 ifdef MODE
 	@cd src && $(MAKE)
 else
@@ -60,6 +61,7 @@ makefiles:
 	@echo
 
 clean: src/Makefile
+	@cd subprojects/veins_libairmobisim2 && clean
 ifdef MODE
 	@cd src && $(MAKE) clean
 else

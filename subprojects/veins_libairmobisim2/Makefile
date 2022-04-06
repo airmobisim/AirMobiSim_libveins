@@ -32,6 +32,7 @@ endif
 
 # default target
 all: src/Makefile $(ADDL_TARGETS)
+	@conan install . --build missing --profile=default
 ifdef MODE
 	@cd src && $(MAKE)
 else
