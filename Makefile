@@ -60,8 +60,8 @@ makefiles:
 	@echo '====================================================================='
 	@echo
 
-clean: src/Makefile
-	@cd subprojects/veins_libairmobisim2 && clean
+clean:
+	@cd subprojects/veins_libairmobisim2 && $(MAKE) clean
 ifdef MODE
 	@cd src && $(MAKE) clean
 else
