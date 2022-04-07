@@ -32,13 +32,14 @@ endif
 
 # default target
 all: src/Makefile $(ADDL_TARGETS)
-	@cd subprojects/veins_libairmobisim2 && $(MAKE)
+	
 ifdef MODE
 	@cd src && $(MAKE)
 else
 	@cd src && $(MAKE) MODE=release
 	@cd src && $(MAKE) MODE=debug
 endif
+	@cd subprojects/veins_libairmobisim2 && $(MAKE)
 
 # command line scripts
 bin/veins_run: src/scripts/veins_run.in.py out/config.py
