@@ -105,6 +105,9 @@ if options.veins:
 if not os.path.isdir('out'):
     os.mkdir('out')
 
+if not os.path.isdir('src/veins_libairmobisim/proto'):
+    os.mkdir('src/veins_libairmobisim/proto')
+
 f = open(os.path.join('out', 'config.py'), 'w')
 f.write('run_libs = %s\n' % repr(run_libs))
 f.write('run_neds = %s\n' % repr(run_neds))
