@@ -12,6 +12,8 @@ doc/neddoc
 
 /out
 
+subprojects/veins_libairmobisim2/src/veins_libairmobisim/proto
+
 examples/**/results
 examples/**/.tkenvrc
 examples/**/.qtenvrc
