@@ -87,8 +87,8 @@ subprojects/veins_libairmobisim2/examples/**/.tkenvrc
 subprojects/veins_libairmobisim2/examples/**/.qtenvrc
 subprojects/veins_libairmobisim2/examples/**/.cmdenv-log
 subprojects/veins_libairmobisim2/examples/**/valgrind.out
-subprojects/veins_libairmobisim2/subprojects/veins_libairmobisim2/conan.lock
-subprojects/veins_libairmobisim2/subprojects/veins_libairmobisim2/conanbuildinfo.mak
-subprojects/veins_libairmobisim2/subprojects/veins_libairmobisim2/conanbuildinfo.txt
-subprojects/veins_libairmobisim2/subprojects/veins_libairmobisim2/conaninfo.txt
-subprojects/veins_libairmobisim2/**/.log
+subprojects/veins_libairmobisim2/conan.lock
+subprojects/veins_libairmobisim2/conanbuildinfo.mak
+subprojects/veins_libairmobisim2/conanbuildinfo.txt
+subprojects/veins_libairmobisim2/conaninfo.txt
+**/.log
