@@ -27,6 +27,22 @@
 #include <grpcpp/grpcpp.h>
 
 #include <string.h>
+#include <unistd.h>
+#include <memory.h>
+#include <array>
+#include <cstdio>
+#include <iostream>
+#include <stdexcept>
+#include <thread>
+#include <sys/wait.h>
+
+
+#include <vector>
+#include <stdio.h>
+#include <chrono>
+#include <thread>
+#include "unistd.h"
+
 
 using namespace omnetpp;
 using namespace airmobisim;
@@ -44,7 +60,9 @@ void DroCIManager::initialize(int stage)
 
         // Do not create children here since OMNeT++ will try to initialize them again
         initMsg = new cMessage("init");
-
+        launchSimulatorMsg = new cMessage();
+        checkConnectionMsg = new cMessage();
+        checkConnectionMsg->setKind(checkConnectionMsgKind);
 
         count = 0;
         nextNodeVectorIndex = 0;
@@ -59,7 +77,31 @@ void DroCIManager::initialize(int stage)
 void DroCIManager::handleMessage(cMessage* msg)
 {
     if (msg == initMsg) {
+        startAirMobiSim();
+        return;
+    }
+    if (msg == launchSimulatorMsg) {
         launchSimulator();
+        return;
+    }
+    if (msg->getKind() == checkConnectionMsgKind) {
+        if (pid) {
+            int status = 0;
+            pid_t r;
+            r = waitpid(pid, &status, WNOHANG);
+            EV_DEBUG << "pid == " << pid << " - waitpid returned with " << r << std::endl;
+            if (r == 0) {
+                EV_DEBUG << "no state change" << std::endl;
+            } else if (r == -1) {
+                EV_DEBUG << "no such pid" << std::endl;
+            } else {
+                if (WIFEXITED(status) || WIFSIGNALED(status)) {
+                    EV_DEBUG << "child died - goodbye" << std::endl;
+                    endSimulation();
+                }
+            }
+            scheduleAt(simTime()+updateInterval, checkConnectionMsg);
+        }
         return;
     }
     if (msg == executeOneTimestepTrigger) {
@@ -69,8 +111,45 @@ void DroCIManager::handleMessage(cMessage* msg)
     throw cRuntimeError("DroCIManager received unknown self-message");
 
 }
+void DroCIManager::startAirMobiSim() {
+
+    std::cout << "OMNeT++ my pID is " << getpid() << std::endl;
+    std::cout << "spawn" << std::endl;
+
+    pid = fork();
+    std::cout << "pid is " << pid << std::endl;
+
+    if (pid == 0) {
+        signal(SIGINT, SIG_IGN);
+
+        //int r = execl("/bin/sh", "sh", "-c", "./launchAirMobiSim.sh", NULL);
+        int r = execl("/bin/sh", "sh", "-c", "airmobisim.py --omnetpp", NULL); // This is the PID we check
+
+       //int r = execl("/bin/sh", "sh", "-c", "./abel.py", NULL);
+
+        std::cout << "execl done" << pid << std::endl;
+        if (r == -1) {
+            throw cRuntimeError("system failed");
+        }
+        if (WEXITSTATUS(r) != 0) {
+            throw cRuntimeError("cannot run");
+
+        }
+        throw cRuntimeError("returned from exec");
+        exit(1);
+    }
+
+    sleep(5);
+    scheduleAt(simTime() + updateInterval, launchSimulatorMsg);
+    scheduleAt(simTime() + updateInterval, checkConnectionMsg);
+}
+
+
+
 
 void DroCIManager::launchSimulator() {
+
+
     channel = CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
     stub = airmobisim::AirMobiSim::NewStub(channel);
 

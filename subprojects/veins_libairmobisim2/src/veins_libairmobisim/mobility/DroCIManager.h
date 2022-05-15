@@ -51,11 +51,17 @@ private:
     int count;
     double totalsteps;
     omnetpp::cMessage *initMsg;
+    omnetpp::cMessage *launchSimulatorMsg;
     omnetpp::cMessage *executeOneTimestepTrigger;
+    omnetpp::cMessage *checkConnectionMsg;
+    int checkConnectionMsgKind = 1337;
     std::string moduleType;
     size_t nextNodeVectorIndex; /**< next OMNeT++ module vector index to use */
     std::map<std::string, cModule*> hosts; /**< vector of all hosts managed by us */
+protected:
 
+    void startAirMobiSim();
+    pid_t pid;
 };
 
 
