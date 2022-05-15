@@ -19,7 +19,7 @@ are available with the source distribution.
 
 
 
-# Subproject veins_libairmobisim2 
+# Subproject veins_libairmobisim 
 Build GRPC:
 ```
 export MY_INSTALL_DIR=$HOME/.local

@@ -111,10 +111,10 @@
 	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders"/>
 	<storageModule moduleId="refreshScope" versionNumber="2">
 		<configuration configurationName="gcc-release">
-			<resource resourceType="PROJECT" workspacePath="/veins_libairmobisim2"/>
+			<resource resourceType="PROJECT" workspacePath="/veins_libairmobisim"/>
 		</configuration>
 		<configuration configurationName="gcc-debug">
-			<resource resourceType="PROJECT" workspacePath="/veins_libairmobisim2"/>
+			<resource resourceType="PROJECT" workspacePath="/veins_libairmobisim"/>
 		</configuration>
 	</storageModule>
 </cproject>

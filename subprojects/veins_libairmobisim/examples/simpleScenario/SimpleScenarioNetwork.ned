@@ -1,4 +1,4 @@
-package veins_libairmobisim2.examples.veins_libairmobisim;
+package veins_libairmobisim.examples.veins_libairmobisim;
 
 import veins_libairmobisim.node.Uav;
 import veins_libairmobisim.mobility.DroCIManager;

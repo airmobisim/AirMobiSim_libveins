@@ -39,7 +39,7 @@ else
 	@cd src && $(MAKE) MODE=release
 	@cd src && $(MAKE) MODE=debug
 endif
-	@cd subprojects/veins_libairmobisim2 && $(MAKE)
+	@cd subprojects/veins_libairmobisim && $(MAKE)
 
 # command line scripts
 bin/veins_run: src/scripts/veins_run.in.py out/config.py
@@ -62,7 +62,7 @@ makefiles:
 	@echo
 
 clean:
-	@cd subprojects/veins_libairmobisim2 && $(MAKE) clean
+	@cd subprojects/veins_libairmobisim && $(MAKE) clean
 ifdef MODE
 	@cd src && $(MAKE) clean
 else
