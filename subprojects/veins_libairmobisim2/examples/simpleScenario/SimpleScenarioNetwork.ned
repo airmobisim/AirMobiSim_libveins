@@ -8,6 +8,9 @@ import org.car2x.veins.base.modules.BaseWorldUtility;
 import org.car2x.veins.modules.obstacle.ObstacleControl;
 import org.car2x.veins.base.connectionManager.ConnectionManager;
 
+import org.car2x.veins.nodes.Car;
+import org.car2x.veins.visualizer.roads.RoadsCanvasVisualizer;
+import org.car2x.veins.modules.mobility.traci.TraCIScenarioManager*;
 
 network SimpleScenarioNetwork
 {
@@ -36,7 +39,15 @@ network SimpleScenarioNetwork
 		manager: DroCIManager {
             @display("p=50,138");
         }
-        uav[0]: Uav;
+		tManager: TraCIScenarioManagerForker {
+            parameters:
+                @display("p=512,128");
+        }
+        roadsCanvasVisualizer: RoadsCanvasVisualizer {
+            @display("p=300,0");
+        }
+        uav[0]: Uav{
+        }
         
     connections allowunconnected:
 }

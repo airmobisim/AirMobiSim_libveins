@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0"?>
 
 <!--
 // Copyright (C) 2011 Christoph Sommer <sommer@ccs-labs.org>
@@ -31,19 +31,12 @@
 // work.  If not, see <http://creativecommons.org/licenses/by-sa/4.0/>.
 -->
 
-<root>
-    <AnalogueModels>
-        <AnalogueModel type="SimplePathlossModel" thresholding="true">
-            <parameter name="alpha" type="double" value="2.0"/>
-        </AnalogueModel>
-        <AnalogueModel type="SimpleObstacleShadowing" thresholding="true">
-            <obstacles>
-                <type id="building" db-per-cut="9" db-per-meter="0.4" />
-            </obstacles>
-        </AnalogueModel>
-    </AnalogueModels>
-    <Decider type="Decider80211p">
-        <!-- The center frequency on which the phy listens-->
-        <parameter name="centerFrequency" type="double" value="5.890e9"/>
-    </Decider>
-</root>
+<!--
+194 Cars leaving the Computer Science Building and campus of the University of Erlangen-Nuremberg
+-->
+
+<routes>
+   <vType id="vtype0" accel="2.6" decel="4.5" sigma="0.5" length="2.5" minGap="2.5" maxSpeed="14" color="1,1,0"/>
+   <route id="route0" edges="-39539626 -5445204#2 -5445204#1 113939244#2 -126606716 23339459 30405358#1 85355912 85355911#0 85355911#1 30405356 5931612 30350450#0 30350450#1 30350450#2 4006702#0 4006702#1 4900043 4900041#1"/>
+   
+</routes>
