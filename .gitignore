@@ -12,8 +12,6 @@ doc/neddoc
 
 /out
 
-subprojects/veins_libairmobisim2/src/veins_libairmobisim/proto/*
-
 examples/**/results
 examples/**/.tkenvrc
 examples/**/.qtenvrc
@@ -73,3 +71,24 @@ subprojects/veins_testsims/sim/**/.qtenvrc
 subprojects/veins_testsims/sim/**/.cmdenv-log
 subprojects/veins_testsims/sim/**/valgrind.out
 subprojects/veins_testsims/opp_tests/**/work
+
+subprojects/veins_libairmobisim2/src/veins_libairmobisim/proto/*
+subprojects/veins_libairmobisim2/src/Makefile
+subprojects/veins_libairmobisim2/src/*.so
+subprojects/veins_libairmobisim2/src/*.dll
+subprojects/veins_libairmobisim2/src/*.dylib
+subprojects/veins_libairmobisim2/src/**/*_m.h
+subprojects/veins_libairmobisim2/src/**/*_m.cc
+subprojects/veins_libairmobisim2/out
+subprojects/veins_libairmobisim2/bin/veins_libairmobisim_run
+subprojects/veins_libairmobisim2/examples/**/results
+subprojects/veins_libairmobisim2/examples/**/veins-runall-output
+subprojects/veins_libairmobisim2/examples/**/.tkenvrc
+subprojects/veins_libairmobisim2/examples/**/.qtenvrc
+subprojects/veins_libairmobisim2/examples/**/.cmdenv-log
+subprojects/veins_libairmobisim2/examples/**/valgrind.out
+subprojects/veins_libairmobisim2/subprojects/veins_libairmobisim2/conan.lock
+subprojects/veins_libairmobisim2/subprojects/veins_libairmobisim2/conanbuildinfo.mak
+subprojects/veins_libairmobisim2/subprojects/veins_libairmobisim2/conanbuildinfo.txt
+subprojects/veins_libairmobisim2/subprojects/veins_libairmobisim2/conaninfo.txt
+subprojects/veins_libairmobisim2/**/.log
