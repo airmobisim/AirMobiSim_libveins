@@ -43,6 +43,9 @@ private:
     void insertUAV(Coord startPosition, Coord endPosition, double startAngle, double speed);
     void insertWaypoint();
     int getnumberCurrentUAV();
+    void setDesiredSpeed();
+    void updateWaypoints();
+
 private:
     std::shared_ptr<grpc::Channel> channel;
     std::unique_ptr<airmobisim::AirMobiSim::Stub> stub;

@@ -1,4 +1,3 @@
-
 syntax = "proto3";
 
 import "google/protobuf/empty.proto";
@@ -10,24 +9,27 @@ service AirMobiSim{
     rpc Start (google.protobuf.Empty) returns (google.protobuf.Empty);
 
     rpc ExecuteOneTimeStep (google.protobuf.Empty) returns (ResponseQuery);
-    
+
     rpc Finish (google.protobuf.Empty) returns (google.protobuf.Empty);
 
     rpc GetManagedHosts(google.protobuf.Empty) returns (UavList);
-    
+
     rpc InsertWaypoints (WaypointList) returns (google.protobuf.Empty);
-   
+
     rpc InsertUAV (StartUav) returns (google.protobuf.Empty);
 
     rpc DeleteUAV (Number) returns (google.protobuf.Empty);
 
     rpc getNumberCurrentUAV (google.protobuf.Empty) returns (Number);
+    
+    rpc SetDesiredSpeed (UavSetSpeed) returns (google.protobuf.Empty);
 
-      
+    rpc UpdateWaypoints (WaypointList) returns (google.protobuf.Empty);          
 }
 
 message WaypointList{
-    repeated Waypoint waypoint = 1;
+    int32 id = 1;
+    repeated Waypoint waypoint = 2;
 }
 
 message Waypoint
@@ -37,6 +39,8 @@ message Waypoint
     double y = 3;
     double z = 4;
 }
+
+
 
 message UavList {
     repeated Uav uavs = 1;
@@ -77,6 +81,14 @@ message Coordinates{
     double z = 3;
 }
 
+
 message Number{
     int32 num = 1;
 }
+
+
+message UavSetSpeed{
+    int32 id = 1;
+    double speed = 2;
+}
+

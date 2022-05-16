@@ -192,6 +192,9 @@ void DroCIManager::launchSimulator() {
         EV << "End" << endl;
     }
 
+    setDesiredSpeed();
+    //updateWaypoints();
+
    //insertUAV(Coord(1000,1000,3), Coord(0,5,7), 20.0, 10.0);
 
     //number = getnumberCurrentUAV();
@@ -392,5 +395,68 @@ void DroCIManager::insertWaypoint(){
 
 
     grpc::Status status = stub->InsertWaypoints(&clientContext, *waypointlist, &empty);
+}
+
+
+void DroCIManager::setDesiredSpeed(){
+   EV << "setDesiredSpeed is called" << endl;
+
+
+   airmobisim::UavSetSpeed* uavsetspeed = new UavSetSpeed;
+   grpc::ClientContext clientcontext;
+
+   google::protobuf::Empty empty;
+
+   uavsetspeed->set_id(0);
+   uavsetspeed->set_speed(40);
+
+   grpc::Status status = stub->SetDesiredSpeed(&clientcontext, *uavsetspeed, &empty);
+
+   if (!status.ok()){
+
+        error("setDesiredSpeed has failed!");
+     }
+
+
+}
+
+
+
+void DroCIManager::updateWaypoints(){
+
+    EV << "UpdateWaypoint is called"<<endl;
+
+    airmobisim::WaypointList* waypointlist = new WaypointList;
+
+    grpc::ClientContext clientContext;
+    google::protobuf::Empty empty;
+
+    //TODO:Needs to be change! Add a for loop!
+    airmobisim::Waypoint* waypoint1 =  waypointlist->add_waypoint();
+    airmobisim::Waypoint* waypoint2 =  waypointlist->add_waypoint();
+
+    waypointlist->set_id(0);
+
+    // Needs to be changed in the future, these are just example values.
+    waypoint1->set_index(0);
+    waypoint1->set_x(6.5);
+    waypoint1->set_y(10);
+    waypoint1->set_z(3);
+
+    waypoint2->set_index(1);
+    waypoint2->set_x(6.8);
+    waypoint2->set_y(10);
+    waypoint2->set_z(3);
+
+    grpc::Status status = stub->UpdateWaypoints(&clientContext, *waypointlist, &empty);
+
+
+    if (!status.ok()){
+
+          error("UpdateWaypoints has failed!");
+       }
+
+
+
 }
 
