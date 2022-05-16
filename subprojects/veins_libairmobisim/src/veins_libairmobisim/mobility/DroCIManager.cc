@@ -123,7 +123,7 @@ void DroCIManager::startAirMobiSim() {
         signal(SIGINT, SIG_IGN);
 
         //int r = execl("/bin/sh", "sh", "-c", "./launchAirMobiSim.sh", NULL);
-        int r = execl("/bin/sh", "sh", "-c", "airmobisim.py --omnetpp", NULL); // This is the PID we check
+        int r = execl("/bin/sh", "sh", "-c", "cd $AIRMOBISIMHOME && poetry run airmobisim.py --omnetpp", NULL); // This is the PID we check
 
        //int r = execl("/bin/sh", "sh", "-c", "./abel.py", NULL);
 
