@@ -65,6 +65,7 @@ makefiles:
 
 clean:
 	@cd subprojects/veins_libairmobisim && $(MAKE) clean
+	@rm -f subprojects/veins_libairmobisim/airmobisim.proto
 ifdef MODE
 	@cd src && $(MAKE) clean
 else
