@@ -28,8 +28,8 @@ class DroCIManager : public omnetpp::cSimpleModule
 protected:
     void initialize(int stage) override;
     void handleMessage(omnetpp::cMessage *msg) override;
-    void updateModulePosition(cModule* mod, const Coord& p, double speed); // TODO: Include heading here
-    void addModule(std::string nodeId, std::string type, std::string name, std::string displayString, const Coord& position, double speed, double length, double height, double width); // TODO: Include heading here
+    void updateModulePosition(cModule* mod, const Coord& p, double speed, double angle);
+    void addModule(std::string nodeId, std::string type, std::string name, std::string displayString, const Coord& position, double speed, double angle, double length, double height, double width);
     int numInitStages() const override
     {
         return std::max(cSimpleModule::numInitStages(), 2);
@@ -37,10 +37,10 @@ protected:
 private:
     void launchSimulator();
     void executeOneTimestep();
-    void preInitializeModule(cModule* mod, const std::string& nodeId, const Coord& position, double speed);
-    void processUavSubscription(std::string id, Coord p, double speed);
+    void preInitializeModule(cModule* mod, const std::string& nodeId, const Coord& position, double speed, double angle);
+    void processUavSubscription(std::string id, Coord p, double speed, double angle);
     cModule* getManagedModule(std::string nodeId);
-    void insertUAV(Coord startPosition, Coord endPosition, double startAngle, double speed);
+    void insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, double speed);
     void insertWaypoint();
     int getnumberCurrentUAV();
     void setDesiredSpeed();

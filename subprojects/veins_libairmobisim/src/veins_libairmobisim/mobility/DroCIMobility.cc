@@ -55,7 +55,8 @@ void DroCIMobility::handleMessage(cMessage *msg) {
 
 }
 
-void DroCIMobility::preInitialize(std::string external_id, const Coord& position, double speed) { //TODO: Include heading
+void DroCIMobility::preInitialize(std::string external_id, const Coord& position, double speed, double angle) {
+    Heading heading_new(angle);
 
     this->external_id = external_id;
     this->lastUpdate = 0;
@@ -63,25 +64,32 @@ void DroCIMobility::preInitialize(std::string external_id, const Coord& position
     this->speed = speed;
     this->hostPositionOffset = par("hostPositionOffset");
     this->setHostSpeed = par("setHostSpeed");
+    this->heading = heading_new;
 
     Coord nextPos = calculateHostPosition(roadPosition);
     nextPos.z = move.getStartPosition().z;
 
     move.setStart(nextPos);
-    /* move.setDirectionByVector(heading.toCoord());
+    move.setDirectionByVector(heading.toCoord());
     move.setOrientationByVector(heading.toCoord());
-    */
+
+
     if (this->setHostSpeed) {
         move.setSpeed(speed);
     }
 
     isPreInitialized = true;
 }
-void DroCIMobility::nextPosition(const Coord& position, double speed) {
+void DroCIMobility::nextPosition(const Coord& position, double speed, double angle) {
+    Heading heading_new(angle);
+
     EV_DEBUG << "nextPosition " << position.x << " " << position.y << " " << speed << " " << std::endl;
+    //std::cout << "nextPosition " << position.x << " " << position.y << " " << speed << " " << angle << " " << std::endl;
     isPreInitialized = false;
     this->roadPosition = position;
     this->speed = speed;
+    this->heading = heading_new;
+
     changePosition();
 }
 void DroCIMobility::changePosition() {
@@ -109,8 +117,8 @@ void DroCIMobility::changePosition() {
     }
 
     move.setStart(Coord(nextPos.x, nextPos.y, move.getStartPosition().z)); // keep z position
-    //move.setDirectionByVector(heading.toCoord());
-    //move.setOrientationByVector(heading.toCoord());
+    move.setDirectionByVector(heading.toCoord());
+    move.setOrientationByVector(heading.toCoord());
     if (this->setHostSpeed) {
         move.setSpeed(speed);
     }
@@ -134,13 +142,13 @@ void DroCIMobility::fixIfHostGetsOutside() {
 }
 
 Coord DroCIMobility::calculateHostPosition(const Coord& vehiclePos) const {
-   /* Coord corPos;
+    Coord corPos;
     if (hostPositionOffset >= 0.001) {
         // calculate antenna position of vehicle according to antenna offset
         corPos = vehiclePos - (heading.toCoord() * hostPositionOffset);
     }
     else {
         corPos = vehiclePos;
-    }*/ //TODO
+    }
     return vehiclePos;
 }

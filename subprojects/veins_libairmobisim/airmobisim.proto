@@ -52,6 +52,7 @@ message Uav {
     double y = 3;
     double z = 4;
     double speed = 5;
+    double angle = 6;
 }
 
 message Response{

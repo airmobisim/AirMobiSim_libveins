@@ -17,6 +17,7 @@
 #include "veins/base/utils/Coord.h"
 #include "veins/base/modules/BaseMobility.h"
 #include "veins/base/utils/FindModule.h"
+#include "veins/base/utils/Heading.h"
 
 using namespace omnetpp;
 using namespace veins;
@@ -33,9 +34,9 @@ class DroCIMobility  : public BaseMobility {
     DroCIMobility():BaseMobility(),isPreInitialized(false) {
 
     }
-    void preInitialize(std::string external_id, const Coord& position, double speed); //TODO: Include heading;
+    void preInitialize(std::string external_id, const Coord& position, double speed, double angle);
     virtual void changePosition();
-    void nextPosition(const Coord& position, double speed);
+    void nextPosition(const Coord& position, double speed, double angle);
   protected:
     cOutVector currentPosXVec; /**< vector plotting posx */
     cOutVector currentPosYVec; /**< vector plotting posy */
@@ -52,7 +53,7 @@ class DroCIMobility  : public BaseMobility {
     simtime_t lastUpdate; /**< updated by nextPosition() */
     Coord roadPosition; /**< position of front bumper, updated by nextPosition() */
     double speed; /**< updated by nextPosition() */
-
+    Heading heading; /**< updated by nextPosition() */
   private:
 
     /**
