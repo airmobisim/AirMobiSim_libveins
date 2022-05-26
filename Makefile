@@ -32,7 +32,9 @@ endif
 
 # default target
 all: src/Makefile $(ADDL_TARGETS)
-	
+
+	@if [ -d $(AIRMOBISIMHOME) ]; then echo "AIRMOBISIMHOME is set correctly!"; else echo "AIRMOBISIMHOME is not set!"; fi
+	@ln $(AIRMOBISIMHOME)/proto/airmobisim.proto subprojects/veins_libairmobisim/airmobisim.proto
 ifdef MODE
 	@cd src && $(MAKE)
 else
@@ -63,6 +65,7 @@ makefiles:
 
 clean:
 	@cd subprojects/veins_libairmobisim && $(MAKE) clean
+	@rm -f subprojects/veins_libairmobisim/airmobisim.proto
 ifdef MODE
 	@cd src && $(MAKE) clean
 else

@@ -5,6 +5,9 @@ src/*.dylib
 src/**/*_m.h
 src/**/*_m.cc
 
+subprojects/veins_libairmobisim/airmobisim.proto
+
+
 doc/doxy
 doc/neddoc
 
