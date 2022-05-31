@@ -34,6 +34,9 @@ endif
 all: src/Makefile $(ADDL_TARGETS)
 
 	@if [ -d $(AIRMOBISIMHOME) ]; then echo "AIRMOBISIMHOME is set correctly!"; else echo "AIRMOBISIMHOME is not set!"; fi
+ifneq (,$(wildcard subprojects/veins_libairmobisim/airmobisim.proto))
+	@rm subprojects/veins_libairmobisim/airmobisim.proto
+endif
 	@ln $(AIRMOBISIMHOME)/proto/airmobisim.proto subprojects/veins_libairmobisim/airmobisim.proto
 ifdef MODE
 	@cd src && $(MAKE)

@@ -114,10 +114,6 @@ f.write('run_neds = %s\n' % repr(run_neds))
 f.write('run_imgs = %s\n' % repr(run_imgs))
 f.close()
 
-# Check whether proto files are compiled
-if not exists('src/veins_libairmobisim/proto/airmobisim.grpc.pb.cc') or not exists('src/veins_libairmobisim/proto/airmobisim.grpc.pb.h') or not exists('src/veins_libairmobisim/proto/airmobisim.pb.cc') or not exists('src/veins_libairmobisim/proto/airmobisim.pb.h'):
-	error('Proto files are not compiled - please run AirMobiSim/build.sh to generate them!')
-
 subprocess.check_call(['env', 'opp_makemake'] + makemake_flags, cwd='src')
 
 info('Configure done. You can now run "make".')
