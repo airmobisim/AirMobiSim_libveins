@@ -287,7 +287,7 @@ void DroCIManager::addModule(std::string nodeId, std::string type, std::string n
     if (!nodeType) throw cRuntimeError("Module Type \"%s\" not found", type.c_str());
 
     // TODO: this trashes the vectsize member of the cModule, although nobody seems to use it
-    cModule* mod = nodeType->create(name.c_str(), parentmod, nodeVectorIndex, nodeVectorIndex);
+    cModule* mod = nodeType->create(name.c_str(), parentmod, nodeVectorIndex);
 
     mod->finalizeParameters();
     if (displayString.length() > 0) {
