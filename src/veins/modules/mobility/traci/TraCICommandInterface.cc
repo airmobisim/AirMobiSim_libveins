@@ -280,9 +280,13 @@ double TraCICommandInterface::Road::getMeanSpeed()
     return traci->genericGetDouble(CMD_GET_EDGE_VARIABLE, roadId, LAST_STEP_MEAN_SPEED, RESPONSE_GET_EDGE_VARIABLE);
 }
 
-std::string TraCICommandInterface::Road::getStreetName()
+std::string TraCICommandInterface::Road::getName()
 {
-    return traci->genericGetString(CMD_GET_EDGE_VARIABLE, roadId, VAR_STREET_NAME, RESPONSE_GET_EDGE_VARIABLE);
+    const auto apiVersion = traci->versionConfig.version;
+    if (apiVersion <= 18) {
+        throw cRuntimeError("TraCICommandInterface::Road::getName requires SUMO 1.1.0 or newer");
+    }
+    return traci->genericGetString(CMD_GET_EDGE_VARIABLE, roadId, VAR_NAME, RESPONSE_GET_EDGE_VARIABLE);
 }
 
 std::string TraCICommandInterface::Vehicle::getRoadId()
@@ -1286,6 +1290,15 @@ std::pair<double, double> TraCICommandInterface::getLonLat(const Coord& coord)
     response >> convPosLat;
 
     return std::make_pair(convPosLon, convPosLat);
+}
+
+void TraCICommandInterface::setOrder(int32_t order)
+{
+    uint8_t variableId = 0x03;
+    uint8_t variableType = TYPE_COMPOUND;
+    int32_t count = 2;
+    TraCIBuffer buf = connection.query(CMD_SETORDER, TraCIBuffer() << variableId << variableType << count << order);
+    ASSERT(buf.eof());
 }
 
 std::tuple<std::string, double, uint8_t> TraCICommandInterface::getRoadMapPos(const Coord& coord)
