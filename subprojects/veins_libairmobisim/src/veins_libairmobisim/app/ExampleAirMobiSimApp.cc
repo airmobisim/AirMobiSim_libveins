@@ -63,12 +63,7 @@ void ExampleAirMobiSimApp::onWSA(DemoServiceAdvertisment *wsa) {
 }
 
 void ExampleAirMobiSimApp::handleSelfMsg(cMessage *msg) {
-    switch (msg->getKind()) {
-        case SEND_BEACON_EVT: {
-            delete msg;
-            return;
-        }
-    }
+    return;
     DemoBaseApplLayer::handleSelfMsg(msg);
     // this method is for self messages (mostly timers)
     // it is important to call the DemoBaseApplLayer function for BSM and WSM transmission
