@@ -286,9 +286,13 @@ void DroCIManager::addModule(std::string nodeId, std::string type, std::string n
     cModuleType* nodeType = cModuleType::get(type.c_str());
     if (!nodeType) throw cRuntimeError("Module Type \"%s\" not found", type.c_str());
 
-    // TODO: this trashes the vectsize member of the cModule, although nobody seems to use it
+#if OMNETPP_BUILDNUM >= 1525
+    parentmod->setSubmoduleVectorSize(name.c_str(), nodeVectorIndex + 1);
     cModule* mod = nodeType->create(name.c_str(), parentmod, nodeVectorIndex);
-
+#else
+    // TODO: this trashes the vectsize member of the cModule, although nobody seems to use it
+    cModule* mod = nodeType->create(name.c_str(), parentmod, nodeVectorIndex, nodeVectorIndex);
+#endif
     mod->finalizeParameters();
     if (displayString.length() > 0) {
         mod->getDisplayString().parse(displayString.c_str());
