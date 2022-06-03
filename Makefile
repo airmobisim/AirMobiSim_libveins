@@ -33,7 +33,10 @@ endif
 # default target
 all: src/Makefile $(ADDL_TARGETS)
 
-	@if [ -d $(AIRMOBISIMHOME) ]; then echo "AIRMOBISIMHOME is set correctly!"; else echo "AIRMOBISIMHOME is not set!"; fi
+ifndef AIRMOBISIMHOME
+	$(error AIRMOBISIMHOME is not set! Please run the following commands: 'export AIRMOBISIMHOME=/path/to/your/AirMobiSim' )
+endif
+
 ifneq (,$(wildcard subprojects/veins_libairmobisim/airmobisim.proto))
 	@rm subprojects/veins_libairmobisim/airmobisim.proto
 endif
