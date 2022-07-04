@@ -95,3 +95,9 @@ subprojects/veins_libairmobisim/conanbuildinfo.mak
 subprojects/veins_libairmobisim/conanbuildinfo.txt
 subprojects/veins_libairmobisim/conaninfo.txt
 **/.log
+
+
+conanbuildinfo.mak
+conanbuildinfo.txt
+conaninfo.txt
+conan.lock

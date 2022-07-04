@@ -22,14 +22,14 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
 
-echo "WARNING: the run script is deprecated in favor of bin/veins_run. Redirecting." >&2
-echo "WARNING: the run script is deprecated in favor of bin/veins_run. Redirecting."
+echo "WARNING: the run script is deprecated in favor of bin/veins_libairmobisim_run. Redirecting." >&2
+echo "WARNING: the run script is deprecated in favor of bin/veins_libairmobisim_run. Redirecting."
 
-test -f $(dirname "$0")/bin/veins_run || echo "ERROR: bin/veins_run does not exist; this will likely fail. Did you run 'make bin/veins_run'?" >&2
-test -f $(dirname "$0")/bin/veins_run || echo "ERROR: bin/veins_run does not exist; this will likely fail. Did you run 'make bin/veins_run'?"
+test -f $(dirname "$0")/bin/veins_libairmobisim_run || echo "ERROR: bin/veins_libairmobisim_run does not exist; this will likely fail. Did you run 'make bin/veins_inet_run'?" >&2
+test -f $(dirname "$0")/bin/veins_libairmobisim_run || echo "ERROR: bin/veins_libairmobisim_run does not exist; this will likely fail. Did you run 'make bin/veins_inet_run'?"
 
-$(dirname "$0")/bin/veins_run "$@"
+$(dirname "$0")/bin/veins_libairmobisim_run "$@"
 
-echo "WARNING: the run script is deprecated in favor of bin/veins_run. Redirection done." >&2
-echo "WARNING: the run script is deprecated in favor of bin/veins_run. Redirection done."
+echo "WARNING: the run script is deprecated in favor of bin/veins_libairmobisim_run. Redirection done." >&2
+echo "WARNING: the run script is deprecated in favor of bin/veins_libairmobisim_run. Redirection done."
 
