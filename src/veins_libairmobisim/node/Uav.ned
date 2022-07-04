@@ -35,8 +35,8 @@ module Uav
           parameters:
                @display("p=60,166");
         }
-        //drociMobility: <drocimobilityType> like org.car2x.veins.base.modules.IMobility {
-        drociMobility: DroCIMobility {
+        drociMobility: <drocimobilityType> like org.car2x.veins.base.modules.IMobility {
+        //drociMobility: DroCIMobility {
             parameters:
                 @display("p=130,172;i=block/cogwheel");
         }

@@ -36,10 +36,10 @@ network SimpleScenarioNetwork
                 playgroundSizeZ = veins_eval_by_version(veins_omnetpp_buildnum(), "playgroundSizeZ", 1525, "parent.playgroundSizeZ");
                 @display("p=2000,2000;i=misc/globe");
         }
-		manager: DroCIManager {
+		dManager: DroCIManager {
             @display("p=50,138");
         }
-		tManager: TraCIScenarioManagerForker {
+		manager: TraCIScenarioManagerForker {
             parameters:
                 @display("p=512,128");
         }
