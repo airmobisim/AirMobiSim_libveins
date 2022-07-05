@@ -38,8 +38,19 @@ void UavInserter::initialize(int stage){
 void UavInserter::handleMessage(cMessage *msg) {
     if(msg == insertUavMessage) {
         auto count = drociManager->getCurrentUAVCount();
-        auto listOfUavs = drociManager->getManagedHosts();
-        //drociManager->insertUAV(insertUavId, startPosition, endPosition, startAngle, speed)
+        std::cout << "Got " <<count <<  " UAVs in simulation"<< std::endl;
+        airmobisim::UavList listOfUavs = drociManager->getManagedHosts();
+        for (uint32_t i = 0; i < listOfUavs.uavs_size(); i++) {
+            Coord position;
+            double angle;
+            position.x = listOfUavs.uavs(i).x();
+            position.y = listOfUavs.uavs(i).y();
+            position.z = listOfUavs.uavs(i).z();
+            angle = listOfUavs.uavs(i).angle();
+            std::cout << "have a UAV: ID " << listOfUavs.uavs(i).id()
+                    << " at (x,y,z) (" << position.x << ", " << position.y
+                    << ", " << position.z << ")" << std::endl;
+        }
         std::cout << "done!" << std::endl;
     }
 }
