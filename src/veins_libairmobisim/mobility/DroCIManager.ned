@@ -29,7 +29,10 @@ simple DroCIManager {
     parameters:
     	@class(airmobisim::DroCIManager);
         double updateInterval @unit("s") = default(1s);  // time interval of hosts' position updates
-        string moduleType = default("veins_libairmobisim.node.Uav");  // module type to be used in the simulation for each managed vehicle
         string host = default("localhost");  // server hostname
         double simTimeLimit @unit("s");
+        
+       	string moduleType = default("veins_libairmobisim.node.Uav");  // module type to be used in the simulation for each managed vehicle
+        string moduleName = "uav";
+        
 }

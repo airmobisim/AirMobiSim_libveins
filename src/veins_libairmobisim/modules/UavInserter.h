@@ -41,6 +41,7 @@ class UavInserter : public cSimpleModule
 
   private:
     DroCIManager* drociManager;
-    cMessage* insertUavMessage;
+    cMessage* queryDataMsg;
+    cMessage* insertNewUavMsg;
 };
 }

@@ -51,7 +51,7 @@ protected:
     void initialize(int stage) override;
     void handleMessage(omnetpp::cMessage *msg) override;
     void updateModulePosition(cModule* mod, const Coord& p, double speed, double angle);
-    void addModule(std::string nodeId, std::string type, std::string name, std::string displayString, const Coord& position, double speed, double angle, double length, double height, double width);
+    void addModule(std::string nodeId, std::string moduleType, std::string moduleName, std::string displayString, const Coord& position, double speed, double angle, double length, double height, double width);
     int numInitStages() const override {
         return std::max(cSimpleModule::numInitStages(), 2);
     }
@@ -90,8 +90,11 @@ private:
     omnetpp::cMessage *checkConnectionMsg;
     int checkConnectionMsgKind = 1337;
     std::string moduleType;
+    std::string moduleName;
     size_t nextNodeVectorIndex; /**< next OMNeT++ module vector index to use */
     std::map<std::string, cModule*> hosts; /**< vector of all hosts managed by us */
+
+
 
 protected:
     void startAirMobiSim();

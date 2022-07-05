@@ -55,7 +55,7 @@ void DroCIManager::initialize(int stage)
         updateInterval = par("updateInterval").doubleValue();
         simTimeLimit = 55;//par(""); //TODO
         moduleType = par("moduleType").stringValue();
-
+        moduleName = par("moduleName").stringValue();
         totalsteps = simTimeLimit / updateInterval;
 
         // Do not create children here since OMNeT++ will try to initialize them again
@@ -243,7 +243,7 @@ cModule* DroCIManager::getManagedModule(std::string nodeId) {
     return hosts[nodeId];
 }
 
-void DroCIManager::addModule(std::string nodeId, std::string type, std::string name, std::string displayString, const Coord& position, double speed, double angle, double length, double height, double width) {
+void DroCIManager::addModule(std::string nodeId, std::string moduleType, std::string moduleName, std::string displayString, const Coord& position, double speed, double angle, double length, double height, double width) {
 
     std::cout << "addModule called for module id " << nodeId << std::endl;
     int32_t nodeVectorIndex = nextNodeVectorIndex++;
@@ -251,15 +251,15 @@ void DroCIManager::addModule(std::string nodeId, std::string type, std::string n
     cModule* parentmod = getParentModule();
     if (!parentmod) throw cRuntimeError("Parent Module not found");
 
-    cModuleType* nodeType = cModuleType::get(type.c_str());
-    if (!nodeType) throw cRuntimeError("Module Type \"%s\" not found", type.c_str());
+    cModuleType* nodeType = cModuleType::get(moduleType.c_str());
+    if (!nodeType) throw cRuntimeError("Module Type \"%s\" not found", moduleType.c_str());
 
 #if OMNETPP_BUILDNUM >= 1525
     parentmod->setSubmoduleVectorSize(name.c_str(), nodeVectorIndex + 1);
     cModule* mod = nodeType->create(name.c_str(), parentmod, nodeVectorIndex);
 #else
     // TODO: this trashes the vectsize member of the cModule, although nobody seems to use it
-    cModule* mod = nodeType->create(name.c_str(), parentmod, nodeVectorIndex, nodeVectorIndex);
+    cModule* mod = nodeType->create(moduleName.c_str(), parentmod, nodeVectorIndex, nodeVectorIndex);
 #endif
     mod->finalizeParameters();
     if (displayString.length() > 0) {
@@ -374,6 +374,9 @@ void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosi
     if (!status.ok()){
            error("DroCIManager::insertUAV() has failed!");
     }
+    auto width = 1.0;
+    auto length = 1.0;
+    addModule(""+insertUavId, moduleType.c_str(), moduleName.c_str(), "", startPosition, speed, startAngle, length, startPosition.z, width);
 }
 
 

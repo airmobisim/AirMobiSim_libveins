@@ -28,15 +28,17 @@ Define_Module(airmobisim::UavInserter);
 
 void UavInserter::initialize(int stage){
     if (stage == 0) {
-        insertUavMessage = new cMessage("Insert UAV");
+        queryDataMsg = new cMessage("Query UAV data");
+        insertNewUavMsg = new cMessage("Insert new UAV");
     } else if (stage == 1) {
         drociManager =  veins::FindModule<DroCIManager*>::findGlobalModule();
-        scheduleAt(simTime() + 5, insertUavMessage);
+        scheduleAt(simTime() + 2, queryDataMsg);
+        scheduleAt(simTime() + 5, insertNewUavMsg);
     }
 }
 
 void UavInserter::handleMessage(cMessage *msg) {
-    if(msg == insertUavMessage) {
+    if(msg == queryDataMsg) {
         auto count = drociManager->getCurrentUAVCount();
         std::cout << "Got " <<count <<  " UAVs in simulation"<< std::endl;
         airmobisim::UavList listOfUavs = drociManager->getManagedHosts();
@@ -52,5 +54,18 @@ void UavInserter::handleMessage(cMessage *msg) {
                     << ", " << position.z << ")" << std::endl;
         }
         std::cout << "done!" << std::endl;
+    } else if (msg == insertNewUavMsg){
+        auto insertUavId = 2;
+        Coord startPosition;
+        startPosition.x = 0;
+        startPosition.y = 10;
+        startPosition.z = 5;
+        Coord endPosition;
+        endPosition.x = 1000;
+        endPosition.y = 10;
+        endPosition.z = 5;
+        auto startAngle = 90;
+        auto speed = 20;
+        drociManager->insertUAV(insertUavId, startPosition, endPosition, startAngle, speed);
     }
 }
