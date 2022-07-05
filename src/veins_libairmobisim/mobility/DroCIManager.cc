@@ -298,9 +298,6 @@ void DroCIManager::updateModulePosition(cModule* mod, const Coord& p, double spe
 }
 
 int DroCIManager::getCurrentUAVCount() {
-
-    int currentUAV = 0;
-
     airmobisim::Number number_uav;
     google::protobuf::Empty empty;
     grpc::ClientContext clientcontext;
@@ -312,8 +309,7 @@ int DroCIManager::getCurrentUAVCount() {
     if (!status.ok()) {
         error("DroCIManager::getnumberCurrentUAV() has failed!");
     }
-
-    return currentUAV;
+    return number_uav.num();
 }
 
 
