@@ -146,7 +146,6 @@ airmobisim::UavList DroCIManager::getManagedHosts() {
 }
 
 void DroCIManager::launchSimulator() {
-    std::cout << "LAUNCH!!!!!!!!" << std::endl;
     channel = CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
     stub = airmobisim::AirMobiSim::NewStub(channel);
     auto state = channel->GetState(true);
@@ -199,7 +198,6 @@ void DroCIManager::launchSimulator() {
 void DroCIManager::executeOneTimestep()
 {
     EV_DEBUG << "Triggering AirMobiSim simulator advance to t=" << simTime() << endl;
-    std::cout << "executeOneTimestep()" << std::endl;
     airmobisim::ResponseQuery response;
     google::protobuf::Empty empty;
     grpc::ClientContext clientContext;
