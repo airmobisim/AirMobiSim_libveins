@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2016 David Eckhoff <david.eckhoff@fau.de>
+// Copyright (C) 2022 Tobias Hardes <tobias.hardes@uni-paderborn.de>
 //
 // Documentation for these modules is at http://veins.car2x.org/
 //
@@ -19,6 +19,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
+
 #include "ExampleAirMobiSimApp.h"
 
 #include "veins/modules/application/traci/TraCIDemo11pMessage_m.h"

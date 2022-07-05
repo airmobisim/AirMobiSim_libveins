@@ -1,5 +1,6 @@
 //
-// Copyright (C) 2022 Tobias Hardes <tobias.hardes@uni-paderborn.de>
+// Copyright (C) 2022 Tobias Hardes <tobias.hardes@upb.de>
+// Copyright (C) 2022 Dalisha Logan <dalisha@mail.uni-paderborn.de>
 //
 // Documentation for these modules is at http://veins.car2x.org/
 //
@@ -20,24 +21,23 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-#include "veins/modules/application/ieee80211p/DemoBaseApplLayer.h"
+#include "UavInserter.h"
 
-using namespace omnetpp;
-using namespace veins;
-namespace airmobisim {
-class ExampleAirMobiSimApp : public DemoBaseApplLayer {
-public:
-    void initialize(int stage) override;
-    void finish() override;
+using namespace airmobisim;
+Define_Module(UavInserter);
 
-protected:
-    void onBSM(DemoSafetyMessage* bsm) override;
-    void onWSM(BaseFrame1609_4* wsm) override;
-    void onWSA(DemoServiceAdvertisment* wsa) override;
+void UavInserter::initialize(int stage){
+    if (stage == 0) {
+        insertUavMessage = new cMessage("Insert UAV");
+    } else if (stage == 1) {
+        drociManager =  dynamic_cast<DroCIManager*>(getParentModule()->getSubmodule("drociManager"));
 
-    void handleSelfMsg(cMessage* msg) override;
-    void handlePositionUpdate(cObject* obj) override;
-};
-
+        scheduleAt(simTime() + 5, insertUavMessage);
+    }
 }
 
+void UavInserter::handleMessage(cMessage *msg) {
+    if(msg == insertUavMessage) {
+        //drociManager->insertUAV(insertUavId, startPosition, endPosition, startAngle, speed)
+    }
+}

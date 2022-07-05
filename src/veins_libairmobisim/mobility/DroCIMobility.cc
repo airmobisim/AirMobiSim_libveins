@@ -1,6 +1,7 @@
 //
-// Copyright (C) 2021 Tobias Hardes <tobias.hardes@upb.de>
-// Copyright (C) 2006-2012 Christoph Sommer <christoph.sommer@uibk.ac.at>
+// Copyright (C) 2022 Tobias Hardes <tobias.hardes@upb.de>
+// Copyright (C) 2022 Dalisha Logan <dalisha@mail.uni-paderborn.de>
+// Copyright (C) 2022 Christoph Sommer <sommer@cms-labs.org>
 //
 // Documentation for these modules is at http://veins.car2x.org/
 //
@@ -20,6 +21,7 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
+
 #include "DroCIMobility.h"
 
 using namespace airmobisim;

@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2021 Tobias Hardes <Tobias.Hardes@upb.de>
+// Copyright (C) 2022 Tobias Hardes <tobias.hardes@uni-paderborn.de>
 //
 // Documentation for these modules is at http://veins.car2x.org/
 //

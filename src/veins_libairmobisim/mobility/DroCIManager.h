@@ -1,3 +1,26 @@
+//
+// Copyright (C) 2022 Tobias Hardes <tobias.hardes@upb.de>
+// Copyright (C) 2022 Dalisha Logan <dalisha@mail.uni-paderborn.de>
+// Copyright (C) 2022 Christoph Sommer <sommer@cms-labs.org>
+//
+// Documentation for these modules is at http://veins.car2x.org/
+//
+// SPDX-License-Identifier: GPL-2.0-or-later
+//
+// This program is free software; you can redistribute it and/or modify
+// it under the terms of the GNU General Public License as published by
+// the Free Software Foundation; either version 2 of the License, or
+// (at your option) any later version.
+//
+// This program is distributed in the hope that it will be useful,
+// but WITHOUT ANY WARRANTY; without even the implied warranty of
+// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+// GNU General Public License for more details.
+//
+// You should have received a copy of the GNU General Public License
+// along with this program; if not, write to the Free Software
+// Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+//
 #pragma once
 
 #include <map>
@@ -39,12 +62,19 @@ private:
     void executeOneTimestep();
     void preInitializeModule(cModule* mod, const std::string& nodeId, const Coord& position, double speed, double angle);
     void processUavSubscription(std::string id, Coord p, double speed, double angle);
-    cModule* getManagedModule(std::string nodeId);
+
+public:
     void insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, double speed);
-    void insertWaypoint();
-    int getnumberCurrentUAV();
-    void setDesiredSpeed();
+    void insertWaypoint(double x, double y, double z, int index = 0);
+
     void updateWaypoints();
+
+    void deleteUAV(int deleteUavId);
+
+    void setDesiredSpeed();
+
+    int getCurrentUAVCount();
+    cModule* getManagedModule(std::string nodeId);
 
 private:
     std::shared_ptr<grpc::Channel> channel;
@@ -61,8 +91,8 @@ private:
     std::string moduleType;
     size_t nextNodeVectorIndex; /**< next OMNeT++ module vector index to use */
     std::map<std::string, cModule*> hosts; /**< vector of all hosts managed by us */
-protected:
 
+protected:
     void startAirMobiSim();
     pid_t pid;
 };

@@ -1,7 +1,7 @@
 //
-// Copyright (C) 2021 Tobias Hardes <tobias.hardes@upb.de>
-// Copyright (C) 2021 Dalisha Logan
-// Copyright (C) 2006-2017 Christoph Sommer <sommer@ccs-labs.org>
+// Copyright (C) 2022 Tobias Hardes <tobias.hardes@upb.de>
+// Copyright (C) 2022 Dalisha Logan <dalisha@mail.uni-paderborn.de>
+// Copyright (C) 2022 Christoph Sommer <sommer@cms-labs.org>
 //
 // Documentation for these modules is at http://veins.car2x.org/
 //
@@ -112,35 +112,22 @@ void DroCIManager::handleMessage(cMessage* msg)
 
 }
 void DroCIManager::startAirMobiSim() {
-
-    //std::cout << "OMNeT++ my pID is " << getpid() << std::endl;
-    //std::cout << "spawn" << std::endl;
-
     pid = fork();
-    //std::cout << "pid is " << pid << std::endl;
 
     if (pid == 0) {
         signal(SIGINT, SIG_IGN);
 
-        //int r = execl("/bin/sh", "sh", "-c", "./launchAirMobiSim.sh", NULL);
-
         int r = execl("/bin/sh", "sh", "-c", "cd $AIRMOBISIMHOME && poetry run ./airmobisim.py --omnetpp", NULL);
 
-
-       //int r = execl("/bin/sh", "sh", "-c", "./abel.py", NULL);
-
-        std::cout << "execl done" << pid << std::endl;
         if (r == -1) {
             throw cRuntimeError("system failed");
         }
         if (WEXITSTATUS(r) != 0) {
             throw cRuntimeError("cannot run");
-
         }
         throw cRuntimeError("returned from exec");
         exit(1);
     }
-
     scheduleAt(simTime() + updateInterval, launchSimulatorMsg);
     scheduleAt(simTime() + updateInterval, checkConnectionMsg);
 }
@@ -149,25 +136,16 @@ void DroCIManager::startAirMobiSim() {
 
 
 void DroCIManager::launchSimulator() {
-
-
     channel = CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
     stub = airmobisim::AirMobiSim::NewStub(channel);
-
     auto state = channel->GetState(true);
 
-
-
-   while(state != GRPC_CHANNEL_READY){
-
+    while(state != GRPC_CHANNEL_READY){
        if(!channel->WaitForStateChange(state,std::chrono::system_clock::now() + std::chrono::seconds(15))){
            error("Could not connect to gRPC");
         }
        state = channel->GetState(true);
    }
-
-
-    int number = 0;
 
     airmobisim::UavList managedHosts;
     //airmobisim::ResponseQuery managedHosts;
@@ -200,30 +178,16 @@ void DroCIManager::launchSimulator() {
         std::cout << status.error_code() << ": " << status.error_message()
                 << std::endl;
     }
-    std::cout << "done" << std::endl;
-
-
     if (count < totalsteps) {
         scheduleAt(simTime() + updateInterval, executeOneTimestepTrigger);
     } else {
         EV << "End" << endl;
     }
-
-    //setDesiredSpeed();
-    //updateWaypoints();
-
-   //insertUAV(Coord(1000,1000,3), Coord(0,5,7), 20.0, 10.0);
-
-    //number = getnumberCurrentUAV();
-    //EV << "This is the number of UAVs:" << number << endl;
-
 }
 
 void DroCIManager::executeOneTimestep()
 {
     EV_DEBUG << "Triggering AirMobiSim simulator advance to t=" << simTime() << endl;
-
-    int number = 0;
 
     airmobisim::ResponseQuery response;
     google::protobuf::Empty empty;
@@ -233,10 +197,8 @@ void DroCIManager::executeOneTimestep()
     if (status.ok()) {
         for (uint32_t i = 0; i < response.responses_size(); i++) {
             EV << "Length of response" << response.responses_size() << endl;
-            EV << "Getting for " << response.responses(i).id()
-                      << " subscription results" << endl;
+            EV << "Getting for " << response.responses(i).id() << " subscription results" << endl;
             EV << "Position" << response.responses(i).y() << endl;
-
 
             std::stringstream ss;
             ss << response.responses(i).id();
@@ -244,8 +206,7 @@ void DroCIManager::executeOneTimestep()
         }
     } else {
         error("DroCIManager::executeOneTimestep() has failed");
-        std::cout << status.error_code() << ": " << status.error_message()
-                << std::endl;
+        std::cout << status.error_code() << ": " << status.error_message() << std::endl;
     }
     
     count = count + 1;
@@ -329,27 +290,53 @@ void DroCIManager::updateModulePosition(cModule* mod, const Coord& p, double spe
     }
 }
 
+int DroCIManager::getCurrentUAVCount() {
 
-int DroCIManager::getnumberCurrentUAV(){
+    int currentUAV = 0;
 
-  int currentUAV = 0;
+    airmobisim::Number number_uav;
+    google::protobuf::Empty empty;
+    grpc::ClientContext clientcontext;
 
-  airmobisim::Number number_uav;
-  google::protobuf::Empty empty;
-  grpc::ClientContext clientcontext;
+    grpc::Status status = stub->getNumberCurrentUAV(&clientcontext, empty, &number_uav);
 
-  grpc::Status status = stub->getNumberCurrentUAV(&clientcontext, empty, &number_uav);
+    if (!status.ok()) {
+        error("DroCIManager::getnumberCurrentUAV() has failed!");
 
-  if (!status.ok()){
-      error("DroCIManager::getnumberCurrentUAV() has failed!");
-
-  }
-
-
-  return currentUAV;
+    }
+    return currentUAV;
 }
 
 
+void DroCIManager::deleteUAV(int deleteUavId){
+   // Delete the UAV with given Id in AirMobiSim
+
+     EV << "This is my deleteUavId" << deleteUavId << endl;
+
+
+    airmobisim::Number nodeId;
+    google::protobuf::Empty empty;
+    grpc::ClientContext clientcontext;
+
+    nodeId.set_num(deleteUavId);
+
+    grpc::Status status = stub->DeleteUAV(&clientcontext, nodeId, &empty);
+    std::stringstream ss;
+    ss << deleteUavId;
+    std::cout << hosts.size() << std::endl;
+    std::cout << "ss.str() is " << ss.str() << std::endl;
+    auto it = hosts.find(ss.str());
+    //hosts.erase(it);
+    std::cout << hosts.size() << std::endl;
+
+    cModule *node = getManagedModule(ss.str());
+    node->deleteModule();
+
+   if (!status.ok()){
+       error("DroCIInetManager::deleteUAV failed");
+   }
+
+}
 
 
 void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, double speed){
@@ -377,22 +364,17 @@ void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosi
     startuav->set_angle(startAngle);
     startuav->set_speed(speed);
 
-
-
     grpc::Status status = stub->InsertUAV(&clientcontext, *startuav, &empty);
 
     if (!status.ok()){
            error("DroCIManager::insertUAV() has failed!");
-        }
-
-
-
-
+    }
 }
 
 
 
-void DroCIManager::insertWaypoint(){
+void DroCIManager::insertWaypoint(double x, double y, double z, int index){
+
 
     airmobisim::WaypointList* waypointlist = new WaypointList;
 
@@ -401,34 +383,23 @@ void DroCIManager::insertWaypoint(){
 
     //TODO:Needs to be change! Add a for loop!
     airmobisim::Waypoint* waypoint1 =  waypointlist->add_waypoint();
-    airmobisim::Waypoint* waypoint2 =  waypointlist->add_waypoint();
 
-    waypoint1->set_index(2);
-    waypoint1->set_x(4.6);
-    waypoint1->set_y(7.8);
-    waypoint1->set_z(9.7);
-
-    waypoint2->set_index(3);
-    waypoint2->set_x(4.5);
-    waypoint2->set_y(3.0);
-    waypoint2->set_z(10.0);
+    waypoint1->set_index(index);
+    waypoint1->set_x(x);
+    waypoint1->set_y(y);
+    waypoint1->set_z(z);
 
 
     grpc::Status status = stub->InsertWaypoints(&clientContext, *waypointlist, &empty);
 
-
     if (!status.ok()){
            error("DroCIManager::insertWaypoint() has failed!");
-        }
-
-
+    }
 }
 
 
 void DroCIManager::setDesiredSpeed(){
    EV << "setDesiredSpeed is called" << endl;
-
-
    airmobisim::UavSetSpeed* uavsetspeed = new UavSetSpeed;
    grpc::ClientContext clientcontext;
 
@@ -441,9 +412,7 @@ void DroCIManager::setDesiredSpeed(){
 
    if (!status.ok()){
         error("DroCIManager::setDesiredSpeed() has failed!");
-     }
-
-
+   }
 }
 
 
@@ -479,9 +448,6 @@ void DroCIManager::updateWaypoints(){
 
     if (!status.ok()){
           error("DroCIManager::updateWaypoints() has failed!");
-       }
-
-
-
+    }
 }
 

@@ -1,5 +1,6 @@
 //
-// Copyright (C) 2022 Tobias Hardes <tobias.hardes@uni-paderborn.de>
+// Copyright (C) 2022 Tobias Hardes <tobias.hardes@upb.de>
+// Copyright (C) 2022 Dalisha Logan <dalisha@mail.uni-paderborn.de>
 //
 // Documentation for these modules is at http://veins.car2x.org/
 //
@@ -20,24 +21,28 @@
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
 
-#include "veins/modules/application/ieee80211p/DemoBaseApplLayer.h"
+#ifndef __VEINS_LIBAIRMOBISIM_UAVINSERTER_H_
+#define __VEINS_LIBAIRMOBISIM_UAVINSERTER_H_
 
+#include <omnetpp.h>
+#include "../mobility/DroCIManager.h"
 using namespace omnetpp;
 using namespace veins;
+
 namespace airmobisim {
-class ExampleAirMobiSimApp : public DemoBaseApplLayer {
-public:
-    void initialize(int stage) override;
-    void finish() override;
+class UavInserter : public cSimpleModule
+{
+  protected:
+    virtual void initialize(int stage) override;
+    virtual void handleMessage(cMessage *msg) override;
 
-protected:
-    void onBSM(DemoSafetyMessage* bsm) override;
-    void onWSM(BaseFrame1609_4* wsm) override;
-    void onWSA(DemoServiceAdvertisment* wsa) override;
+    virtual int numInitStages() const {
+        return 2;
+    }
 
-    void handleSelfMsg(cMessage* msg) override;
-    void handlePositionUpdate(cObject* obj) override;
+  private:
+    DroCIManager* drociManager;
+    cMessage* insertUavMessage;
 };
-
 }
-
+#endif
