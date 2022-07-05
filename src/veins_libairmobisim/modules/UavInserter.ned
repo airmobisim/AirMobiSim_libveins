@@ -25,4 +25,7 @@ package veins_libairmobisim.modules;
 
 simple UavInserter
 {
+	parameters:
+	    @class(airmobisim::UavInserter);
+		@display("i=block/source");
 }

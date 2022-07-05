@@ -24,20 +24,22 @@
 #include "UavInserter.h"
 
 using namespace airmobisim;
-Define_Module(UavInserter);
+Define_Module(airmobisim::UavInserter);
 
 void UavInserter::initialize(int stage){
     if (stage == 0) {
         insertUavMessage = new cMessage("Insert UAV");
     } else if (stage == 1) {
-        drociManager =  dynamic_cast<DroCIManager*>(getParentModule()->getSubmodule("drociManager"));
-
+        drociManager =  veins::FindModule<DroCIManager*>::findGlobalModule();
         scheduleAt(simTime() + 5, insertUavMessage);
     }
 }
 
 void UavInserter::handleMessage(cMessage *msg) {
     if(msg == insertUavMessage) {
+        auto count = drociManager->getCurrentUAVCount();
+        auto listOfUavs = drociManager->getManagedHosts();
         //drociManager->insertUAV(insertUavId, startPosition, endPosition, startAngle, speed)
+        std::cout << "done!" << std::endl;
     }
 }

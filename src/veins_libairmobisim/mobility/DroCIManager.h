@@ -38,7 +38,6 @@
 #include <google/protobuf/empty.pb.h>
 #include <grpcpp/grpcpp.h>
 
-
 #include "DroCIMobility.h"
 #include "../proto/airmobisim.grpc.pb.h"
 
@@ -53,10 +52,10 @@ protected:
     void handleMessage(omnetpp::cMessage *msg) override;
     void updateModulePosition(cModule* mod, const Coord& p, double speed, double angle);
     void addModule(std::string nodeId, std::string type, std::string name, std::string displayString, const Coord& position, double speed, double angle, double length, double height, double width);
-    int numInitStages() const override
-    {
+    int numInitStages() const override {
         return std::max(cSimpleModule::numInitStages(), 2);
     }
+
 private:
     void launchSimulator();
     void executeOneTimestep();
@@ -74,7 +73,9 @@ public:
     void setDesiredSpeed();
 
     int getCurrentUAVCount();
+
     cModule* getManagedModule(std::string nodeId);
+    airmobisim::UavList getManagedHosts();
 
 private:
     std::shared_ptr<grpc::Channel> channel;
@@ -96,9 +97,5 @@ protected:
     void startAirMobiSim();
     pid_t pid;
 };
-
-
 }
-
-
 

@@ -20,9 +20,8 @@
 // along with this program; if not, write to the Free Software
 // Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 //
+#pragma once
 
-#ifndef __VEINS_LIBAIRMOBISIM_UAVINSERTER_H_
-#define __VEINS_LIBAIRMOBISIM_UAVINSERTER_H_
 
 #include <omnetpp.h>
 #include "../mobility/DroCIManager.h"
@@ -45,4 +44,3 @@ class UavInserter : public cSimpleModule
     cMessage* insertUavMessage;
 };
 }
-#endif

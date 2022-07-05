@@ -70,7 +70,7 @@ void DroCIManager::initialize(int stage)
         hosts.clear();
         executeOneTimestepTrigger = new cMessage("step");
     } else if (stage == 1) {
-        scheduleAt(simTime() + updateInterval, initMsg);
+        startAirMobiSim();
     }
 }
 
@@ -133,9 +133,20 @@ void DroCIManager::startAirMobiSim() {
 }
 
 
-
+airmobisim::UavList DroCIManager::getManagedHosts() {
+    grpc::ClientContext clientContext;
+    airmobisim::UavList managedHosts;
+    google::protobuf::Empty empty;
+    grpc::Status status = stub->GetManagedHosts(&clientContext, empty, &managedHosts);
+    if (status.ok()) {
+        return managedHosts;
+    } else {
+        error("DroCIManager::getManagedHosts() has failed");
+    }
+}
 
 void DroCIManager::launchSimulator() {
+    std::cout << "LAUNCH!!!!!!!!" << std::endl;
     channel = CreateChannel("localhost:50051", grpc::InsecureChannelCredentials());
     stub = airmobisim::AirMobiSim::NewStub(channel);
     auto state = channel->GetState(true);
@@ -188,7 +199,7 @@ void DroCIManager::launchSimulator() {
 void DroCIManager::executeOneTimestep()
 {
     EV_DEBUG << "Triggering AirMobiSim simulator advance to t=" << simTime() << endl;
-
+    std::cout << "executeOneTimestep()" << std::endl;
     airmobisim::ResponseQuery response;
     google::protobuf::Empty empty;
     grpc::ClientContext clientContext;
@@ -206,11 +217,9 @@ void DroCIManager::executeOneTimestep()
         }
     } else {
         error("DroCIManager::executeOneTimestep() has failed");
-        std::cout << status.error_code() << ": " << status.error_message() << std::endl;
     }
     
     count = count + 1;
-
     if(count < totalsteps) {
         scheduleAt(simTime() + updateInterval, executeOneTimestepTrigger);
     } else {
@@ -223,7 +232,7 @@ void DroCIManager::processUavSubscription(std::string objectId, Coord p, double 
     cModule* mod = getManagedModule(objectId);
 
     if (!mod) {
-        // TODO: Add a new model
+        error("DroCIManager::processUavSubscription: No such module found");
     } else {
         // module existed - update position
         EV_DEBUG << "module " << objectId << " moving to " << p.x << "," << p.y << "with heading" << angle << endl;
@@ -297,13 +306,15 @@ int DroCIManager::getCurrentUAVCount() {
     airmobisim::Number number_uav;
     google::protobuf::Empty empty;
     grpc::ClientContext clientcontext;
+    grpc::Status status ;
 
-    grpc::Status status = stub->getNumberCurrentUAV(&clientcontext, empty, &number_uav);
-
+    if(stub != nullptr) {
+        status = stub->getNumberCurrentUAV(&clientcontext, empty, &number_uav);
+    }
     if (!status.ok()) {
         error("DroCIManager::getnumberCurrentUAV() has failed!");
-
     }
+
     return currentUAV;
 }
 
@@ -450,4 +461,3 @@ void DroCIManager::updateWaypoints(){
           error("DroCIManager::updateWaypoints() has failed!");
     }
 }
-
