@@ -56,6 +56,7 @@ void DroCIManager::initialize(int stage)
         simTimeLimit = 55;//par(""); //TODO
         moduleType = par("moduleType").stringValue();
         moduleName = par("moduleName").stringValue();
+        moduleDisplayString = par("moduleDisplayString").stdstringValue();
         totalsteps = simTimeLimit / updateInterval;
 
         // Do not create children here since OMNeT++ will try to initialize them again
@@ -173,7 +174,7 @@ void DroCIManager::launchSimulator() {
             position.z = managedHosts.uavs(i).z();
             angle = managedHosts.uavs(i).angle();
             std::cout << "Add module "<< managedHosts.uavs(i).id() <<" at (x,y,z) (" << position.x << ", " << position.y << ", "<< position.z << ")" << std::endl;
-            auto dString = "i=airmobisim/uav/uav;is=vs";
+
             auto speed  = 0;
             auto length = 2;
             auto height = 2;
@@ -182,7 +183,7 @@ void DroCIManager::launchSimulator() {
             std::stringstream ss;
             ss << managedHosts.uavs(i).id();
             std::string id = ss.str();
-            addModule(id, moduleType, mName, dString, position, speed, angle, length, height, width);
+            addModule(id, moduleType, mName, moduleDisplayString, position, speed, angle, length, height, width);
         }
     } else {
         std::cout << status.error_code() << ": " << status.error_message()
@@ -258,7 +259,6 @@ void DroCIManager::addModule(std::string nodeId, std::string moduleType, std::st
     parentmod->setSubmoduleVectorSize(name.c_str(), nodeVectorIndex + 1);
     cModule* mod = nodeType->create(name.c_str(), parentmod, nodeVectorIndex);
 #else
-    // TODO: this trashes the vectsize member of the cModule, although nobody seems to use it
     cModule* mod = nodeType->create(moduleName.c_str(), parentmod, nodeVectorIndex, nodeVectorIndex);
 #endif
     mod->finalizeParameters();
@@ -288,9 +288,6 @@ void DroCIManager::updateModulePosition(cModule* mod, const Coord& p, double spe
     // update position in DroCIMobility
     auto mobilityModules = getSubmodulesOfType<DroCIMobility>(mod);
     for (auto mm : mobilityModules) {
-        std::cout << "\nUpdate Position for ID " << mm->getId() << std::endl;
-        std::cout << "(x, y, z) " << p.x << ", " << p.y << ", " << p.z << std::endl;
-
         mm->nextPosition(p, speed, angle);
     }
 }
@@ -375,7 +372,7 @@ void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosi
     auto width = 1.0;
     auto length = 1.0;
 
-    addModule(std::to_string(insertUavId), moduleType.c_str(), moduleName.c_str(), "", startPosition, speed, startAngle, length, startPosition.z, width);
+    addModule(std::to_string(insertUavId), moduleType.c_str(), moduleName.c_str(), moduleDisplayString, startPosition, speed, startAngle, length, startPosition.z, width);
 }
 
 

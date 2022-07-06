@@ -93,7 +93,7 @@ private:
     std::string moduleName;
     size_t nextNodeVectorIndex; /**< next OMNeT++ module vector index to use */
     std::map<std::string, cModule*> hosts; /**< vector of all hosts managed by us */
-
+    std::string moduleDisplayString;
 
 
 protected:
