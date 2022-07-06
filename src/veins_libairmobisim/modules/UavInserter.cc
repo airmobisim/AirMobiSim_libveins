@@ -55,7 +55,7 @@ void UavInserter::handleMessage(cMessage *msg) {
         }
         std::cout << "done!" << std::endl;
     } else if (msg == insertNewUavMsg){
-        auto insertUavId = 2;
+        auto insertUavId = 1002;
         Coord startPosition;
         startPosition.x = 0;
         startPosition.y = 10;

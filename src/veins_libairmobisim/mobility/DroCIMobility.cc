@@ -86,7 +86,7 @@ void DroCIMobility::nextPosition(const Coord& position, double speed, double ang
     Heading heading_new(angle);
 
     EV_DEBUG << "nextPosition " << position.x << " " << position.y << " " << speed << " " << std::endl;
-    //std::cout << "nextPosition " << position.x << " " << position.y << " " << speed << " " << angle << " " << std::endl;
+    std::cout << "nextPosition " << position.x << " " << position.y << " " << speed << " " << angle << " " << std::endl;
     isPreInitialized = false;
     this->roadPosition = position;
     this->speed = speed;
@@ -97,7 +97,7 @@ void DroCIMobility::nextPosition(const Coord& position, double speed, double ang
 void DroCIMobility::changePosition() {
 
     // ensure we're not called twice in one time step
-    ASSERT(lastUpdate != simTime());
+    //ASSERT(lastUpdate != simTime());
 
     Coord nextPos = calculateHostPosition(roadPosition);
     nextPos.z = move.getStartPosition().z;

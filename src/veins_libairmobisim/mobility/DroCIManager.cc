@@ -273,11 +273,6 @@ void DroCIManager::addModule(std::string nodeId, std::string moduleType, std::st
     mod->callInitialize();
     hosts[nodeId] = mod;
 
-    // post-initialize DroCIMobility
-    auto mobilityModules = getSubmodulesOfType<DroCIMobility>(mod);
-    for (auto mm : mobilityModules) {
-        mm->changePosition();
-    }
 }
 
 void DroCIManager::preInitializeModule(cModule* mod, const std::string& nodeId, const Coord& position, double speed, double angle)
@@ -293,6 +288,9 @@ void DroCIManager::updateModulePosition(cModule* mod, const Coord& p, double spe
     // update position in DroCIMobility
     auto mobilityModules = getSubmodulesOfType<DroCIMobility>(mod);
     for (auto mm : mobilityModules) {
+        std::cout << "\nUpdate Position for ID " << mm->getId() << std::endl;
+        std::cout << "(x, y, z) " << p.x << ", " << p.y << ", " << p.z << std::endl;
+
         mm->nextPosition(p, speed, angle);
     }
 }
@@ -376,7 +374,8 @@ void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosi
     }
     auto width = 1.0;
     auto length = 1.0;
-    addModule(""+insertUavId, moduleType.c_str(), moduleName.c_str(), "", startPosition, speed, startAngle, length, startPosition.z, width);
+
+    addModule(std::to_string(insertUavId), moduleType.c_str(), moduleName.c_str(), "", startPosition, speed, startAngle, length, startPosition.z, width);
 }
 
 
