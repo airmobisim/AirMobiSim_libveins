@@ -31,11 +31,14 @@ void UavInserter::initialize(int stage){
         queryDataMsg = new cMessage("Query UAV data");
         addWaypointMsg = new cMessage("Add new waypoint");
         insertNewUavMsg = new cMessage("Insert new UAV");
+        deleteNewUavMsg = new cMessage("Delete UAV");
     } else if (stage == 1) {
         drociManager =  veins::FindModule<DroCIManager*>::findGlobalModule();
         scheduleAt(simTime() + 2, queryDataMsg);
         scheduleAt(simTime() + 2.2, addWaypointMsg);
         scheduleAt(simTime() + 5, insertNewUavMsg);
+        scheduleAt(simTime() + 5.5, deleteNewUavMsg);
+
     }
 }
 
@@ -72,5 +75,10 @@ void UavInserter::handleMessage(cMessage *msg) {
         auto speed = 20;
         std::cout << "Add new UAV with: ID " << insertUavId << std::endl;
         drociManager->insertUAV(insertUavId, startPosition, endPosition, startAngle, speed);
+
+        uavIdToDelete = insertUavId;
+
+    } else if (msg == deleteNewUavMsg) {
+        drociManager->deleteUAV(uavIdToDelete);
     }
 }
