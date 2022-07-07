@@ -398,7 +398,7 @@ void DroCIManager::insertWaypoint(int uavId, double x, double y, double z, int i
     waypoint->set_x(x);
     waypoint->set_y(y);
     waypoint->set_z(z);
-    waypoint->set_uid(uavId + 1);
+    waypoint->set_uid(uavId);
 
     grpc::Status status = stub->InsertWaypoint(&clientContext, *waypoint, &empty);
 

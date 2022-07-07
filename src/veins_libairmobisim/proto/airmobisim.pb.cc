@@ -276,7 +276,7 @@ const char descriptor_table_protodef_airmobisim_2eproto[] PROTOBUF_SECTION_VARIA
   "\n\020airmobisim.proto\022\nairmobisim\032\033google/p"
   "rotobuf/empty.proto\"B\n\014WaypointList\022\n\n\002i"
   "d\030\001 \001(\005\022&\n\010waypoint\030\002 \003(\0132\024.airmobisim.W"
-  "aypoint\"G\n\010Waypoint\022\013\n\003uid\030\001 \001(\005\022\r\n\005inde"
+  "aypoint\"G\n\010Waypoint\022\013\n\003uid\030\001 \001(\021\022\r\n\005inde"
   "x\030\002 \001(\005\022\t\n\001x\030\003 \001(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001"
   "\"(\n\007UavList\022\035\n\004uavs\030\001 \003(\0132\017.airmobisim.U"
   "av\"P\n\003Uav\022\n\n\002id\030\001 \001(\005\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 "
@@ -619,10 +619,10 @@ const char* Waypoint::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int32 uid = 1;
+      // sint32 uid = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
-          uid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          uid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarintZigZag32(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
@@ -683,10 +683,10 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 uid = 1;
+  // sint32 uid = 1;
   if (this->uid() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_uid(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteSInt32ToArray(1, this->_internal_uid(), target);
   }
 
   // int32 index = 2;
@@ -729,10 +729,10 @@ size_t Waypoint::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // int32 uid = 1;
+  // sint32 uid = 1;
   if (this->uid() != 0) {
     total_size += 1 +
-      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::SInt32Size(
         this->_internal_uid());
   }
 

@@ -368,7 +368,7 @@ class Waypoint final :
     kYFieldNumber = 4,
     kZFieldNumber = 5,
   };
-  // int32 uid = 1;
+  // sint32 uid = 1;
   void clear_uid();
   ::PROTOBUF_NAMESPACE_ID::int32 uid() const;
   void set_uid(::PROTOBUF_NAMESPACE_ID::int32 value);
@@ -1761,7 +1761,7 @@ WaypointList::waypoint() const {
 
 // Waypoint
 
-// int32 uid = 1;
+// sint32 uid = 1;
 inline void Waypoint::clear_uid() {
   uid_ = 0;
 }
