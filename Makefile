@@ -39,7 +39,7 @@ endif
 ifneq (,$(wildcard airmobisim.proto))
 	@rm airmobisim.proto
 endif
-	@ln $(AIRMOBISIMHOME)/proto/airmobisim.proto airmobisim.proto
+	@ln -s $(AIRMOBISIMHOME)/proto/airmobisim.proto airmobisim.proto
 	@conan install . --build missing --profile=default
 ifdef MODE
 	@cd src && $(MAKE)
