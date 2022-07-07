@@ -145,6 +145,18 @@ struct NumberDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT NumberDefaultTypeInternal _Number_default_instance_;
+constexpr DoubleNumber::DoubleNumber(
+  ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
+  : num_(0){}
+struct DoubleNumberDefaultTypeInternal {
+  constexpr DoubleNumberDefaultTypeInternal()
+    : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
+  ~DoubleNumberDefaultTypeInternal() {}
+  union {
+    DoubleNumber _instance;
+  };
+};
+PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT DoubleNumberDefaultTypeInternal _DoubleNumber_default_instance_;
 constexpr UavSetSpeed::UavSetSpeed(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
   : speed_(0)
@@ -159,7 +171,7 @@ struct UavSetSpeedDefaultTypeInternal {
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT UavSetSpeedDefaultTypeInternal _UavSetSpeed_default_instance_;
 }  // namespace airmobisim
-static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_airmobisim_2eproto[10];
+static ::PROTOBUF_NAMESPACE_ID::Metadata file_level_metadata_airmobisim_2eproto[11];
 static constexpr ::PROTOBUF_NAMESPACE_ID::EnumDescriptor const** file_level_enum_descriptors_airmobisim_2eproto = nullptr;
 static constexpr ::PROTOBUF_NAMESPACE_ID::ServiceDescriptor const** file_level_service_descriptors_airmobisim_2eproto = nullptr;
 
@@ -239,6 +251,12 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_airmobisim_2eproto::offsets[] 
   ~0u,  // no _weak_field_map_
   PROTOBUF_FIELD_OFFSET(::airmobisim::Number, num_),
   ~0u,  // no _has_bits_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::DoubleNumber, _internal_metadata_),
+  ~0u,  // no _extensions_
+  ~0u,  // no _oneof_case_
+  ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::DoubleNumber, num_),
+  ~0u,  // no _has_bits_
   PROTOBUF_FIELD_OFFSET(::airmobisim::UavSetSpeed, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
@@ -256,7 +274,8 @@ static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOB
   { 51, -1, sizeof(::airmobisim::StartUav)},
   { 60, -1, sizeof(::airmobisim::Coordinates)},
   { 68, -1, sizeof(::airmobisim::Number)},
-  { 74, -1, sizeof(::airmobisim::UavSetSpeed)},
+  { 74, -1, sizeof(::airmobisim::DoubleNumber)},
+  { 80, -1, sizeof(::airmobisim::UavSetSpeed)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -269,6 +288,7 @@ static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] =
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_StartUav_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_Coordinates_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_Number_default_instance_),
+  reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_DoubleNumber_default_instance_),
   reinterpret_cast<const ::PROTOBUF_NAMESPACE_ID::Message*>(&::airmobisim::_UavSetSpeed_default_instance_),
 };
 
@@ -289,37 +309,41 @@ const char descriptor_table_protodef_airmobisim_2eproto[] PROTOBUF_SECTION_VARIA
   "mobisim.Coordinates\022\r\n\005speed\030\003 \001(\001\022\r\n\005an"
   "gle\030\004 \001(\001\".\n\013Coordinates\022\t\n\001x\030\001 \001(\001\022\t\n\001y"
   "\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\"\025\n\006Number\022\013\n\003num\030\001 \001(\005"
-  "\"(\n\013UavSetSpeed\022\n\n\002id\030\001 \001(\005\022\r\n\005speed\030\002 \001"
-  "(\0012\314\006\n\nAirMobiSim\0227\n\005Start\022\026.google.prot"
-  "obuf.Empty\032\026.google.protobuf.Empty\022G\n\022Ex"
-  "ecuteOneTimeStep\022\026.google.protobuf.Empty"
-  "\032\031.airmobisim.ResponseQuery\0228\n\006Finish\022\026."
-  "google.protobuf.Empty\032\026.google.protobuf."
-  "Empty\022>\n\017GetManagedHosts\022\026.google.protob"
-  "uf.Empty\032\023.airmobisim.UavList\022C\n\017InsertW"
-  "aypoints\022\030.airmobisim.WaypointList\032\026.goo"
-  "gle.protobuf.Empty\022>\n\016InsertWaypoint\022\024.a"
-  "irmobisim.Waypoint\032\026.google.protobuf.Emp"
-  "ty\0229\n\tInsertUAV\022\024.airmobisim.StartUav\032\026."
-  "google.protobuf.Empty\0229\n\013getMaxUavId\022\026.g"
-  "oogle.protobuf.Empty\032\022.airmobisim.Number"
-  "\0227\n\tDeleteUAV\022\022.airmobisim.Number\032\026.goog"
-  "le.protobuf.Empty\022A\n\023getNumberCurrentUAV"
-  "\022\026.google.protobuf.Empty\032\022.airmobisim.Nu"
-  "mber\022B\n\017SetDesiredSpeed\022\027.airmobisim.Uav"
-  "SetSpeed\032\026.google.protobuf.Empty\022C\n\017Upda"
-  "teWaypoints\022\030.airmobisim.WaypointList\032\026."
-  "google.protobuf.Empty\022B\n\016DeleteWaypoint\022"
-  "\030.airmobisim.WaypointList\032\026.google.proto"
-  "buf.Emptyb\006proto3"
+  "\"\033\n\014DoubleNumber\022\013\n\003num\030\001 \001(\001\"(\n\013UavSetS"
+  "peed\022\n\n\002id\030\001 \001(\005\022\r\n\005speed\030\002 \001(\0012\333\007\n\nAirM"
+  "obiSim\0227\n\005Start\022\026.google.protobuf.Empty\032"
+  "\026.google.protobuf.Empty\022G\n\022ExecuteOneTim"
+  "eStep\022\026.google.protobuf.Empty\032\031.airmobis"
+  "im.ResponseQuery\0228\n\006Finish\022\026.google.prot"
+  "obuf.Empty\032\026.google.protobuf.Empty\022>\n\017Ge"
+  "tManagedHosts\022\026.google.protobuf.Empty\032\023."
+  "airmobisim.UavList\022C\n\017InsertWaypoints\022\030."
+  "airmobisim.WaypointList\032\026.google.protobu"
+  "f.Empty\022>\n\016InsertWaypoint\022\024.airmobisim.W"
+  "aypoint\032\026.google.protobuf.Empty\0229\n\tInser"
+  "tUAV\022\024.airmobisim.StartUav\032\026.google.prot"
+  "obuf.Empty\0229\n\013getMaxUavId\022\026.google.proto"
+  "buf.Empty\032\022.airmobisim.Number\0227\n\tDeleteU"
+  "AV\022\022.airmobisim.Number\032\026.google.protobuf"
+  ".Empty\022A\n\023getNumberCurrentUAV\022\026.google.p"
+  "rotobuf.Empty\032\022.airmobisim.Number\022B\n\017Set"
+  "DesiredSpeed\022\027.airmobisim.UavSetSpeed\032\026."
+  "google.protobuf.Empty\022C\n\017UpdateWaypoints"
+  "\022\030.airmobisim.WaypointList\032\026.google.prot"
+  "obuf.Empty\022B\n\016DeleteWaypoint\022\030.airmobisi"
+  "m.WaypointList\032\026.google.protobuf.Empty\022B"
+  "\n\024GetMaxSimulationTime\022\026.google.protobuf"
+  ".Empty\032\022.airmobisim.Number\022I\n\025getMaxSimu"
+  "lationSteps\022\026.google.protobuf.Empty\032\030.ai"
+  "rmobisim.DoubleNumberb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_airmobisim_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_airmobisim_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_airmobisim_2eproto = {
-  false, false, 1537, descriptor_table_protodef_airmobisim_2eproto, "airmobisim.proto", 
-  &descriptor_table_airmobisim_2eproto_once, descriptor_table_airmobisim_2eproto_deps, 1, 10,
+  false, false, 1709, descriptor_table_protodef_airmobisim_2eproto, "airmobisim.proto", 
+  &descriptor_table_airmobisim_2eproto_once, descriptor_table_airmobisim_2eproto_deps, 1, 11,
   schemas, file_default_instances, TableStruct_airmobisim_2eproto::offsets,
   file_level_metadata_airmobisim_2eproto, file_level_enum_descriptors_airmobisim_2eproto, file_level_service_descriptors_airmobisim_2eproto,
 };
@@ -2555,6 +2579,194 @@ void Number::InternalSwap(Number* other) {
 
 // ===================================================================
 
+class DoubleNumber::_Internal {
+ public:
+};
+
+DoubleNumber::DoubleNumber(::PROTOBUF_NAMESPACE_ID::Arena* arena)
+  : ::PROTOBUF_NAMESPACE_ID::Message(arena) {
+  SharedCtor();
+  RegisterArenaDtor(arena);
+  // @@protoc_insertion_point(arena_constructor:airmobisim.DoubleNumber)
+}
+DoubleNumber::DoubleNumber(const DoubleNumber& from)
+  : ::PROTOBUF_NAMESPACE_ID::Message() {
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  num_ = from.num_;
+  // @@protoc_insertion_point(copy_constructor:airmobisim.DoubleNumber)
+}
+
+void DoubleNumber::SharedCtor() {
+num_ = 0;
+}
+
+DoubleNumber::~DoubleNumber() {
+  // @@protoc_insertion_point(destructor:airmobisim.DoubleNumber)
+  SharedDtor();
+  _internal_metadata_.Delete<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+void DoubleNumber::SharedDtor() {
+  GOOGLE_DCHECK(GetArenaForAllocation() == nullptr);
+}
+
+void DoubleNumber::ArenaDtor(void* object) {
+  DoubleNumber* _this = reinterpret_cast< DoubleNumber* >(object);
+  (void)_this;
+}
+void DoubleNumber::RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena*) {
+}
+void DoubleNumber::SetCachedSize(int size) const {
+  _cached_size_.Set(size);
+}
+
+void DoubleNumber::Clear() {
+// @@protoc_insertion_point(message_clear_start:airmobisim.DoubleNumber)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  num_ = 0;
+  _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
+}
+
+const char* DoubleNumber::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) {
+#define CHK_(x) if (PROTOBUF_PREDICT_FALSE(!(x))) goto failure
+  while (!ctx->Done(&ptr)) {
+    ::PROTOBUF_NAMESPACE_ID::uint32 tag;
+    ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
+    switch (tag >> 3) {
+      // double num = 1;
+      case 1:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 9)) {
+          num_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
+          ptr += sizeof(double);
+        } else goto handle_unusual;
+        continue;
+      default: {
+      handle_unusual:
+        if ((tag == 0) || ((tag & 7) == 4)) {
+          CHK_(ptr);
+          ctx->SetLastTag(tag);
+          goto success;
+        }
+        ptr = UnknownFieldParse(tag,
+            _internal_metadata_.mutable_unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(),
+            ptr, ctx);
+        CHK_(ptr != nullptr);
+        continue;
+      }
+    }  // switch
+  }  // while
+success:
+  return ptr;
+failure:
+  ptr = nullptr;
+  goto success;
+#undef CHK_
+}
+
+::PROTOBUF_NAMESPACE_ID::uint8* DoubleNumber::_InternalSerialize(
+    ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
+  // @@protoc_insertion_point(serialize_to_array_start:airmobisim.DoubleNumber)
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  // double num = 1;
+  if (!(this->num() <= 0 && this->num() >= 0)) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(1, this->_internal_num(), target);
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormat::InternalSerializeUnknownFieldsToArray(
+        _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
+  }
+  // @@protoc_insertion_point(serialize_to_array_end:airmobisim.DoubleNumber)
+  return target;
+}
+
+size_t DoubleNumber::ByteSizeLong() const {
+// @@protoc_insertion_point(message_byte_size_start:airmobisim.DoubleNumber)
+  size_t total_size = 0;
+
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  // Prevent compiler warnings about cached_has_bits being unused
+  (void) cached_has_bits;
+
+  // double num = 1;
+  if (!(this->num() <= 0 && this->num() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
+    return ::PROTOBUF_NAMESPACE_ID::internal::ComputeUnknownFieldsSize(
+        _internal_metadata_, total_size, &_cached_size_);
+  }
+  int cached_size = ::PROTOBUF_NAMESPACE_ID::internal::ToCachedSize(total_size);
+  SetCachedSize(cached_size);
+  return total_size;
+}
+
+void DoubleNumber::MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_merge_from_start:airmobisim.DoubleNumber)
+  GOOGLE_DCHECK_NE(&from, this);
+  const DoubleNumber* source =
+      ::PROTOBUF_NAMESPACE_ID::DynamicCastToGenerated<DoubleNumber>(
+          &from);
+  if (source == nullptr) {
+  // @@protoc_insertion_point(generalized_merge_from_cast_fail:airmobisim.DoubleNumber)
+    ::PROTOBUF_NAMESPACE_ID::internal::ReflectionOps::Merge(from, this);
+  } else {
+  // @@protoc_insertion_point(generalized_merge_from_cast_success:airmobisim.DoubleNumber)
+    MergeFrom(*source);
+  }
+}
+
+void DoubleNumber::MergeFrom(const DoubleNumber& from) {
+// @@protoc_insertion_point(class_specific_merge_from_start:airmobisim.DoubleNumber)
+  GOOGLE_DCHECK_NE(&from, this);
+  _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
+  ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
+  (void) cached_has_bits;
+
+  if (!(from.num() <= 0 && from.num() >= 0)) {
+    _internal_set_num(from._internal_num());
+  }
+}
+
+void DoubleNumber::CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) {
+// @@protoc_insertion_point(generalized_copy_from_start:airmobisim.DoubleNumber)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+void DoubleNumber::CopyFrom(const DoubleNumber& from) {
+// @@protoc_insertion_point(class_specific_copy_from_start:airmobisim.DoubleNumber)
+  if (&from == this) return;
+  Clear();
+  MergeFrom(from);
+}
+
+bool DoubleNumber::IsInitialized() const {
+  return true;
+}
+
+void DoubleNumber::InternalSwap(DoubleNumber* other) {
+  using std::swap;
+  _internal_metadata_.InternalSwap(&other->_internal_metadata_);
+  swap(num_, other->num_);
+}
+
+::PROTOBUF_NAMESPACE_ID::Metadata DoubleNumber::GetMetadata() const {
+  return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
+      &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
+      file_level_metadata_airmobisim_2eproto[9]);
+}
+
+// ===================================================================
+
 class UavSetSpeed::_Internal {
  public:
 };
@@ -2773,7 +2985,7 @@ void UavSetSpeed::InternalSwap(UavSetSpeed* other) {
 ::PROTOBUF_NAMESPACE_ID::Metadata UavSetSpeed::GetMetadata() const {
   return ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(
       &descriptor_table_airmobisim_2eproto_getter, &descriptor_table_airmobisim_2eproto_once,
-      file_level_metadata_airmobisim_2eproto[9]);
+      file_level_metadata_airmobisim_2eproto[10]);
 }
 
 // @@protoc_insertion_point(namespace_scope)
@@ -2805,6 +3017,9 @@ template<> PROTOBUF_NOINLINE ::airmobisim::Coordinates* Arena::CreateMaybeMessag
 }
 template<> PROTOBUF_NOINLINE ::airmobisim::Number* Arena::CreateMaybeMessage< ::airmobisim::Number >(Arena* arena) {
   return Arena::CreateMessageInternal< ::airmobisim::Number >(arena);
+}
+template<> PROTOBUF_NOINLINE ::airmobisim::DoubleNumber* Arena::CreateMaybeMessage< ::airmobisim::DoubleNumber >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::airmobisim::DoubleNumber >(arena);
 }
 template<> PROTOBUF_NOINLINE ::airmobisim::UavSetSpeed* Arena::CreateMaybeMessage< ::airmobisim::UavSetSpeed >(Arena* arena) {
   return Arena::CreateMessageInternal< ::airmobisim::UavSetSpeed >(arena);

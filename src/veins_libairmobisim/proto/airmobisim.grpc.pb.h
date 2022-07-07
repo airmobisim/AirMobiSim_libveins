@@ -127,6 +127,20 @@ class AirMobiSim final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>> PrepareAsyncDeleteWaypoint(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>>(PrepareAsyncDeleteWaypointRaw(context, request, cq));
     }
+    virtual ::grpc::Status GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::Number* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>> AsyncGetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>>(AsyncGetMaxSimulationTimeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>> PrepareAsyncGetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>>(PrepareAsyncGetMaxSimulationTimeRaw(context, request, cq));
+    }
+    virtual ::grpc::Status getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::DoubleNumber* response) = 0;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::DoubleNumber>> AsyncgetMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::DoubleNumber>>(AsyncgetMaxSimulationStepsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::DoubleNumber>> PrepareAsyncgetMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::DoubleNumber>>(PrepareAsyncgetMaxSimulationStepsRaw(context, request, cq));
+    }
     class experimental_async_interface {
      public:
       virtual ~experimental_async_interface() {}
@@ -208,6 +222,18 @@ class AirMobiSim final {
       #else
       virtual void DeleteWaypoint(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
       #endif
+      virtual void GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
+      virtual void getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response, std::function<void(::grpc::Status)>) = 0;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      virtual void getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response, ::grpc::ClientUnaryReactor* reactor) = 0;
+      #else
+      virtual void getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response, ::grpc::experimental::ClientUnaryReactor* reactor) = 0;
+      #endif
     };
     #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
     typedef class experimental_async_interface async_interface;
@@ -243,6 +269,10 @@ class AirMobiSim final {
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncUpdateWaypointsRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* AsyncDeleteWaypointRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) = 0;
     virtual ::grpc::ClientAsyncResponseReaderInterface< ::google::protobuf::Empty>* PrepareAsyncDeleteWaypointRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>* AsyncGetMaxSimulationTimeRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::Number>* PrepareAsyncGetMaxSimulationTimeRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::DoubleNumber>* AsyncgetMaxSimulationStepsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
+    virtual ::grpc::ClientAsyncResponseReaderInterface< ::airmobisim::DoubleNumber>* PrepareAsyncgetMaxSimulationStepsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) = 0;
   };
   class Stub final : public StubInterface {
    public:
@@ -338,6 +368,20 @@ class AirMobiSim final {
     std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>> PrepareAsyncDeleteWaypoint(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) {
       return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>>(PrepareAsyncDeleteWaypointRaw(context, request, cq));
     }
+    ::grpc::Status GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::Number* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>> AsyncGetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>>(AsyncGetMaxSimulationTimeRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>> PrepareAsyncGetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>>(PrepareAsyncGetMaxSimulationTimeRaw(context, request, cq));
+    }
+    ::grpc::Status getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::DoubleNumber* response) override;
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::DoubleNumber>> AsyncgetMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::DoubleNumber>>(AsyncgetMaxSimulationStepsRaw(context, request, cq));
+    }
+    std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::DoubleNumber>> PrepareAsyncgetMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+      return std::unique_ptr< ::grpc::ClientAsyncResponseReader< ::airmobisim::DoubleNumber>>(PrepareAsyncgetMaxSimulationStepsRaw(context, request, cq));
+    }
     class experimental_async final :
       public StubInterface::experimental_async_interface {
      public:
@@ -419,6 +463,18 @@ class AirMobiSim final {
       #else
       void DeleteWaypoint(::grpc::ClientContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
       #endif
+      void GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
+      void getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response, std::function<void(::grpc::Status)>) override;
+      #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      void getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response, ::grpc::ClientUnaryReactor* reactor) override;
+      #else
+      void getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response, ::grpc::experimental::ClientUnaryReactor* reactor) override;
+      #endif
      private:
       friend class Stub;
       explicit experimental_async(Stub* stub): stub_(stub) { }
@@ -456,6 +512,10 @@ class AirMobiSim final {
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncUpdateWaypointsRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* AsyncDeleteWaypointRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) override;
     ::grpc::ClientAsyncResponseReader< ::google::protobuf::Empty>* PrepareAsyncDeleteWaypointRaw(::grpc::ClientContext* context, const ::airmobisim::WaypointList& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>* AsyncGetMaxSimulationTimeRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::airmobisim::Number>* PrepareAsyncGetMaxSimulationTimeRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::airmobisim::DoubleNumber>* AsyncgetMaxSimulationStepsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
+    ::grpc::ClientAsyncResponseReader< ::airmobisim::DoubleNumber>* PrepareAsyncgetMaxSimulationStepsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) override;
     const ::grpc::internal::RpcMethod rpcmethod_Start_;
     const ::grpc::internal::RpcMethod rpcmethod_ExecuteOneTimeStep_;
     const ::grpc::internal::RpcMethod rpcmethod_Finish_;
@@ -469,6 +529,8 @@ class AirMobiSim final {
     const ::grpc::internal::RpcMethod rpcmethod_SetDesiredSpeed_;
     const ::grpc::internal::RpcMethod rpcmethod_UpdateWaypoints_;
     const ::grpc::internal::RpcMethod rpcmethod_DeleteWaypoint_;
+    const ::grpc::internal::RpcMethod rpcmethod_GetMaxSimulationTime_;
+    const ::grpc::internal::RpcMethod rpcmethod_getMaxSimulationSteps_;
   };
   static std::unique_ptr<Stub> NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options = ::grpc::StubOptions());
 
@@ -489,6 +551,8 @@ class AirMobiSim final {
     virtual ::grpc::Status SetDesiredSpeed(::grpc::ServerContext* context, const ::airmobisim::UavSetSpeed* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status UpdateWaypoints(::grpc::ServerContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response);
     virtual ::grpc::Status DeleteWaypoint(::grpc::ServerContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response);
+    virtual ::grpc::Status GetMaxSimulationTime(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response);
+    virtual ::grpc::Status getMaxSimulationSteps(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response);
   };
   template <class BaseClass>
   class WithAsyncMethod_Start : public BaseClass {
@@ -750,7 +814,47 @@ class AirMobiSim final {
       ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
-  typedef WithAsyncMethod_Start<WithAsyncMethod_ExecuteOneTimeStep<WithAsyncMethod_Finish<WithAsyncMethod_GetManagedHosts<WithAsyncMethod_InsertWaypoints<WithAsyncMethod_InsertWaypoint<WithAsyncMethod_InsertUAV<WithAsyncMethod_getMaxUavId<WithAsyncMethod_DeleteUAV<WithAsyncMethod_getNumberCurrentUAV<WithAsyncMethod_SetDesiredSpeed<WithAsyncMethod_UpdateWaypoints<WithAsyncMethod_DeleteWaypoint<Service > > > > > > > > > > > > > AsyncService;
+  template <class BaseClass>
+  class WithAsyncMethod_GetMaxSimulationTime : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_GetMaxSimulationTime() {
+      ::grpc::Service::MarkMethodAsync(13);
+    }
+    ~WithAsyncMethod_GetMaxSimulationTime() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetMaxSimulationTime(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetMaxSimulationTime(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::airmobisim::Number>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithAsyncMethod_getMaxSimulationSteps : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithAsyncMethod_getMaxSimulationSteps() {
+      ::grpc::Service::MarkMethodAsync(14);
+    }
+    ~WithAsyncMethod_getMaxSimulationSteps() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMaxSimulationSteps(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::DoubleNumber* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetMaxSimulationSteps(::grpc::ServerContext* context, ::google::protobuf::Empty* request, ::grpc::ServerAsyncResponseWriter< ::airmobisim::DoubleNumber>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  typedef WithAsyncMethod_Start<WithAsyncMethod_ExecuteOneTimeStep<WithAsyncMethod_Finish<WithAsyncMethod_GetManagedHosts<WithAsyncMethod_InsertWaypoints<WithAsyncMethod_InsertWaypoint<WithAsyncMethod_InsertUAV<WithAsyncMethod_getMaxUavId<WithAsyncMethod_DeleteUAV<WithAsyncMethod_getNumberCurrentUAV<WithAsyncMethod_SetDesiredSpeed<WithAsyncMethod_UpdateWaypoints<WithAsyncMethod_DeleteWaypoint<WithAsyncMethod_GetMaxSimulationTime<WithAsyncMethod_getMaxSimulationSteps<Service > > > > > > > > > > > > > > > AsyncService;
   template <class BaseClass>
   class ExperimentalWithCallbackMethod_Start : public BaseClass {
    private:
@@ -1362,11 +1466,105 @@ class AirMobiSim final {
     #endif
       { return nullptr; }
   };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_GetMaxSimulationTime : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_GetMaxSimulationTime() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(13,
+          new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::Number>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response) { return this->GetMaxSimulationTime(context, request, response); }));}
+    void SetMessageAllocatorFor_GetMaxSimulationTime(
+        ::grpc::experimental::MessageAllocator< ::google::protobuf::Empty, ::airmobisim::Number>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(13);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(13);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::Number>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_GetMaxSimulationTime() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetMaxSimulationTime(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetMaxSimulationTime(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetMaxSimulationTime(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithCallbackMethod_getMaxSimulationSteps : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithCallbackMethod_getMaxSimulationSteps() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodCallback(14,
+          new ::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::DoubleNumber>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response) { return this->getMaxSimulationSteps(context, request, response); }));}
+    void SetMessageAllocatorFor_getMaxSimulationSteps(
+        ::grpc::experimental::MessageAllocator< ::google::protobuf::Empty, ::airmobisim::DoubleNumber>* allocator) {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::GetHandler(14);
+    #else
+      ::grpc::internal::MethodHandler* const handler = ::grpc::Service::experimental().GetHandler(14);
+    #endif
+      static_cast<::grpc::internal::CallbackUnaryHandler< ::google::protobuf::Empty, ::airmobisim::DoubleNumber>*>(handler)
+              ->SetMessageAllocator(allocator);
+    }
+    ~ExperimentalWithCallbackMethod_getMaxSimulationSteps() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMaxSimulationSteps(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::DoubleNumber* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* getMaxSimulationSteps(
+      ::grpc::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::DoubleNumber* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* getMaxSimulationSteps(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::DoubleNumber* /*response*/)
+    #endif
+      { return nullptr; }
+  };
   #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
-  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<ExperimentalWithCallbackMethod_InsertWaypoints<ExperimentalWithCallbackMethod_InsertWaypoint<ExperimentalWithCallbackMethod_InsertUAV<ExperimentalWithCallbackMethod_getMaxUavId<ExperimentalWithCallbackMethod_DeleteUAV<ExperimentalWithCallbackMethod_getNumberCurrentUAV<ExperimentalWithCallbackMethod_SetDesiredSpeed<ExperimentalWithCallbackMethod_UpdateWaypoints<ExperimentalWithCallbackMethod_DeleteWaypoint<Service > > > > > > > > > > > > > CallbackService;
+  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<ExperimentalWithCallbackMethod_InsertWaypoints<ExperimentalWithCallbackMethod_InsertWaypoint<ExperimentalWithCallbackMethod_InsertUAV<ExperimentalWithCallbackMethod_getMaxUavId<ExperimentalWithCallbackMethod_DeleteUAV<ExperimentalWithCallbackMethod_getNumberCurrentUAV<ExperimentalWithCallbackMethod_SetDesiredSpeed<ExperimentalWithCallbackMethod_UpdateWaypoints<ExperimentalWithCallbackMethod_DeleteWaypoint<ExperimentalWithCallbackMethod_GetMaxSimulationTime<ExperimentalWithCallbackMethod_getMaxSimulationSteps<Service > > > > > > > > > > > > > > > CallbackService;
   #endif
 
-  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<ExperimentalWithCallbackMethod_InsertWaypoints<ExperimentalWithCallbackMethod_InsertWaypoint<ExperimentalWithCallbackMethod_InsertUAV<ExperimentalWithCallbackMethod_getMaxUavId<ExperimentalWithCallbackMethod_DeleteUAV<ExperimentalWithCallbackMethod_getNumberCurrentUAV<ExperimentalWithCallbackMethod_SetDesiredSpeed<ExperimentalWithCallbackMethod_UpdateWaypoints<ExperimentalWithCallbackMethod_DeleteWaypoint<Service > > > > > > > > > > > > > ExperimentalCallbackService;
+  typedef ExperimentalWithCallbackMethod_Start<ExperimentalWithCallbackMethod_ExecuteOneTimeStep<ExperimentalWithCallbackMethod_Finish<ExperimentalWithCallbackMethod_GetManagedHosts<ExperimentalWithCallbackMethod_InsertWaypoints<ExperimentalWithCallbackMethod_InsertWaypoint<ExperimentalWithCallbackMethod_InsertUAV<ExperimentalWithCallbackMethod_getMaxUavId<ExperimentalWithCallbackMethod_DeleteUAV<ExperimentalWithCallbackMethod_getNumberCurrentUAV<ExperimentalWithCallbackMethod_SetDesiredSpeed<ExperimentalWithCallbackMethod_UpdateWaypoints<ExperimentalWithCallbackMethod_DeleteWaypoint<ExperimentalWithCallbackMethod_GetMaxSimulationTime<ExperimentalWithCallbackMethod_getMaxSimulationSteps<Service > > > > > > > > > > > > > > > ExperimentalCallbackService;
   template <class BaseClass>
   class WithGenericMethod_Start : public BaseClass {
    private:
@@ -1584,6 +1782,40 @@ class AirMobiSim final {
     }
     // disable synchronous version of this method
     ::grpc::Status DeleteWaypoint(::grpc::ServerContext* /*context*/, const ::airmobisim::WaypointList* /*request*/, ::google::protobuf::Empty* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_GetMaxSimulationTime : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_GetMaxSimulationTime() {
+      ::grpc::Service::MarkMethodGeneric(13);
+    }
+    ~WithGenericMethod_GetMaxSimulationTime() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetMaxSimulationTime(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+  };
+  template <class BaseClass>
+  class WithGenericMethod_getMaxSimulationSteps : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithGenericMethod_getMaxSimulationSteps() {
+      ::grpc::Service::MarkMethodGeneric(14);
+    }
+    ~WithGenericMethod_getMaxSimulationSteps() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMaxSimulationSteps(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::DoubleNumber* /*response*/) override {
       abort();
       return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
     }
@@ -1846,6 +2078,46 @@ class AirMobiSim final {
     }
     void RequestDeleteWaypoint(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
       ::grpc::Service::RequestAsyncUnary(12, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_GetMaxSimulationTime : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_GetMaxSimulationTime() {
+      ::grpc::Service::MarkMethodRaw(13);
+    }
+    ~WithRawMethod_GetMaxSimulationTime() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetMaxSimulationTime(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestGetMaxSimulationTime(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(13, context, request, response, new_call_cq, notification_cq, tag);
+    }
+  };
+  template <class BaseClass>
+  class WithRawMethod_getMaxSimulationSteps : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithRawMethod_getMaxSimulationSteps() {
+      ::grpc::Service::MarkMethodRaw(14);
+    }
+    ~WithRawMethod_getMaxSimulationSteps() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMaxSimulationSteps(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::DoubleNumber* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    void RequestgetMaxSimulationSteps(::grpc::ServerContext* context, ::grpc::ByteBuffer* request, ::grpc::ServerAsyncResponseWriter< ::grpc::ByteBuffer>* response, ::grpc::CompletionQueue* new_call_cq, ::grpc::ServerCompletionQueue* notification_cq, void *tag) {
+      ::grpc::Service::RequestAsyncUnary(14, context, request, response, new_call_cq, notification_cq, tag);
     }
   };
   template <class BaseClass>
@@ -2343,6 +2615,82 @@ class AirMobiSim final {
       { return nullptr; }
   };
   template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_GetMaxSimulationTime : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_GetMaxSimulationTime() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(13,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->GetMaxSimulationTime(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_GetMaxSimulationTime() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status GetMaxSimulationTime(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* GetMaxSimulationTime(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* GetMaxSimulationTime(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
+  class ExperimentalWithRawCallbackMethod_getMaxSimulationSteps : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    ExperimentalWithRawCallbackMethod_getMaxSimulationSteps() {
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+      ::grpc::Service::
+    #else
+      ::grpc::Service::experimental().
+    #endif
+        MarkMethodRawCallback(14,
+          new ::grpc::internal::CallbackUnaryHandler< ::grpc::ByteBuffer, ::grpc::ByteBuffer>(
+            [this](
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+                   ::grpc::CallbackServerContext*
+    #else
+                   ::grpc::experimental::CallbackServerContext*
+    #endif
+                     context, const ::grpc::ByteBuffer* request, ::grpc::ByteBuffer* response) { return this->getMaxSimulationSteps(context, request, response); }));
+    }
+    ~ExperimentalWithRawCallbackMethod_getMaxSimulationSteps() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable synchronous version of this method
+    ::grpc::Status getMaxSimulationSteps(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::DoubleNumber* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    #ifdef GRPC_CALLBACK_API_NONEXPERIMENTAL
+    virtual ::grpc::ServerUnaryReactor* getMaxSimulationSteps(
+      ::grpc::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #else
+    virtual ::grpc::experimental::ServerUnaryReactor* getMaxSimulationSteps(
+      ::grpc::experimental::CallbackServerContext* /*context*/, const ::grpc::ByteBuffer* /*request*/, ::grpc::ByteBuffer* /*response*/)
+    #endif
+      { return nullptr; }
+  };
+  template <class BaseClass>
   class WithStreamedUnaryMethod_Start : public BaseClass {
    private:
     void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
@@ -2693,9 +3041,63 @@ class AirMobiSim final {
     // replace default version of method with streamed unary
     virtual ::grpc::Status StreamedDeleteWaypoint(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::airmobisim::WaypointList,::google::protobuf::Empty>* server_unary_streamer) = 0;
   };
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<WithStreamedUnaryMethod_InsertWaypoints<WithStreamedUnaryMethod_InsertWaypoint<WithStreamedUnaryMethod_InsertUAV<WithStreamedUnaryMethod_getMaxUavId<WithStreamedUnaryMethod_DeleteUAV<WithStreamedUnaryMethod_getNumberCurrentUAV<WithStreamedUnaryMethod_SetDesiredSpeed<WithStreamedUnaryMethod_UpdateWaypoints<WithStreamedUnaryMethod_DeleteWaypoint<Service > > > > > > > > > > > > > StreamedUnaryService;
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_GetMaxSimulationTime : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_GetMaxSimulationTime() {
+      ::grpc::Service::MarkMethodStreamed(13,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::google::protobuf::Empty, ::airmobisim::Number>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::google::protobuf::Empty, ::airmobisim::Number>* streamer) {
+                       return this->StreamedGetMaxSimulationTime(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_GetMaxSimulationTime() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status GetMaxSimulationTime(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::Number* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedGetMaxSimulationTime(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::airmobisim::Number>* server_unary_streamer) = 0;
+  };
+  template <class BaseClass>
+  class WithStreamedUnaryMethod_getMaxSimulationSteps : public BaseClass {
+   private:
+    void BaseClassMustBeDerivedFromService(const Service* /*service*/) {}
+   public:
+    WithStreamedUnaryMethod_getMaxSimulationSteps() {
+      ::grpc::Service::MarkMethodStreamed(14,
+        new ::grpc::internal::StreamedUnaryHandler<
+          ::google::protobuf::Empty, ::airmobisim::DoubleNumber>(
+            [this](::grpc::ServerContext* context,
+                   ::grpc::ServerUnaryStreamer<
+                     ::google::protobuf::Empty, ::airmobisim::DoubleNumber>* streamer) {
+                       return this->StreamedgetMaxSimulationSteps(context,
+                         streamer);
+                  }));
+    }
+    ~WithStreamedUnaryMethod_getMaxSimulationSteps() override {
+      BaseClassMustBeDerivedFromService(this);
+    }
+    // disable regular version of this method
+    ::grpc::Status getMaxSimulationSteps(::grpc::ServerContext* /*context*/, const ::google::protobuf::Empty* /*request*/, ::airmobisim::DoubleNumber* /*response*/) override {
+      abort();
+      return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+    }
+    // replace default version of method with streamed unary
+    virtual ::grpc::Status StreamedgetMaxSimulationSteps(::grpc::ServerContext* context, ::grpc::ServerUnaryStreamer< ::google::protobuf::Empty,::airmobisim::DoubleNumber>* server_unary_streamer) = 0;
+  };
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<WithStreamedUnaryMethod_InsertWaypoints<WithStreamedUnaryMethod_InsertWaypoint<WithStreamedUnaryMethod_InsertUAV<WithStreamedUnaryMethod_getMaxUavId<WithStreamedUnaryMethod_DeleteUAV<WithStreamedUnaryMethod_getNumberCurrentUAV<WithStreamedUnaryMethod_SetDesiredSpeed<WithStreamedUnaryMethod_UpdateWaypoints<WithStreamedUnaryMethod_DeleteWaypoint<WithStreamedUnaryMethod_GetMaxSimulationTime<WithStreamedUnaryMethod_getMaxSimulationSteps<Service > > > > > > > > > > > > > > > StreamedUnaryService;
   typedef Service SplitStreamedService;
-  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<WithStreamedUnaryMethod_InsertWaypoints<WithStreamedUnaryMethod_InsertWaypoint<WithStreamedUnaryMethod_InsertUAV<WithStreamedUnaryMethod_getMaxUavId<WithStreamedUnaryMethod_DeleteUAV<WithStreamedUnaryMethod_getNumberCurrentUAV<WithStreamedUnaryMethod_SetDesiredSpeed<WithStreamedUnaryMethod_UpdateWaypoints<WithStreamedUnaryMethod_DeleteWaypoint<Service > > > > > > > > > > > > > StreamedService;
+  typedef WithStreamedUnaryMethod_Start<WithStreamedUnaryMethod_ExecuteOneTimeStep<WithStreamedUnaryMethod_Finish<WithStreamedUnaryMethod_GetManagedHosts<WithStreamedUnaryMethod_InsertWaypoints<WithStreamedUnaryMethod_InsertWaypoint<WithStreamedUnaryMethod_InsertUAV<WithStreamedUnaryMethod_getMaxUavId<WithStreamedUnaryMethod_DeleteUAV<WithStreamedUnaryMethod_getNumberCurrentUAV<WithStreamedUnaryMethod_SetDesiredSpeed<WithStreamedUnaryMethod_UpdateWaypoints<WithStreamedUnaryMethod_DeleteWaypoint<WithStreamedUnaryMethod_GetMaxSimulationTime<WithStreamedUnaryMethod_getMaxSimulationSteps<Service > > > > > > > > > > > > > > > StreamedService;
 };
 
 }  // namespace airmobisim

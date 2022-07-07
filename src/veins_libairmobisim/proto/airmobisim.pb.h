@@ -47,7 +47,7 @@ struct TableStruct_airmobisim_2eproto {
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[10]
+  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
   static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
   static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
@@ -58,6 +58,9 @@ namespace airmobisim {
 class Coordinates;
 struct CoordinatesDefaultTypeInternal;
 extern CoordinatesDefaultTypeInternal _Coordinates_default_instance_;
+class DoubleNumber;
+struct DoubleNumberDefaultTypeInternal;
+extern DoubleNumberDefaultTypeInternal _DoubleNumber_default_instance_;
 class Number;
 struct NumberDefaultTypeInternal;
 extern NumberDefaultTypeInternal _Number_default_instance_;
@@ -88,6 +91,7 @@ extern WaypointListDefaultTypeInternal _WaypointList_default_instance_;
 }  // namespace airmobisim
 PROTOBUF_NAMESPACE_OPEN
 template<> ::airmobisim::Coordinates* Arena::CreateMaybeMessage<::airmobisim::Coordinates>(Arena*);
+template<> ::airmobisim::DoubleNumber* Arena::CreateMaybeMessage<::airmobisim::DoubleNumber>(Arena*);
 template<> ::airmobisim::Number* Arena::CreateMaybeMessage<::airmobisim::Number>(Arena*);
 template<> ::airmobisim::Response* Arena::CreateMaybeMessage<::airmobisim::Response>(Arena*);
 template<> ::airmobisim::ResponseQuery* Arena::CreateMaybeMessage<::airmobisim::ResponseQuery>(Arena*);
@@ -1546,6 +1550,138 @@ class Number final :
 };
 // -------------------------------------------------------------------
 
+class DoubleNumber final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.DoubleNumber) */ {
+ public:
+  inline DoubleNumber() : DoubleNumber(nullptr) {}
+  ~DoubleNumber() override;
+  explicit constexpr DoubleNumber(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  DoubleNumber(const DoubleNumber& from);
+  DoubleNumber(DoubleNumber&& from) noexcept
+    : DoubleNumber() {
+    *this = ::std::move(from);
+  }
+
+  inline DoubleNumber& operator=(const DoubleNumber& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline DoubleNumber& operator=(DoubleNumber&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const DoubleNumber& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const DoubleNumber* internal_default_instance() {
+    return reinterpret_cast<const DoubleNumber*>(
+               &_DoubleNumber_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    9;
+
+  friend void swap(DoubleNumber& a, DoubleNumber& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(DoubleNumber* other) {
+    if (other == this) return;
+    if (GetOwningArena() == other->GetOwningArena()) {
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(DoubleNumber* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  inline DoubleNumber* New() const final {
+    return new DoubleNumber();
+  }
+
+  DoubleNumber* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
+    return CreateMaybeMessage<DoubleNumber>(arena);
+  }
+  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+  void CopyFrom(const DoubleNumber& from);
+  void MergeFrom(const DoubleNumber& from);
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(DoubleNumber* other);
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "airmobisim.DoubleNumber";
+  }
+  protected:
+  explicit DoubleNumber(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  private:
+  static void ArenaDtor(void* object);
+  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+  public:
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kNumFieldNumber = 1,
+  };
+  // double num = 1;
+  void clear_num();
+  double num() const;
+  void set_num(double value);
+  private:
+  double _internal_num() const;
+  void _internal_set_num(double value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:airmobisim.DoubleNumber)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  double num_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  friend struct ::TableStruct_airmobisim_2eproto;
+};
+// -------------------------------------------------------------------
+
 class UavSetSpeed final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.UavSetSpeed) */ {
  public:
@@ -1590,7 +1726,7 @@ class UavSetSpeed final :
                &_UavSetSpeed_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    9;
+    10;
 
   friend void swap(UavSetSpeed& a, UavSetSpeed& b) {
     a.Swap(&b);
@@ -2388,6 +2524,30 @@ inline void Number::set_num(::PROTOBUF_NAMESPACE_ID::int32 value) {
 
 // -------------------------------------------------------------------
 
+// DoubleNumber
+
+// double num = 1;
+inline void DoubleNumber::clear_num() {
+  num_ = 0;
+}
+inline double DoubleNumber::_internal_num() const {
+  return num_;
+}
+inline double DoubleNumber::num() const {
+  // @@protoc_insertion_point(field_get:airmobisim.DoubleNumber.num)
+  return _internal_num();
+}
+inline void DoubleNumber::_internal_set_num(double value) {
+  
+  num_ = value;
+}
+inline void DoubleNumber::set_num(double value) {
+  _internal_set_num(value);
+  // @@protoc_insertion_point(field_set:airmobisim.DoubleNumber.num)
+}
+
+// -------------------------------------------------------------------
+
 // UavSetSpeed
 
 // int32 id = 1;
@@ -2433,6 +2593,8 @@ inline void UavSetSpeed::set_speed(double value) {
 #ifdef __GNUC__
   #pragma GCC diagnostic pop
 #endif  // __GNUC__
+// -------------------------------------------------------------------
+
 // -------------------------------------------------------------------
 
 // -------------------------------------------------------------------

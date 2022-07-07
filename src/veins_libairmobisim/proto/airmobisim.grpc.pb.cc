@@ -35,6 +35,8 @@ static const char* AirMobiSim_method_names[] = {
   "/airmobisim.AirMobiSim/SetDesiredSpeed",
   "/airmobisim.AirMobiSim/UpdateWaypoints",
   "/airmobisim.AirMobiSim/DeleteWaypoint",
+  "/airmobisim.AirMobiSim/GetMaxSimulationTime",
+  "/airmobisim.AirMobiSim/getMaxSimulationSteps",
 };
 
 std::unique_ptr< AirMobiSim::Stub> AirMobiSim::NewStub(const std::shared_ptr< ::grpc::ChannelInterface>& channel, const ::grpc::StubOptions& options) {
@@ -57,6 +59,8 @@ AirMobiSim::Stub::Stub(const std::shared_ptr< ::grpc::ChannelInterface>& channel
   , rpcmethod_SetDesiredSpeed_(AirMobiSim_method_names[10], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_UpdateWaypoints_(AirMobiSim_method_names[11], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   , rpcmethod_DeleteWaypoint_(AirMobiSim_method_names[12], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_GetMaxSimulationTime_(AirMobiSim_method_names[13], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
+  , rpcmethod_getMaxSimulationSteps_(AirMobiSim_method_names[14], options.suffix_for_stats(),::grpc::internal::RpcMethod::NORMAL_RPC, channel)
   {}
 
 ::grpc::Status AirMobiSim::Stub::Start(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::google::protobuf::Empty* response) {
@@ -358,6 +362,52 @@ void AirMobiSim::Stub::experimental_async::DeleteWaypoint(::grpc::ClientContext*
   return result;
 }
 
+::grpc::Status AirMobiSim::Stub::GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::Number* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::airmobisim::Number, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_GetMaxSimulationTime_, context, request, response);
+}
+
+void AirMobiSim::Stub::experimental_async::GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::airmobisim::Number, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetMaxSimulationTime_, context, request, response, std::move(f));
+}
+
+void AirMobiSim::Stub::experimental_async::GetMaxSimulationTime(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_GetMaxSimulationTime_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::airmobisim::Number>* AirMobiSim::Stub::PrepareAsyncGetMaxSimulationTimeRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::airmobisim::Number, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_GetMaxSimulationTime_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::airmobisim::Number>* AirMobiSim::Stub::AsyncGetMaxSimulationTimeRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncGetMaxSimulationTimeRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
+::grpc::Status AirMobiSim::Stub::getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::airmobisim::DoubleNumber* response) {
+  return ::grpc::internal::BlockingUnaryCall< ::google::protobuf::Empty, ::airmobisim::DoubleNumber, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), rpcmethod_getMaxSimulationSteps_, context, request, response);
+}
+
+void AirMobiSim::Stub::experimental_async::getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response, std::function<void(::grpc::Status)> f) {
+  ::grpc::internal::CallbackUnaryCall< ::google::protobuf::Empty, ::airmobisim::DoubleNumber, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_getMaxSimulationSteps_, context, request, response, std::move(f));
+}
+
+void AirMobiSim::Stub::experimental_async::getMaxSimulationSteps(::grpc::ClientContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response, ::grpc::experimental::ClientUnaryReactor* reactor) {
+  ::grpc::internal::ClientCallbackUnaryFactory::Create< ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(stub_->channel_.get(), stub_->rpcmethod_getMaxSimulationSteps_, context, request, response, reactor);
+}
+
+::grpc::ClientAsyncResponseReader< ::airmobisim::DoubleNumber>* AirMobiSim::Stub::PrepareAsyncgetMaxSimulationStepsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  return ::grpc::internal::ClientAsyncResponseReaderHelper::Create< ::airmobisim::DoubleNumber, ::google::protobuf::Empty, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(channel_.get(), cq, rpcmethod_getMaxSimulationSteps_, context, request);
+}
+
+::grpc::ClientAsyncResponseReader< ::airmobisim::DoubleNumber>* AirMobiSim::Stub::AsyncgetMaxSimulationStepsRaw(::grpc::ClientContext* context, const ::google::protobuf::Empty& request, ::grpc::CompletionQueue* cq) {
+  auto* result =
+    this->PrepareAsyncgetMaxSimulationStepsRaw(context, request, cq);
+  result->StartCall();
+  return result;
+}
+
 AirMobiSim::Service::Service() {
   AddMethod(new ::grpc::internal::RpcServiceMethod(
       AirMobiSim_method_names[0],
@@ -489,6 +539,26 @@ AirMobiSim::Service::Service() {
              ::google::protobuf::Empty* resp) {
                return service->DeleteWaypoint(ctx, req, resp);
              }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AirMobiSim_method_names[13],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AirMobiSim::Service, ::google::protobuf::Empty, ::airmobisim::Number, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](AirMobiSim::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::google::protobuf::Empty* req,
+             ::airmobisim::Number* resp) {
+               return service->GetMaxSimulationTime(ctx, req, resp);
+             }, this)));
+  AddMethod(new ::grpc::internal::RpcServiceMethod(
+      AirMobiSim_method_names[14],
+      ::grpc::internal::RpcMethod::NORMAL_RPC,
+      new ::grpc::internal::RpcMethodHandler< AirMobiSim::Service, ::google::protobuf::Empty, ::airmobisim::DoubleNumber, ::grpc::protobuf::MessageLite, ::grpc::protobuf::MessageLite>(
+          [](AirMobiSim::Service* service,
+             ::grpc::ServerContext* ctx,
+             const ::google::protobuf::Empty* req,
+             ::airmobisim::DoubleNumber* resp) {
+               return service->getMaxSimulationSteps(ctx, req, resp);
+             }, this)));
 }
 
 AirMobiSim::Service::~Service() {
@@ -579,6 +649,20 @@ AirMobiSim::Service::~Service() {
 }
 
 ::grpc::Status AirMobiSim::Service::DeleteWaypoint(::grpc::ServerContext* context, const ::airmobisim::WaypointList* request, ::google::protobuf::Empty* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AirMobiSim::Service::GetMaxSimulationTime(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::Number* response) {
+  (void) context;
+  (void) request;
+  (void) response;
+  return ::grpc::Status(::grpc::StatusCode::UNIMPLEMENTED, "");
+}
+
+::grpc::Status AirMobiSim::Service::getMaxSimulationSteps(::grpc::ServerContext* context, const ::google::protobuf::Empty* request, ::airmobisim::DoubleNumber* response) {
   (void) context;
   (void) request;
   (void) response;
