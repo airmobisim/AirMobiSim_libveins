@@ -82,6 +82,8 @@ network SimpleScenarioNetwork
         
         uav[0]: Uav{
         }
+        node[0]: Car {
+        }
         
     connections allowunconnected:
 }
