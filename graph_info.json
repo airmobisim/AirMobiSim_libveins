@@ -293,6 +293,10 @@
    "False"
   ],
   [
+   "protobuf:debug_suffix",
+   "True"
+  ],
+  [
    "protobuf:fPIC",
    "True"
   ],
