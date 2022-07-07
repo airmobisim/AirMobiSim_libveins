@@ -336,10 +336,7 @@ int DroCIManager::getCurrentUAVCount() {
 
 
 void DroCIManager::deleteUAV(int deleteUavId){
-   // Delete the UAV with given Id in AirMobiSim
-
-     EV << "This is my deleteUavId" << deleteUavId << endl;
-
+    EV << "This is my deleteUavId" << deleteUavId << endl;
 
     airmobisim::Number nodeId;
     google::protobuf::Empty empty;
@@ -348,21 +345,14 @@ void DroCIManager::deleteUAV(int deleteUavId){
     nodeId.set_num(deleteUavId);
 
     grpc::Status status = stub->DeleteUAV(&clientcontext, nodeId, &empty);
-    std::stringstream ss;
-    ss << deleteUavId;
-    std::cout << hosts.size() << std::endl;
-    std::cout << "ss.str() is " << ss.str() << std::endl;
-    auto it = hosts.find(ss.str());
-    //hosts.erase(it);
-    std::cout << hosts.size() << std::endl;
-
-    cModule *node = getManagedModule(ss.str());
+    if (!status.ok()){
+        error((std::string("DroCIManager::deleteUAV() failed with error: " + std::string(status.error_message())).c_str()));
+    }
+    cModule *node = getManagedModule(std::to_string(deleteUavId));
     node->deleteModule();
 
-   if (!status.ok()){
-       error((std::string("DroCIManager::deleteUAV() failed with error: " + std::string(status.error_message())).c_str()));
-   }
-
+    auto it = hosts.find(std::to_string(deleteUavId));
+    hosts.erase(it);
 }
 
 
