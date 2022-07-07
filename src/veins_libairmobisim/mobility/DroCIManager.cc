@@ -376,25 +376,31 @@ void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosi
 }
 
 
+int DroCIManager::getMaxUavId(){
+    grpc::ClientContext clientContext;
+    airmobisim::Number maxUavId;
+    google::protobuf::Empty empty;
+    grpc::Status status = stub->getMaxUavId(&clientContext, empty, &maxUavId);
+    if (status.ok()) {
+        return maxUavId.num();
+    } else {
+        error("DroCIManager::getMaxUavId() has failed");
+    }
+}
 
-void DroCIManager::insertWaypoint(double x, double y, double z, int index){
-
-
-    airmobisim::WaypointList* waypointlist = new WaypointList;
-
+void DroCIManager::insertWaypoint(int uavId, double x, double y, double z, int index){
     grpc::ClientContext clientContext;
     google::protobuf::Empty empty;
 
-    //TODO:Needs to be change! Add a for loop!
-    airmobisim::Waypoint* waypoint1 =  waypointlist->add_waypoint();
+    airmobisim::Waypoint* waypoint =  new Waypoint();
+    std::cout << "UAV-ID is " << uavId<< std::endl;
+    waypoint->set_index(index);
+    waypoint->set_x(x);
+    waypoint->set_y(y);
+    waypoint->set_z(z);
+    waypoint->set_uid(uavId + 1);
 
-    waypoint1->set_index(index);
-    waypoint1->set_x(x);
-    waypoint1->set_y(y);
-    waypoint1->set_z(z);
-
-
-    grpc::Status status = stub->InsertWaypoints(&clientContext, *waypointlist, &empty);
+    grpc::Status status = stub->InsertWaypoint(&clientContext, *waypoint, &empty);
 
     if (!status.ok()){
            error("DroCIManager::insertWaypoint() has failed!");

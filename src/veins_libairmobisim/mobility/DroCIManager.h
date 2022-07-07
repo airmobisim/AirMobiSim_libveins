@@ -64,7 +64,7 @@ private:
 
 public:
     void insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, double speed);
-    void insertWaypoint(double x, double y, double z, int index = 0);
+    void insertWaypoint(int uavId, double x, double y, double z, int index = -1);
 
     void updateWaypoints();
 
@@ -76,6 +76,7 @@ public:
 
     cModule* getManagedModule(std::string nodeId);
     airmobisim::UavList getManagedHosts();
+    int getMaxUavId();
 
 private:
     std::shared_ptr<grpc::Channel> channel;

@@ -32,10 +32,11 @@ struct WaypointListDefaultTypeInternal {
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT WaypointListDefaultTypeInternal _WaypointList_default_instance_;
 constexpr Waypoint::Waypoint(
   ::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized)
-  : x_(0)
+  : uid_(0)
+  , index_(0)
+  , x_(0)
   , y_(0)
-  , z_(0)
-  , index_(0){}
+  , z_(0){}
 struct WaypointDefaultTypeInternal {
   constexpr WaypointDefaultTypeInternal()
     : _instance(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized{}) {}
@@ -175,6 +176,7 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_airmobisim_2eproto::offsets[] 
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
+  PROTOBUF_FIELD_OFFSET(::airmobisim::Waypoint, uid_),
   PROTOBUF_FIELD_OFFSET(::airmobisim::Waypoint, index_),
   PROTOBUF_FIELD_OFFSET(::airmobisim::Waypoint, x_),
   PROTOBUF_FIELD_OFFSET(::airmobisim::Waypoint, y_),
@@ -247,14 +249,14 @@ const ::PROTOBUF_NAMESPACE_ID::uint32 TableStruct_airmobisim_2eproto::offsets[] 
 static const ::PROTOBUF_NAMESPACE_ID::internal::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::airmobisim::WaypointList)},
   { 7, -1, sizeof(::airmobisim::Waypoint)},
-  { 16, -1, sizeof(::airmobisim::UavList)},
-  { 22, -1, sizeof(::airmobisim::Uav)},
-  { 33, -1, sizeof(::airmobisim::Response)},
-  { 44, -1, sizeof(::airmobisim::ResponseQuery)},
-  { 50, -1, sizeof(::airmobisim::StartUav)},
-  { 59, -1, sizeof(::airmobisim::Coordinates)},
-  { 67, -1, sizeof(::airmobisim::Number)},
-  { 73, -1, sizeof(::airmobisim::UavSetSpeed)},
+  { 17, -1, sizeof(::airmobisim::UavList)},
+  { 23, -1, sizeof(::airmobisim::Uav)},
+  { 34, -1, sizeof(::airmobisim::Response)},
+  { 45, -1, sizeof(::airmobisim::ResponseQuery)},
+  { 51, -1, sizeof(::airmobisim::StartUav)},
+  { 60, -1, sizeof(::airmobisim::Coordinates)},
+  { 68, -1, sizeof(::airmobisim::Number)},
+  { 74, -1, sizeof(::airmobisim::UavSetSpeed)},
 };
 
 static ::PROTOBUF_NAMESPACE_ID::Message const * const file_default_instances[] = {
@@ -274,46 +276,49 @@ const char descriptor_table_protodef_airmobisim_2eproto[] PROTOBUF_SECTION_VARIA
   "\n\020airmobisim.proto\022\nairmobisim\032\033google/p"
   "rotobuf/empty.proto\"B\n\014WaypointList\022\n\n\002i"
   "d\030\001 \001(\005\022&\n\010waypoint\030\002 \003(\0132\024.airmobisim.W"
-  "aypoint\":\n\010Waypoint\022\r\n\005index\030\001 \001(\005\022\t\n\001x\030"
-  "\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\"(\n\007UavList\022\035"
-  "\n\004uavs\030\001 \003(\0132\017.airmobisim.Uav\"P\n\003Uav\022\n\n\002"
-  "id\030\001 \001(\005\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001("
-  "\001\022\r\n\005speed\030\005 \001(\001\022\r\n\005angle\030\006 \001(\001\"U\n\010Respo"
-  "nse\022\n\n\002id\030\001 \001(\005\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 \001(\001\022\t\n"
-  "\001z\030\004 \001(\001\022\r\n\005speed\030\005 \001(\001\022\r\n\005angle\030\006 \001(\001\"8"
-  "\n\rResponseQuery\022\'\n\tresponses\030\001 \003(\0132\024.air"
-  "mobisim.Response\"b\n\010StartUav\022\n\n\002id\030\001 \001(\005"
-  "\022,\n\013coordinates\030\002 \003(\0132\027.airmobisim.Coord"
-  "inates\022\r\n\005speed\030\003 \001(\001\022\r\n\005angle\030\004 \001(\001\".\n\013"
-  "Coordinates\022\t\n\001x\030\001 \001(\001\022\t\n\001y\030\002 \001(\001\022\t\n\001z\030\003"
-  " \001(\001\"\025\n\006Number\022\013\n\003num\030\001 \001(\005\"(\n\013UavSetSpe"
-  "ed\022\n\n\002id\030\001 \001(\005\022\r\n\005speed\030\002 \001(\0012\321\005\n\nAirMob"
-  "iSim\0227\n\005Start\022\026.google.protobuf.Empty\032\026."
-  "google.protobuf.Empty\022G\n\022ExecuteOneTimeS"
-  "tep\022\026.google.protobuf.Empty\032\031.airmobisim"
-  ".ResponseQuery\0228\n\006Finish\022\026.google.protob"
-  "uf.Empty\032\026.google.protobuf.Empty\022>\n\017GetM"
-  "anagedHosts\022\026.google.protobuf.Empty\032\023.ai"
-  "rmobisim.UavList\022C\n\017InsertWaypoints\022\030.ai"
-  "rmobisim.WaypointList\032\026.google.protobuf."
-  "Empty\0229\n\tInsertUAV\022\024.airmobisim.StartUav"
-  "\032\026.google.protobuf.Empty\0227\n\tDeleteUAV\022\022."
-  "airmobisim.Number\032\026.google.protobuf.Empt"
-  "y\022A\n\023getNumberCurrentUAV\022\026.google.protob"
-  "uf.Empty\032\022.airmobisim.Number\022B\n\017SetDesir"
-  "edSpeed\022\027.airmobisim.UavSetSpeed\032\026.googl"
-  "e.protobuf.Empty\022C\n\017UpdateWaypoints\022\030.ai"
-  "rmobisim.WaypointList\032\026.google.protobuf."
-  "Empty\022B\n\016DeleteWaypoint\022\030.airmobisim.Way"
-  "pointList\032\026.google.protobuf.Emptyb\006proto"
-  "3"
+  "aypoint\"G\n\010Waypoint\022\013\n\003uid\030\001 \001(\005\022\r\n\005inde"
+  "x\030\002 \001(\005\022\t\n\001x\030\003 \001(\001\022\t\n\001y\030\004 \001(\001\022\t\n\001z\030\005 \001(\001"
+  "\"(\n\007UavList\022\035\n\004uavs\030\001 \003(\0132\017.airmobisim.U"
+  "av\"P\n\003Uav\022\n\n\002id\030\001 \001(\005\022\t\n\001x\030\002 \001(\001\022\t\n\001y\030\003 "
+  "\001(\001\022\t\n\001z\030\004 \001(\001\022\r\n\005speed\030\005 \001(\001\022\r\n\005angle\030\006"
+  " \001(\001\"U\n\010Response\022\n\n\002id\030\001 \001(\005\022\t\n\001x\030\002 \001(\001\022"
+  "\t\n\001y\030\003 \001(\001\022\t\n\001z\030\004 \001(\001\022\r\n\005speed\030\005 \001(\001\022\r\n\005"
+  "angle\030\006 \001(\001\"8\n\rResponseQuery\022\'\n\tresponse"
+  "s\030\001 \003(\0132\024.airmobisim.Response\"b\n\010StartUa"
+  "v\022\n\n\002id\030\001 \001(\005\022,\n\013coordinates\030\002 \003(\0132\027.air"
+  "mobisim.Coordinates\022\r\n\005speed\030\003 \001(\001\022\r\n\005an"
+  "gle\030\004 \001(\001\".\n\013Coordinates\022\t\n\001x\030\001 \001(\001\022\t\n\001y"
+  "\030\002 \001(\001\022\t\n\001z\030\003 \001(\001\"\025\n\006Number\022\013\n\003num\030\001 \001(\005"
+  "\"(\n\013UavSetSpeed\022\n\n\002id\030\001 \001(\005\022\r\n\005speed\030\002 \001"
+  "(\0012\314\006\n\nAirMobiSim\0227\n\005Start\022\026.google.prot"
+  "obuf.Empty\032\026.google.protobuf.Empty\022G\n\022Ex"
+  "ecuteOneTimeStep\022\026.google.protobuf.Empty"
+  "\032\031.airmobisim.ResponseQuery\0228\n\006Finish\022\026."
+  "google.protobuf.Empty\032\026.google.protobuf."
+  "Empty\022>\n\017GetManagedHosts\022\026.google.protob"
+  "uf.Empty\032\023.airmobisim.UavList\022C\n\017InsertW"
+  "aypoints\022\030.airmobisim.WaypointList\032\026.goo"
+  "gle.protobuf.Empty\022>\n\016InsertWaypoint\022\024.a"
+  "irmobisim.Waypoint\032\026.google.protobuf.Emp"
+  "ty\0229\n\tInsertUAV\022\024.airmobisim.StartUav\032\026."
+  "google.protobuf.Empty\0229\n\013getMaxUavId\022\026.g"
+  "oogle.protobuf.Empty\032\022.airmobisim.Number"
+  "\0227\n\tDeleteUAV\022\022.airmobisim.Number\032\026.goog"
+  "le.protobuf.Empty\022A\n\023getNumberCurrentUAV"
+  "\022\026.google.protobuf.Empty\032\022.airmobisim.Nu"
+  "mber\022B\n\017SetDesiredSpeed\022\027.airmobisim.Uav"
+  "SetSpeed\032\026.google.protobuf.Empty\022C\n\017Upda"
+  "teWaypoints\022\030.airmobisim.WaypointList\032\026."
+  "google.protobuf.Empty\022B\n\016DeleteWaypoint\022"
+  "\030.airmobisim.WaypointList\032\026.google.proto"
+  "buf.Emptyb\006proto3"
   ;
 static const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable*const descriptor_table_airmobisim_2eproto_deps[1] = {
   &::descriptor_table_google_2fprotobuf_2fempty_2eproto,
 };
 static ::PROTOBUF_NAMESPACE_ID::internal::once_flag descriptor_table_airmobisim_2eproto_once;
 const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_airmobisim_2eproto = {
-  false, false, 1401, descriptor_table_protodef_airmobisim_2eproto, "airmobisim.proto", 
+  false, false, 1537, descriptor_table_protodef_airmobisim_2eproto, "airmobisim.proto", 
   &descriptor_table_airmobisim_2eproto_once, descriptor_table_airmobisim_2eproto_deps, 1, 10,
   schemas, file_default_instances, TableStruct_airmobisim_2eproto::offsets,
   file_level_metadata_airmobisim_2eproto, file_level_enum_descriptors_airmobisim_2eproto, file_level_service_descriptors_airmobisim_2eproto,
@@ -563,17 +568,17 @@ Waypoint::Waypoint(::PROTOBUF_NAMESPACE_ID::Arena* arena)
 Waypoint::Waypoint(const Waypoint& from)
   : ::PROTOBUF_NAMESPACE_ID::Message() {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  ::memcpy(&x_, &from.x_,
-    static_cast<size_t>(reinterpret_cast<char*>(&index_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(index_));
+  ::memcpy(&uid_, &from.uid_,
+    static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&uid_)) + sizeof(z_));
   // @@protoc_insertion_point(copy_constructor:airmobisim.Waypoint)
 }
 
 void Waypoint::SharedCtor() {
 ::memset(reinterpret_cast<char*>(this) + static_cast<size_t>(
-    reinterpret_cast<char*>(&x_) - reinterpret_cast<char*>(this)),
-    0, static_cast<size_t>(reinterpret_cast<char*>(&index_) -
-    reinterpret_cast<char*>(&x_)) + sizeof(index_));
+    reinterpret_cast<char*>(&uid_) - reinterpret_cast<char*>(this)),
+    0, static_cast<size_t>(reinterpret_cast<char*>(&z_) -
+    reinterpret_cast<char*>(&uid_)) + sizeof(z_));
 }
 
 Waypoint::~Waypoint() {
@@ -602,9 +607,9 @@ void Waypoint::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  ::memset(&x_, 0, static_cast<size_t>(
-      reinterpret_cast<char*>(&index_) -
-      reinterpret_cast<char*>(&x_)) + sizeof(index_));
+  ::memset(&uid_, 0, static_cast<size_t>(
+      reinterpret_cast<char*>(&z_) -
+      reinterpret_cast<char*>(&uid_)) + sizeof(z_));
   _internal_metadata_.Clear<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>();
 }
 
@@ -614,30 +619,37 @@ const char* Waypoint::_InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::i
     ::PROTOBUF_NAMESPACE_ID::uint32 tag;
     ptr = ::PROTOBUF_NAMESPACE_ID::internal::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // int32 index = 1;
+      // int32 uid = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 8)) {
+          uid_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
+          CHK_(ptr);
+        } else goto handle_unusual;
+        continue;
+      // int32 index = 2;
+      case 2:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 16)) {
           index_ = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
         } else goto handle_unusual;
         continue;
-      // double x = 2;
-      case 2:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 17)) {
+      // double x = 3;
+      case 3:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
           x_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
         } else goto handle_unusual;
         continue;
-      // double y = 3;
-      case 3:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 25)) {
+      // double y = 4;
+      case 4:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 33)) {
           y_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
         } else goto handle_unusual;
         continue;
-      // double z = 4;
-      case 4:
-        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 33)) {
+      // double z = 5;
+      case 5:
+        if (PROTOBUF_PREDICT_TRUE(static_cast<::PROTOBUF_NAMESPACE_ID::uint8>(tag) == 41)) {
           z_ = ::PROTOBUF_NAMESPACE_ID::internal::UnalignedLoad<double>(ptr);
           ptr += sizeof(double);
         } else goto handle_unusual;
@@ -671,28 +683,34 @@ failure:
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // int32 index = 1;
+  // int32 uid = 1;
+  if (this->uid() != 0) {
+    target = stream->EnsureSpace(target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_uid(), target);
+  }
+
+  // int32 index = 2;
   if (this->index() != 0) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(1, this->_internal_index(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteInt32ToArray(2, this->_internal_index(), target);
   }
 
-  // double x = 2;
+  // double x = 3;
   if (!(this->x() <= 0 && this->x() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(2, this->_internal_x(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_x(), target);
   }
 
-  // double y = 3;
+  // double y = 4;
   if (!(this->y() <= 0 && this->y() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(3, this->_internal_y(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(4, this->_internal_y(), target);
   }
 
-  // double z = 4;
+  // double z = 5;
   if (!(this->z() <= 0 && this->z() >= 0)) {
     target = stream->EnsureSpace(target);
-    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(4, this->_internal_z(), target);
+    target = ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::WriteDoubleToArray(5, this->_internal_z(), target);
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -711,26 +729,33 @@ size_t Waypoint::ByteSizeLong() const {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // double x = 2;
-  if (!(this->x() <= 0 && this->x() >= 0)) {
-    total_size += 1 + 8;
+  // int32 uid = 1;
+  if (this->uid() != 0) {
+    total_size += 1 +
+      ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
+        this->_internal_uid());
   }
 
-  // double y = 3;
-  if (!(this->y() <= 0 && this->y() >= 0)) {
-    total_size += 1 + 8;
-  }
-
-  // double z = 4;
-  if (!(this->z() <= 0 && this->z() >= 0)) {
-    total_size += 1 + 8;
-  }
-
-  // int32 index = 1;
+  // int32 index = 2;
   if (this->index() != 0) {
     total_size += 1 +
       ::PROTOBUF_NAMESPACE_ID::internal::WireFormatLite::Int32Size(
         this->_internal_index());
+  }
+
+  // double x = 3;
+  if (!(this->x() <= 0 && this->x() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  // double y = 4;
+  if (!(this->y() <= 0 && this->y() >= 0)) {
+    total_size += 1 + 8;
+  }
+
+  // double z = 5;
+  if (!(this->z() <= 0 && this->z() >= 0)) {
+    total_size += 1 + 8;
   }
 
   if (PROTOBUF_PREDICT_FALSE(_internal_metadata_.have_unknown_fields())) {
@@ -764,6 +789,12 @@ void Waypoint::MergeFrom(const Waypoint& from) {
   ::PROTOBUF_NAMESPACE_ID::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
+  if (from.uid() != 0) {
+    _internal_set_uid(from._internal_uid());
+  }
+  if (from.index() != 0) {
+    _internal_set_index(from._internal_index());
+  }
   if (!(from.x() <= 0 && from.x() >= 0)) {
     _internal_set_x(from._internal_x());
   }
@@ -772,9 +803,6 @@ void Waypoint::MergeFrom(const Waypoint& from) {
   }
   if (!(from.z() <= 0 && from.z() >= 0)) {
     _internal_set_z(from._internal_z());
-  }
-  if (from.index() != 0) {
-    _internal_set_index(from._internal_index());
   }
 }
 
@@ -800,11 +828,11 @@ void Waypoint::InternalSwap(Waypoint* other) {
   using std::swap;
   _internal_metadata_.InternalSwap(&other->_internal_metadata_);
   ::PROTOBUF_NAMESPACE_ID::internal::memswap<
-      PROTOBUF_FIELD_OFFSET(Waypoint, index_)
-      + sizeof(Waypoint::index_)
-      - PROTOBUF_FIELD_OFFSET(Waypoint, x_)>(
-          reinterpret_cast<char*>(&x_),
-          reinterpret_cast<char*>(&other->x_));
+      PROTOBUF_FIELD_OFFSET(Waypoint, z_)
+      + sizeof(Waypoint::z_)
+      - PROTOBUF_FIELD_OFFSET(Waypoint, uid_)>(
+          reinterpret_cast<char*>(&uid_),
+          reinterpret_cast<char*>(&other->uid_));
 }
 
 ::PROTOBUF_NAMESPACE_ID::Metadata Waypoint::GetMetadata() const {

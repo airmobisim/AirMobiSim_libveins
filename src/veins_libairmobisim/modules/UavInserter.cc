@@ -29,10 +29,12 @@ Define_Module(airmobisim::UavInserter);
 void UavInserter::initialize(int stage){
     if (stage == 0) {
         queryDataMsg = new cMessage("Query UAV data");
+        addWaypointMsg = new cMessage("Add new waypoint");
         insertNewUavMsg = new cMessage("Insert new UAV");
     } else if (stage == 1) {
         drociManager =  veins::FindModule<DroCIManager*>::findGlobalModule();
         scheduleAt(simTime() + 2, queryDataMsg);
+        scheduleAt(simTime() + 2.2, addWaypointMsg);
         scheduleAt(simTime() + 5, insertNewUavMsg);
     }
 }
@@ -51,11 +53,13 @@ void UavInserter::handleMessage(cMessage *msg) {
             angle = listOfUavs.uavs(i).angle();
             std::cout << "have a UAV: ID " << listOfUavs.uavs(i).id()
                     << " at (x,y,z) (" << position.x << ", " << position.y
-                    << ", " << position.z << ")" << std::endl;
+                    << ", " << position.z << ") - angle is " << angle << std::endl;
         }
         std::cout << "done!" << std::endl;
+    } else if (msg == addWaypointMsg) {
+        drociManager->insertWaypoint(drociManager->getMaxUavId(), 750, 750, 3);
     } else if (msg == insertNewUavMsg){
-        auto insertUavId = 1002;
+        auto insertUavId = drociManager->getMaxUavId() + 1;
         Coord startPosition;
         startPosition.x = 0;
         startPosition.y = 10;
@@ -66,6 +70,7 @@ void UavInserter::handleMessage(cMessage *msg) {
         endPosition.z = 5;
         auto startAngle = 90;
         auto speed = 20;
+        std::cout << "Add new UAV with: ID " << insertUavId << std::endl;
         drociManager->insertUAV(insertUavId, startPosition, endPosition, startAngle, speed);
     }
 }

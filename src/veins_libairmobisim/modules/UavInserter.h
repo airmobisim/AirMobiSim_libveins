@@ -43,5 +43,6 @@ class UavInserter : public cSimpleModule
     DroCIManager* drociManager;
     cMessage* queryDataMsg;
     cMessage* insertNewUavMsg;
+    cMessage* addWaypointMsg;
 };
 }

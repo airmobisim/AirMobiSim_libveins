@@ -362,12 +362,31 @@ class Waypoint final :
   // accessors -------------------------------------------------------
 
   enum : int {
-    kXFieldNumber = 2,
-    kYFieldNumber = 3,
-    kZFieldNumber = 4,
-    kIndexFieldNumber = 1,
+    kUidFieldNumber = 1,
+    kIndexFieldNumber = 2,
+    kXFieldNumber = 3,
+    kYFieldNumber = 4,
+    kZFieldNumber = 5,
   };
-  // double x = 2;
+  // int32 uid = 1;
+  void clear_uid();
+  ::PROTOBUF_NAMESPACE_ID::int32 uid() const;
+  void set_uid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_uid() const;
+  void _internal_set_uid(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // int32 index = 2;
+  void clear_index();
+  ::PROTOBUF_NAMESPACE_ID::int32 index() const;
+  void set_index(::PROTOBUF_NAMESPACE_ID::int32 value);
+  private:
+  ::PROTOBUF_NAMESPACE_ID::int32 _internal_index() const;
+  void _internal_set_index(::PROTOBUF_NAMESPACE_ID::int32 value);
+  public:
+
+  // double x = 3;
   void clear_x();
   double x() const;
   void set_x(double value);
@@ -376,7 +395,7 @@ class Waypoint final :
   void _internal_set_x(double value);
   public:
 
-  // double y = 3;
+  // double y = 4;
   void clear_y();
   double y() const;
   void set_y(double value);
@@ -385,22 +404,13 @@ class Waypoint final :
   void _internal_set_y(double value);
   public:
 
-  // double z = 4;
+  // double z = 5;
   void clear_z();
   double z() const;
   void set_z(double value);
   private:
   double _internal_z() const;
   void _internal_set_z(double value);
-  public:
-
-  // int32 index = 1;
-  void clear_index();
-  ::PROTOBUF_NAMESPACE_ID::int32 index() const;
-  void set_index(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_index() const;
-  void _internal_set_index(::PROTOBUF_NAMESPACE_ID::int32 value);
   public:
 
   // @@protoc_insertion_point(class_scope:airmobisim.Waypoint)
@@ -410,10 +420,11 @@ class Waypoint final :
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::int32 uid_;
+  ::PROTOBUF_NAMESPACE_ID::int32 index_;
   double x_;
   double y_;
   double z_;
-  ::PROTOBUF_NAMESPACE_ID::int32 index_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_airmobisim_2eproto;
 };
@@ -1750,7 +1761,27 @@ WaypointList::waypoint() const {
 
 // Waypoint
 
-// int32 index = 1;
+// int32 uid = 1;
+inline void Waypoint::clear_uid() {
+  uid_ = 0;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::_internal_uid() const {
+  return uid_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::uid() const {
+  // @@protoc_insertion_point(field_get:airmobisim.Waypoint.uid)
+  return _internal_uid();
+}
+inline void Waypoint::_internal_set_uid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  
+  uid_ = value;
+}
+inline void Waypoint::set_uid(::PROTOBUF_NAMESPACE_ID::int32 value) {
+  _internal_set_uid(value);
+  // @@protoc_insertion_point(field_set:airmobisim.Waypoint.uid)
+}
+
+// int32 index = 2;
 inline void Waypoint::clear_index() {
   index_ = 0;
 }
@@ -1770,7 +1801,7 @@ inline void Waypoint::set_index(::PROTOBUF_NAMESPACE_ID::int32 value) {
   // @@protoc_insertion_point(field_set:airmobisim.Waypoint.index)
 }
 
-// double x = 2;
+// double x = 3;
 inline void Waypoint::clear_x() {
   x_ = 0;
 }
@@ -1790,7 +1821,7 @@ inline void Waypoint::set_x(double value) {
   // @@protoc_insertion_point(field_set:airmobisim.Waypoint.x)
 }
 
-// double y = 3;
+// double y = 4;
 inline void Waypoint::clear_y() {
   y_ = 0;
 }
@@ -1810,7 +1841,7 @@ inline void Waypoint::set_y(double value) {
   // @@protoc_insertion_point(field_set:airmobisim.Waypoint.y)
 }
 
-// double z = 4;
+// double z = 5;
 inline void Waypoint::clear_z() {
   z_ = 0;
 }
