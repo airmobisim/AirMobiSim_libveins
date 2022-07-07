@@ -53,10 +53,11 @@ void DroCIManager::initialize(int stage)
 {
     if (stage == 0) {
         updateInterval = par("updateInterval").doubleValue();
-        simTimeLimit = 55;//par(""); //TODO
         moduleType = par("moduleType").stringValue();
         moduleName = par("moduleName").stringValue();
         moduleDisplayString = par("moduleDisplayString").stdstringValue();
+
+        simTimeLimit =std::stod(std::string(this->getSimulation()->getActiveSimulation()->getEnvir()->getConfig()->getConfigValue("sim-time-limit")));
         totalsteps = simTimeLimit / updateInterval;
 
         // Do not create children here since OMNeT++ will try to initialize them again
@@ -65,9 +66,10 @@ void DroCIManager::initialize(int stage)
         checkConnectionMsg = new cMessage();
         checkConnectionMsg->setKind(checkConnectionMsgKind);
 
-        count = 0;
+        simulationStepCount = 0;
         nextNodeVectorIndex = 0;
-
+        maxSimulationTimeAirMobiSim = 0;
+        maxSimulationStepsAirMobiSim = 0.0;
         hosts.clear();
         executeOneTimestepTrigger = new cMessage("step");
     } else if (stage == 1) {
@@ -161,7 +163,28 @@ void DroCIManager::launchSimulator() {
     airmobisim::UavList managedHosts;
     google::protobuf::Empty empty;
     grpc::ClientContext clientContext;
-    grpc::Status status = stub->GetManagedHosts(&clientContext, empty, &managedHosts);
+    google::protobuf::Empty empty2;
+    grpc::ClientContext clientContext2;
+    google::protobuf::Empty empty3;
+    grpc::ClientContext clientContext3;
+    airmobisim::Number airMobiSimSimulationTimeLimit;
+    airmobisim::DoubleNumber airMobiSimSimulationSteps;
+
+    grpc::Status status = stub->GetMaxSimulationTime(&clientContext, empty, &airMobiSimSimulationTimeLimit);
+    if (status.ok()) {
+        maxSimulationTimeAirMobiSim = airMobiSimSimulationTimeLimit.num();
+    } else {
+        error((std::string("DroCIManager::GetMaxSimulationTime() failed with error: " + std::string(status.error_message())).c_str()));
+    }
+
+    status = stub->getMaxSimulationSteps(&clientContext2, empty2, &airMobiSimSimulationSteps);
+    if (status.ok()) {
+        maxSimulationStepsAirMobiSim = airMobiSimSimulationTimeLimit.num();
+    } else {
+        error((std::string("DroCIManager::getMaxSimulationSteps() failed with error: " + std::string(status.error_message())).c_str()));
+    }
+
+    status = stub->GetManagedHosts(&clientContext3, empty3, &managedHosts);
 
     std::cout << simTime().dbl() << ": launchSimulator()" << std::endl;
     if (status.ok()) {
@@ -185,9 +208,9 @@ void DroCIManager::launchSimulator() {
             addModule(id, moduleType, mName, moduleDisplayString, position, speed, angle, length, height, width);
         }
     } else {
-        std::cout << status.error_code() << ": " << status.error_message() << std::endl;
+        error((std::string("DroCIManager::GetManagedHosts() failed with error: " + std::string(status.error_message())).c_str()));
     }
-    if (count < totalsteps) {
+    if (simulationStepCount < totalsteps) {
         scheduleAt(simTime() + updateInterval, executeOneTimestepTrigger);
     } else {
         EV << "End" << endl;
@@ -200,24 +223,30 @@ void DroCIManager::executeOneTimestep()
     airmobisim::ResponseQuery response;
     google::protobuf::Empty empty;
     grpc::ClientContext clientContext;
-    grpc::Status status = stub->ExecuteOneTimeStep(&clientContext, empty, &response);
+        grpc::Status status = stub->ExecuteOneTimeStep(&clientContext, empty, &response);
 
-    if (status.ok()) {
-        for (uint32_t i = 0; i < response.responses_size(); i++) {
-            EV << "Length of response" << response.responses_size() << endl;
-            EV << "Getting for " << response.responses(i).id() << " subscription results" << endl;
-            EV << "Position" << response.responses(i).y() << endl;
 
-            std::stringstream ss;
-            ss << response.responses(i).id();
-            processUavSubscription(ss.str(), Coord(response.responses(i).x(), response.responses(i).y(), response.responses(i).z()),response.responses(i).speed(), response.responses(i).angle());
+        if (status.ok()) {
+            for (uint32_t i = 0; i < response.responses_size(); i++) {
+                EV << "Length of response" << response.responses_size() << endl;
+                EV << "Getting for " << response.responses(i).id() << " subscription results" << endl;
+                EV << "Position" << response.responses(i).y() << endl;
+
+                std::stringstream ss;
+                ss << response.responses(i).id();
+                processUavSubscription(ss.str(), Coord(response.responses(i).x(), response.responses(i).y(), response.responses(i).z()),response.responses(i).speed(), response.responses(i).angle());
+            }
+        } else {
+            if(simulationStepCount > maxSimulationStepsAirMobiSim) { // There are no further timesteps in AirMobiSim
+                endSimulation();
+            } else {
+                error((std::string("DroCIManager::executeOneTimestep() failed with error: " + std::string(status.error_message())).c_str()));
+            }
         }
-    } else {
-        error("DroCIManager::executeOneTimestep() has failed");
-    }
-    
-    count = count + 1;
-    if(count < totalsteps) {
+
+        simulationStepCount = simulationStepCount + 1;
+
+    if(simulationStepCount < totalsteps) {
         scheduleAt(simTime() + updateInterval, executeOneTimestepTrigger);
     } else {
         EV << "End" << endl;
@@ -294,7 +323,7 @@ int DroCIManager::getCurrentUAVCount() {
     airmobisim::Number number_uav;
     google::protobuf::Empty empty;
     grpc::ClientContext clientcontext;
-    grpc::Status status ;
+    grpc::Status status;
 
     if(stub != nullptr) {
         status = stub->getNumberCurrentUAV(&clientcontext, empty, &number_uav);

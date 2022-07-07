@@ -81,15 +81,19 @@ public:
 private:
     std::shared_ptr<grpc::Channel> channel;
     std::unique_ptr<airmobisim::AirMobiSim::Stub> stub;
+
     double updateInterval;
     double simTimeLimit;
-    int count;
+    int simulationStepCount;
     double totalsteps;
+    double maxSimulationTimeAirMobiSim;
+    double maxSimulationStepsAirMobiSim;
     omnetpp::cMessage *initMsg;
     omnetpp::cMessage *launchSimulatorMsg;
     omnetpp::cMessage *executeOneTimestepTrigger;
     omnetpp::cMessage *checkConnectionMsg;
     int checkConnectionMsgKind = 1337;
+
     std::string moduleType;
     std::string moduleName;
     size_t nextNodeVectorIndex; /**< next OMNeT++ module vector index to use */
