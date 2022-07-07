@@ -142,7 +142,7 @@ airmobisim::UavList DroCIManager::getManagedHosts() {
     if (status.ok()) {
         return managedHosts;
     } else {
-        error("DroCIManager::getManagedHosts() has failed");
+        error((std::string("DroCIManager::getManagedHosts() failed with error: " + std::string(status.error_message())).c_str());
     }
 }
 
@@ -159,7 +159,6 @@ void DroCIManager::launchSimulator() {
    }
 
     airmobisim::UavList managedHosts;
-    //airmobisim::ResponseQuery managedHosts;
     google::protobuf::Empty empty;
     grpc::ClientContext clientContext;
     grpc::Status status = stub->GetManagedHosts(&clientContext, empty, &managedHosts);
@@ -186,8 +185,7 @@ void DroCIManager::launchSimulator() {
             addModule(id, moduleType, mName, moduleDisplayString, position, speed, angle, length, height, width);
         }
     } else {
-        std::cout << status.error_code() << ": " << status.error_message()
-                << std::endl;
+        std::cout << status.error_code() << ": " << status.error_message() << std::endl;
     }
     if (count < totalsteps) {
         scheduleAt(simTime() + updateInterval, executeOneTimestepTrigger);
@@ -302,7 +300,7 @@ int DroCIManager::getCurrentUAVCount() {
         status = stub->getNumberCurrentUAV(&clientcontext, empty, &number_uav);
     }
     if (!status.ok()) {
-        error("DroCIManager::getnumberCurrentUAV() has failed!");
+        error((std::string("DroCIManager::getnumberCurrentUAV() failed with error: " + std::string(status.error_message())).c_str());
     }
     return number_uav.num();
 }
@@ -333,7 +331,7 @@ void DroCIManager::deleteUAV(int deleteUavId){
     node->deleteModule();
 
    if (!status.ok()){
-       error("DroCIInetManager::deleteUAV failed");
+       error((std::string("DroCIManager::deleteUAV() failed with error: " + std::string(status.error_message())).c_str());
    }
 
 }
@@ -384,7 +382,7 @@ int DroCIManager::getMaxUavId(){
     if (status.ok()) {
         return maxUavId.num();
     } else {
-        error("DroCIManager::getMaxUavId() has failed");
+        error((std::string("DroCIManager::getMaxUavId() failed with error: " + std::string(status.error_message())).c_str());
     }
 }
 
@@ -403,7 +401,7 @@ void DroCIManager::insertWaypoint(int uavId, double x, double y, double z, int i
     grpc::Status status = stub->InsertWaypoint(&clientContext, *waypoint, &empty);
 
     if (!status.ok()){
-           error("DroCIManager::insertWaypoint() has failed!");
+        error((std::string("DroCIManager::insertWaypoint() failed with error: " + std::string(status.error_message())).c_str());
     }
 }
 
@@ -421,7 +419,7 @@ void DroCIManager::setDesiredSpeed(){
    grpc::Status status = stub->SetDesiredSpeed(&clientcontext, *uavsetspeed, &empty);
 
    if (!status.ok()){
-        error("DroCIManager::setDesiredSpeed() has failed!");
+       error((std::string("DroCIManager::setDesiredSpeed() failed with error: " + std::string(status.error_message())).c_str());
    }
 }
 
@@ -457,6 +455,6 @@ void DroCIManager::updateWaypoints(){
 
 
     if (!status.ok()){
-          error("DroCIManager::updateWaypoints() has failed!");
+        error((std::string("DroCIManager::updateWaypoints() failed with error: " + std::string(status.error_message())).c_str());
     }
 }
