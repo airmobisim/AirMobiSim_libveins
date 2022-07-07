@@ -142,7 +142,7 @@ airmobisim::UavList DroCIManager::getManagedHosts() {
     if (status.ok()) {
         return managedHosts;
     } else {
-        error((std::string("DroCIManager::getManagedHosts() failed with error: " + std::string(status.error_message())).c_str());
+        error((std::string("DroCIManager::getManagedHosts() failed with error: " + std::string(status.error_message())).c_str()));
     }
 }
 
@@ -300,7 +300,7 @@ int DroCIManager::getCurrentUAVCount() {
         status = stub->getNumberCurrentUAV(&clientcontext, empty, &number_uav);
     }
     if (!status.ok()) {
-        error((std::string("DroCIManager::getnumberCurrentUAV() failed with error: " + std::string(status.error_message())).c_str());
+        error((std::string("DroCIManager::getnumberCurrentUAV() failed with error: " + std::string(status.error_message())).c_str()));
     }
     return number_uav.num();
 }
@@ -331,7 +331,7 @@ void DroCIManager::deleteUAV(int deleteUavId){
     node->deleteModule();
 
    if (!status.ok()){
-       error((std::string("DroCIManager::deleteUAV() failed with error: " + std::string(status.error_message())).c_str());
+       error((std::string("DroCIManager::deleteUAV() failed with error: " + std::string(status.error_message())).c_str()));
    }
 
 }
@@ -382,7 +382,7 @@ int DroCIManager::getMaxUavId(){
     if (status.ok()) {
         return maxUavId.num();
     } else {
-        error((std::string("DroCIManager::getMaxUavId() failed with error: " + std::string(status.error_message())).c_str());
+        error((std::string("DroCIManager::getMaxUavId() failed with error: " + std::string(status.error_message())).c_str()));
     }
 }
 
@@ -401,7 +401,7 @@ void DroCIManager::insertWaypoint(int uavId, double x, double y, double z, int i
     grpc::Status status = stub->InsertWaypoint(&clientContext, *waypoint, &empty);
 
     if (!status.ok()){
-        error((std::string("DroCIManager::insertWaypoint() failed with error: " + std::string(status.error_message())).c_str());
+        error((std::string("DroCIManager::insertWaypoint() failed with error: " + std::string(status.error_message())).c_str()));
     }
 }
 
@@ -419,7 +419,7 @@ void DroCIManager::setDesiredSpeed(){
    grpc::Status status = stub->SetDesiredSpeed(&clientcontext, *uavsetspeed, &empty);
 
    if (!status.ok()){
-       error((std::string("DroCIManager::setDesiredSpeed() failed with error: " + std::string(status.error_message())).c_str());
+       error((std::string("DroCIManager::setDesiredSpeed() failed with error: " + std::string(status.error_message())).c_str()));
    }
 }
 
@@ -455,6 +455,6 @@ void DroCIManager::updateWaypoints(){
 
 
     if (!status.ok()){
-        error((std::string("DroCIManager::updateWaypoints() failed with error: " + std::string(status.error_message())).c_str());
+        error((std::string("DroCIManager::updateWaypoints() failed with error: " + std::string(status.error_message())).c_str()));
     }
 }
