@@ -51,20 +51,22 @@ void ExampleAirMobiSimApp::finish() {
 void ExampleAirMobiSimApp::onBSM(DemoSafetyMessage *bsm) {
     // Your application has received a beacon message from another car or RSU
     // code for handling the message goes here
+    delete bsm;
 }
 
 void ExampleAirMobiSimApp::onWSM(BaseFrame1609_4 *wsm) {
     // Your application has received a data message from another car or RSU
     // code for handling the message goes here, see TraciDemo11p.cc for examples
+    delete wsm;
 }
 
 void ExampleAirMobiSimApp::onWSA(DemoServiceAdvertisment *wsa) {
     // Your application has received a service advertisement from another car or RSU
     // code for handling the message goes here, see TraciDemo11p.cc for examples
+    delete wsa;
 }
 
 void ExampleAirMobiSimApp::handleSelfMsg(cMessage *msg) {
-    return;
     DemoBaseApplLayer::handleSelfMsg(msg);
     // this method is for self messages (mostly timers)
     // it is important to call the DemoBaseApplLayer function for BSM and WSM transmission
@@ -75,10 +77,4 @@ void ExampleAirMobiSimApp::handlePositionUpdate(cObject *obj) {
     DemoBaseApplLayer::handlePositionUpdate(obj);
     // the vehicle has moved. Code that reacts to new positions goes here.
     // member variables such as currentPosition and currentSpeed are updated in the parent class
-
-    if(simTime() < 0.1) {
-        TraCIDemo11pMessage* wsm = new TraCIDemo11pMessage();
-        populateWSM(wsm);
-        sendDelayedDown(wsm, uniform(0, 0.01));
-    }
 }
