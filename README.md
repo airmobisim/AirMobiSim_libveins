@@ -23,7 +23,7 @@ are available with the source distribution.
 
 For this project, an instance of Veins (https://github.com/sommer/veins) is required. This instance must be placed at the same level as this repository. Relative to the location of this file, the Veins repository must be located at ../veins
 
-├── AirMobiSim
-├── AirMobiSim_libveins
-├── veins
+├── AirMobiSim \
+├── AirMobiSim_libveins \
+├── veins \
 
