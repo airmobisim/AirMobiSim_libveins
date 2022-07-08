@@ -6,8 +6,6 @@ src/**/*_m.h
 src/**/*_m.cc
 
 airmobisim.proto
-src/**/proto/airmobisim.grpc.pb.*
-src/**/proto/airmobisim.pb.*
 
 doc/doxy
 doc/neddoc
