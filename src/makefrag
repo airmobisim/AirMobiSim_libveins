@@ -69,7 +69,6 @@ OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libgrpc.a
 OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libgpr.a
 OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libupb.a
 OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libaddress_sorting.a
-# Idea: Nimm alles und wirf alles mit 'unsafe' raus (for GRPC)
 OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_OPENSSL)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_OPENSSL)))
 OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_PROTOBUF)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_PROTOBUF)))
 OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_C-ARES)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_C-ARES)))
@@ -78,7 +77,6 @@ OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_RE2)/lib/lib, $(addsuffix .a, $(CONAN_L
 OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_ZLIB)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_ZLIB)))
 OMNETPP_LIBS += $(addprefix -l, $(CONAN_SYSTEM_LIBS))
 
-#TODO: CHeck CONAN_FRAMEWORKS contains entries
 OMNETPP_LIBS += $(addprefix -framework , $(CONAN_FRAMEWORKS)) # TODO: Check if this works with linux
 
 
