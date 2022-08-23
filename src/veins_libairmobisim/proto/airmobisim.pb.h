@@ -43,15 +43,15 @@ PROTOBUF_NAMESPACE_CLOSE
 
 // Internal implementation detail -- do not use these members.
 struct TableStruct_airmobisim_2eproto {
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTableField entries[]
+    static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTableField entries[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
+    static const ::PROTOBUF_NAMESPACE_ID::internal::AuxiliaryParseTableField aux[]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
+    static const ::PROTOBUF_NAMESPACE_ID::internal::ParseTable schema[11]
     PROTOBUF_SECTION_VARIABLE(protodesc_cold);
-  static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
-  static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
-  static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
+    static const ::PROTOBUF_NAMESPACE_ID::internal::FieldMetadata field_metadata[];
+    static const ::PROTOBUF_NAMESPACE_ID::internal::SerializationTable serialization_table[];
+    static const ::PROTOBUF_NAMESPACE_ID::uint32 offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_airmobisim_2eproto;
 namespace airmobisim {
@@ -108,1720 +108,1907 @@ namespace airmobisim {
 
 class WaypointList final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.WaypointList) */ {
- public:
-  inline WaypointList() : WaypointList(nullptr) {}
-  ~WaypointList() override;
-  explicit constexpr WaypointList(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline WaypointList()
+        : WaypointList(nullptr) {}
+    ~WaypointList() override;
+    explicit constexpr WaypointList(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  WaypointList(const WaypointList& from);
-  WaypointList(WaypointList&& from) noexcept
-    : WaypointList() {
-    *this = ::std::move(from);
-  }
-
-  inline WaypointList& operator=(const WaypointList& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline WaypointList& operator=(WaypointList&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    WaypointList(const WaypointList& from);
+    WaypointList(WaypointList&& from) noexcept
+        : WaypointList()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const WaypointList& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const WaypointList* internal_default_instance() {
-    return reinterpret_cast<const WaypointList*>(
-               &_WaypointList_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    0;
-
-  friend void swap(WaypointList& a, WaypointList& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(WaypointList* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline WaypointList& operator=(const WaypointList& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(WaypointList* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline WaypointList& operator=(WaypointList&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const WaypointList& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const WaypointList* internal_default_instance()
+    {
+        return reinterpret_cast<const WaypointList*>(
+            &_WaypointList_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        0;
 
-  inline WaypointList* New() const final {
-    return new WaypointList();
-  }
+    friend void swap(WaypointList& a, WaypointList& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(WaypointList* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(WaypointList* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  WaypointList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<WaypointList>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const WaypointList& from);
-  void MergeFrom(const WaypointList& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline WaypointList* New() const final
+    {
+        return new WaypointList();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(WaypointList* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.WaypointList";
-  }
-  protected:
-  explicit WaypointList(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    WaypointList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<WaypointList>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const WaypointList& from);
+    void MergeFrom(const WaypointList& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(WaypointList* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.WaypointList";
+    }
+protected:
+    explicit WaypointList(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kWaypointFieldNumber = 2,
-    kIdFieldNumber = 1,
-  };
-  // repeated .airmobisim.Waypoint waypoint = 2;
-  int waypoint_size() const;
-  private:
-  int _internal_waypoint_size() const;
-  public:
-  void clear_waypoint();
-  ::airmobisim::Waypoint* mutable_waypoint(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint >*
-      mutable_waypoint();
-  private:
-  const ::airmobisim::Waypoint& _internal_waypoint(int index) const;
-  ::airmobisim::Waypoint* _internal_add_waypoint();
-  public:
-  const ::airmobisim::Waypoint& waypoint(int index) const;
-  ::airmobisim::Waypoint* add_waypoint();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint >&
-      waypoint() const;
+    // nested types ----------------------------------------------------
 
-  // int32 id = 1;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
+    // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:airmobisim.WaypointList)
- private:
-  class _Internal;
+    enum : int {
+        kWaypointFieldNumber = 2,
+        kIdFieldNumber = 1,
+    };
+    // repeated .airmobisim.Waypoint waypoint = 2;
+    int waypoint_size() const;
+private:
+    int _internal_waypoint_size() const;
+public:
+    void clear_waypoint();
+    ::airmobisim::Waypoint* mutable_waypoint(int index);
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint>*
+    mutable_waypoint();
+private:
+    const ::airmobisim::Waypoint& _internal_waypoint(int index) const;
+    ::airmobisim::Waypoint* _internal_add_waypoint();
+public:
+    const ::airmobisim::Waypoint& waypoint(int index) const;
+    ::airmobisim::Waypoint* add_waypoint();
+    const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint>&
+    waypoint() const;
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint > waypoint_;
-  ::PROTOBUF_NAMESPACE_ID::int32 id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    // int32 id = 1;
+    void clear_id();
+    ::PROTOBUF_NAMESPACE_ID::int32 id() const;
+    void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
+    void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+public:
+
+    // @@protoc_insertion_point(class_scope:airmobisim.WaypointList)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint> waypoint_;
+    ::PROTOBUF_NAMESPACE_ID::int32 id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class Waypoint final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.Waypoint) */ {
- public:
-  inline Waypoint() : Waypoint(nullptr) {}
-  ~Waypoint() override;
-  explicit constexpr Waypoint(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline Waypoint()
+        : Waypoint(nullptr) {}
+    ~Waypoint() override;
+    explicit constexpr Waypoint(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Waypoint(const Waypoint& from);
-  Waypoint(Waypoint&& from) noexcept
-    : Waypoint() {
-    *this = ::std::move(from);
-  }
-
-  inline Waypoint& operator=(const Waypoint& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Waypoint& operator=(Waypoint&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    Waypoint(const Waypoint& from);
+    Waypoint(Waypoint&& from) noexcept
+        : Waypoint()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Waypoint& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Waypoint* internal_default_instance() {
-    return reinterpret_cast<const Waypoint*>(
-               &_Waypoint_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    1;
-
-  friend void swap(Waypoint& a, Waypoint& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Waypoint* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline Waypoint& operator=(const Waypoint& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(Waypoint* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline Waypoint& operator=(Waypoint&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const Waypoint& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const Waypoint* internal_default_instance()
+    {
+        return reinterpret_cast<const Waypoint*>(
+            &_Waypoint_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        1;
 
-  inline Waypoint* New() const final {
-    return new Waypoint();
-  }
+    friend void swap(Waypoint& a, Waypoint& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(Waypoint* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(Waypoint* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  Waypoint* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<Waypoint>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const Waypoint& from);
-  void MergeFrom(const Waypoint& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline Waypoint* New() const final
+    {
+        return new Waypoint();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Waypoint* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.Waypoint";
-  }
-  protected:
-  explicit Waypoint(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    Waypoint* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<Waypoint>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const Waypoint& from);
+    void MergeFrom(const Waypoint& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(Waypoint* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.Waypoint";
+    }
+protected:
+    explicit Waypoint(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kUidFieldNumber = 1,
-    kIndexFieldNumber = 2,
-    kXFieldNumber = 3,
-    kYFieldNumber = 4,
-    kZFieldNumber = 5,
-  };
-  // sint32 uid = 1;
-  void clear_uid();
-  ::PROTOBUF_NAMESPACE_ID::int32 uid() const;
-  void set_uid(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_uid() const;
-  void _internal_set_uid(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
+    // nested types ----------------------------------------------------
 
-  // int32 index = 2;
-  void clear_index();
-  ::PROTOBUF_NAMESPACE_ID::int32 index() const;
-  void set_index(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_index() const;
-  void _internal_set_index(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
+    // accessors -------------------------------------------------------
 
-  // double x = 3;
-  void clear_x();
-  double x() const;
-  void set_x(double value);
-  private:
-  double _internal_x() const;
-  void _internal_set_x(double value);
-  public:
+    enum : int {
+        kUidFieldNumber = 1,
+        kIndexFieldNumber = 2,
+        kXFieldNumber = 3,
+        kYFieldNumber = 4,
+        kZFieldNumber = 5,
+    };
+    // sint32 uid = 1;
+    void clear_uid();
+    ::PROTOBUF_NAMESPACE_ID::int32 uid() const;
+    void set_uid(::PROTOBUF_NAMESPACE_ID::int32 value);
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_uid() const;
+    void _internal_set_uid(::PROTOBUF_NAMESPACE_ID::int32 value);
+public:
 
-  // double y = 4;
-  void clear_y();
-  double y() const;
-  void set_y(double value);
-  private:
-  double _internal_y() const;
-  void _internal_set_y(double value);
-  public:
+    // int32 index = 2;
+    void clear_index();
+    ::PROTOBUF_NAMESPACE_ID::int32 index() const;
+    void set_index(::PROTOBUF_NAMESPACE_ID::int32 value);
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_index() const;
+    void _internal_set_index(::PROTOBUF_NAMESPACE_ID::int32 value);
+public:
 
-  // double z = 5;
-  void clear_z();
-  double z() const;
-  void set_z(double value);
-  private:
-  double _internal_z() const;
-  void _internal_set_z(double value);
-  public:
+    // double x = 3;
+    void clear_x();
+    double x() const;
+    void set_x(double value);
+private:
+    double _internal_x() const;
+    void _internal_set_x(double value);
+public:
 
-  // @@protoc_insertion_point(class_scope:airmobisim.Waypoint)
- private:
-  class _Internal;
+    // double y = 4;
+    void clear_y();
+    double y() const;
+    void set_y(double value);
+private:
+    double _internal_y() const;
+    void _internal_set_y(double value);
+public:
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::int32 uid_;
-  ::PROTOBUF_NAMESPACE_ID::int32 index_;
-  double x_;
-  double y_;
-  double z_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    // double z = 5;
+    void clear_z();
+    double z() const;
+    void set_z(double value);
+private:
+    double _internal_z() const;
+    void _internal_set_z(double value);
+public:
+
+    // @@protoc_insertion_point(class_scope:airmobisim.Waypoint)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    ::PROTOBUF_NAMESPACE_ID::int32 uid_;
+    ::PROTOBUF_NAMESPACE_ID::int32 index_;
+    double x_;
+    double y_;
+    double z_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class UavList final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.UavList) */ {
- public:
-  inline UavList() : UavList(nullptr) {}
-  ~UavList() override;
-  explicit constexpr UavList(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline UavList()
+        : UavList(nullptr) {}
+    ~UavList() override;
+    explicit constexpr UavList(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  UavList(const UavList& from);
-  UavList(UavList&& from) noexcept
-    : UavList() {
-    *this = ::std::move(from);
-  }
-
-  inline UavList& operator=(const UavList& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline UavList& operator=(UavList&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    UavList(const UavList& from);
+    UavList(UavList&& from) noexcept
+        : UavList()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const UavList& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const UavList* internal_default_instance() {
-    return reinterpret_cast<const UavList*>(
-               &_UavList_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    2;
-
-  friend void swap(UavList& a, UavList& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(UavList* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline UavList& operator=(const UavList& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(UavList* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline UavList& operator=(UavList&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const UavList& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const UavList* internal_default_instance()
+    {
+        return reinterpret_cast<const UavList*>(
+            &_UavList_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        2;
 
-  inline UavList* New() const final {
-    return new UavList();
-  }
+    friend void swap(UavList& a, UavList& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(UavList* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(UavList* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  UavList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<UavList>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const UavList& from);
-  void MergeFrom(const UavList& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline UavList* New() const final
+    {
+        return new UavList();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(UavList* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.UavList";
-  }
-  protected:
-  explicit UavList(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    UavList* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<UavList>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const UavList& from);
+    void MergeFrom(const UavList& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(UavList* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.UavList";
+    }
+protected:
+    explicit UavList(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kUavsFieldNumber = 1,
-  };
-  // repeated .airmobisim.Uav uavs = 1;
-  int uavs_size() const;
-  private:
-  int _internal_uavs_size() const;
-  public:
-  void clear_uavs();
-  ::airmobisim::Uav* mutable_uavs(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav >*
-      mutable_uavs();
-  private:
-  const ::airmobisim::Uav& _internal_uavs(int index) const;
-  ::airmobisim::Uav* _internal_add_uavs();
-  public:
-  const ::airmobisim::Uav& uavs(int index) const;
-  ::airmobisim::Uav* add_uavs();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav >&
-      uavs() const;
+    // nested types ----------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:airmobisim.UavList)
- private:
-  class _Internal;
+    // accessors -------------------------------------------------------
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav > uavs_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    enum : int {
+        kUavsFieldNumber = 1,
+    };
+    // repeated .airmobisim.Uav uavs = 1;
+    int uavs_size() const;
+private:
+    int _internal_uavs_size() const;
+public:
+    void clear_uavs();
+    ::airmobisim::Uav* mutable_uavs(int index);
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav>*
+    mutable_uavs();
+private:
+    const ::airmobisim::Uav& _internal_uavs(int index) const;
+    ::airmobisim::Uav* _internal_add_uavs();
+public:
+    const ::airmobisim::Uav& uavs(int index) const;
+    ::airmobisim::Uav* add_uavs();
+    const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav>&
+    uavs() const;
+
+    // @@protoc_insertion_point(class_scope:airmobisim.UavList)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav> uavs_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class Uav final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.Uav) */ {
- public:
-  inline Uav() : Uav(nullptr) {}
-  ~Uav() override;
-  explicit constexpr Uav(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline Uav()
+        : Uav(nullptr) {}
+    ~Uav() override;
+    explicit constexpr Uav(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Uav(const Uav& from);
-  Uav(Uav&& from) noexcept
-    : Uav() {
-    *this = ::std::move(from);
-  }
-
-  inline Uav& operator=(const Uav& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Uav& operator=(Uav&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    Uav(const Uav& from);
+    Uav(Uav&& from) noexcept
+        : Uav()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Uav& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Uav* internal_default_instance() {
-    return reinterpret_cast<const Uav*>(
-               &_Uav_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    3;
-
-  friend void swap(Uav& a, Uav& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Uav* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline Uav& operator=(const Uav& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(Uav* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline Uav& operator=(Uav&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const Uav& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const Uav* internal_default_instance()
+    {
+        return reinterpret_cast<const Uav*>(
+            &_Uav_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        3;
 
-  inline Uav* New() const final {
-    return new Uav();
-  }
+    friend void swap(Uav& a, Uav& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(Uav* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(Uav* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  Uav* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<Uav>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const Uav& from);
-  void MergeFrom(const Uav& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline Uav* New() const final
+    {
+        return new Uav();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Uav* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.Uav";
-  }
-  protected:
-  explicit Uav(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    Uav* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<Uav>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const Uav& from);
+    void MergeFrom(const Uav& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(Uav* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.Uav";
+    }
+protected:
+    explicit Uav(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kXFieldNumber = 2,
-    kYFieldNumber = 3,
-    kZFieldNumber = 4,
-    kSpeedFieldNumber = 5,
-    kAngleFieldNumber = 6,
-    kIdFieldNumber = 1,
-  };
-  // double x = 2;
-  void clear_x();
-  double x() const;
-  void set_x(double value);
-  private:
-  double _internal_x() const;
-  void _internal_set_x(double value);
-  public:
+    // nested types ----------------------------------------------------
 
-  // double y = 3;
-  void clear_y();
-  double y() const;
-  void set_y(double value);
-  private:
-  double _internal_y() const;
-  void _internal_set_y(double value);
-  public:
+    // accessors -------------------------------------------------------
 
-  // double z = 4;
-  void clear_z();
-  double z() const;
-  void set_z(double value);
-  private:
-  double _internal_z() const;
-  void _internal_set_z(double value);
-  public:
+    enum : int {
+        kXFieldNumber = 2,
+        kYFieldNumber = 3,
+        kZFieldNumber = 4,
+        kSpeedFieldNumber = 5,
+        kAngleFieldNumber = 6,
+        kIdFieldNumber = 1,
+    };
+    // double x = 2;
+    void clear_x();
+    double x() const;
+    void set_x(double value);
+private:
+    double _internal_x() const;
+    void _internal_set_x(double value);
+public:
 
-  // double speed = 5;
-  void clear_speed();
-  double speed() const;
-  void set_speed(double value);
-  private:
-  double _internal_speed() const;
-  void _internal_set_speed(double value);
-  public:
+    // double y = 3;
+    void clear_y();
+    double y() const;
+    void set_y(double value);
+private:
+    double _internal_y() const;
+    void _internal_set_y(double value);
+public:
 
-  // double angle = 6;
-  void clear_angle();
-  double angle() const;
-  void set_angle(double value);
-  private:
-  double _internal_angle() const;
-  void _internal_set_angle(double value);
-  public:
+    // double z = 4;
+    void clear_z();
+    double z() const;
+    void set_z(double value);
+private:
+    double _internal_z() const;
+    void _internal_set_z(double value);
+public:
 
-  // int32 id = 1;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
+    // double speed = 5;
+    void clear_speed();
+    double speed() const;
+    void set_speed(double value);
+private:
+    double _internal_speed() const;
+    void _internal_set_speed(double value);
+public:
 
-  // @@protoc_insertion_point(class_scope:airmobisim.Uav)
- private:
-  class _Internal;
+    // double angle = 6;
+    void clear_angle();
+    double angle() const;
+    void set_angle(double value);
+private:
+    double _internal_angle() const;
+    void _internal_set_angle(double value);
+public:
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  double x_;
-  double y_;
-  double z_;
-  double speed_;
-  double angle_;
-  ::PROTOBUF_NAMESPACE_ID::int32 id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    // int32 id = 1;
+    void clear_id();
+    ::PROTOBUF_NAMESPACE_ID::int32 id() const;
+    void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
+    void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+public:
+
+    // @@protoc_insertion_point(class_scope:airmobisim.Uav)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    double x_;
+    double y_;
+    double z_;
+    double speed_;
+    double angle_;
+    ::PROTOBUF_NAMESPACE_ID::int32 id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class Response final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.Response) */ {
- public:
-  inline Response() : Response(nullptr) {}
-  ~Response() override;
-  explicit constexpr Response(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline Response()
+        : Response(nullptr) {}
+    ~Response() override;
+    explicit constexpr Response(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Response(const Response& from);
-  Response(Response&& from) noexcept
-    : Response() {
-    *this = ::std::move(from);
-  }
-
-  inline Response& operator=(const Response& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Response& operator=(Response&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    Response(const Response& from);
+    Response(Response&& from) noexcept
+        : Response()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Response& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Response* internal_default_instance() {
-    return reinterpret_cast<const Response*>(
-               &_Response_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    4;
-
-  friend void swap(Response& a, Response& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Response* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline Response& operator=(const Response& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(Response* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline Response& operator=(Response&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const Response& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const Response* internal_default_instance()
+    {
+        return reinterpret_cast<const Response*>(
+            &_Response_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        4;
 
-  inline Response* New() const final {
-    return new Response();
-  }
+    friend void swap(Response& a, Response& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(Response* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(Response* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<Response>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const Response& from);
-  void MergeFrom(const Response& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline Response* New() const final
+    {
+        return new Response();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Response* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.Response";
-  }
-  protected:
-  explicit Response(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    Response* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<Response>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const Response& from);
+    void MergeFrom(const Response& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(Response* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.Response";
+    }
+protected:
+    explicit Response(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kXFieldNumber = 2,
-    kYFieldNumber = 3,
-    kZFieldNumber = 4,
-    kSpeedFieldNumber = 5,
-    kAngleFieldNumber = 6,
-    kIdFieldNumber = 1,
-  };
-  // double x = 2;
-  void clear_x();
-  double x() const;
-  void set_x(double value);
-  private:
-  double _internal_x() const;
-  void _internal_set_x(double value);
-  public:
+    // nested types ----------------------------------------------------
 
-  // double y = 3;
-  void clear_y();
-  double y() const;
-  void set_y(double value);
-  private:
-  double _internal_y() const;
-  void _internal_set_y(double value);
-  public:
+    // accessors -------------------------------------------------------
 
-  // double z = 4;
-  void clear_z();
-  double z() const;
-  void set_z(double value);
-  private:
-  double _internal_z() const;
-  void _internal_set_z(double value);
-  public:
+    enum : int {
+        kXFieldNumber = 2,
+        kYFieldNumber = 3,
+        kZFieldNumber = 4,
+        kSpeedFieldNumber = 5,
+        kAngleFieldNumber = 6,
+        kIdFieldNumber = 1,
+    };
+    // double x = 2;
+    void clear_x();
+    double x() const;
+    void set_x(double value);
+private:
+    double _internal_x() const;
+    void _internal_set_x(double value);
+public:
 
-  // double speed = 5;
-  void clear_speed();
-  double speed() const;
-  void set_speed(double value);
-  private:
-  double _internal_speed() const;
-  void _internal_set_speed(double value);
-  public:
+    // double y = 3;
+    void clear_y();
+    double y() const;
+    void set_y(double value);
+private:
+    double _internal_y() const;
+    void _internal_set_y(double value);
+public:
 
-  // double angle = 6;
-  void clear_angle();
-  double angle() const;
-  void set_angle(double value);
-  private:
-  double _internal_angle() const;
-  void _internal_set_angle(double value);
-  public:
+    // double z = 4;
+    void clear_z();
+    double z() const;
+    void set_z(double value);
+private:
+    double _internal_z() const;
+    void _internal_set_z(double value);
+public:
 
-  // int32 id = 1;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
+    // double speed = 5;
+    void clear_speed();
+    double speed() const;
+    void set_speed(double value);
+private:
+    double _internal_speed() const;
+    void _internal_set_speed(double value);
+public:
 
-  // @@protoc_insertion_point(class_scope:airmobisim.Response)
- private:
-  class _Internal;
+    // double angle = 6;
+    void clear_angle();
+    double angle() const;
+    void set_angle(double value);
+private:
+    double _internal_angle() const;
+    void _internal_set_angle(double value);
+public:
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  double x_;
-  double y_;
-  double z_;
-  double speed_;
-  double angle_;
-  ::PROTOBUF_NAMESPACE_ID::int32 id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    // int32 id = 1;
+    void clear_id();
+    ::PROTOBUF_NAMESPACE_ID::int32 id() const;
+    void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
+    void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+public:
+
+    // @@protoc_insertion_point(class_scope:airmobisim.Response)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    double x_;
+    double y_;
+    double z_;
+    double speed_;
+    double angle_;
+    ::PROTOBUF_NAMESPACE_ID::int32 id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class ResponseQuery final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.ResponseQuery) */ {
- public:
-  inline ResponseQuery() : ResponseQuery(nullptr) {}
-  ~ResponseQuery() override;
-  explicit constexpr ResponseQuery(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline ResponseQuery()
+        : ResponseQuery(nullptr) {}
+    ~ResponseQuery() override;
+    explicit constexpr ResponseQuery(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  ResponseQuery(const ResponseQuery& from);
-  ResponseQuery(ResponseQuery&& from) noexcept
-    : ResponseQuery() {
-    *this = ::std::move(from);
-  }
-
-  inline ResponseQuery& operator=(const ResponseQuery& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline ResponseQuery& operator=(ResponseQuery&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    ResponseQuery(const ResponseQuery& from);
+    ResponseQuery(ResponseQuery&& from) noexcept
+        : ResponseQuery()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const ResponseQuery& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const ResponseQuery* internal_default_instance() {
-    return reinterpret_cast<const ResponseQuery*>(
-               &_ResponseQuery_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    5;
-
-  friend void swap(ResponseQuery& a, ResponseQuery& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(ResponseQuery* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline ResponseQuery& operator=(const ResponseQuery& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(ResponseQuery* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline ResponseQuery& operator=(ResponseQuery&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const ResponseQuery& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const ResponseQuery* internal_default_instance()
+    {
+        return reinterpret_cast<const ResponseQuery*>(
+            &_ResponseQuery_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        5;
 
-  inline ResponseQuery* New() const final {
-    return new ResponseQuery();
-  }
+    friend void swap(ResponseQuery& a, ResponseQuery& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(ResponseQuery* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(ResponseQuery* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  ResponseQuery* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<ResponseQuery>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const ResponseQuery& from);
-  void MergeFrom(const ResponseQuery& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline ResponseQuery* New() const final
+    {
+        return new ResponseQuery();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(ResponseQuery* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.ResponseQuery";
-  }
-  protected:
-  explicit ResponseQuery(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    ResponseQuery* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<ResponseQuery>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const ResponseQuery& from);
+    void MergeFrom(const ResponseQuery& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(ResponseQuery* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.ResponseQuery";
+    }
+protected:
+    explicit ResponseQuery(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kResponsesFieldNumber = 1,
-  };
-  // repeated .airmobisim.Response responses = 1;
-  int responses_size() const;
-  private:
-  int _internal_responses_size() const;
-  public:
-  void clear_responses();
-  ::airmobisim::Response* mutable_responses(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response >*
-      mutable_responses();
-  private:
-  const ::airmobisim::Response& _internal_responses(int index) const;
-  ::airmobisim::Response* _internal_add_responses();
-  public:
-  const ::airmobisim::Response& responses(int index) const;
-  ::airmobisim::Response* add_responses();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response >&
-      responses() const;
+    // nested types ----------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:airmobisim.ResponseQuery)
- private:
-  class _Internal;
+    // accessors -------------------------------------------------------
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response > responses_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    enum : int {
+        kResponsesFieldNumber = 1,
+    };
+    // repeated .airmobisim.Response responses = 1;
+    int responses_size() const;
+private:
+    int _internal_responses_size() const;
+public:
+    void clear_responses();
+    ::airmobisim::Response* mutable_responses(int index);
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response>*
+    mutable_responses();
+private:
+    const ::airmobisim::Response& _internal_responses(int index) const;
+    ::airmobisim::Response* _internal_add_responses();
+public:
+    const ::airmobisim::Response& responses(int index) const;
+    ::airmobisim::Response* add_responses();
+    const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response>&
+    responses() const;
+
+    // @@protoc_insertion_point(class_scope:airmobisim.ResponseQuery)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response> responses_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class StartUav final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.StartUav) */ {
- public:
-  inline StartUav() : StartUav(nullptr) {}
-  ~StartUav() override;
-  explicit constexpr StartUav(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline StartUav()
+        : StartUav(nullptr) {}
+    ~StartUav() override;
+    explicit constexpr StartUav(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  StartUav(const StartUav& from);
-  StartUav(StartUav&& from) noexcept
-    : StartUav() {
-    *this = ::std::move(from);
-  }
-
-  inline StartUav& operator=(const StartUav& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline StartUav& operator=(StartUav&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    StartUav(const StartUav& from);
+    StartUav(StartUav&& from) noexcept
+        : StartUav()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const StartUav& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const StartUav* internal_default_instance() {
-    return reinterpret_cast<const StartUav*>(
-               &_StartUav_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    6;
-
-  friend void swap(StartUav& a, StartUav& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(StartUav* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline StartUav& operator=(const StartUav& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(StartUav* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline StartUav& operator=(StartUav&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const StartUav& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const StartUav* internal_default_instance()
+    {
+        return reinterpret_cast<const StartUav*>(
+            &_StartUav_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        6;
 
-  inline StartUav* New() const final {
-    return new StartUav();
-  }
+    friend void swap(StartUav& a, StartUav& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(StartUav* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(StartUav* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  StartUav* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<StartUav>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const StartUav& from);
-  void MergeFrom(const StartUav& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline StartUav* New() const final
+    {
+        return new StartUav();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(StartUav* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.StartUav";
-  }
-  protected:
-  explicit StartUav(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    StartUav* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<StartUav>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const StartUav& from);
+    void MergeFrom(const StartUav& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(StartUav* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.StartUav";
+    }
+protected:
+    explicit StartUav(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kCoordinatesFieldNumber = 2,
-    kSpeedFieldNumber = 3,
-    kAngleFieldNumber = 4,
-    kIdFieldNumber = 1,
-  };
-  // repeated .airmobisim.Coordinates coordinates = 2;
-  int coordinates_size() const;
-  private:
-  int _internal_coordinates_size() const;
-  public:
-  void clear_coordinates();
-  ::airmobisim::Coordinates* mutable_coordinates(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates >*
-      mutable_coordinates();
-  private:
-  const ::airmobisim::Coordinates& _internal_coordinates(int index) const;
-  ::airmobisim::Coordinates* _internal_add_coordinates();
-  public:
-  const ::airmobisim::Coordinates& coordinates(int index) const;
-  ::airmobisim::Coordinates* add_coordinates();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates >&
-      coordinates() const;
+    // nested types ----------------------------------------------------
 
-  // double speed = 3;
-  void clear_speed();
-  double speed() const;
-  void set_speed(double value);
-  private:
-  double _internal_speed() const;
-  void _internal_set_speed(double value);
-  public:
+    // accessors -------------------------------------------------------
 
-  // double angle = 4;
-  void clear_angle();
-  double angle() const;
-  void set_angle(double value);
-  private:
-  double _internal_angle() const;
-  void _internal_set_angle(double value);
-  public:
+    enum : int {
+        kCoordinatesFieldNumber = 2,
+        kSpeedFieldNumber = 3,
+        kAngleFieldNumber = 4,
+        kIdFieldNumber = 1,
+    };
+    // repeated .airmobisim.Coordinates coordinates = 2;
+    int coordinates_size() const;
+private:
+    int _internal_coordinates_size() const;
+public:
+    void clear_coordinates();
+    ::airmobisim::Coordinates* mutable_coordinates(int index);
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates>*
+    mutable_coordinates();
+private:
+    const ::airmobisim::Coordinates& _internal_coordinates(int index) const;
+    ::airmobisim::Coordinates* _internal_add_coordinates();
+public:
+    const ::airmobisim::Coordinates& coordinates(int index) const;
+    ::airmobisim::Coordinates* add_coordinates();
+    const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates>&
+    coordinates() const;
 
-  // int32 id = 1;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
+    // double speed = 3;
+    void clear_speed();
+    double speed() const;
+    void set_speed(double value);
+private:
+    double _internal_speed() const;
+    void _internal_set_speed(double value);
+public:
 
-  // @@protoc_insertion_point(class_scope:airmobisim.StartUav)
- private:
-  class _Internal;
+    // double angle = 4;
+    void clear_angle();
+    double angle() const;
+    void set_angle(double value);
+private:
+    double _internal_angle() const;
+    void _internal_set_angle(double value);
+public:
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates > coordinates_;
-  double speed_;
-  double angle_;
-  ::PROTOBUF_NAMESPACE_ID::int32 id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    // int32 id = 1;
+    void clear_id();
+    ::PROTOBUF_NAMESPACE_ID::int32 id() const;
+    void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
+    void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+public:
+
+    // @@protoc_insertion_point(class_scope:airmobisim.StartUav)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates> coordinates_;
+    double speed_;
+    double angle_;
+    ::PROTOBUF_NAMESPACE_ID::int32 id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class Coordinates final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.Coordinates) */ {
- public:
-  inline Coordinates() : Coordinates(nullptr) {}
-  ~Coordinates() override;
-  explicit constexpr Coordinates(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline Coordinates()
+        : Coordinates(nullptr) {}
+    ~Coordinates() override;
+    explicit constexpr Coordinates(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Coordinates(const Coordinates& from);
-  Coordinates(Coordinates&& from) noexcept
-    : Coordinates() {
-    *this = ::std::move(from);
-  }
-
-  inline Coordinates& operator=(const Coordinates& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Coordinates& operator=(Coordinates&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    Coordinates(const Coordinates& from);
+    Coordinates(Coordinates&& from) noexcept
+        : Coordinates()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Coordinates& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Coordinates* internal_default_instance() {
-    return reinterpret_cast<const Coordinates*>(
-               &_Coordinates_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    7;
-
-  friend void swap(Coordinates& a, Coordinates& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Coordinates* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline Coordinates& operator=(const Coordinates& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(Coordinates* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline Coordinates& operator=(Coordinates&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const Coordinates& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const Coordinates* internal_default_instance()
+    {
+        return reinterpret_cast<const Coordinates*>(
+            &_Coordinates_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        7;
 
-  inline Coordinates* New() const final {
-    return new Coordinates();
-  }
+    friend void swap(Coordinates& a, Coordinates& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(Coordinates* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(Coordinates* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  Coordinates* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<Coordinates>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const Coordinates& from);
-  void MergeFrom(const Coordinates& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline Coordinates* New() const final
+    {
+        return new Coordinates();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Coordinates* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.Coordinates";
-  }
-  protected:
-  explicit Coordinates(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    Coordinates* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<Coordinates>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const Coordinates& from);
+    void MergeFrom(const Coordinates& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(Coordinates* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.Coordinates";
+    }
+protected:
+    explicit Coordinates(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kXFieldNumber = 1,
-    kYFieldNumber = 2,
-    kZFieldNumber = 3,
-  };
-  // double x = 1;
-  void clear_x();
-  double x() const;
-  void set_x(double value);
-  private:
-  double _internal_x() const;
-  void _internal_set_x(double value);
-  public:
+    // nested types ----------------------------------------------------
 
-  // double y = 2;
-  void clear_y();
-  double y() const;
-  void set_y(double value);
-  private:
-  double _internal_y() const;
-  void _internal_set_y(double value);
-  public:
+    // accessors -------------------------------------------------------
 
-  // double z = 3;
-  void clear_z();
-  double z() const;
-  void set_z(double value);
-  private:
-  double _internal_z() const;
-  void _internal_set_z(double value);
-  public:
+    enum : int {
+        kXFieldNumber = 1,
+        kYFieldNumber = 2,
+        kZFieldNumber = 3,
+    };
+    // double x = 1;
+    void clear_x();
+    double x() const;
+    void set_x(double value);
+private:
+    double _internal_x() const;
+    void _internal_set_x(double value);
+public:
 
-  // @@protoc_insertion_point(class_scope:airmobisim.Coordinates)
- private:
-  class _Internal;
+    // double y = 2;
+    void clear_y();
+    double y() const;
+    void set_y(double value);
+private:
+    double _internal_y() const;
+    void _internal_set_y(double value);
+public:
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  double x_;
-  double y_;
-  double z_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    // double z = 3;
+    void clear_z();
+    double z() const;
+    void set_z(double value);
+private:
+    double _internal_z() const;
+    void _internal_set_z(double value);
+public:
+
+    // @@protoc_insertion_point(class_scope:airmobisim.Coordinates)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    double x_;
+    double y_;
+    double z_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class Number final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.Number) */ {
- public:
-  inline Number() : Number(nullptr) {}
-  ~Number() override;
-  explicit constexpr Number(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline Number()
+        : Number(nullptr) {}
+    ~Number() override;
+    explicit constexpr Number(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  Number(const Number& from);
-  Number(Number&& from) noexcept
-    : Number() {
-    *this = ::std::move(from);
-  }
-
-  inline Number& operator=(const Number& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline Number& operator=(Number&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    Number(const Number& from);
+    Number(Number&& from) noexcept
+        : Number()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const Number& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const Number* internal_default_instance() {
-    return reinterpret_cast<const Number*>(
-               &_Number_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    8;
-
-  friend void swap(Number& a, Number& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(Number* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline Number& operator=(const Number& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(Number* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline Number& operator=(Number&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const Number& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const Number* internal_default_instance()
+    {
+        return reinterpret_cast<const Number*>(
+            &_Number_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        8;
 
-  inline Number* New() const final {
-    return new Number();
-  }
+    friend void swap(Number& a, Number& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(Number* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(Number* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  Number* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<Number>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const Number& from);
-  void MergeFrom(const Number& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline Number* New() const final
+    {
+        return new Number();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(Number* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.Number";
-  }
-  protected:
-  explicit Number(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    Number* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<Number>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const Number& from);
+    void MergeFrom(const Number& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(Number* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.Number";
+    }
+protected:
+    explicit Number(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kNumFieldNumber = 1,
-  };
-  // int32 num = 1;
-  void clear_num();
-  ::PROTOBUF_NAMESPACE_ID::int32 num() const;
-  void set_num(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_num() const;
-  void _internal_set_num(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
+    // nested types ----------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:airmobisim.Number)
- private:
-  class _Internal;
+    // accessors -------------------------------------------------------
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::int32 num_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    enum : int {
+        kNumFieldNumber = 1,
+    };
+    // int32 num = 1;
+    void clear_num();
+    ::PROTOBUF_NAMESPACE_ID::int32 num() const;
+    void set_num(::PROTOBUF_NAMESPACE_ID::int32 value);
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_num() const;
+    void _internal_set_num(::PROTOBUF_NAMESPACE_ID::int32 value);
+public:
+
+    // @@protoc_insertion_point(class_scope:airmobisim.Number)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    ::PROTOBUF_NAMESPACE_ID::int32 num_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class DoubleNumber final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.DoubleNumber) */ {
- public:
-  inline DoubleNumber() : DoubleNumber(nullptr) {}
-  ~DoubleNumber() override;
-  explicit constexpr DoubleNumber(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline DoubleNumber()
+        : DoubleNumber(nullptr) {}
+    ~DoubleNumber() override;
+    explicit constexpr DoubleNumber(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  DoubleNumber(const DoubleNumber& from);
-  DoubleNumber(DoubleNumber&& from) noexcept
-    : DoubleNumber() {
-    *this = ::std::move(from);
-  }
-
-  inline DoubleNumber& operator=(const DoubleNumber& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline DoubleNumber& operator=(DoubleNumber&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    DoubleNumber(const DoubleNumber& from);
+    DoubleNumber(DoubleNumber&& from) noexcept
+        : DoubleNumber()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const DoubleNumber& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const DoubleNumber* internal_default_instance() {
-    return reinterpret_cast<const DoubleNumber*>(
-               &_DoubleNumber_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    9;
-
-  friend void swap(DoubleNumber& a, DoubleNumber& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(DoubleNumber* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline DoubleNumber& operator=(const DoubleNumber& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(DoubleNumber* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline DoubleNumber& operator=(DoubleNumber&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const DoubleNumber& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const DoubleNumber* internal_default_instance()
+    {
+        return reinterpret_cast<const DoubleNumber*>(
+            &_DoubleNumber_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        9;
 
-  inline DoubleNumber* New() const final {
-    return new DoubleNumber();
-  }
+    friend void swap(DoubleNumber& a, DoubleNumber& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(DoubleNumber* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(DoubleNumber* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  DoubleNumber* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<DoubleNumber>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const DoubleNumber& from);
-  void MergeFrom(const DoubleNumber& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline DoubleNumber* New() const final
+    {
+        return new DoubleNumber();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(DoubleNumber* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.DoubleNumber";
-  }
-  protected:
-  explicit DoubleNumber(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    DoubleNumber* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<DoubleNumber>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const DoubleNumber& from);
+    void MergeFrom(const DoubleNumber& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(DoubleNumber* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.DoubleNumber";
+    }
+protected:
+    explicit DoubleNumber(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kNumFieldNumber = 1,
-  };
-  // double num = 1;
-  void clear_num();
-  double num() const;
-  void set_num(double value);
-  private:
-  double _internal_num() const;
-  void _internal_set_num(double value);
-  public:
+    // nested types ----------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:airmobisim.DoubleNumber)
- private:
-  class _Internal;
+    // accessors -------------------------------------------------------
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  double num_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    enum : int {
+        kNumFieldNumber = 1,
+    };
+    // double num = 1;
+    void clear_num();
+    double num() const;
+    void set_num(double value);
+private:
+    double _internal_num() const;
+    void _internal_set_num(double value);
+public:
+
+    // @@protoc_insertion_point(class_scope:airmobisim.DoubleNumber)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    double num_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // -------------------------------------------------------------------
 
 class UavSetSpeed final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:airmobisim.UavSetSpeed) */ {
- public:
-  inline UavSetSpeed() : UavSetSpeed(nullptr) {}
-  ~UavSetSpeed() override;
-  explicit constexpr UavSetSpeed(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+public:
+    inline UavSetSpeed()
+        : UavSetSpeed(nullptr) {}
+    ~UavSetSpeed() override;
+    explicit constexpr UavSetSpeed(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
 
-  UavSetSpeed(const UavSetSpeed& from);
-  UavSetSpeed(UavSetSpeed&& from) noexcept
-    : UavSetSpeed() {
-    *this = ::std::move(from);
-  }
-
-  inline UavSetSpeed& operator=(const UavSetSpeed& from) {
-    CopyFrom(from);
-    return *this;
-  }
-  inline UavSetSpeed& operator=(UavSetSpeed&& from) noexcept {
-    if (this == &from) return *this;
-    if (GetOwningArena() == from.GetOwningArena()) {
-      InternalSwap(&from);
-    } else {
-      CopyFrom(from);
+    UavSetSpeed(const UavSetSpeed& from);
+    UavSetSpeed(UavSetSpeed&& from) noexcept
+        : UavSetSpeed()
+    {
+        *this = ::std::move(from);
     }
-    return *this;
-  }
 
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
-    return GetDescriptor();
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
-    return default_instance().GetMetadata().descriptor;
-  }
-  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
-    return default_instance().GetMetadata().reflection;
-  }
-  static const UavSetSpeed& default_instance() {
-    return *internal_default_instance();
-  }
-  static inline const UavSetSpeed* internal_default_instance() {
-    return reinterpret_cast<const UavSetSpeed*>(
-               &_UavSetSpeed_default_instance_);
-  }
-  static constexpr int kIndexInFileMessages =
-    10;
-
-  friend void swap(UavSetSpeed& a, UavSetSpeed& b) {
-    a.Swap(&b);
-  }
-  inline void Swap(UavSetSpeed* other) {
-    if (other == this) return;
-    if (GetOwningArena() == other->GetOwningArena()) {
-      InternalSwap(other);
-    } else {
-      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    inline UavSetSpeed& operator=(const UavSetSpeed& from)
+    {
+        CopyFrom(from);
+        return *this;
     }
-  }
-  void UnsafeArenaSwap(UavSetSpeed* other) {
-    if (other == this) return;
-    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
-    InternalSwap(other);
-  }
+    inline UavSetSpeed& operator=(UavSetSpeed&& from) noexcept
+    {
+        if (this == &from) return *this;
+        if (GetOwningArena() == from.GetOwningArena()) {
+            InternalSwap(&from);
+        }
+        else {
+            CopyFrom(from);
+        }
+        return *this;
+    }
 
-  // implements Message ----------------------------------------------
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor()
+    {
+        return GetDescriptor();
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor()
+    {
+        return default_instance().GetMetadata().descriptor;
+    }
+    static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection()
+    {
+        return default_instance().GetMetadata().reflection;
+    }
+    static const UavSetSpeed& default_instance()
+    {
+        return *internal_default_instance();
+    }
+    static inline const UavSetSpeed* internal_default_instance()
+    {
+        return reinterpret_cast<const UavSetSpeed*>(
+            &_UavSetSpeed_default_instance_);
+    }
+    static constexpr int kIndexInFileMessages =
+        10;
 
-  inline UavSetSpeed* New() const final {
-    return new UavSetSpeed();
-  }
+    friend void swap(UavSetSpeed& a, UavSetSpeed& b)
+    {
+        a.Swap(&b);
+    }
+    inline void Swap(UavSetSpeed* other)
+    {
+        if (other == this) return;
+        if (GetOwningArena() == other->GetOwningArena()) {
+            InternalSwap(other);
+        }
+        else {
+            ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+        }
+    }
+    void UnsafeArenaSwap(UavSetSpeed* other)
+    {
+        if (other == this) return;
+        GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+        InternalSwap(other);
+    }
 
-  UavSetSpeed* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final {
-    return CreateMaybeMessage<UavSetSpeed>(arena);
-  }
-  void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
-  void CopyFrom(const UavSetSpeed& from);
-  void MergeFrom(const UavSetSpeed& from);
-  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
-  bool IsInitialized() const final;
+    // implements Message ----------------------------------------------
 
-  size_t ByteSizeLong() const final;
-  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
-  ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
-      ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
-  int GetCachedSize() const final { return _cached_size_.Get(); }
+    inline UavSetSpeed* New() const final
+    {
+        return new UavSetSpeed();
+    }
 
-  private:
-  void SharedCtor();
-  void SharedDtor();
-  void SetCachedSize(int size) const final;
-  void InternalSwap(UavSetSpeed* other);
-  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
-  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "airmobisim.UavSetSpeed";
-  }
-  protected:
-  explicit UavSetSpeed(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  private:
-  static void ArenaDtor(void* object);
-  inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
-  public:
+    UavSetSpeed* New(::PROTOBUF_NAMESPACE_ID::Arena* arena) const final
+    {
+        return CreateMaybeMessage<UavSetSpeed>(arena);
+    }
+    void CopyFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void MergeFrom(const ::PROTOBUF_NAMESPACE_ID::Message& from) final;
+    void CopyFrom(const UavSetSpeed& from);
+    void MergeFrom(const UavSetSpeed& from);
+    PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+    bool IsInitialized() const final;
 
-  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+    size_t ByteSizeLong() const final;
+    const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+    ::PROTOBUF_NAMESPACE_ID::uint8* _InternalSerialize(
+        ::PROTOBUF_NAMESPACE_ID::uint8* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+    int GetCachedSize() const final { return _cached_size_.Get(); }
 
-  // nested types ----------------------------------------------------
+private:
+    void SharedCtor();
+    void SharedDtor();
+    void SetCachedSize(int size) const final;
+    void InternalSwap(UavSetSpeed* other);
+    friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+    static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName()
+    {
+        return "airmobisim.UavSetSpeed";
+    }
+protected:
+    explicit UavSetSpeed(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+private:
+    static void ArenaDtor(void* object);
+    inline void RegisterArenaDtor(::PROTOBUF_NAMESPACE_ID::Arena* arena);
+public:
 
-  // accessors -------------------------------------------------------
+    ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
 
-  enum : int {
-    kSpeedFieldNumber = 2,
-    kIdFieldNumber = 1,
-  };
-  // double speed = 2;
-  void clear_speed();
-  double speed() const;
-  void set_speed(double value);
-  private:
-  double _internal_speed() const;
-  void _internal_set_speed(double value);
-  public:
+    // nested types ----------------------------------------------------
 
-  // int32 id = 1;
-  void clear_id();
-  ::PROTOBUF_NAMESPACE_ID::int32 id() const;
-  void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  private:
-  ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
-  void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
-  public:
+    // accessors -------------------------------------------------------
 
-  // @@protoc_insertion_point(class_scope:airmobisim.UavSetSpeed)
- private:
-  class _Internal;
+    enum : int {
+        kSpeedFieldNumber = 2,
+        kIdFieldNumber = 1,
+    };
+    // double speed = 2;
+    void clear_speed();
+    double speed() const;
+    void set_speed(double value);
+private:
+    double _internal_speed() const;
+    void _internal_set_speed(double value);
+public:
 
-  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
-  typedef void InternalArenaConstructable_;
-  typedef void DestructorSkippable_;
-  double speed_;
-  ::PROTOBUF_NAMESPACE_ID::int32 id_;
-  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
-  friend struct ::TableStruct_airmobisim_2eproto;
+    // int32 id = 1;
+    void clear_id();
+    ::PROTOBUF_NAMESPACE_ID::int32 id() const;
+    void set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+private:
+    ::PROTOBUF_NAMESPACE_ID::int32 _internal_id() const;
+    void _internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value);
+public:
+
+    // @@protoc_insertion_point(class_scope:airmobisim.UavSetSpeed)
+private:
+    class _Internal;
+
+    template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+    typedef void InternalArenaConstructable_;
+    typedef void DestructorSkippable_;
+    double speed_;
+    ::PROTOBUF_NAMESPACE_ID::int32 id_;
+    mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+    friend struct ::TableStruct_airmobisim_2eproto;
 };
 // ===================================================================
 
@@ -1835,62 +2022,77 @@ class UavSetSpeed final :
 // WaypointList
 
 // int32 id = 1;
-inline void WaypointList::clear_id() {
-  id_ = 0;
+inline void WaypointList::clear_id()
+{
+    id_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 WaypointList::_internal_id() const {
-  return id_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 WaypointList::_internal_id() const
+{
+    return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 WaypointList::id() const {
-  // @@protoc_insertion_point(field_get:airmobisim.WaypointList.id)
-  return _internal_id();
+inline ::PROTOBUF_NAMESPACE_ID::int32 WaypointList::id() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.WaypointList.id)
+    return _internal_id();
 }
-inline void WaypointList::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  id_ = value;
+inline void WaypointList::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+
+    id_ = value;
 }
-inline void WaypointList::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:airmobisim.WaypointList.id)
+inline void WaypointList::set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+    _internal_set_id(value);
+    // @@protoc_insertion_point(field_set:airmobisim.WaypointList.id)
 }
 
 // repeated .airmobisim.Waypoint waypoint = 2;
-inline int WaypointList::_internal_waypoint_size() const {
-  return waypoint_.size();
+inline int WaypointList::_internal_waypoint_size() const
+{
+    return waypoint_.size();
 }
-inline int WaypointList::waypoint_size() const {
-  return _internal_waypoint_size();
+inline int WaypointList::waypoint_size() const
+{
+    return _internal_waypoint_size();
 }
-inline void WaypointList::clear_waypoint() {
-  waypoint_.Clear();
+inline void WaypointList::clear_waypoint()
+{
+    waypoint_.Clear();
 }
-inline ::airmobisim::Waypoint* WaypointList::mutable_waypoint(int index) {
-  // @@protoc_insertion_point(field_mutable:airmobisim.WaypointList.waypoint)
-  return waypoint_.Mutable(index);
+inline ::airmobisim::Waypoint* WaypointList::mutable_waypoint(int index)
+{
+    // @@protoc_insertion_point(field_mutable:airmobisim.WaypointList.waypoint)
+    return waypoint_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint >*
-WaypointList::mutable_waypoint() {
-  // @@protoc_insertion_point(field_mutable_list:airmobisim.WaypointList.waypoint)
-  return &waypoint_;
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint>*
+WaypointList::mutable_waypoint()
+{
+    // @@protoc_insertion_point(field_mutable_list:airmobisim.WaypointList.waypoint)
+    return &waypoint_;
 }
-inline const ::airmobisim::Waypoint& WaypointList::_internal_waypoint(int index) const {
-  return waypoint_.Get(index);
+inline const ::airmobisim::Waypoint& WaypointList::_internal_waypoint(int index) const
+{
+    return waypoint_.Get(index);
 }
-inline const ::airmobisim::Waypoint& WaypointList::waypoint(int index) const {
-  // @@protoc_insertion_point(field_get:airmobisim.WaypointList.waypoint)
-  return _internal_waypoint(index);
+inline const ::airmobisim::Waypoint& WaypointList::waypoint(int index) const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.WaypointList.waypoint)
+    return _internal_waypoint(index);
 }
-inline ::airmobisim::Waypoint* WaypointList::_internal_add_waypoint() {
-  return waypoint_.Add();
+inline ::airmobisim::Waypoint* WaypointList::_internal_add_waypoint()
+{
+    return waypoint_.Add();
 }
-inline ::airmobisim::Waypoint* WaypointList::add_waypoint() {
-  // @@protoc_insertion_point(field_add:airmobisim.WaypointList.waypoint)
-  return _internal_add_waypoint();
+inline ::airmobisim::Waypoint* WaypointList::add_waypoint()
+{
+    // @@protoc_insertion_point(field_add:airmobisim.WaypointList.waypoint)
+    return _internal_add_waypoint();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint >&
-WaypointList::waypoint() const {
-  // @@protoc_insertion_point(field_list:airmobisim.WaypointList.waypoint)
-  return waypoint_;
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Waypoint>&
+WaypointList::waypoint() const
+{
+    // @@protoc_insertion_point(field_list:airmobisim.WaypointList.waypoint)
+    return waypoint_;
 }
 
 // -------------------------------------------------------------------
@@ -1898,103 +2100,128 @@ WaypointList::waypoint() const {
 // Waypoint
 
 // sint32 uid = 1;
-inline void Waypoint::clear_uid() {
-  uid_ = 0;
+inline void Waypoint::clear_uid()
+{
+    uid_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::_internal_uid() const {
-  return uid_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::_internal_uid() const
+{
+    return uid_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::uid() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Waypoint.uid)
-  return _internal_uid();
+inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::uid() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Waypoint.uid)
+    return _internal_uid();
 }
-inline void Waypoint::_internal_set_uid(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  uid_ = value;
+inline void Waypoint::_internal_set_uid(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+
+    uid_ = value;
 }
-inline void Waypoint::set_uid(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_uid(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Waypoint.uid)
+inline void Waypoint::set_uid(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+    _internal_set_uid(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Waypoint.uid)
 }
 
 // int32 index = 2;
-inline void Waypoint::clear_index() {
-  index_ = 0;
+inline void Waypoint::clear_index()
+{
+    index_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::_internal_index() const {
-  return index_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::_internal_index() const
+{
+    return index_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::index() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Waypoint.index)
-  return _internal_index();
+inline ::PROTOBUF_NAMESPACE_ID::int32 Waypoint::index() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Waypoint.index)
+    return _internal_index();
 }
-inline void Waypoint::_internal_set_index(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  index_ = value;
+inline void Waypoint::_internal_set_index(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+
+    index_ = value;
 }
-inline void Waypoint::set_index(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_index(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Waypoint.index)
+inline void Waypoint::set_index(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+    _internal_set_index(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Waypoint.index)
 }
 
 // double x = 3;
-inline void Waypoint::clear_x() {
-  x_ = 0;
+inline void Waypoint::clear_x()
+{
+    x_ = 0;
 }
-inline double Waypoint::_internal_x() const {
-  return x_;
+inline double Waypoint::_internal_x() const
+{
+    return x_;
 }
-inline double Waypoint::x() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Waypoint.x)
-  return _internal_x();
+inline double Waypoint::x() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Waypoint.x)
+    return _internal_x();
 }
-inline void Waypoint::_internal_set_x(double value) {
-  
-  x_ = value;
+inline void Waypoint::_internal_set_x(double value)
+{
+
+    x_ = value;
 }
-inline void Waypoint::set_x(double value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Waypoint.x)
+inline void Waypoint::set_x(double value)
+{
+    _internal_set_x(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Waypoint.x)
 }
 
 // double y = 4;
-inline void Waypoint::clear_y() {
-  y_ = 0;
+inline void Waypoint::clear_y()
+{
+    y_ = 0;
 }
-inline double Waypoint::_internal_y() const {
-  return y_;
+inline double Waypoint::_internal_y() const
+{
+    return y_;
 }
-inline double Waypoint::y() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Waypoint.y)
-  return _internal_y();
+inline double Waypoint::y() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Waypoint.y)
+    return _internal_y();
 }
-inline void Waypoint::_internal_set_y(double value) {
-  
-  y_ = value;
+inline void Waypoint::_internal_set_y(double value)
+{
+
+    y_ = value;
 }
-inline void Waypoint::set_y(double value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Waypoint.y)
+inline void Waypoint::set_y(double value)
+{
+    _internal_set_y(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Waypoint.y)
 }
 
 // double z = 5;
-inline void Waypoint::clear_z() {
-  z_ = 0;
+inline void Waypoint::clear_z()
+{
+    z_ = 0;
 }
-inline double Waypoint::_internal_z() const {
-  return z_;
+inline double Waypoint::_internal_z() const
+{
+    return z_;
 }
-inline double Waypoint::z() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Waypoint.z)
-  return _internal_z();
+inline double Waypoint::z() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Waypoint.z)
+    return _internal_z();
 }
-inline void Waypoint::_internal_set_z(double value) {
-  
-  z_ = value;
+inline void Waypoint::_internal_set_z(double value)
+{
+
+    z_ = value;
 }
-inline void Waypoint::set_z(double value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Waypoint.z)
+inline void Waypoint::set_z(double value)
+{
+    _internal_set_z(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Waypoint.z)
 }
 
 // -------------------------------------------------------------------
@@ -2002,42 +2229,52 @@ inline void Waypoint::set_z(double value) {
 // UavList
 
 // repeated .airmobisim.Uav uavs = 1;
-inline int UavList::_internal_uavs_size() const {
-  return uavs_.size();
+inline int UavList::_internal_uavs_size() const
+{
+    return uavs_.size();
 }
-inline int UavList::uavs_size() const {
-  return _internal_uavs_size();
+inline int UavList::uavs_size() const
+{
+    return _internal_uavs_size();
 }
-inline void UavList::clear_uavs() {
-  uavs_.Clear();
+inline void UavList::clear_uavs()
+{
+    uavs_.Clear();
 }
-inline ::airmobisim::Uav* UavList::mutable_uavs(int index) {
-  // @@protoc_insertion_point(field_mutable:airmobisim.UavList.uavs)
-  return uavs_.Mutable(index);
+inline ::airmobisim::Uav* UavList::mutable_uavs(int index)
+{
+    // @@protoc_insertion_point(field_mutable:airmobisim.UavList.uavs)
+    return uavs_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav >*
-UavList::mutable_uavs() {
-  // @@protoc_insertion_point(field_mutable_list:airmobisim.UavList.uavs)
-  return &uavs_;
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav>*
+UavList::mutable_uavs()
+{
+    // @@protoc_insertion_point(field_mutable_list:airmobisim.UavList.uavs)
+    return &uavs_;
 }
-inline const ::airmobisim::Uav& UavList::_internal_uavs(int index) const {
-  return uavs_.Get(index);
+inline const ::airmobisim::Uav& UavList::_internal_uavs(int index) const
+{
+    return uavs_.Get(index);
 }
-inline const ::airmobisim::Uav& UavList::uavs(int index) const {
-  // @@protoc_insertion_point(field_get:airmobisim.UavList.uavs)
-  return _internal_uavs(index);
+inline const ::airmobisim::Uav& UavList::uavs(int index) const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.UavList.uavs)
+    return _internal_uavs(index);
 }
-inline ::airmobisim::Uav* UavList::_internal_add_uavs() {
-  return uavs_.Add();
+inline ::airmobisim::Uav* UavList::_internal_add_uavs()
+{
+    return uavs_.Add();
 }
-inline ::airmobisim::Uav* UavList::add_uavs() {
-  // @@protoc_insertion_point(field_add:airmobisim.UavList.uavs)
-  return _internal_add_uavs();
+inline ::airmobisim::Uav* UavList::add_uavs()
+{
+    // @@protoc_insertion_point(field_add:airmobisim.UavList.uavs)
+    return _internal_add_uavs();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav >&
-UavList::uavs() const {
-  // @@protoc_insertion_point(field_list:airmobisim.UavList.uavs)
-  return uavs_;
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Uav>&
+UavList::uavs() const
+{
+    // @@protoc_insertion_point(field_list:airmobisim.UavList.uavs)
+    return uavs_;
 }
 
 // -------------------------------------------------------------------
@@ -2045,123 +2282,153 @@ UavList::uavs() const {
 // Uav
 
 // int32 id = 1;
-inline void Uav::clear_id() {
-  id_ = 0;
+inline void Uav::clear_id()
+{
+    id_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Uav::_internal_id() const {
-  return id_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 Uav::_internal_id() const
+{
+    return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Uav::id() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Uav.id)
-  return _internal_id();
+inline ::PROTOBUF_NAMESPACE_ID::int32 Uav::id() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Uav.id)
+    return _internal_id();
 }
-inline void Uav::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  id_ = value;
+inline void Uav::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+
+    id_ = value;
 }
-inline void Uav::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Uav.id)
+inline void Uav::set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+    _internal_set_id(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Uav.id)
 }
 
 // double x = 2;
-inline void Uav::clear_x() {
-  x_ = 0;
+inline void Uav::clear_x()
+{
+    x_ = 0;
 }
-inline double Uav::_internal_x() const {
-  return x_;
+inline double Uav::_internal_x() const
+{
+    return x_;
 }
-inline double Uav::x() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Uav.x)
-  return _internal_x();
+inline double Uav::x() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Uav.x)
+    return _internal_x();
 }
-inline void Uav::_internal_set_x(double value) {
-  
-  x_ = value;
+inline void Uav::_internal_set_x(double value)
+{
+
+    x_ = value;
 }
-inline void Uav::set_x(double value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Uav.x)
+inline void Uav::set_x(double value)
+{
+    _internal_set_x(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Uav.x)
 }
 
 // double y = 3;
-inline void Uav::clear_y() {
-  y_ = 0;
+inline void Uav::clear_y()
+{
+    y_ = 0;
 }
-inline double Uav::_internal_y() const {
-  return y_;
+inline double Uav::_internal_y() const
+{
+    return y_;
 }
-inline double Uav::y() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Uav.y)
-  return _internal_y();
+inline double Uav::y() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Uav.y)
+    return _internal_y();
 }
-inline void Uav::_internal_set_y(double value) {
-  
-  y_ = value;
+inline void Uav::_internal_set_y(double value)
+{
+
+    y_ = value;
 }
-inline void Uav::set_y(double value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Uav.y)
+inline void Uav::set_y(double value)
+{
+    _internal_set_y(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Uav.y)
 }
 
 // double z = 4;
-inline void Uav::clear_z() {
-  z_ = 0;
+inline void Uav::clear_z()
+{
+    z_ = 0;
 }
-inline double Uav::_internal_z() const {
-  return z_;
+inline double Uav::_internal_z() const
+{
+    return z_;
 }
-inline double Uav::z() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Uav.z)
-  return _internal_z();
+inline double Uav::z() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Uav.z)
+    return _internal_z();
 }
-inline void Uav::_internal_set_z(double value) {
-  
-  z_ = value;
+inline void Uav::_internal_set_z(double value)
+{
+
+    z_ = value;
 }
-inline void Uav::set_z(double value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Uav.z)
+inline void Uav::set_z(double value)
+{
+    _internal_set_z(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Uav.z)
 }
 
 // double speed = 5;
-inline void Uav::clear_speed() {
-  speed_ = 0;
+inline void Uav::clear_speed()
+{
+    speed_ = 0;
 }
-inline double Uav::_internal_speed() const {
-  return speed_;
+inline double Uav::_internal_speed() const
+{
+    return speed_;
 }
-inline double Uav::speed() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Uav.speed)
-  return _internal_speed();
+inline double Uav::speed() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Uav.speed)
+    return _internal_speed();
 }
-inline void Uav::_internal_set_speed(double value) {
-  
-  speed_ = value;
+inline void Uav::_internal_set_speed(double value)
+{
+
+    speed_ = value;
 }
-inline void Uav::set_speed(double value) {
-  _internal_set_speed(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Uav.speed)
+inline void Uav::set_speed(double value)
+{
+    _internal_set_speed(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Uav.speed)
 }
 
 // double angle = 6;
-inline void Uav::clear_angle() {
-  angle_ = 0;
+inline void Uav::clear_angle()
+{
+    angle_ = 0;
 }
-inline double Uav::_internal_angle() const {
-  return angle_;
+inline double Uav::_internal_angle() const
+{
+    return angle_;
 }
-inline double Uav::angle() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Uav.angle)
-  return _internal_angle();
+inline double Uav::angle() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Uav.angle)
+    return _internal_angle();
 }
-inline void Uav::_internal_set_angle(double value) {
-  
-  angle_ = value;
+inline void Uav::_internal_set_angle(double value)
+{
+
+    angle_ = value;
 }
-inline void Uav::set_angle(double value) {
-  _internal_set_angle(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Uav.angle)
+inline void Uav::set_angle(double value)
+{
+    _internal_set_angle(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Uav.angle)
 }
 
 // -------------------------------------------------------------------
@@ -2169,123 +2436,153 @@ inline void Uav::set_angle(double value) {
 // Response
 
 // int32 id = 1;
-inline void Response::clear_id() {
-  id_ = 0;
+inline void Response::clear_id()
+{
+    id_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Response::_internal_id() const {
-  return id_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 Response::_internal_id() const
+{
+    return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Response::id() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Response.id)
-  return _internal_id();
+inline ::PROTOBUF_NAMESPACE_ID::int32 Response::id() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Response.id)
+    return _internal_id();
 }
-inline void Response::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  id_ = value;
+inline void Response::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+
+    id_ = value;
 }
-inline void Response::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Response.id)
+inline void Response::set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+    _internal_set_id(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Response.id)
 }
 
 // double x = 2;
-inline void Response::clear_x() {
-  x_ = 0;
+inline void Response::clear_x()
+{
+    x_ = 0;
 }
-inline double Response::_internal_x() const {
-  return x_;
+inline double Response::_internal_x() const
+{
+    return x_;
 }
-inline double Response::x() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Response.x)
-  return _internal_x();
+inline double Response::x() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Response.x)
+    return _internal_x();
 }
-inline void Response::_internal_set_x(double value) {
-  
-  x_ = value;
+inline void Response::_internal_set_x(double value)
+{
+
+    x_ = value;
 }
-inline void Response::set_x(double value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Response.x)
+inline void Response::set_x(double value)
+{
+    _internal_set_x(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Response.x)
 }
 
 // double y = 3;
-inline void Response::clear_y() {
-  y_ = 0;
+inline void Response::clear_y()
+{
+    y_ = 0;
 }
-inline double Response::_internal_y() const {
-  return y_;
+inline double Response::_internal_y() const
+{
+    return y_;
 }
-inline double Response::y() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Response.y)
-  return _internal_y();
+inline double Response::y() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Response.y)
+    return _internal_y();
 }
-inline void Response::_internal_set_y(double value) {
-  
-  y_ = value;
+inline void Response::_internal_set_y(double value)
+{
+
+    y_ = value;
 }
-inline void Response::set_y(double value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Response.y)
+inline void Response::set_y(double value)
+{
+    _internal_set_y(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Response.y)
 }
 
 // double z = 4;
-inline void Response::clear_z() {
-  z_ = 0;
+inline void Response::clear_z()
+{
+    z_ = 0;
 }
-inline double Response::_internal_z() const {
-  return z_;
+inline double Response::_internal_z() const
+{
+    return z_;
 }
-inline double Response::z() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Response.z)
-  return _internal_z();
+inline double Response::z() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Response.z)
+    return _internal_z();
 }
-inline void Response::_internal_set_z(double value) {
-  
-  z_ = value;
+inline void Response::_internal_set_z(double value)
+{
+
+    z_ = value;
 }
-inline void Response::set_z(double value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Response.z)
+inline void Response::set_z(double value)
+{
+    _internal_set_z(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Response.z)
 }
 
 // double speed = 5;
-inline void Response::clear_speed() {
-  speed_ = 0;
+inline void Response::clear_speed()
+{
+    speed_ = 0;
 }
-inline double Response::_internal_speed() const {
-  return speed_;
+inline double Response::_internal_speed() const
+{
+    return speed_;
 }
-inline double Response::speed() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Response.speed)
-  return _internal_speed();
+inline double Response::speed() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Response.speed)
+    return _internal_speed();
 }
-inline void Response::_internal_set_speed(double value) {
-  
-  speed_ = value;
+inline void Response::_internal_set_speed(double value)
+{
+
+    speed_ = value;
 }
-inline void Response::set_speed(double value) {
-  _internal_set_speed(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Response.speed)
+inline void Response::set_speed(double value)
+{
+    _internal_set_speed(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Response.speed)
 }
 
 // double angle = 6;
-inline void Response::clear_angle() {
-  angle_ = 0;
+inline void Response::clear_angle()
+{
+    angle_ = 0;
 }
-inline double Response::_internal_angle() const {
-  return angle_;
+inline double Response::_internal_angle() const
+{
+    return angle_;
 }
-inline double Response::angle() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Response.angle)
-  return _internal_angle();
+inline double Response::angle() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Response.angle)
+    return _internal_angle();
 }
-inline void Response::_internal_set_angle(double value) {
-  
-  angle_ = value;
+inline void Response::_internal_set_angle(double value)
+{
+
+    angle_ = value;
 }
-inline void Response::set_angle(double value) {
-  _internal_set_angle(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Response.angle)
+inline void Response::set_angle(double value)
+{
+    _internal_set_angle(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Response.angle)
 }
 
 // -------------------------------------------------------------------
@@ -2293,42 +2590,52 @@ inline void Response::set_angle(double value) {
 // ResponseQuery
 
 // repeated .airmobisim.Response responses = 1;
-inline int ResponseQuery::_internal_responses_size() const {
-  return responses_.size();
+inline int ResponseQuery::_internal_responses_size() const
+{
+    return responses_.size();
 }
-inline int ResponseQuery::responses_size() const {
-  return _internal_responses_size();
+inline int ResponseQuery::responses_size() const
+{
+    return _internal_responses_size();
 }
-inline void ResponseQuery::clear_responses() {
-  responses_.Clear();
+inline void ResponseQuery::clear_responses()
+{
+    responses_.Clear();
 }
-inline ::airmobisim::Response* ResponseQuery::mutable_responses(int index) {
-  // @@protoc_insertion_point(field_mutable:airmobisim.ResponseQuery.responses)
-  return responses_.Mutable(index);
+inline ::airmobisim::Response* ResponseQuery::mutable_responses(int index)
+{
+    // @@protoc_insertion_point(field_mutable:airmobisim.ResponseQuery.responses)
+    return responses_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response >*
-ResponseQuery::mutable_responses() {
-  // @@protoc_insertion_point(field_mutable_list:airmobisim.ResponseQuery.responses)
-  return &responses_;
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response>*
+ResponseQuery::mutable_responses()
+{
+    // @@protoc_insertion_point(field_mutable_list:airmobisim.ResponseQuery.responses)
+    return &responses_;
 }
-inline const ::airmobisim::Response& ResponseQuery::_internal_responses(int index) const {
-  return responses_.Get(index);
+inline const ::airmobisim::Response& ResponseQuery::_internal_responses(int index) const
+{
+    return responses_.Get(index);
 }
-inline const ::airmobisim::Response& ResponseQuery::responses(int index) const {
-  // @@protoc_insertion_point(field_get:airmobisim.ResponseQuery.responses)
-  return _internal_responses(index);
+inline const ::airmobisim::Response& ResponseQuery::responses(int index) const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.ResponseQuery.responses)
+    return _internal_responses(index);
 }
-inline ::airmobisim::Response* ResponseQuery::_internal_add_responses() {
-  return responses_.Add();
+inline ::airmobisim::Response* ResponseQuery::_internal_add_responses()
+{
+    return responses_.Add();
 }
-inline ::airmobisim::Response* ResponseQuery::add_responses() {
-  // @@protoc_insertion_point(field_add:airmobisim.ResponseQuery.responses)
-  return _internal_add_responses();
+inline ::airmobisim::Response* ResponseQuery::add_responses()
+{
+    // @@protoc_insertion_point(field_add:airmobisim.ResponseQuery.responses)
+    return _internal_add_responses();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response >&
-ResponseQuery::responses() const {
-  // @@protoc_insertion_point(field_list:airmobisim.ResponseQuery.responses)
-  return responses_;
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Response>&
+ResponseQuery::responses() const
+{
+    // @@protoc_insertion_point(field_list:airmobisim.ResponseQuery.responses)
+    return responses_;
 }
 
 // -------------------------------------------------------------------
@@ -2336,102 +2643,127 @@ ResponseQuery::responses() const {
 // StartUav
 
 // int32 id = 1;
-inline void StartUav::clear_id() {
-  id_ = 0;
+inline void StartUav::clear_id()
+{
+    id_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 StartUav::_internal_id() const {
-  return id_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 StartUav::_internal_id() const
+{
+    return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 StartUav::id() const {
-  // @@protoc_insertion_point(field_get:airmobisim.StartUav.id)
-  return _internal_id();
+inline ::PROTOBUF_NAMESPACE_ID::int32 StartUav::id() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.StartUav.id)
+    return _internal_id();
 }
-inline void StartUav::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  id_ = value;
+inline void StartUav::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+
+    id_ = value;
 }
-inline void StartUav::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:airmobisim.StartUav.id)
+inline void StartUav::set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+    _internal_set_id(value);
+    // @@protoc_insertion_point(field_set:airmobisim.StartUav.id)
 }
 
 // repeated .airmobisim.Coordinates coordinates = 2;
-inline int StartUav::_internal_coordinates_size() const {
-  return coordinates_.size();
+inline int StartUav::_internal_coordinates_size() const
+{
+    return coordinates_.size();
 }
-inline int StartUav::coordinates_size() const {
-  return _internal_coordinates_size();
+inline int StartUav::coordinates_size() const
+{
+    return _internal_coordinates_size();
 }
-inline void StartUav::clear_coordinates() {
-  coordinates_.Clear();
+inline void StartUav::clear_coordinates()
+{
+    coordinates_.Clear();
 }
-inline ::airmobisim::Coordinates* StartUav::mutable_coordinates(int index) {
-  // @@protoc_insertion_point(field_mutable:airmobisim.StartUav.coordinates)
-  return coordinates_.Mutable(index);
+inline ::airmobisim::Coordinates* StartUav::mutable_coordinates(int index)
+{
+    // @@protoc_insertion_point(field_mutable:airmobisim.StartUav.coordinates)
+    return coordinates_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates >*
-StartUav::mutable_coordinates() {
-  // @@protoc_insertion_point(field_mutable_list:airmobisim.StartUav.coordinates)
-  return &coordinates_;
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates>*
+StartUav::mutable_coordinates()
+{
+    // @@protoc_insertion_point(field_mutable_list:airmobisim.StartUav.coordinates)
+    return &coordinates_;
 }
-inline const ::airmobisim::Coordinates& StartUav::_internal_coordinates(int index) const {
-  return coordinates_.Get(index);
+inline const ::airmobisim::Coordinates& StartUav::_internal_coordinates(int index) const
+{
+    return coordinates_.Get(index);
 }
-inline const ::airmobisim::Coordinates& StartUav::coordinates(int index) const {
-  // @@protoc_insertion_point(field_get:airmobisim.StartUav.coordinates)
-  return _internal_coordinates(index);
+inline const ::airmobisim::Coordinates& StartUav::coordinates(int index) const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.StartUav.coordinates)
+    return _internal_coordinates(index);
 }
-inline ::airmobisim::Coordinates* StartUav::_internal_add_coordinates() {
-  return coordinates_.Add();
+inline ::airmobisim::Coordinates* StartUav::_internal_add_coordinates()
+{
+    return coordinates_.Add();
 }
-inline ::airmobisim::Coordinates* StartUav::add_coordinates() {
-  // @@protoc_insertion_point(field_add:airmobisim.StartUav.coordinates)
-  return _internal_add_coordinates();
+inline ::airmobisim::Coordinates* StartUav::add_coordinates()
+{
+    // @@protoc_insertion_point(field_add:airmobisim.StartUav.coordinates)
+    return _internal_add_coordinates();
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates >&
-StartUav::coordinates() const {
-  // @@protoc_insertion_point(field_list:airmobisim.StartUav.coordinates)
-  return coordinates_;
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::airmobisim::Coordinates>&
+StartUav::coordinates() const
+{
+    // @@protoc_insertion_point(field_list:airmobisim.StartUav.coordinates)
+    return coordinates_;
 }
 
 // double speed = 3;
-inline void StartUav::clear_speed() {
-  speed_ = 0;
+inline void StartUav::clear_speed()
+{
+    speed_ = 0;
 }
-inline double StartUav::_internal_speed() const {
-  return speed_;
+inline double StartUav::_internal_speed() const
+{
+    return speed_;
 }
-inline double StartUav::speed() const {
-  // @@protoc_insertion_point(field_get:airmobisim.StartUav.speed)
-  return _internal_speed();
+inline double StartUav::speed() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.StartUav.speed)
+    return _internal_speed();
 }
-inline void StartUav::_internal_set_speed(double value) {
-  
-  speed_ = value;
+inline void StartUav::_internal_set_speed(double value)
+{
+
+    speed_ = value;
 }
-inline void StartUav::set_speed(double value) {
-  _internal_set_speed(value);
-  // @@protoc_insertion_point(field_set:airmobisim.StartUav.speed)
+inline void StartUav::set_speed(double value)
+{
+    _internal_set_speed(value);
+    // @@protoc_insertion_point(field_set:airmobisim.StartUav.speed)
 }
 
 // double angle = 4;
-inline void StartUav::clear_angle() {
-  angle_ = 0;
+inline void StartUav::clear_angle()
+{
+    angle_ = 0;
 }
-inline double StartUav::_internal_angle() const {
-  return angle_;
+inline double StartUav::_internal_angle() const
+{
+    return angle_;
 }
-inline double StartUav::angle() const {
-  // @@protoc_insertion_point(field_get:airmobisim.StartUav.angle)
-  return _internal_angle();
+inline double StartUav::angle() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.StartUav.angle)
+    return _internal_angle();
 }
-inline void StartUav::_internal_set_angle(double value) {
-  
-  angle_ = value;
+inline void StartUav::_internal_set_angle(double value)
+{
+
+    angle_ = value;
 }
-inline void StartUav::set_angle(double value) {
-  _internal_set_angle(value);
-  // @@protoc_insertion_point(field_set:airmobisim.StartUav.angle)
+inline void StartUav::set_angle(double value)
+{
+    _internal_set_angle(value);
+    // @@protoc_insertion_point(field_set:airmobisim.StartUav.angle)
 }
 
 // -------------------------------------------------------------------
@@ -2439,63 +2771,78 @@ inline void StartUav::set_angle(double value) {
 // Coordinates
 
 // double x = 1;
-inline void Coordinates::clear_x() {
-  x_ = 0;
+inline void Coordinates::clear_x()
+{
+    x_ = 0;
 }
-inline double Coordinates::_internal_x() const {
-  return x_;
+inline double Coordinates::_internal_x() const
+{
+    return x_;
 }
-inline double Coordinates::x() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Coordinates.x)
-  return _internal_x();
+inline double Coordinates::x() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Coordinates.x)
+    return _internal_x();
 }
-inline void Coordinates::_internal_set_x(double value) {
-  
-  x_ = value;
+inline void Coordinates::_internal_set_x(double value)
+{
+
+    x_ = value;
 }
-inline void Coordinates::set_x(double value) {
-  _internal_set_x(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Coordinates.x)
+inline void Coordinates::set_x(double value)
+{
+    _internal_set_x(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Coordinates.x)
 }
 
 // double y = 2;
-inline void Coordinates::clear_y() {
-  y_ = 0;
+inline void Coordinates::clear_y()
+{
+    y_ = 0;
 }
-inline double Coordinates::_internal_y() const {
-  return y_;
+inline double Coordinates::_internal_y() const
+{
+    return y_;
 }
-inline double Coordinates::y() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Coordinates.y)
-  return _internal_y();
+inline double Coordinates::y() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Coordinates.y)
+    return _internal_y();
 }
-inline void Coordinates::_internal_set_y(double value) {
-  
-  y_ = value;
+inline void Coordinates::_internal_set_y(double value)
+{
+
+    y_ = value;
 }
-inline void Coordinates::set_y(double value) {
-  _internal_set_y(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Coordinates.y)
+inline void Coordinates::set_y(double value)
+{
+    _internal_set_y(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Coordinates.y)
 }
 
 // double z = 3;
-inline void Coordinates::clear_z() {
-  z_ = 0;
+inline void Coordinates::clear_z()
+{
+    z_ = 0;
 }
-inline double Coordinates::_internal_z() const {
-  return z_;
+inline double Coordinates::_internal_z() const
+{
+    return z_;
 }
-inline double Coordinates::z() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Coordinates.z)
-  return _internal_z();
+inline double Coordinates::z() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Coordinates.z)
+    return _internal_z();
 }
-inline void Coordinates::_internal_set_z(double value) {
-  
-  z_ = value;
+inline void Coordinates::_internal_set_z(double value)
+{
+
+    z_ = value;
 }
-inline void Coordinates::set_z(double value) {
-  _internal_set_z(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Coordinates.z)
+inline void Coordinates::set_z(double value)
+{
+    _internal_set_z(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Coordinates.z)
 }
 
 // -------------------------------------------------------------------
@@ -2503,23 +2850,28 @@ inline void Coordinates::set_z(double value) {
 // Number
 
 // int32 num = 1;
-inline void Number::clear_num() {
-  num_ = 0;
+inline void Number::clear_num()
+{
+    num_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Number::_internal_num() const {
-  return num_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 Number::_internal_num() const
+{
+    return num_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 Number::num() const {
-  // @@protoc_insertion_point(field_get:airmobisim.Number.num)
-  return _internal_num();
+inline ::PROTOBUF_NAMESPACE_ID::int32 Number::num() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.Number.num)
+    return _internal_num();
 }
-inline void Number::_internal_set_num(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  num_ = value;
+inline void Number::_internal_set_num(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+
+    num_ = value;
 }
-inline void Number::set_num(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_num(value);
-  // @@protoc_insertion_point(field_set:airmobisim.Number.num)
+inline void Number::set_num(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+    _internal_set_num(value);
+    // @@protoc_insertion_point(field_set:airmobisim.Number.num)
 }
 
 // -------------------------------------------------------------------
@@ -2527,23 +2879,28 @@ inline void Number::set_num(::PROTOBUF_NAMESPACE_ID::int32 value) {
 // DoubleNumber
 
 // double num = 1;
-inline void DoubleNumber::clear_num() {
-  num_ = 0;
+inline void DoubleNumber::clear_num()
+{
+    num_ = 0;
 }
-inline double DoubleNumber::_internal_num() const {
-  return num_;
+inline double DoubleNumber::_internal_num() const
+{
+    return num_;
 }
-inline double DoubleNumber::num() const {
-  // @@protoc_insertion_point(field_get:airmobisim.DoubleNumber.num)
-  return _internal_num();
+inline double DoubleNumber::num() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.DoubleNumber.num)
+    return _internal_num();
 }
-inline void DoubleNumber::_internal_set_num(double value) {
-  
-  num_ = value;
+inline void DoubleNumber::_internal_set_num(double value)
+{
+
+    num_ = value;
 }
-inline void DoubleNumber::set_num(double value) {
-  _internal_set_num(value);
-  // @@protoc_insertion_point(field_set:airmobisim.DoubleNumber.num)
+inline void DoubleNumber::set_num(double value)
+{
+    _internal_set_num(value);
+    // @@protoc_insertion_point(field_set:airmobisim.DoubleNumber.num)
 }
 
 // -------------------------------------------------------------------
@@ -2551,43 +2908,53 @@ inline void DoubleNumber::set_num(double value) {
 // UavSetSpeed
 
 // int32 id = 1;
-inline void UavSetSpeed::clear_id() {
-  id_ = 0;
+inline void UavSetSpeed::clear_id()
+{
+    id_ = 0;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 UavSetSpeed::_internal_id() const {
-  return id_;
+inline ::PROTOBUF_NAMESPACE_ID::int32 UavSetSpeed::_internal_id() const
+{
+    return id_;
 }
-inline ::PROTOBUF_NAMESPACE_ID::int32 UavSetSpeed::id() const {
-  // @@protoc_insertion_point(field_get:airmobisim.UavSetSpeed.id)
-  return _internal_id();
+inline ::PROTOBUF_NAMESPACE_ID::int32 UavSetSpeed::id() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.UavSetSpeed.id)
+    return _internal_id();
 }
-inline void UavSetSpeed::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  
-  id_ = value;
+inline void UavSetSpeed::_internal_set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+
+    id_ = value;
 }
-inline void UavSetSpeed::set_id(::PROTOBUF_NAMESPACE_ID::int32 value) {
-  _internal_set_id(value);
-  // @@protoc_insertion_point(field_set:airmobisim.UavSetSpeed.id)
+inline void UavSetSpeed::set_id(::PROTOBUF_NAMESPACE_ID::int32 value)
+{
+    _internal_set_id(value);
+    // @@protoc_insertion_point(field_set:airmobisim.UavSetSpeed.id)
 }
 
 // double speed = 2;
-inline void UavSetSpeed::clear_speed() {
-  speed_ = 0;
+inline void UavSetSpeed::clear_speed()
+{
+    speed_ = 0;
 }
-inline double UavSetSpeed::_internal_speed() const {
-  return speed_;
+inline double UavSetSpeed::_internal_speed() const
+{
+    return speed_;
 }
-inline double UavSetSpeed::speed() const {
-  // @@protoc_insertion_point(field_get:airmobisim.UavSetSpeed.speed)
-  return _internal_speed();
+inline double UavSetSpeed::speed() const
+{
+    // @@protoc_insertion_point(field_get:airmobisim.UavSetSpeed.speed)
+    return _internal_speed();
 }
-inline void UavSetSpeed::_internal_set_speed(double value) {
-  
-  speed_ = value;
+inline void UavSetSpeed::_internal_set_speed(double value)
+{
+
+    speed_ = value;
 }
-inline void UavSetSpeed::set_speed(double value) {
-  _internal_set_speed(value);
-  // @@protoc_insertion_point(field_set:airmobisim.UavSetSpeed.speed)
+inline void UavSetSpeed::set_speed(double value)
+{
+    _internal_set_speed(value);
+    // @@protoc_insertion_point(field_set:airmobisim.UavSetSpeed.speed)
 }
 
 #ifdef __GNUC__

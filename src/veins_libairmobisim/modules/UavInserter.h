@@ -29,17 +29,17 @@ using namespace omnetpp;
 using namespace veins;
 
 namespace airmobisim {
-class UavInserter : public cSimpleModule
-{
-  protected:
+class UavInserter : public cSimpleModule {
+protected:
     virtual void initialize(int stage) override;
-    virtual void handleMessage(cMessage *msg) override;
+    virtual void handleMessage(cMessage* msg) override;
 
-    virtual int numInitStages() const {
+    virtual int numInitStages() const
+    {
         return 2;
     }
 
-  private:
+private:
     DroCIManager* drociManager;
 
     cMessage* queryDataMsg;
@@ -49,4 +49,4 @@ class UavInserter : public cSimpleModule
 
     int uavIdToDelete  = 0;
 };
-}
+} // namespace airmobisim

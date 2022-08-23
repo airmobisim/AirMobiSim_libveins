@@ -39,5 +39,5 @@ protected:
     void handlePositionUpdate(cObject* obj) override;
 };
 
-}
+} // namespace airmobisim
 

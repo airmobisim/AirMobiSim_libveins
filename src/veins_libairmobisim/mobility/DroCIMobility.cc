@@ -29,9 +29,10 @@ using namespace veins;
 
 Define_Module(DroCIMobility);
 
-void DroCIMobility::initialize(int stage) {
+void DroCIMobility::initialize(int stage)
+{
 
-    if(stage == 0) {
+    if (stage == 0) {
         BaseMobility::initialize(stage);
         hostPositionOffset = par("hostPositionOffset");
         setHostSpeed = par("setHostSpeed");
@@ -45,7 +46,8 @@ void DroCIMobility::initialize(int stage) {
         ASSERT(isPreInitialized);
         isPreInitialized = false;
 
-    } else if (stage == 1) {
+    }
+    else if (stage == 1) {
 
     }
     else {
@@ -53,11 +55,13 @@ void DroCIMobility::initialize(int stage) {
     }
 }
 
-void DroCIMobility::handleMessage(cMessage *msg) {
+void DroCIMobility::handleMessage(cMessage* msg)
+{
 
 }
 
-void DroCIMobility::preInitialize(std::string external_id, const Coord& position, double speed, double angle) {
+void DroCIMobility::preInitialize(std::string external_id, const Coord& position, double speed, double angle)
+{
     Heading heading_new(angle);
 
     this->external_id = external_id;
@@ -82,7 +86,8 @@ void DroCIMobility::preInitialize(std::string external_id, const Coord& position
 
     isPreInitialized = true;
 }
-void DroCIMobility::nextPosition(const Coord& position, double speed, double angle) {
+void DroCIMobility::nextPosition(const Coord& position, double speed, double angle)
+{
     Heading heading_new(angle);
 
     EV_DEBUG << "nextPosition " << position.x << " " << position.y << " " << speed << " " << std::endl;
@@ -93,10 +98,11 @@ void DroCIMobility::nextPosition(const Coord& position, double speed, double ang
 
     changePosition();
 }
-void DroCIMobility::changePosition() {
+void DroCIMobility::changePosition()
+{
 
     // ensure we're not called twice in one time step
-    //ASSERT(lastUpdate != simTime());
+    // ASSERT(lastUpdate != simTime());
 
     Coord nextPos = calculateHostPosition(roadPosition);
     nextPos.z = move.getStartPosition().z;
@@ -111,9 +117,10 @@ void DroCIMobility::changePosition() {
     // Update display string to show node is getting updates
     auto hostMod = getParentModule();
     if (std::string(hostMod->getDisplayString().getTagArg("veins", 0))
-            == ". ") {
+        == ". ") {
         hostMod->getDisplayString().setTagArg("veins", 0, " .");
-    } else {
+    }
+    else {
         hostMod->getDisplayString().setTagArg("veins", 0, ". ");
     }
 
@@ -127,7 +134,8 @@ void DroCIMobility::changePosition() {
     updatePosition();
 }
 
-void DroCIMobility::fixIfHostGetsOutside() {
+void DroCIMobility::fixIfHostGetsOutside()
+{
     Coord pos = move.getStartPos();
     Coord dummy = Coord::ZERO;
     double dum;
@@ -142,7 +150,8 @@ void DroCIMobility::fixIfHostGetsOutside() {
     handleIfOutside(RAISEERROR, pos, dummy, dummy, dum);
 }
 
-Coord DroCIMobility::calculateHostPosition(const Coord& vehiclePos) const {
+Coord DroCIMobility::calculateHostPosition(const Coord& vehiclePos) const
+{
     Coord corPos;
     if (hostPositionOffset >= 0.001) {
         // calculate antenna position of vehicle according to antenna offset

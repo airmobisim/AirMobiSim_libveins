@@ -45,14 +45,14 @@
 using namespace veins;
 
 namespace airmobisim {
-class DroCIManager : public omnetpp::cSimpleModule
-{
+class DroCIManager : public omnetpp::cSimpleModule {
 protected:
     void initialize(int stage) override;
-    void handleMessage(omnetpp::cMessage *msg) override;
+    void handleMessage(omnetpp::cMessage* msg) override;
     void updateModulePosition(cModule* mod, const Coord& p, double speed, double angle);
     void addModule(std::string nodeId, std::string moduleType, std::string moduleName, std::string displayString, const Coord& position, double speed, double angle, double length, double height, double width);
-    int numInitStages() const override {
+    int numInitStages() const override
+    {
         return std::max(cSimpleModule::numInitStages(), 2);
     }
 
@@ -88,10 +88,10 @@ private:
     double totalsteps;
     double maxSimulationTimeAirMobiSim;
     double maxSimulationStepsAirMobiSim;
-    omnetpp::cMessage *initMsg;
-    omnetpp::cMessage *launchSimulatorMsg;
-    omnetpp::cMessage *executeOneTimestepTrigger;
-    omnetpp::cMessage *checkConnectionMsg;
+    omnetpp::cMessage* initMsg;
+    omnetpp::cMessage* launchSimulatorMsg;
+    omnetpp::cMessage* executeOneTimestepTrigger;
+    omnetpp::cMessage* checkConnectionMsg;
     int checkConnectionMsgKind = 1337;
 
     std::string moduleType;
@@ -105,5 +105,5 @@ protected:
     void startAirMobiSim();
     pid_t pid;
 };
-}
+} // namespace airmobisim
 

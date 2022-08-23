@@ -26,13 +26,15 @@
 using namespace airmobisim;
 Define_Module(airmobisim::UavInserter);
 
-void UavInserter::initialize(int stage){
+void UavInserter::initialize(int stage)
+{
     if (stage == 0) {
         queryDataMsg = new cMessage("Query UAV data");
         addWaypointMsg = new cMessage("Add new waypoint");
         insertNewUavMsg = new cMessage("Insert new UAV");
         deleteNewUavMsg = new cMessage("Delete UAV");
-    } else if (stage == 1) {
+    }
+    else if (stage == 1) {
         drociManager =  veins::FindModule<DroCIManager*>::findGlobalModule();
         scheduleAt(simTime() + 2, queryDataMsg);
         scheduleAt(simTime() + 2.2, addWaypointMsg);
@@ -42,8 +44,9 @@ void UavInserter::initialize(int stage){
     }
 }
 
-void UavInserter::handleMessage(cMessage *msg) {
-    if(msg == queryDataMsg) {
+void UavInserter::handleMessage(cMessage* msg)
+{
+    if (msg == queryDataMsg) {
         auto count = drociManager->getCurrentUAVCount();
         std::cout << "Got " <<count <<  " UAVs in simulation"<< std::endl;
         airmobisim::UavList listOfUavs = drociManager->getManagedHosts();
@@ -55,13 +58,15 @@ void UavInserter::handleMessage(cMessage *msg) {
             position.z = listOfUavs.uavs(i).z();
             angle = listOfUavs.uavs(i).angle();
             std::cout << "have a UAV: ID " << listOfUavs.uavs(i).id()
-                    << " at (x,y,z) (" << position.x << ", " << position.y
-                    << ", " << position.z << ") - angle is " << angle << std::endl;
+            << " at (x,y,z) (" << position.x << ", " << position.y
+            << ", " << position.z << ") - angle is " << angle << std::endl;
         }
         std::cout << "done!" << std::endl;
-    } else if (msg == addWaypointMsg) {
+    }
+    else if (msg == addWaypointMsg) {
         drociManager->insertWaypoint(drociManager->getMaxUavId(), 750, 750, 3);
-    } else if (msg == insertNewUavMsg){
+    }
+    else if (msg == insertNewUavMsg) {
         auto insertUavId = drociManager->getMaxUavId() + 1;
         Coord startPosition;
         startPosition.x = 0;
@@ -78,7 +83,8 @@ void UavInserter::handleMessage(cMessage *msg) {
 
         uavIdToDelete = insertUavId;
 
-    } else if (msg == deleteNewUavMsg) {
+    }
+    else if (msg == deleteNewUavMsg) {
         drociManager->deleteUAV(uavIdToDelete);
     }
 }

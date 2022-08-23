@@ -33,20 +33,23 @@ using namespace veins;
 
 namespace airmobisim {
 
-class DroCIMobility  : public BaseMobility {
+class DroCIMobility : public BaseMobility {
 
-  protected:
+protected:
     virtual void initialize(int stage) override;
-    virtual void handleMessage(cMessage *msg) override;
+    virtual void handleMessage(cMessage* msg) override;
 
-  public:
-    DroCIMobility():BaseMobility(),isPreInitialized(false) {
+public:
+    DroCIMobility()
+        :BaseMobility()
+        , isPreInitialized(false)
+    {
 
     }
     void preInitialize(std::string external_id, const Coord& position, double speed, double angle);
     virtual void changePosition();
     void nextPosition(const Coord& position, double speed, double angle);
-  protected:
+protected:
     cOutVector currentPosXVec; /**< vector plotting posx */
     cOutVector currentPosYVec; /**< vector plotting posy */
     cOutVector currentSpeedVec; /**< vector plotting speed */
@@ -63,7 +66,7 @@ class DroCIMobility  : public BaseMobility {
     Coord roadPosition; /**< position of front bumper, updated by nextPosition() */
     double speed; /**< updated by nextPosition() */
     Heading heading; /**< updated by nextPosition() */
-  private:
+private:
 
     /**
      * Calculates where the OMNeT++ module position of this UAV should be, given its front position
@@ -83,4 +86,4 @@ public:
         return droci;
     };
 };
-}
+} // namespace airmobisim
