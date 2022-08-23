@@ -118,7 +118,15 @@ void DroCIManager::startAirMobiSim() {
 
     if (pid == 0) {
         signal(SIGINT, SIG_IGN);
-        int r = execl("/bin/sh", "sh", "-c", "cd $AIRMOBISIMHOME && poetry run ./airmobisim.py --omnetpp", NULL);
+        int runnumber = getSimulation()->getEnvir()->getConfigEx()->getActiveRunNumber();
+
+        std::stringstream ssRunnumber;
+        ssRunnumber << runnumber;
+        std::string sRunnumber = ssRunnumber.str();
+
+        std::string sCommand = "cd $AIRMOBISIMHOME && poetry run ./airmobisim.py --omnetpp --r ";
+
+        int r = execl("/bin/sh", "sh", "-c", (sCommand + sRunnumber).c_str(), NULL);
 
         if (r == -1) {
             throw cRuntimeError("system failed");
