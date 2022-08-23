@@ -159,10 +159,19 @@ void DroCIManager::launchSimulator() {
     pathToAirMobiSim.pop_back(); // remove line break
     ifstream indata;
     int portNumber;
-    std::string filepath = pathToAirMobiSim + "/" + std::to_string(pid) + ".tmp";
-    struct stat buffer2;
-    while (!stat(filepath.c_str(), &buffer2) == 0) {
 
+    std::string filepath = pathToAirMobiSim + "/" + std::to_string(pid) + ".tmp";
+            
+    const std::chrono::time_point<std::chrono::system_clock> timeNow = std::chrono::system_clock::now();
+    const std::chrono::time_point<std::chrono::system_clock> timeoutAtTime = timeNow + std::chrono::seconds(15);
+
+    struct stat buffer2;
+    std::cout << "Waiting for AirMobiSim..." << std::endl;
+    while (!stat(filepath.c_str(), &buffer2) == 0) {
+        if (std::chrono::system_clock::now() > timeoutAtTime) {
+            std::cerr << "Error: Timeout while waiting for AirMobiSim" << std::endl;
+            exit(1);
+        }
     }
     indata.open(filepath); // opens the file
     if (!indata) { // file couldn't be opened
