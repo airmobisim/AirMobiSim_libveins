@@ -36,15 +36,15 @@
 #include <thread>
 #include <sys/wait.h>
 #include <fstream>
-using std::ifstream;
-#include <sys/stat.h>
-
+#include <stdlib.h>
 #include <vector>
 #include <stdio.h>
 #include <chrono>
 #include <thread>
 #include "unistd.h"
 
+
+using std::ifstream;
 using namespace omnetpp;
 using namespace airmobisim;
 
@@ -57,11 +57,7 @@ void DroCIManager::initialize(int stage) {
         moduleName = par("moduleName").stringValue();
         moduleDisplayString = par("moduleDisplayString").stdstringValue();
 
-        simTimeLimit =
-                std::stod(
-                        std::string(
-                                this->getSimulation()->getActiveSimulation()->getEnvir()->getConfig()->getConfigValue(
-                                        "sim-time-limit")));
+        simTimeLimit = std::stod(std::string(this->getSimulation()->getActiveSimulation()->getEnvir()->getConfig()->getConfigValue("sim-time-limit")));
         totalsteps = simTimeLimit / updateInterval;
 
         // Do not create children here since OMNeT++ will try to initialize them again
@@ -95,8 +91,7 @@ void DroCIManager::handleMessage(cMessage *msg) {
             int status = 0;
             pid_t r;
             r = waitpid(pid, &status, WNOHANG);
-            EV_DEBUG << "pid == " << pid << " - waitpid returned with " << r
-                            << std::endl;
+            EV_DEBUG << "pid == " << pid << " - waitpid returned with " << r << std::endl;
             if (r == 0) {
                 EV_DEBUG << "no state change" << std::endl;
             } else if (r == -1) {
@@ -123,10 +118,15 @@ void DroCIManager::startAirMobiSim() {
 
     if (pid == 0) {
         signal(SIGINT, SIG_IGN);
+        int runnumber = getSimulation()->getEnvir()->getConfigEx()->getActiveRunNumber();
 
-        int r = execl("/bin/sh", "sh", "-c",
-                "cd $AIRMOBISIMHOME && poetry run ./airmobisim.py --omnetpp",
-                NULL);
+        std::stringstream ssRunnumber;
+        ssRunnumber << runnumber;
+        std::string sRunnumber = ssRunnumber.str();
+
+        std::string sCommand = "cd $AIRMOBISIMHOME && poetry run ./airmobisim.py --omnetpp --r ";
+
+        int r = execl("/bin/sh", "sh", "-c", (sCommand + sRunnumber).c_str(), NULL);
 
         if (r == -1) {
             throw cRuntimeError("system failed");
@@ -145,23 +145,19 @@ airmobisim::UavList DroCIManager::getManagedHosts() {
     grpc::ClientContext clientContext;
     airmobisim::UavList managedHosts;
     google::protobuf::Empty empty;
-    grpc::Status status = stub->GetManagedHosts(&clientContext, empty,
-            &managedHosts);
+
+    grpc::Status status = stub->GetManagedHosts(&clientContext, empty, &managedHosts);
     if (status.ok()) {
         return managedHosts;
     } else {
-        error(
-                (std::string(
-                        "DroCIManager::getManagedHosts() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::getManagedHosts() failed with error: " + std::string(status.error_message())).c_str()));
     }
 }
 
 void DroCIManager::launchSimulator() {
     std::array<char, 128> buffer;
     std::string pathToAirMobiSim;
-    std::unique_ptr<FILE, decltype(&pclose)> pipe(
-            popen("cd $AIRMOBISIMHOME && pwd", "r"), pclose);
+    std::unique_ptr<FILE, decltype(&pclose)> pipe(popen("cd $AIRMOBISIMHOME && pwd", "r"), pclose);
     if (!pipe) {
         throw std::runtime_error("popen() failed!");
     }
@@ -171,16 +167,23 @@ void DroCIManager::launchSimulator() {
     pathToAirMobiSim.pop_back(); // remove line break
     ifstream indata;
     int portNumber;
-    std::string filepath = pathToAirMobiSim + "/" + std::to_string(pid)
-            + ".tmp";
-    struct stat buffer2;
-    while (!stat(filepath.c_str(), &buffer2) == 0) {
 
+    std::string filepath = pathToAirMobiSim + "/" + std::to_string(pid) + ".tmp";
+            
+    const std::chrono::time_point<std::chrono::system_clock> timeNow = std::chrono::system_clock::now();
+    const std::chrono::time_point<std::chrono::system_clock> timeoutAtTime = timeNow + std::chrono::seconds(15);
+
+    struct stat buffer2;
+    std::cout << "Waiting for AirMobiSim..." << std::endl;
+    while (!stat(filepath.c_str(), &buffer2) == 0) {
+        if (std::chrono::system_clock::now() > timeoutAtTime) {
+            std::cerr << "Error: Timeout while waiting for AirMobiSim" << std::endl;
+            exit(1);
+        }
     }
     indata.open(filepath); // opens the file
     if (!indata) { // file couldn't be opened
-        std::cerr << "Error: port number file could not be opened:" << filepath
-                << std::endl;
+        std::cerr << "Error: port number file could not be opened:" << filepath << std::endl;
         exit(1);
     }
     indata >> portNumber;
@@ -194,8 +197,7 @@ void DroCIManager::launchSimulator() {
     auto state = channel->GetState(true);
 
     while (state != GRPC_CHANNEL_READY) {
-        if (!channel->WaitForStateChange(state,
-                std::chrono::system_clock::now() + std::chrono::seconds(15))) {
+        if (!channel->WaitForStateChange(state, std::chrono::system_clock::now() + std::chrono::seconds(15))) {
             error("Could not connect to gRPC");
         }
         state = channel->GetState(true);
@@ -211,26 +213,18 @@ void DroCIManager::launchSimulator() {
     airmobisim::Number airMobiSimSimulationTimeLimit;
     airmobisim::DoubleNumber airMobiSimSimulationSteps;
 
-    grpc::Status status = stub->GetMaxSimulationTime(&clientContext, empty,
-            &airMobiSimSimulationTimeLimit);
+    grpc::Status status = stub->GetMaxSimulationTime(&clientContext, empty, &airMobiSimSimulationTimeLimit);
     if (status.ok()) {
         maxSimulationTimeAirMobiSim = airMobiSimSimulationTimeLimit.num();
     } else {
-        error(
-                (std::string(
-                        "DroCIManager::GetMaxSimulationTime() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::GetMaxSimulationTime() failed with error: " + std::string(status.error_message())).c_str()));
     }
 
-    status = stub->getMaxSimulationSteps(&clientContext2, empty2,
-            &airMobiSimSimulationSteps);
+    status = stub->getMaxSimulationSteps(&clientContext2, empty2, &airMobiSimSimulationSteps);
     if (status.ok()) {
         maxSimulationStepsAirMobiSim = airMobiSimSimulationTimeLimit.num();
     } else {
-        error(
-                (std::string(
-                        "DroCIManager::getMaxSimulationSteps() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::getMaxSimulationSteps() failed with error: " + std::string(status.error_message())).c_str()));
     }
 
     status = stub->GetManagedHosts(&clientContext3, empty3, &managedHosts);
@@ -244,9 +238,7 @@ void DroCIManager::launchSimulator() {
             position.y = managedHosts.uavs(i).y();
             position.z = managedHosts.uavs(i).z();
             angle = managedHosts.uavs(i).angle();
-            std::cout << "Add module " << managedHosts.uavs(i).id()
-                    << " at (x,y,z) (" << position.x << ", " << position.y
-                    << ", " << position.z << ")" << std::endl;
+            std::cout << "Add module " << managedHosts.uavs(i).id() << " at (x,y,z) (" << position.x << ", " << position.y << ", " << position.z << ")" << std::endl;
 
             auto speed = 0;
             auto length = 2;
@@ -260,10 +252,7 @@ void DroCIManager::launchSimulator() {
                     speed, angle, length, height, width);
         }
     } else {
-        error(
-                (std::string(
-                        "DroCIManager::GetManagedHosts() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::GetManagedHosts() failed with error: " + std::string(status.error_message())).c_str()));
     }
     if (simulationStepCount < totalsteps) {
         scheduleAt(simTime() + updateInterval, executeOneTimestepTrigger);
@@ -290,20 +279,13 @@ void DroCIManager::executeOneTimestep() {
 
             std::stringstream ss;
             ss << response.responses(i).id();
-            processUavSubscription(ss.str(),
-                    Coord(response.responses(i).x(), response.responses(i).y(),
-                            response.responses(i).z()),
-                    response.responses(i).speed(),
-                    response.responses(i).angle());
+            processUavSubscription(ss.str(), Coord(response.responses(i).x(), response.responses(i).y(), response.responses(i).z()), response.responses(i).speed(), response.responses(i).angle());
         }
     } else {
         if (simulationStepCount > maxSimulationStepsAirMobiSim) { // There are no further timesteps in AirMobiSim
             endSimulation();
         } else {
-            error(
-                    (std::string(
-                            "DroCIManager::executeOneTimestep() failed with error: "
-                                    + std::string(status.error_message())).c_str()));
+            error((std::string("DroCIManager::executeOneTimestep() failed with error: " + std::string(status.error_message())).c_str()));
         }
     }
 
@@ -317,16 +299,14 @@ void DroCIManager::executeOneTimestep() {
 
 }
 
-void DroCIManager::processUavSubscription(std::string objectId, Coord p,
-        double speed, double angle) {
+void DroCIManager::processUavSubscription(std::string objectId, Coord p, double speed, double angle) {
     cModule *mod = getManagedModule(objectId);
 
     if (!mod) {
         error("DroCIManager::processUavSubscription: No such module found");
     } else {
         // module existed - update position
-        EV_DEBUG << "module " << objectId << " moving to " << p.x << "," << p.y
-                        << "with heading" << angle << endl;
+        EV_DEBUG << "module " << objectId << " moving to " << p.x << "," << p.y << "with heading" << angle << endl;
         updateModulePosition(mod, p, speed, angle);
     }
 }
@@ -337,10 +317,7 @@ cModule* DroCIManager::getManagedModule(std::string nodeId) {
     return hosts[nodeId];
 }
 
-void DroCIManager::addModule(std::string nodeId, std::string moduleType,
-        std::string moduleName, std::string displayString,
-        const Coord &position, double speed, double angle, double length,
-        double height, double width) {
+void DroCIManager::addModule(std::string nodeId, std::string moduleType, std::string moduleName, std::string displayString, const Coord &position, double speed, double angle, double length, double height, double width) {
 
     std::cout << "addModule called for module id " << nodeId << std::endl;
     int32_t nodeVectorIndex = nextNodeVectorIndex++;
@@ -357,8 +334,7 @@ void DroCIManager::addModule(std::string nodeId, std::string moduleType,
     parentmod->setSubmoduleVectorSize(moduleName.c_str(), nodeVectorIndex + 1);
     cModule* mod = nodeType->create(moduleName.c_str(), parentmod, nodeVectorIndex);
 #else
-    cModule *mod = nodeType->create(moduleName.c_str(), parentmod,
-            nodeVectorIndex, nodeVectorIndex);
+    cModule *mod = nodeType->create(moduleName.c_str(), parentmod, nodeVectorIndex, nodeVectorIndex);
 #endif
     mod->finalizeParameters();
     if (displayString.length() > 0) {
@@ -374,8 +350,7 @@ void DroCIManager::addModule(std::string nodeId, std::string moduleType,
 
 }
 
-void DroCIManager::preInitializeModule(cModule *mod, const std::string &nodeId,
-        const Coord &position, double speed, double angle) {
+void DroCIManager::preInitializeModule(cModule *mod, const std::string &nodeId, const Coord &position, double speed, double angle) {
     // pre-initialize Mobility
     auto mobilityModules = getSubmodulesOfType<DroCIMobility>(mod);
     for (auto mm : mobilityModules) {
@@ -383,8 +358,7 @@ void DroCIManager::preInitializeModule(cModule *mod, const std::string &nodeId,
     }
 }
 
-void DroCIManager::updateModulePosition(cModule *mod, const Coord &p,
-        double speed, double angle) {
+void DroCIManager::updateModulePosition(cModule *mod, const Coord &p, double speed, double angle) {
     // update position in DroCIMobility
     auto mobilityModules = getSubmodulesOfType<DroCIMobility>(mod);
     for (auto mm : mobilityModules) {
@@ -402,10 +376,7 @@ int DroCIManager::getCurrentUAVCount() {
         status = stub->getNumberCurrentUAV(&clientcontext, empty, &number_uav);
     }
     if (!status.ok()) {
-        error(
-                (std::string(
-                        "DroCIManager::getnumberCurrentUAV() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::getnumberCurrentUAV() failed with error: " + std::string(status.error_message())).c_str()));
     }
     return number_uav.num();
 }
@@ -421,10 +392,7 @@ void DroCIManager::deleteUAV(int deleteUavId) {
 
     grpc::Status status = stub->DeleteUAV(&clientcontext, nodeId, &empty);
     if (!status.ok()) {
-        error(
-                (std::string(
-                        "DroCIManager::deleteUAV() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::deleteUAV() failed with error: " + std::string(status.error_message())).c_str()));
     }
     cModule *node = getManagedModule(std::to_string(deleteUavId));
     node->deleteModule();
@@ -433,8 +401,7 @@ void DroCIManager::deleteUAV(int deleteUavId) {
     hosts.erase(it);
 }
 
-void DroCIManager::insertUAV(int insertUavId, Coord startPosition,
-        Coord endPosition, double startAngle, double speed) {
+void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, double speed) {
 
     airmobisim::StartUav *startuav = new StartUav;
 
@@ -466,9 +433,7 @@ void DroCIManager::insertUAV(int insertUavId, Coord startPosition,
     auto width = 1.0;
     auto length = 1.0;
 
-    addModule(std::to_string(insertUavId), moduleType.c_str(),
-            moduleName.c_str(), moduleDisplayString, startPosition, speed,
-            startAngle, length, startPosition.z, width);
+    addModule(std::to_string(insertUavId), moduleType.c_str(), moduleName.c_str(), moduleDisplayString, startPosition, speed, startAngle, length, startPosition.z, width);
 }
 
 int DroCIManager::getMaxUavId() {
@@ -479,15 +444,11 @@ int DroCIManager::getMaxUavId() {
     if (status.ok()) {
         return maxUavId.num();
     } else {
-        error(
-                (std::string(
-                        "DroCIManager::getMaxUavId() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::getMaxUavId() failed with error: " + std::string(status.error_message())).c_str()));
     }
 }
 
-void DroCIManager::insertWaypoint(int uavId, double x, double y, double z,
-        int index) {
+void DroCIManager::insertWaypoint(int uavId, double x, double y, double z, int index) {
     grpc::ClientContext clientContext;
     google::protobuf::Empty empty;
 
@@ -503,10 +464,7 @@ void DroCIManager::insertWaypoint(int uavId, double x, double y, double z,
             &empty);
 
     if (!status.ok()) {
-        error(
-                (std::string(
-                        "DroCIManager::insertWaypoint() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::insertWaypoint() failed with error: " + std::string(status.error_message())).c_str()));
     }
 }
 
@@ -524,10 +482,7 @@ void DroCIManager::setDesiredSpeed() {
             &empty);
 
     if (!status.ok()) {
-        error(
-                (std::string(
-                        "DroCIManager::setDesiredSpeed() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::setDesiredSpeed() failed with error: " + std::string(status.error_message())).c_str()));
     }
 }
 
@@ -540,7 +495,7 @@ void DroCIManager::updateWaypoints() {
     grpc::ClientContext clientContext;
     google::protobuf::Empty empty;
 
-    //TODO:Needs to be change! Add a for loop!
+    //TODO:Needs to be change! Add  loop!
     airmobisim::Waypoint *waypoint1 = waypointlist->add_waypoint();
     airmobisim::Waypoint *waypoint2 = waypointlist->add_waypoint();
 
@@ -557,13 +512,9 @@ void DroCIManager::updateWaypoints() {
     waypoint2->set_y(10);
     waypoint2->set_z(3);
 
-    grpc::Status status = stub->UpdateWaypoints(&clientContext, *waypointlist,
-            &empty);
+    grpc::Status status = stub->UpdateWaypoints(&clientContext, *waypointlist, &empty);
 
     if (!status.ok()) {
-        error(
-                (std::string(
-                        "DroCIManager::updateWaypoints() failed with error: "
-                                + std::string(status.error_message())).c_str()));
+        error((std::string("DroCIManager::updateWaypoints() failed with error: " + std::string(status.error_message())).c_str()));
     }
 }

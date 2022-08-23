@@ -65,7 +65,7 @@ network SimpleScenarioNetwork
                 @display("p=2000,2000;i=misc/globe");
         }
 		
-		manager: TraCIScenarioManagerLaunchd {
+	manager: TraCIScenarioManagerLaunchd {
             parameters:
                 @display("p=512,128");
         }
