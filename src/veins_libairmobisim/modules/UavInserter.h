@@ -33,7 +33,8 @@ class UavInserter : public cSimpleModule {
 protected:
     virtual void initialize(int stage) override;
     virtual void handleMessage(cMessage* msg) override;
-
+    ~UavInserter() override;
+    
     virtual int numInitStages() const
     {
         return 2;

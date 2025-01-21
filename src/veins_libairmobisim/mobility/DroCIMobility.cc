@@ -73,7 +73,8 @@ void DroCIMobility::preInitialize(std::string external_id, const Coord& position
     this->heading = heading_new;
 
     Coord nextPos = calculateHostPosition(roadPosition);
-    nextPos.z = move.getStartPosition().z;
+    //set nextPos.z to UAV height
+    nextPos.z = position.z;
 
     move.setStart(nextPos);
     move.setDirectionByVector(heading.toCoord());
@@ -105,7 +106,7 @@ void DroCIMobility::changePosition()
     // ASSERT(lastUpdate != simTime());
 
     Coord nextPos = calculateHostPosition(roadPosition);
-    nextPos.z = move.getStartPosition().z;
+    
 
     // keep statistics (for current step)
     currentPosXVec.record(nextPos.x);
@@ -124,7 +125,7 @@ void DroCIMobility::changePosition()
         hostMod->getDisplayString().setTagArg("veins", 0, ". ");
     }
 
-    move.setStart(Coord(nextPos.x, nextPos.y, move.getStartPosition().z)); // keep z position
+    move.setStart(Coord(nextPos.x, nextPos.y, nextPos.z)); // z is UAV height 
     move.setDirectionByVector(heading.toCoord());
     move.setOrientationByVector(heading.toCoord());
     if (this->setHostSpeed) {
@@ -160,5 +161,5 @@ Coord DroCIMobility::calculateHostPosition(const Coord& vehiclePos) const
     else {
         corPos = vehiclePos;
     }
-    return vehiclePos;
+    return corPos;
 }

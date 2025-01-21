@@ -42,6 +42,8 @@
 #include <chrono>
 #include <thread>
 #include "unistd.h"
+#include "veins/base/connectionManager/ChannelAccess.h"
+#include "veins/base/connectionManager/BaseConnectionManager.h"
 
 
 using std::ifstream;
@@ -420,13 +422,22 @@ void DroCIManager::deleteUAV(int deleteUavId)
         error((std::string("DroCIManager::deleteUAV() failed with error: " + std::string(status.error_message())).c_str()));
     }
     cModule* node = getManagedModule(std::to_string(deleteUavId));
-    node->deleteModule();
+    
+    // cleanup work before deleting host module: node->deleteModule();
+    auto cas = getSubmodulesOfType<ChannelAccess>(node, true);
+    for (auto ca : cas) {
+        cModule* nic = ca->getParentModule();
+        auto connectionManager = ChannelAccess::getConnectionManager(nic);
+        connectionManager -> unregisterNic(nic);
+    }
 
     auto it = hosts.find(std::to_string(deleteUavId));
     hosts.erase(it);
+    node->callFinish();
+    node->deleteModule();
 }
 
-void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, double speed)
+void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, int mobilityModel, double speed)
 {
 
     airmobisim::StartUav* startuav = new StartUav;
@@ -449,6 +460,7 @@ void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosi
 
     startuav->set_id(insertUavId);
     startuav->set_angle(startAngle);
+    startuav->set_mobilitymodel(mobilityModel);
     startuav->set_speed(speed);
 
     grpc::Status status = stub->InsertUAV(&clientcontext, *startuav, &empty);
