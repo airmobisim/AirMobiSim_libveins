@@ -63,7 +63,7 @@ private:
     void processUavSubscription(std::string id, Coord p, double speed, double angle);
 
 public:
-    void insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, double speed);
+    void insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, int mobilityModel, double speed);
     void insertWaypoint(int uavId, double x, double y, double z, int index = -1);
 
     void updateWaypoints();

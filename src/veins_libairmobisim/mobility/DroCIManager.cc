@@ -437,7 +437,7 @@ void DroCIManager::deleteUAV(int deleteUavId)
     node->deleteModule();
 }
 
-void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, double speed)
+void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosition, double startAngle, int mobilityModel, double speed)
 {
 
     airmobisim::StartUav* startuav = new StartUav;
@@ -460,6 +460,7 @@ void DroCIManager::insertUAV(int insertUavId, Coord startPosition, Coord endPosi
 
     startuav->set_id(insertUavId);
     startuav->set_angle(startAngle);
+    startuav->set_mobilitymodel(mobilityModel);
     startuav->set_speed(speed);
 
     grpc::Status status = stub->InsertUAV(&clientcontext, *startuav, &empty);

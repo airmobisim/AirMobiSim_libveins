@@ -77,9 +77,10 @@ void UavInserter::handleMessage(cMessage* msg)
         endPosition.y = 10;
         endPosition.z = 5;
         auto startAngle = 90;
+        int mobilityModel = 1; // 1 for linear mobility model and 2 for spline mobility model
         auto speed = 20;
         std::cout << "Add new UAV with: ID " << insertUavId << std::endl;
-        drociManager->insertUAV(insertUavId, startPosition, endPosition, startAngle, speed);
+        drociManager->insertUAV(insertUavId, startPosition, endPosition, startAngle, mobilityModel, speed);
 
         uavIdToDelete = insertUavId;
 
@@ -87,4 +88,13 @@ void UavInserter::handleMessage(cMessage* msg)
     else if (msg == deleteNewUavMsg) {
         drociManager->deleteUAV(uavIdToDelete);
     }
+}
+
+
+UavInserter::~UavInserter()
+{
+    cancelAndDelete(queryDataMsg);
+    cancelAndDelete(addWaypointMsg);
+    cancelAndDelete(insertNewUavMsg);
+    cancelAndDelete(deleteNewUavMsg);
 }
