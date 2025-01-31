@@ -2,6 +2,7 @@
 #
 # Copyright (C) 2017 Rudolf Hornig <rudi@omnetpp.org>
 # Copyright (C) 2018-2020 Christoph Sommer <sommer@cms-labs.org>
+# Copyright (C) 2022-2025 Tobias Hardes <info@thardes.net>
 #
 # Documentation for these modules is at http://veins.car2x.org/
 #
@@ -21,26 +22,6 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 #
-
-
-#
-# on windows, special care is needed for linking
-# adapted from INET Framework (inet-4.2.1) makefrag
-#
-ifeq ($(PLATFORM),win32.x86_64)
-  #
-  # on windows we have to link with the ws2_32 (winsock2) library as it is no longer added
-  # to the omnetpp system libraries by default (as of OMNeT++ 5.1)
-  #
-  LIBS += -lws2_32
-  ENABLE_AUTO_IMPORT=-Wl,--enable-auto-import
-  LDFLAGS := $(filter-out $(ENABLE_AUTO_IMPORT), $(LDFLAGS))
-
-  # FIX for clang not exporting typeinfo and other thunks on Windows
-  ifeq ($(CC),clang)
-    DEFFILE = $O/typeinfo.def
-    LDFLAGS += $(DEFFILE)
-
 .PHONY: all
 
 all:
@@ -51,43 +32,82 @@ $(DEFFILE): $(OBJS)  $(wildcard $(EXTRA_OBJS)) Makefile $(CONFIGFILE)
 
 $O/$(TARGET): $(DEFFILE)
 
+
+VEINS_NEED_MSG6 := $(shell echo ${OMNETPP_VERSION} | grep "^5" >/dev/null 2>&1; echo $$?)
+ifeq ($(VEINS_NEED_MSG6),0)
+  MSGCOPTS += --msg6
+endif
+
+
+ifeq ($(WITH_OSG), yes)
+  OMNETPP_LIBS += $(OSG_LIBS)
+endif
+
+#
+# Get Compiler- and Linker-Flags from conan_flags.mk
+#
+include ../build/conan_flags.mk
+
+ABSL_BASE_PATH := $(shell find ~/.conan2/p -path "*/include/absl" | head -n 1 | xargs dirname)
+GRPC_BASE_PATH := $(shell find ~/.conan2/p -path "*/include/grpcpp" | head -n 1 | xargs dirname)
+PROTO_BASE_PATH := $(shell find ~/.conan2/p -path "*/include/google" | head -n 1 | xargs dirname)
+CXXFLAGS += -I$(GRPC_BASE_PATH)
+CXXFLAGS += -I$(ABSL_BASE_PATH)
+CXXFLAGS += -I$(PROTO_BASE_PATH)
+
+
+
+
+#############################################################################################################
+
+# Extract CONAN_LIBRARY_DIRS and remove incorrect entries
+CONAN_LIB_DIRS := $(shell grep "CONAN_RUNTIME_LIB_DIRS" ../build/Release/generators/conan_toolchain.cmake | \
+    sed -E 's/set\(CONAN_RUNTIME_LIB_DIRS (.+)\)/\1/' | tr -d '"' | tr ' ' '\n' | grep -vE '(^lib$$|^$$)')
+
+# If the list is empty, set a dummy value to avoid errors
+CONAN_LIB_DIRS := $(if $(CONAN_LIB_DIRS),$(CONAN_LIB_DIRS),/dev/null)
+
+# Create -L flags for the linker
+OMNETPP_LIB_PATHS := $(addprefix -L, $(CONAN_LIB_DIRS))
+
+# Find all .so libraries in the Conan directories
+OMNETPP_LIBS := $(foreach dir, $(CONAN_LIB_DIRS), $(wildcard $(dir)/*.so))
+
+#  Convert the libraries found to -l flags
+OMNETPP_LIBS_FLAGS := $(patsubst lib%.so,-l%, $(notdir $(OMNETPP_LIBS)))
+
+# Debug prints
+#$(info CONAN_LIB_DIRS: $(CONAN_LIB_DIRS))
+#$(info OMNETPP_LIB_PATHS: $(OMNETPP_LIB_PATHS))
+#$(info OMNETPP_LIBS: $(OMNETPP_LIBS))
+#$(info OMNETPP_LIBS_FLAGS: $(OMNETPP_LIBS_FLAGS))
+
+
+
+#
+# macOS-specific changes
+#
+ifeq ($(shell uname), Darwin)
+  ifneq ($(CONAN_FRAMEWORKS),)
+    OMNETPP_LIBS += $(addprefix -framework , $(CONAN_FRAMEWORKS))
   endif
 endif
 
 
 #
-# Use the new message compiler introduced in OMNeT++ 5.3
-#
-MSGC:=$(MSGC) --msg6
-
-include ../conanbuildinfo.mak
-INCLUDE_PATH += $(addprefix -I, $(CONAN_INCLUDE_DIRS))
-
-
-OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libgrpc++.a
-OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libgrpc.a
-OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libgpr.a
-OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libupb.a
-OMNETPP_LIBS += $(CONAN_ROOT_GRPC)/lib/libaddress_sorting.a
-OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_OPENSSL)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_OPENSSL)))
-OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_PROTOBUF)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_PROTOBUF)))
-OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_C-ARES)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_C-ARES)))
-OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_ABSEIL)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_ABSEIL)))
-OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_RE2)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_RE2)))
-OMNETPP_LIBS += $(addprefix $(CONAN_ROOT_ZLIB)/lib/lib, $(addsuffix .a, $(CONAN_LIBS_ZLIB)))
-OMNETPP_LIBS += $(addprefix -l, $(CONAN_SYSTEM_LIBS))
-
-OMNETPP_LIBS += $(addprefix -framework , $(CONAN_FRAMEWORKS)) # TODO: Check if this works with linux
-
-
-
-
-#
 # Protobuf
 #
-
 PROTO_IN_PATH=..
 PROTO_OUT_PATH=veins_libairmobisim/proto
+
+# Get link to GRPC and PROTOC binary
+GRPC_CPP_PLUGIN := $(shell find ~/.conan2/p -path "*/bin/grpc_cpp_plugin" | head -n 1)
+PROTOC_PLUGIN := $(shell find ~/.conan2/p -path "*/bin/protoc" | head -n 1)
+
+# Debug prints
+#$(info GRPC PLUGIN: $(GRPC_CPP_PLUGIN))
+#$(info PROTOC: $(PROTOC_PLUGIN))
+
 
 all:
 
@@ -96,5 +116,9 @@ veins_libairmobisim/mobility/DroCIManager.cc: veins_libairmobisim/mobility/DroCI
 veins_libairmobisim/mobility/DroCIManager.h: veins_libairmobisim/proto/airmobisim.grpc.pb.h
 
 veins_libairmobisim/proto/airmobisim.grpc.pb.h: ../airmobisim.proto
-	$(CONAN_ROOT_PROTOBUF)/bin/protoc --proto_path $(PROTO_IN_PATH) --cpp_out $(PROTO_OUT_PATH) "$<"
-	$(CONAN_ROOT_PROTOBUF)/bin/protoc --proto_path $(PROTO_IN_PATH) --grpc_out=$(PROTO_OUT_PATH) --plugin=protoc-gen-grpc=$(CONAN_ROOT_GRPC)/bin/grpc_cpp_plugin "$<"
+	$(PROTOC_PLUGIN) --proto_path $(PROTO_IN_PATH) --cpp_out $(PROTO_OUT_PATH) "$<"
+	$(PROTOC_PLUGIN) --proto_path $(PROTO_IN_PATH) --grpc_out=$(PROTO_OUT_PATH) --plugin=protoc-gen-grpc=$(GRPC_CPP_PLUGIN) "$<"
+
+
+
+

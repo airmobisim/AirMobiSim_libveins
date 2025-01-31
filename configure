@@ -66,6 +66,7 @@ if args:
 # Start with default flags
 #makemake_flags = ['-f', '--deep', '--no-deep-includes', '--make-so', '-I', '.', '-o', 'veins_libairmobisim', '-O', 'out', '-p', 'VEINS_LIBAIRMOBISIM']
 makemake_flags = ['-f', '--deep', '--no-deep-includes', '--make-so', '-I', '.', '-o', 'veins_libairmobisim', '-O', 'out']
+makemake_flags = ['-f', '--deep', '--make-so', '-I', '.', '-o', 'veins_libairmobisim', '-O', 'out']
 run_libs = [os.path.join('src', 'veins_libairmobisim')]
 run_neds = [os.path.join('src', 'veins_libairmobisim')]
 run_imgs = [os.path.join('images')]
@@ -74,7 +75,7 @@ run_imgs = [os.path.join('images')]
 # Add flags for Veins
 if options.veins:
     fname = os.path.join(options.veins, 'print-veins-version')
-    expect_version = [b'5.2']
+    expect_version = [b'5.3']
     try:
         info('Running "%s" to determine Veins version.' % fname)
         version = subprocess.check_output(['env', fname]).strip()
@@ -115,5 +116,12 @@ f.write('run_imgs = %s\n' % repr(run_imgs))
 f.close()
 
 subprocess.check_call(['env', 'opp_makemake'] + makemake_flags, cwd='src')
+
+
+source = "../AirMobiSim/proto/airmobisim.proto"
+destination = "airmobisim.proto"
+if not os.path.exists(destination) and not os.path.islink(destination):
+    os.symlink(source, destination)
+
 
 info('Configure done. You can now run "make".')

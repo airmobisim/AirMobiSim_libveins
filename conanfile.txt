@@ -1,6 +1,12 @@
 [requires]
-grpc/1.38.1
-protobuf/3.17.1
+grpc/1.48.4
+
+[options]
+grpc/*:shared=True
 
 [generators]
-make
+CMakeDeps
+CMakeToolchain
+
+[layout]
+cmake_layout
