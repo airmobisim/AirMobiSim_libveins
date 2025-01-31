@@ -55,6 +55,15 @@ CXXFLAGS += -I$(GRPC_BASE_PATH)
 CXXFLAGS += -I$(ABSL_BASE_PATH)
 CXXFLAGS += -I$(PROTO_BASE_PATH)
 
+$(info ABSL_BASE_PATH: $(ABSL_BASE_PATH))
+$(info CXXFLAGS: $(CXXFLAGS))
+
+# Dynamisches Finden des gRPC-Include-Pfads
+GRPC_INCLUDE_PATH := $(shell find ~/.conan2/p -path "*/include/grpcpp" | head -n 1)
+
+# Ergänze CXXFLAGS mit dem gRPC-Include-Pfad
+CXXFLAGS += -I$(shell find ~/.conan2/p -path "*/include/grpcpp" | head -n 1)
+
 
 
 
@@ -94,6 +103,12 @@ ifeq ($(shell uname), Darwin)
 endif
 
 
+# Link conan libs
+CONAN_LIB_PATHS := $(shell find ~/.conan2/p/b -type d -name "lib" | tr '\n' ':')
+export LD_LIBRARY_PATH := $(CONAN_LIB_PATHS)$(LD_LIBRARY_PATH)
+
+
+
 #
 # Protobuf
 #
@@ -105,8 +120,8 @@ GRPC_CPP_PLUGIN := $(shell find ~/.conan2/p -path "*/bin/grpc_cpp_plugin" | head
 PROTOC_PLUGIN := $(shell find ~/.conan2/p -path "*/bin/protoc" | head -n 1)
 
 # Debug prints
-#$(info GRPC PLUGIN: $(GRPC_CPP_PLUGIN))
-#$(info PROTOC: $(PROTOC_PLUGIN))
+$(info GRPC PLUGIN: $(GRPC_CPP_PLUGIN))
+$(info PROTOC: $(PROTOC_PLUGIN))
 
 
 all:
